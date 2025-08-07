@@ -1,0 +1,628 @@
+hmtl{
+    overflow-x: hidden;
+    box-shadow: none;
+    
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;    
+}
+body::-webkit-scrollbar{
+    display: none;
+}
+*{
+    box-sizing: border-box;
+}
+:root{
+    --Cor-Primaria: #FE4F3F;
+    --Cor-Secundaria: #000000;
+    --Cor-Terciaria: #7C7C7C;
+    --Branco: #fff;
+}
+
+/* AQUI é o header*/
+a{
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    height: 70px;
+    background-color: var(--Cor-Primaria);
+    
+}/*AQUI TERMINA A PARTE CENTRAL DO PROJETO*/
+
+.logo{
+    width: 200px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo img{
+    width: 70px;
+    height: 70px;
+    transition: 0.5s;
+}
+
+.logo img:hover{
+    transform: scale(1.1);
+}
+
+
+
+/*AQUI TERMINA AS CONFIGURAÇOES DO LOGO*/
+
+.abas{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    text-align: center;
+    transition: 0.5s;
+}
+
+.abas a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 300;
+    width: 100px;
+    height: 40px;
+    color: var(--Branco);
+    margin-right: 30px;
+    transition: 0.5s;
+
+}
+
+.abas a:hover{
+    border-top: 1px solid var(--Branco);
+    border-bottom: 1px solid var(--Branco);
+    border-left: none;
+    border-right: none;
+}
+
+/*AQUI TERMINA AS CONFIGURAÇOES DO ABA*/
+
+.login{
+    width: 460px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     gap: 1rem;
+}
+
+#but1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Montserrat", sans-serif;
+    color: var(--Branco);
+    font-size: 15px;
+    background: none;
+    border-radius: 100px;
+    border: solid var(--Cor-Primaria);
+    width: 130px;
+    height: 40px;
+    margin: auto;
+    margin-right: 10px;
+    font-weight: 300;
+    transition: 0.5s;
+}
+
+#but1:hover{
+    border:solid var(--Branco) 1px;
+
+}
+
+#but2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Montserrat", sans-serif;
+    color: var(--Branco);
+    font-size: 15px;
+    background: none;
+    border-radius: 100px;
+    border: solid var(--Branco);
+    border-width: 1px;
+    width: 100px;
+    height: 40px;
+    margin-right: 10px;
+    font-weight: 300;
+    transition: 0.5s;
+
+}
+
+#but2:hover{
+    background-color: var(--Branco);
+    color: var(--Cor-Secundaria);
+    font-weight: 400;
+
+}
+
+/*AQUI TERMINA AS CONFIGURAÇOES DO LOGIN*/
+
+.barra hr{
+    height: 20px;
+    
+}/*AQUI É A BARRINHA BRANCA DO NAVBAR QUE SEPARA AS ABAS DO LOGIN*/
+
+/*AQUI TERMINA O HEADER*/
+
+
+
+/*AQUI É A PRIMEIRA PARTE DA AREA DOS SERVIÇOS ONDE TEM O TITULO E A BARRA DE PESQUISA*/
+
+.search-title{
+    width: 100vw;
+    height: 15vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.service-title{
+    width: 50vw;
+    height: 100%;
+    display: flex;
+}
+
+.service-title h2{
+    color: var(--Cor-Primaria);
+    display: flex;
+    align-items: center;
+    margin-left: 12%;
+    font-size: 200%;
+}
+
+/*AQUI COMEÇA AS CONFIGURAÇÕES DA PARTE DA BARRA DE NAVEGAÇÃO
+*/
+
+.sarch{
+    width: 50vw;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    
+}
+
+.pesquise{
+    width: 22vw;
+    height: 6vh;
+    display: flex;
+    border: solid 1px;
+    margin-right: 12%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.pesquise img{
+    width: 13%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#search{
+    width: 80%;
+    height: 85%;
+    display: flex;
+    border: none;
+    background: none;
+    outline: none;
+    font-size: 15px;
+    font-weight: 200;
+}
+
+
+/*AQUI COMEÇA AS CONFIGURAÇOES DO SERVICE1*/
+
+.service1{
+    width: 100vw;
+    height: 50vh;
+    margin-top: 50px;
+    display: flex;
+
+}
+
+.servic1{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.servic-title img{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    margin-right: 1%;
+    margin-left: 9%;
+    object-fit: cover;
+
+}
+
+.servic-title{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+}
+
+.servic-title h2{
+    color: var(--Cor-Primaria);
+    font-size: 140%;
+}
+
+.servic-text{
+    width: 80%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    font-size: 110%;
+    margin-left: 10%;
+    font-weight: 300;
+    justify-content: center;
+    text-align: justify;    
+}
+
+
+.servic1-img{
+    width: 25vw;
+    height: 100%;
+    display: flex;
+
+    background-image: url(img/Mask\ group1\ copy.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 100%;
+}
+
+/*AQUI COMEÇA O SERVICE2*/
+
+.service2{
+    width: 100vw;
+    height: 65vh;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    background-color: var(--Cor-Primaria);
+}
+
+.servic2{   
+        width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.servic2-img{
+    width: 25vw;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    background-image: url(img/verceste.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 100%;
+}
+
+.servic-title2{
+    width: 92%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-right: 10%;
+}
+
+.servic-title2 img{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    margin-left: 1%;
+
+}
+
+.servic-title2 h2{
+    color: var(--Branco);
+    font-size: 140%;
+}
+
+.servic-text2{
+        width: 80%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    font-size: 110%;
+    margin-left: 10%;
+    font-weight: 300;
+    text-align: justify;  
+}
+
+.servic-text2 p{
+    display: flex;
+    justify-content: end;
+    font-weight: 500;
+    color: var(--Branco);
+}
+
+.servic-title3{
+    width: 80%;
+    margin-left: 9%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    margin-right: 10%;
+}
+
+.servic-title3 img{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    margin-right: 1%;
+
+}
+
+.servic3-img{
+    width: 25vw;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    background-image: url(img/martela-a-dor.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 100%;
+}
+
+
+.icon-serv{
+    width: 100vw;
+    height: 9vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-cont{
+    width: 4.5%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid;
+    background-color: var(--Cor-Primaria);
+    border: none;
+    border-radius: 100%;
+    transition: 0.5s;
+}
+
+.icon-cont:hover{
+    width: 4%;
+    height: 90%;
+}
+
+
+
+/*AQUI É O FOOTER*/
+
+.rodape{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--Cor-Secundaria);
+    flex-direction: column;
+
+}
+/* AQUI TERMINA A PARTE CENTRAL DO RODAPÉ*/
+
+
+.foot-logo{
+    width: 90%;
+    height: 80px;
+    display: flex;
+  
+    align-items: center;
+}
+
+.foot-logo img{
+    width: 70px;
+    height: 70px;
+}
+
+.contatos{
+    width: 80%;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.titulos{
+    width: 200px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+
+    flex-direction: column;
+}
+
+.titulo{
+    width: 160px;
+    height: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--Branco);
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.subtitle{
+    width: 160px;
+    height: 25px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--Branco);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+
+.cont1{
+    width: 100%;
+    height: 270px;
+  
+    display: flex;
+    align-items: center;
+    margin: auto;
+    flex-direction: column;
+}
+
+.cont-title1{
+    width: 200px;
+    height: 30px;
+
+    color: var(--Branco);
+    display:  flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.conte{
+    display: flex;
+    flex-direction: row;
+}
+
+.icon{
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon img{
+    width: 30px;
+    height: 30px;
+    filter: grayscale(100%);
+    transition: 0.5s;
+}
+
+.icon img:hover {
+    filter: grayscale(0%);
+    transform: rotateZ(360deg);
+}
+
+.rede{
+    width: 140px;
+    height: 40px;
+
+    color: var(--Branco);
+    display: flex;
+    align-items: center;
+}
+
+.rede p{
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* AQUI TERMINA O CONTATO 1 */
+
+.cont2{
+    width: 100%;
+    height: 270px;
+ 
+    display: flex;
+    align-items: center;
+    margin: auto;
+    flex-direction: column;
+}
+
+.titulo2{
+    width: 200px;
+    height: 30px;
+ 
+    color: var(--Branco);
+    display:  flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.abins{
+    display: flex;
+    flex-direction: column;
+    color: var(--Branco);
+    align-items: center;
+}
+
+.abins p{
+
+    font-weight: 500;
+
+}
+
+.cont3{
+    width: 100%;
+    height: 270px;
+
+    display: flex;
+    align-items: center;
+    margin: auto;
+    flex-direction: column;
+}
+
+.titulo3{
+    width: 200px;
+    height: 30px;
+
+    color: var(--Branco);
+    display:  flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.produts{
+    display: flex;
+    flex-direction: column;
+    color: var(--Branco);
+    align-items: center;
+}
+
+.produts p{
+
+    font-weight: 500;
+
+}
+
+.direitos-reservados{
+    color: var(--Branco);
+}
+

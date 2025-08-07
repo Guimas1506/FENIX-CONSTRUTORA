@@ -1,0 +1,476 @@
+@font-face {
+    font-family: 'inter';
+    src: url('fonts/Inter-VariableFont_opsz\,wght.ttf') format('truetype');
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'inter';
+}
+
+/* header */
+
+header{
+ width: 100%;   
+}
+ header a{
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+    background-color: rgb(153, 51, 51);
+    
+}/*AQUI TERMINA A PARTE CENTRAL DO PROJETO*/
+
+.logo{
+    width: 200px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.logo h1{
+    color: white;
+}
+
+.logo img{
+    width: 70px;
+    height: 70px;
+    margin-left:30px;
+    margin-right: 30px;
+    transition: 0.5s;
+}
+
+.logo img:hover{
+    transform: scale(1.1);
+}
+
+/*AQUI TERMINA AS CONFIGURAÇOES DO LOGO*/
+
+.abas{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    text-align: center;
+    transition: 0.5s;
+}
+
+.abas a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 300;
+    width: 100px;
+    height: 40px;
+    color: white;
+    margin-right: 30px;
+    transition: 0.5s;
+
+}
+
+.abas a:hover{
+    border-top: 1px solid rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(255, 255, 255);
+    border-left: none;
+    border-right: none;
+}
+
+
+
+
+/*AQUI TERMINA AS CONFIGURAÇOES DO ABA*/
+
+.login{
+    width: 460px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#but1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Montserrat", sans-serif;
+    color: white;
+    font-size: 15px;
+    background: none;
+    border-radius: 100px;
+    border: solid rgb(153, 51, 51);
+    width: 130px;
+    height: 40px;
+    margin: auto;
+    margin-right: 10px;
+    font-weight: 300;
+    transition: 0.5s;
+}
+
+#but1:hover{
+    border:solid white 1px;
+
+}
+
+#but2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Montserrat", sans-serif;
+    color: white;
+    font-size: 15px;
+    background: none;
+    border-radius: 100px;
+    border: solid white;
+    border-width: 1px;
+    width: 100px;
+    height: 40px;
+    margin-right: 10px;
+    font-weight: 300;
+    transition: 0.5s;
+
+}
+
+#but2:hover{
+    background-color: white;
+    color: black;
+    font-weight: 400;
+
+}
+
+/*AQUI TERMINA AS CONFIGURAÇOES DO LOGIN*/
+
+ .barrinha hr{
+  margin-left: 130px;
+    height: 20px;
+}/*AQUI É A BARRINHA BRANCA DO NAVBAR QUE SEPARA AS ABAS DO LOGIN*/
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 150px;
+}
+/*parte principal do projeto */
+
+h1{
+font-size: 40px;
+color: #F65B38;
+}
+
+.titulopesquisa{
+ display: flex;
+flex-direction: row;
+margin-top: 50px;
+margin-left: 50px;
+width: 100%;
+}
+.titulopesquisa h1{
+margin-left: 30px;    
+}
+
+.pesquisa{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    border: solid;
+    margin-left: 30px;
+    border-radius: 50px;
+    border-color: gray;
+    width: 300px;
+    height: 40px;
+    margin-top: 25px;
+    margin-left: 700px;
+    text-align: start;
+}
+.pesquisa img{
+width: 20px;
+height: 20px;
+margin-left: -150px;
+}
+
+.imagemprincipal{
+    height: 400px;
+    width: 1200px;
+object-fit: fill;
+}
+
+.texto1{
+    width: 1000px;
+
+}
+
+main{
+    margin-top: 30px;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: row;
+    width: 100%;
+    height: 1050px;
+
+}
+.artigos{
+    width: 300px;
+    margin-left: 10px;
+
+color: #F65B38;
+}
+.atendimentos{
+    width: 800px;
+    height: 90%;
+    text-align: center;
+   
+}
+
+.contatos1{
+display: flex;
+flex-direction: column;    
+justify-content: center;
+align-items: center;
+color: #F65B38;
+}
+
+.contatos1 img{
+    margin-top: 5px;
+    width: 40px;
+    height: 40px;
+   
+}
+
+
+.telefone{
+    display: flex;
+   flex-direction: row;
+}
+.whats{
+    display: flex;
+   flex-direction: row;
+}
+.email{
+    display: flex;
+   flex-direction: row;
+}
+
+/*footer*/
+footer{
+    width: 100%;    
+    }
+    .rodape{
+        width: 100%;
+        height: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+        flex-direction: column;
+     
+    
+    }
+    /* AQUI TERMINA A PARTE CENTRAL DO RODAPÉ*/
+    
+    
+    .foot-logo{
+        width: 90%;
+        height: 80px;
+        display: flex;
+      
+        align-items: center;
+    }
+    
+    .foot-logo img{
+        width: 70px;
+        height: 70px;
+    }
+    
+    .contatos{
+        width: 80%;
+        height: 350px;
+        display: flex;
+        justify-content: center;
+    
+    }
+    
+    .titulos{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+    
+        flex-direction: column;
+    }
+    
+    .titulo{
+        width: 160px;
+        height: 30px;
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 27px;
+        font-weight: 700;
+    }
+    
+    .subtitle{
+        width: 160px;
+        height: 25px;
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 14px;
+        font-weight: 700;
+    }
+    
+    
+    
+    .cont1{
+        width: 300px;
+        height: 270px;
+      
+        display: flex;
+        align-items: center;
+        margin: auto;
+        flex-direction: column;
+    }
+    
+    .cont-title1{
+        width: 200px;
+        height: 30px;
+    
+        color: white;
+        display:  flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+    
+    .conte{
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .icon{
+        width: 40px;
+        height: 40px;
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .icon img{
+        width: 30px;
+        height: 30px;
+        filter: grayscale(100%);
+        transition: 0.5s;
+    }
+    
+    .icon img:hover {
+        filter: grayscale(0%);
+        transform: rotateZ(360deg);
+    }
+    
+    .rede{
+        width: 140px;
+        height: 40px;
+    
+        color: white;
+        display: flex;
+        align-items: center;
+    }
+    
+    .rede p{
+        font-size: 15px;
+        font-weight: 500;
+    }
+    
+    /* AQUI TERMINA O CONTATO 1 */
+    
+    .cont2{
+        width: 300px;
+        height: 270px;
+     
+        display: flex;
+        align-items: center;
+        margin: auto;
+        flex-direction: column;
+    }
+    
+    .titulo2{
+        width: 200px;
+        height: 30px;
+     
+        color: white;
+        display:  flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+    
+    .abins{
+        display: flex;
+        flex-direction: column;
+        color: white;
+        align-items: center;
+    }
+    
+    .abins p{
+    
+        font-weight: 500;
+    
+    }
+    
+    .cont3{
+        width: 300px;
+        height: 270px;
+    
+        display: flex;
+        align-items: center;
+        margin: auto;
+        flex-direction: column;
+    }
+    
+    .titulo3{
+        width: 200px;
+        height: 30px;
+    
+        color: white;
+        display:  flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+    
+    .produts{
+        display: flex;
+        flex-direction: column;
+        color: white;
+        align-items: center;
+    }
+    
+    .produts p{
+    
+        font-weight: 500;
+    
+    }
+    
+   
