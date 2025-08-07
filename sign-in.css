@@ -97,15 +97,15 @@ header{
 }
 
 #but1{
-    display: flex;
+display: flex;
     justify-content: center;
     align-items: center;
     font-family: "Montserrat", sans-serif;
-    color: white;
+    color: var(--Branco);
     font-size: 15px;
     background: none;
     border-radius: 100px;
-    border: solid rgb(153, 51, 51);
+    border: solid var(--Cor-Primaria);
     width: 130px;
     height: 40px;
     margin: auto;
@@ -652,4 +652,5 @@ p{
     .rede p {
         font-size: 12px;
     }
+
 }
