@@ -234,6 +234,7 @@ color: #F65B38;
 }
 .atendimentos{
     width: 800px;
+    border: solid black;
     height: 90%;
     text-align: center;
    
@@ -473,4 +474,5 @@ footer{
     
     }
     
+
    
