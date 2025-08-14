@@ -97,18 +97,19 @@ header{
 }
 
 #but1{
-display: flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     font-family: "Montserrat", sans-serif;
-    color: var(--Branco);
+    color: white;
     font-size: 15px;
     background: none;
     border-radius: 100px;
-    border: solid var(--Cor-Primaria);
+    border: solid  #fc4f3f;
     width: 130px;
     height: 40px;
     margin: auto;
+    margin-left: 15px;
     margin-right: 10px;
     font-weight: 300;
     transition: 0.5s;
@@ -148,7 +149,6 @@ display: flex;
 /*AQUI TERMINA AS CONFIGURAÇOES DO LOGIN*/
 
  .barrinha hr{
-  margin-left: 130px;
     height: 20px;
 }/*AQUI É A BARRINHA BRANCA DO NAVBAR QUE SEPARA AS ABAS DO LOGIN*/
 main{
@@ -654,3 +654,4 @@ p{
     }
 
 }
+
