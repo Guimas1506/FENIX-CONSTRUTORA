@@ -148,7 +148,6 @@ header{
 /*AQUI TERMINA AS CONFIGURAÇOES DO LOGIN*/
 
  .barrinha hr{
-  margin-left: 130px;
     height: 20px;
 }/*AQUI É A BARRINHA BRANCA DO NAVBAR QUE SEPARA AS ABAS DO LOGIN*/
 main{
@@ -596,4 +595,5 @@ width: 100%;
         font-size: 12px;
     }
 }
+
 
