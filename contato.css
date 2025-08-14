@@ -121,7 +121,7 @@ header{
     font-size: 15px;
     background: none;
     border-radius: 100px;
-    border: solid rgb(153, 51, 51);
+    border: solid  #fc4f3f;
     width: 130px;
     height: 40px;
     margin: auto;
@@ -677,6 +677,7 @@ footer{
         transform: none;
     }
 }
+
 
 
 
