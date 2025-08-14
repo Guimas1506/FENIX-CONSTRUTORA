@@ -110,10 +110,11 @@ header{
     font-size: 15px;
     background: none;
     border-radius: 100px;
-    border: solid #fc4f3f ;
+    border: solid  #fc4f3f;
     width: 130px;
     height: 40px;
     margin: auto;
+    margin-left: 15px;
     margin-right: 10px;
     font-weight: 300;
     transition: 0.5s;
@@ -939,5 +940,6 @@ border-radius: 10px;
   }
 
 }
+
 
 
