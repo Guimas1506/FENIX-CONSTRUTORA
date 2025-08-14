@@ -105,15 +105,15 @@ header{
     font-size: 15px;
     background: none;
     border-radius: 100px;
-    border: solid rgb(153, 51, 51);
+    border: solid  #fc4f3f;
     width: 130px;
     height: 40px;
     margin: auto;
+    margin-left: 15px;
     margin-right: 10px;
     font-weight: 300;
     transition: 0.5s;
 }
-
 #but1:hover{
     border:solid white 1px;
 
@@ -595,5 +595,6 @@ width: 100%;
         font-size: 12px;
     }
 }
+
 
 
