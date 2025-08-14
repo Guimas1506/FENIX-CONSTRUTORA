@@ -49,12 +49,7 @@ header{
  position: relative;
  top: 3px; 
 }
-.logo span{
- font-size: 20px;
- position:relative; 
- left: -15px;
- top: -10px;
-}
+
 
 .logo img{
     width: 70px;
@@ -678,3 +673,4 @@ footer{
         transform: none;
     }
 }
+
