@@ -21,54 +21,39 @@
 <body>
 
         <header>
-      <!--AQUI COMEÇA AS CONFIGURAÇÕES DO NAVBAR-->
-      <div class="navbar">
-        <!--AQUI É A LOGO DA FENIX-->
-        <div class="logo">
-          <img src="img/fenix51.png" alt="" />
-        </div>
-        <!--AQUI SÃO AS ABAS DO SITE-->
-        <div class="abas">
-                    <a href="../index.html">
-            <p>Inicio</p>
-          </a>
-          <a href="../sobre.html">
-            <p>Sobre Nós</p>
-          </a>
-          <a href="">
-            <p>Imóveis</p>
-          </a>
-          <a href="../serviços.html">
-            <p>Serviços</p>
-          </a>
-          <a href="../contato.html">
-            <p>Contato</p>
-          </a>
-        </div>
-        <!--AQUI É A BARRINHA BRANCA QUE SEPARA AS ABAS DO LOGIN-->
-        <div class="barra">
-          <hr />
-        </div>
-        <!--AQUI SÃO OS BOTÕES DO LOGIN-->
-              <div class="login">
-        <div class="sing">
-          <a href="../log-in.html">
-          <button id="but1" type="button">
-            <p>Login</p>
-          </button>
-          </a>
-        </div>
+  <div class="navbar">
+    <div class="logo">
+      <img src="img/fenix51.png" alt="" />
+    </div>
 
-        <div class="log">
-          <a href=".//sign-in.html">
-          <button id="but2" type="button">
-            <p>Sign-in</p>
-          </button>
-          </a>
-        </div>
+    <div class="abas">
+      <a href="./index.html"><p>Inicio</p></a>
+      <a href="./sobre.html"><p>Sobre Nós</p></a>
+      <a href=""><p>Imóveis</p></a>
+      <a href="./serviços.html"><p>Serviços</p></a>
+      <a href="./contato.html"><p>Contato</p></a>
+    </div>
+
+    <div class="barra"><hr></div>
+
+    <div class="login" id="header-login">
+      <!-- Botões padrão -->
+      <div class="sing">
+        <a href="./log-in.html"><button id="but1" type="button"><p>Login</p></button></a>
       </div>
+      <div class="log">
+        <a href="./sign-in.html"><button id="but2" type="button"><p>Sign-in</p></button></a>
       </div>
-    </header>
+    </div>
+
+    <!-- Menu do usuário logado -->
+    <div class="user-menu" id="user-menu" style="display:none;">
+      <p id="welcome-msg">Bem-vindo(a)</p>
+      <button id="btn-favoritos">Favoritos</button>
+      <button id="btn-logout">Sair</button>
+    </div>
+  </div>
+</header>
     
 
     <main>
@@ -263,6 +248,52 @@
       </div>
       <!-- Fim do rodapé -->
     </footer>
+
+    <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCYDGROxguHYX-YA-J-HqRRGSF3uN-ZEAs",
+    authDomain: "fenix-construtora-a34b5.firebaseapp.com",
+    projectId: "fenix-construtora-a34b5",
+    storageBucket: "fenix-construtora-a34b5.firebasestorage.app",
+    messagingSenderId: "928009241790",
+    appId: "1:928009241790:web:333b16b217a2ece01d8aef"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  const headerLogin = document.getElementById("header-login");
+  const userMenu = document.getElementById("user-menu");
+  const welcomeMsg = document.getElementById("welcome-msg");
+  const btnLogout = document.getElementById("btn-logout");
+
+  // Verifica se há usuário logado
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      headerLogin.style.display = "none";
+      userMenu.style.display = "flex";
+      welcomeMsg.textContent = `Bem-vindo(a), ${user.displayName || user.email}`;
+    } else {
+      headerLogin.style.display = "flex";
+      userMenu.style.display = "none";
+    }
+  });
+
+  // Logout
+  btnLogout.addEventListener("click", () => {
+    signOut(auth).then(() => {
+      alert("Logout realizado com sucesso!");
+      window.location.reload();
+    }).catch((error) => {
+      alert(`Erro ao sair: ${error.message}`);
+    });
+  });
+</script>
+
+
 </body>
 
 </html>

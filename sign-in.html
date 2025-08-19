@@ -4,6 +4,48 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Sign-in</title>
+   <link rel="stylesheet" href="sign-in.css">
+
+   <!-- Firebase via CDN -->
+   <script type="module">
+     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+     import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+     const firebaseConfig = {
+       apiKey: "AIzaSyCYDGROxguHYX-YA-J-HqRRGSF3uN-ZEAs",
+       authDomain: "fenix-construtora-a34b5.firebaseapp.com",
+       projectId: "fenix-construtora-a34b5",
+       storageBucket: "fenix-construtora-a34b5.firebasestorage.app",
+       messagingSenderId: "928009241790",
+       appId: "1:928009241790:web:333b16b217a2ece01d8aef"
+     };
+
+     const app = initializeApp(firebaseConfig);
+     const auth = getAuth(app);
+
+     window.registerUser = function(event) {
+       event.preventDefault();
+
+       const nome = document.getElementById("nome").value;
+       const email = document.getElementById("email").value;
+       const senha = document.getElementById("password").value;
+       const confirmaSenha = document.getElementById("confirm-password").value;
+
+       if (senha !== confirmaSenha) {
+         alert("As senhas não conferem!");
+         return;
+       }
+
+       createUserWithEmailAndPassword(auth, email, senha)
+         .then((userCredential) => {
+           alert(`Cadastro realizado com sucesso! Bem-vindo, ${nome}`);
+           window.location.href = "index.html"; // Caminho corrigido para raiz
+         })
+         .catch((error) => {
+           alert(`Erro ao cadastrar: ${error.message}`);
+         });
+     }
+   </script>
 </head>
 <link rel="stylesheet" href="sign-in.css">
 <header>
@@ -15,19 +57,19 @@
     </div>
     <!--AQUI SÃO AS ABAS DO SITE-->
      <div class="abas">
-                         <a href="../index.html">
+                         <a href="./index.html">
             <p>Inicio</p>
           </a>
-          <a href="../sobre.html">
+          <a href="./sobre.html">
             <p>Sobre Nós</p>
           </a>
           <a href="">
             <p>Imóveis</p>
           </a>
-          <a href="../serviços.html">
+          <a href="./serviços.html">
             <p>Serviços</p>
           </a>
-          <a href="../contato.html">
+          <a href="./contato.html">
             <p>Contato</p>
           </a>
             </div>
@@ -51,43 +93,47 @@
 </header>
 <body>
     <main>
-   <div class="titulos1">
+  <div class="titulos1">
     <h3><b>SEJA AGORA</b> UM CLIENTE FÊNIX</h3>
     <h1>SIGN-IN</h1>
     <img src="img/icon-usuario.png" alt="icon-usuario">
-    </div>
-    <form>
-    <label for="text">Digite o seu Nome de Usuário  </label>
+  </div>
+
+  <form onsubmit="registerUser(event)">
+    <label for="nome">Digite o seu Nome de Usuário</label>
     <input type="text" placeholder="Nome" id="nome" required>
-    <label for="email">Digite o seu E-mail </label>
+
+    <label for="email">Digite o seu E-mail</label>
     <input type="email" placeholder="E-mail" id="email" required>
-    <label for="password">Digite sua senha </label>
+
+    <label for="password">Digite sua senha</label>
     <input type="password" placeholder="Senha" id="password" required>
-    <label for="password">Confirme sua senha </label>
-    <input type="password" placeholder="Confirmar a senha" id="password" required>
- <div class="barras">
-   <div class="barra"></div>
-   <p>ou, registre-se com</p>
-   <div class="barra"></div>
-</div>
 
-<div class="opcoes-login">
- <img src="img/logo-google.png" alt="logo.google">  
- <img src="img/logo-facebook.png" alt="logo.facebook">  
- <img src="img/logo-apple.png" alt="logo.apple">  
-</div>
+    <label for="confirm-password">Confirme sua senha</label>
+    <input type="password" placeholder="Confirmar a senha" id="confirm-password" required>
 
-<div class="termos">
-    <input type="checkbox" id="aceito-termos" required>
-    <p>Ao continuar aceito e concordo com os <a href="politica-privacidade.html" target="_blank">termos de Política de Privacidade</a></p>
-</div>
-       <a href="../index.html">
-<button type="submit" class="btn-entrar">Entrar</button>
-       </a>
-<p>Já é um cliente Fênix ?</p>
-<a class="registrar" href="log-in.html">Login</a>
-   </form>
-   </main>
+    <div class="barras">
+      <div class="barra"></div>
+      <p>ou, registre-se com</p>
+      <div class="barra"></div>
+    </div>
+
+    <div class="opcoes-login">
+      <img src="img/logo-google.png" alt="logo.google">  
+      <img src="img/logo-facebook.png" alt="logo.facebook">  
+      <img src="img/logo-apple.png" alt="logo.apple">  
+    </div>
+
+    <div class="termos">
+      <input type="checkbox" id="aceito-termos" required>
+      <p>Ao continuar aceito e concordo com os <a href="politica-privacidade.html" target="_blank">termos de Política de Privacidade</a></p>
+    </div>
+
+    <button type="submit" class="btn-entrar">Registrar</button>
+    <p>Já é um cliente Fênix ?</p>
+    <a class="registrar" href="log-in.html">Login</a>
+  </form>
+</main>
    <footer>
      <!-- Início do rodapé -->
      <div class="rodape">
