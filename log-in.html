@@ -15,7 +15,7 @@
        apiKey: "AIzaSyCYDGROxguHYX-YA-J-HqRRGSF3uN-ZEAs",
        authDomain: "fenix-construtora-a34b5.firebaseapp.com",
        projectId: "fenix-construtora-a34b5",
-       storageBucket: "fenix-construtora-a34b5.appspot.com",
+       storageBucket: "fenix-construtora-a34b5.firebasestorage.app",
        messagingSenderId: "928009241790",
        appId: "1:928009241790:web:333b16b217a2ece01d8aef"
      };
@@ -32,8 +32,7 @@
        signInWithEmailAndPassword(auth, email, senha)
          .then((userCredential) => {
            alert("Login realizado com sucesso! Bem-vindo.");
-           // redirecionamento relativo à raiz do Vercel
-           window.location.href = "/index.html";
+           window.location.href = "index.html"; // Caminho corrigido para raiz
          })
          .catch((error) => {
            alert(`Erro ao entrar: ${error.message}`);
