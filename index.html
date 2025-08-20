@@ -745,6 +745,7 @@
   const userMenu = document.getElementById("user-menu");
   const welcomeMsg = document.getElementById("welcome-msg");
   const btnLogout = document.getElementById("btn-logout");
+  const barra = document.querySelector(".barra");
 
   // Verifica se há usuário logado
   onAuthStateChanged(auth, (user) => {
@@ -755,10 +756,12 @@
       userMenu.style.display = "flex";
       // Usa o displayName salvo no Firebase
       welcomeMsg.textContent = `Bem-vindo(a), ${user.displayName || user.email}`;
+      barra.style.display = "none"; // Oculta a barra de separação  
     } else {
       // Mostra botões login/sign-in
       headerLogin.style.display = "flex";
       userMenu.style.display = "none";
+      
     }
   });
 
