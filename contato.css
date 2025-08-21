@@ -677,6 +677,7 @@ footer{
         transform: none;
     }
 }
+
 /*botoes de sair e favoritos*/
 
 #btn-favoritos,
@@ -700,6 +701,7 @@ footer{
     color: var(--Branco);
     border-color: var(--Cor-Primaria);
 }
+
 
 
 
