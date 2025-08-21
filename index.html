@@ -40,9 +40,12 @@
     </div>
 
     <!-- Menu do usuário logado (vai substituir o login/sign-in) -->
+
+    
+
     <div class="user-menu" id="user-menu" style="display:none;">
       <p id="welcome-msg">Bem-vindo(a)</p>
-      <button id="btn-favoritos">Favoritos</button>
+      <button id="btn-favoritos"></button>
       <button id="btn-logout">Sair</button>
     </div>
   </div>
@@ -50,10 +53,34 @@
 
 
     <main>
-        <div class="banner">
-            <h1>SLOGAN AQUI</h1>
-        </div>
+         <div class="carrossel">
+      <div class="container">
+        <img src="img/car1.jpg" alt=""> 
+        <img src="img/car2.jpg" alt="">
+        <img src="img/car3.jpg" alt="">
+      </div>
+    </div>
+<!-- script do carrossel  -->
+ <script>
+const box = document.querySelector(".container");
+const imagens = document.querySelectorAll(".container img");
 
+let contador = 0;
+
+function slider() {
+  contador++;
+
+  if (contador > imagens.length - 1) {
+    contador = 0;
+  }
+
+  box.style.transform = `translateX(${-contador * 1250}px)`;
+}
+
+setInterval(slider, 2000);
+
+</script>
+<!-- final do script do carrossel -->
         <!--AQUI COMEÇA O ELEGANCIA E INOVAÇÃO-->
         <div class="conteud">
             <div class="conteud1">

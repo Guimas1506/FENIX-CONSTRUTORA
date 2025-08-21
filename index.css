@@ -18,6 +18,14 @@ body::-webkit-scrollbar{
     box-sizing: border-box;
 }
 
+:root{
+    --Cor-Primaria: #FE4F3F;
+    --Cor-Secundaria: #000000;
+    --Cor-Terciaria: #7C7C7C;
+    --Branco: #fff;
+}
+
+
 /* AQUI é o header*/
 a{
     text-decoration: none;
@@ -30,6 +38,7 @@ a{
     width: 100%;
     height: 70px;
     background-color: #FE4F3F;
+    z-index: 1;
     
 }/*AQUI TERMINA A PARTE CENTRAL DO PROJETO*/
 
@@ -164,26 +173,29 @@ a{
 
 
 
+.carrossel {
+  filter: drop-shadow(0px 0px 10px #000);
+  overflow: hidden;
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
 
-.banner{
-    width: 100vw;
-    height: 85vh;
-
-    background-image: url(img/esmeralda.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-image: -moz-linear-gradient();
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 30px;
-    color: white;
-    text-shadow: 2px 2px 4px black;
 }
 
+.container {
+  display: flex;
+  transition: 0.7s ease-in-out;
+  transform: translateX(0);
+}
+
+img {
+  margin-top: -100px;
+  width: 100%;
+  height: 90vh;
+}
 /*Aqui termina o baaner e começa o conteudo*/
 
 .conteud{
@@ -1504,27 +1516,36 @@ a{
 }
 
 /*botoes de sair e favoritos*/
- #btn-favoritos,
-#btn-logout {
-    background-color:white;
-    color: #FE4F3F;
-    border: 2px solid #FE4F3F;
-    border-radius: 8px;
-    padding: 5px 12px;
-    font-family: "Montserrat", sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.3s, color 0.3s, border 0.3s;
-    margin-left: 5px;
+.user-menu{
+    width: 30%;
+
+    border: solid;
+    background-color: var(--Cor-Primaria);
+    display: flex;
+    flex-direction: row;
+    z-index: 2;
 }
 
-.btn-favoritos:hover,
-.btn-logout:hover {
-    background-color: var(--Cor-Primaria);
-    color: var(--Branco);
-    border-color: var(--Cor-Primaria);
+
+
+#btn-favoritos{
+    width: 14%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    border-radius: 100%;
+    border: none;
+    background-image: url(img/coracao.png);
+    background-repeat: no-repeat;
+    background-size: 35px;
+    background-position: center;
+
+
+
 }
+
 
  
 
