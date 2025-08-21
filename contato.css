@@ -677,6 +677,29 @@ footer{
         transform: none;
     }
 }
+/*botoes de sair e favoritos*/
+
+#btn-favoritos,
+#btn-logout {
+    background-color: var(--Branco);
+    color: var(--Cor-Primaria);
+    border: 2px solid var(--Cor-Primaria);
+    border-radius: 8px;
+    padding: 5px 12px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s, border 0.3s;
+    margin-left: 5px;
+}
+
+.btn-favoritos:hover,
+.btn-logout:hover {
+    background-color: var(--Cor-Primaria);
+    color: var(--Branco);
+    border-color: var(--Cor-Primaria);
+}
 
 
 
