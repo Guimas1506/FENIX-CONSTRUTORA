@@ -942,12 +942,11 @@ border-radius: 10px;
 }
 
 /*botoes de sair e favoritos*/
-
-#btn-favoritos,
+ #btn-favoritos,
 #btn-logout {
-    background-color: var(--Branco);
-    color: var(--Cor-Primaria);
-    border: 2px solid var(--Cor-Primaria);
+    background-color:white;
+    color: #FE4F3F;
+    border: 2px solid #FE4F3F;
     border-radius: 8px;
     padding: 5px 12px;
     font-family: "Montserrat", sans-serif;
@@ -964,6 +963,5 @@ border-radius: 10px;
     color: var(--Branco);
     border-color: var(--Cor-Primaria);
 }
-
 
 
