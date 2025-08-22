@@ -173,28 +173,23 @@ a{
 
 
 
-.carrossel {
-  filter: drop-shadow(0px 0px 10px #000);
-  overflow: hidden;
-  width: 100vw;
-  height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
+.banner{
+    width: 100vw;
+    height: 85vh;
 
-}
+    background-image: url(img/esmeralda.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: -moz-linear-gradient();
 
-.container {
-  display: flex;
-  transition: 0.7s ease-in-out;
-  transform: translateX(0);
-}
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-img {
-  margin-top: -100px;
-  width: 100%;
-  height: 90vh;
+    font-size: 30px;
+    color: white;
+    text-shadow: 2px 2px 4px black;
 }
 /*Aqui termina o baaner e começa o conteudo*/
 

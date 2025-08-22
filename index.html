@@ -53,33 +53,11 @@
 
 
     <main>
-         <div class="carrossel">
-      <div class="container">
-        <img src="img/car1.jpg" alt=""> 
-        <img src="img/car2.jpg" alt="">
-        <img src="img/car3.jpg" alt="">
-      </div>
-    </div>
+        <div class="banner">
+            <h1>SLOGAN AQUI</h1>
+        </div>
 <!-- script do carrossel  -->
- <script>
-const box = document.querySelector(".container");
-const imagens = document.querySelectorAll(".container img");
 
-let contador = 0;
-
-function slider() {
-  contador++;
-
-  if (contador > imagens.length - 1) {
-    contador = 0;
-  }
-
-  box.style.transform = `translateX(${-contador * 1250}px)`;
-}
-
-setInterval(slider, 2000);
-
-</script>
 <!-- final do script do carrossel -->
         <!--AQUI COMEÇA O ELEGANCIA E INOVAÇÃO-->
         <div class="conteud">
