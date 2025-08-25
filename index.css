@@ -202,21 +202,24 @@ section.slider{
 
 .slide-box img{
     width: 100%;
+    height: 75vh;
+    display: flex;
 }
 
 
 
 .nav-manual, .nav-auto{
     position: absolute;
-    width: 100%;
-
-    margin-top: 53%;
-    display: flex;
+    width: 100vw;
+    height: 70vh;
     justify-content: center;
+    background-size: cover;
+    display: flex;
+    align-items: end;
 }
 
 .nav-manual .manual-btn, .nav-auto div{
-    border: 1px solid #ff0054;
+    border: 1px solid var(--Cor-Primaria);
     padding: 10px;
     border-radius: 50%;
     cursor: pointer;
@@ -228,11 +231,11 @@ section.slider{
 }
 
 .nav-manual .manual-btn:hover{
-    background-color: #ff0054;
+    background-color: var(--Cor-Primaria);
 }
 
 #radio1:checked ~ .nav-auto .auto-btn1, #radio2:checked ~ .nav-auto .auto-btn2, #radio3:checked ~ .nav-auto .auto-btn3{
-    background-color: #ff0054;
+    background-color: var(--Cor-Primaria);
 }
 
 #radio1:checked ~ .primeiro{
