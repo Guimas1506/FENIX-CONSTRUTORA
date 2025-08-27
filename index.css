@@ -161,10 +161,10 @@ a{
 
 .displau-subs{
     display: flex;
-    border: solid;
-    width: 30vw;
+
+    width: 25vw;
     height: 100%;
-    border: solid;
+
     align-items: center;
     justify-content: center;
 }
@@ -175,7 +175,7 @@ a{
     height: 100%;
     align-items: center;
     justify-content: center;
-    border: solid;
+
 
 }
 
