@@ -41,11 +41,15 @@
 
     <!-- Menu do usuário logado (vai substituir o login/sign-in) -->
 
+    <div class="displau-subs">
+        <div class="icon-person">
+            <img src="img/icon-usuario.png" alt="">
+        </div>
+        <button id="btn-logout">Sair</button>
+    </div>
     
 
     <div class="user-menu" id="user-menu" style="display:none;">
-      <p id="welcome-msg">Bem-vindo(a)</p>
-      <button id="btn-favoritos"></button>
       <button id="btn-logout">Sair</button>
     </div>
   </div>
@@ -797,8 +801,8 @@ function proximaImg(){
   const auth = getAuth(app);
 
   const headerLogin = document.getElementById("header-login");
-  const userMenu = document.getElementById("user-menu");
-  const welcomeMsg = document.getElementById("welcome-msg");
+  const userMenu = document.querySelector(".displau-subs");
+  
   const btnLogout = document.getElementById("btn-logout");
   const barra = document.querySelector(".barra");
 

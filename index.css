@@ -153,16 +153,40 @@ a{
 
 }
 
-.welcome-icon{
-    width: 100px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 10px;
-    border: solid white;
-    background-image: url(img/user.png);
+#btn-logout{
+    width: 60px;
+    height: 50px;
 }
+
+
+.displau-subs{
+    display: flex;
+    border: solid;
+    width: 30vw;
+    height: 100%;
+    border: solid;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-person{
+    display: flex;
+    width: 5vw;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    border: solid;
+
+}
+
+.icon-person img{
+    display: flex;
+    width: 3.5vw;
+    height: 6.5vh;
+
+}
+
+
 
 /*AQUI TERMINA AS CONFIGURAÇOES DO LOGIN*/
 
@@ -1589,7 +1613,7 @@ section.slider{
 /*botoes de sair e favoritos*/
 .user-menu{
     width: 30%;
-
+    height: 100%;
     border: solid;
     background-color: var(--Cor-Primaria);
     display: flex;
@@ -1601,7 +1625,7 @@ section.slider{
 
 #btn-favoritos{
     width: 14%;
-    height: 50px;
+    height: ;
     display: flex;
     align-items: center;
     justify-content: center;
