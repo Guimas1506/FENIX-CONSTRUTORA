@@ -8,44 +8,58 @@
 
    <!-- Firebase via CDN -->
    <script type="module">
-     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-     import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
-     const firebaseConfig = {
-       apiKey: "AIzaSyCYDGROxguHYX-YA-J-HqRRGSF3uN-ZEAs",
-       authDomain: "fenix-construtora-a34b5.firebaseapp.com",
-       projectId: "fenix-construtora-a34b5",
-       storageBucket: "fenix-construtora-a34b5.firebasestorage.app",
-       messagingSenderId: "928009241790",
-       appId: "1:928009241790:web:333b16b217a2ece01d8aef"
-     };
+  const firebaseConfig = {
+    apiKey: "AIzaSyCYDGROxguHYX-YA-J-HqRRGSF3uN-ZEAs",
+    authDomain: "fenix-construtora-a34b5.firebaseapp.com",
+    projectId: "fenix-construtora-a34b5",
+    storageBucket: "fenix-construtora-a34b5.firebasestorage.app",
+    messagingSenderId: "928009241790",
+    appId: "1:928009241790:web:333b16b217a2ece01d8aef"
+  };
 
-     const app = initializeApp(firebaseConfig);
-     const auth = getAuth(app);
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const provider = new GoogleAuthProvider();
 
-     window.registerUser = function(event) {
-       event.preventDefault();
+  // Cadastro com e-mail/senha
+  window.registerUser = function(event) {
+    event.preventDefault();
 
-       const nome = document.getElementById("nome").value;
-       const email = document.getElementById("email").value;
-       const senha = document.getElementById("password").value;
-       const confirmaSenha = document.getElementById("confirm-password").value;
+    const nome = document.getElementById("nome").value;
+    const email = document.getElementById("email").value;
+    const senha = document.getElementById("password").value;
 
-       if (senha !== confirmaSenha) {
-         alert("As senhas não conferem!");
-         return;
-       }
+    createUserWithEmailAndPassword(auth, email, senha)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        // salvar o nome do usuário no perfil
+        updateProfile(user, { displayName: nome }).then(() => {
+          alert("Cadastro realizado com sucesso! Bem-vindo, " + nome);
+          window.location.href = "index.html";
+        });
+      })
+      .catch((error) => {
+        alert(`Erro ao cadastrar: ${error.message}`);
+      });
+  }
 
-       createUserWithEmailAndPassword(auth, email, senha)
-         .then((userCredential) => {
-           alert(`Cadastro realizado com sucesso! Bem-vindo, ${nome}`);
-           window.location.href = "index.html"; // Caminho corrigido para raiz
-         })
-         .catch((error) => {
-           alert(`Erro ao cadastrar: ${error.message}`);
-         });
-     }
-   </script>
+  // Login com Google (mesmo no cadastro)
+  window.registerGoogle = function() {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const user = result.user;
+        alert(`Bem-vindo, ${user.displayName}!`);
+        window.location.href = "index.html";
+      })
+      .catch((error) => {
+        alert(`Erro ao entrar com Google: ${error.message}`);
+      });
+  }
+</script>
+
 </head>
 <link rel="stylesheet" href="sign-in.css">
 <header>
@@ -119,7 +133,7 @@
     </div>
 
     <div class="opcoes-login">
-      <img src="img/logo-google.png" alt="logo.google">  
+       <img src="img/logo-google.png" alt="logo-google" onclick="registerGoogle()" style="cursor:pointer;">  
       <img src="img/logo-facebook.png" alt="logo.facebook">  
       <img src="img/logo-apple.png" alt="logo.apple">  
     </div>
