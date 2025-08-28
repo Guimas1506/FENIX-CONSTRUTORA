@@ -2,6 +2,14 @@
     font-family: 'inter';
     src: url('fonts/Inter-VariableFont_opsz\,wght.ttf') format('truetype');
 }
+
+:root{
+    --Cor-Primaria: #FE4F3F;
+    --Cor-Secundaria: #000000;
+    --Cor-Terciaria: #7C7C7C;
+    --Branco: #fff;
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;

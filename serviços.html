@@ -20,7 +20,7 @@
 
 <body>
 
-        <header>
+    <header>
   <div class="navbar">
     <div class="logo">
       <img src="img/fenix51.png" alt="" />
@@ -46,12 +46,28 @@
       </div>
     </div>
 
-    <!-- Menu do usuário logado -->
-    <div class="user-menu" id="user-menu" style="display:none;">
-      <p id="welcome-msg">Bem-vindo(a)</p>
-      <button id="btn-favoritos">Favoritos</button>
-      <button id="btn-logout">Sair</button>
+    <!-- Menu do usuário logado (vai substituir o login/sign-in) -->
+
+    <div class="displau-subs">
+        <div class="icon-person">
+
+            <img src="img/icon-usuario.png" alt="">
+        </div>
     </div>
+
+    <div id="userArea" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span id="closeUserArea" class="close">&times;</span>
+    <h2 id="welcomeMsg">Bem-vindo(a), Usuário</h2>
+    <p id="userEmail">Email do usuário</p>
+
+    <button id="btnLogoutModal">
+        <p>Fazer Logout</p>
+        <img src="img/sair.png" alt="">
+    </button>
+  </div>
+</div>
+    
   </div>
 </header>
     
@@ -266,31 +282,72 @@
   const auth = getAuth(app);
 
   const headerLogin = document.getElementById("header-login");
-  const userMenu = document.getElementById("user-menu");
-  const welcomeMsg = document.getElementById("welcome-msg");
+  const userMenu = document.querySelector(".displau-subs");
+  
   const btnLogout = document.getElementById("btn-logout");
+  const barra = document.querySelector(".barra");
 
   // Verifica se há usuário logado
   onAuthStateChanged(auth, (user) => {
     if (user) {
+      // Oculta botões login/sign-in
       headerLogin.style.display = "none";
+      // Mostra menu do usuário
       userMenu.style.display = "flex";
+      // Usa o displayName salvo no Firebase
       welcomeMsg.textContent = `Bem-vindo(a), ${user.displayName || user.email}`;
     } else {
+      // Mostra botões login/sign-in
       headerLogin.style.display = "flex";
       userMenu.style.display = "none";
+      
     }
   });
 
-  // Logout
-  btnLogout.addEventListener("click", () => {
-    signOut(auth).then(() => {
-      alert("Logout realizado com sucesso!");
-      window.location.reload();
-    }).catch((error) => {
-      alert(`Erro ao sair: ${error.message}`);
-    });
-  });
+
+  
+
+  // Referências
+const iconPerson = document.querySelector(".icon-person");
+const userArea = document.getElementById("userArea");
+const closeUserArea = document.getElementById("closeUserArea");
+const welcomeMsg = document.getElementById("welcomeMsg");
+const userEmail = document.getElementById("userEmail");
+const btnLogoutModal = document.getElementById("btnLogoutModal");
+
+// Abrir área do usuário
+iconPerson.addEventListener("click", () => {
+  userArea.style.display = "flex";
+});
+
+// Fechar modal
+closeUserArea.addEventListener("click", () => {
+  userArea.style.display = "none";
+});
+
+// Fechar ao clicar fora
+window.addEventListener("click", (e) => {
+  if (e.target === userArea) {
+    userArea.style.display = "none";
+  }
+});
+
+// Atualizar dados do usuário quando logado
+onAuthStateChanged(auth, (user) => {
+  if(user){
+    welcomeMsg.textContent = `Bem-vindo(a), ${user.displayName || "Usuário"}`;
+    userEmail.textContent = user.email;
+  }
+});
+
+// Logout pelo modal
+btnLogoutModal.addEventListener("click", () => {
+  signOut(auth).then(() => {
+    alert("Logout realizado!");
+    window.location.reload();
+  }).catch((err) => alert(err.message));
+});
+
 </script>
 
 
