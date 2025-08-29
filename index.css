@@ -99,7 +99,7 @@ a{
 .login{
     width: 460px;
     height: 70px;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
 }
@@ -158,6 +158,9 @@ a{
     height: 50px;
 }
 
+#header-login{
+    display: none;
+}
 
 .displau-subs{
     display: flex;
