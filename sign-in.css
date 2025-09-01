@@ -85,12 +85,12 @@ header{
 }
 
 .abas a:hover{
-    border-top: 1px solid rgb(255, 255, 255);
-    border-bottom: 1px solid rgb(255, 255, 255);
-    border-left: none;
-    border-right: none;
-}
+    font-size: 18px;
+    font-weight: 600;
+    background-color: trasiiton;
+    border-bottom: solid white 1px;
 
+}
 
 
 

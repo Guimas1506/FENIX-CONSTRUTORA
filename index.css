@@ -69,7 +69,7 @@ a{
     justify-content: end;
     align-items: center;
     text-align: center;
-    transition: 0.5s;
+
 }
 
 .abas a{
@@ -82,15 +82,16 @@ a{
     color: white;
     margin-right: 30px;
     transition: 0.5s;
-
 }
 
 .abas a:hover{
-    border-bottom: 1px solid rgb(255, 255, 255);
-    border-left: none;
-    border-right: none;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: trasiiton;
+    border-bottom: solid white 1px;
 
 }
+
 
 
 

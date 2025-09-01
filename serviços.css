@@ -91,10 +91,11 @@ a{
 }
 
 .abas a:hover{
-    border-top: 1px solid var(--Branco);
-    border-bottom: 1px solid var(--Branco);
-    border-left: none;
-    border-right: none;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: trasiiton;
+    border-bottom: solid white 1px;
+
 }
 
 /*AQUI TERMINA AS CONFIGURAÇOES DO ABA*/
