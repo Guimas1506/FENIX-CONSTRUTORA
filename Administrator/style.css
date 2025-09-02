@@ -10,6 +10,12 @@ body {
     font-family: "Inter", sans-serif;
 }
 
+a{
+    text-decoration: none;
+    list-style-type: none;
+}
+
+
 body::-webkit-scrollbar{
     display: none;
 }
@@ -43,14 +49,13 @@ body::-webkit-scrollbar{
     height: 100%;
     display: flex;
     align-items: center;
-    border: solid var(--Branco);
 }
 
 .logotipo span{
     color: var(--Cor-Secundaria);
     font-size: 4.5vh;
     font-weight: 700;
-    margin-left: 2vh;
+    
 }
 
 .logotipo img{
@@ -60,6 +65,7 @@ body::-webkit-scrollbar{
     margin-left: 2vh;
 }
 
+/*AQUI COMEÇA A PARTE DE NOTIFICAÇÃO E LOGIN*/
 
 .notification{
     width: 50vw;
@@ -67,7 +73,6 @@ body::-webkit-scrollbar{
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    border: solid var(--Cor-Secundaria);
 }
 
 .notification img{
@@ -83,4 +88,21 @@ body::-webkit-scrollbar{
     display: flex;
     margin-right: 2vh;
     align-items: center;
+}
+
+aside{
+    border: solid;
+    display: flex;
+    justify-content: center;
+    width: 17vw;
+    height: 40vh;
+    flex-direction: column;
+
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
 }
