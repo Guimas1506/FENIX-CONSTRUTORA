@@ -101,13 +101,11 @@ header{
 }
 
 .abas a:hover{
-    font-size: 18px;
-    font-weight: 600;
-    background-color: trasiiton;
-    border-bottom: solid white 1px;
-
+    border-top: 1px solid rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(255, 255, 255);
+    border-left: none;
+    border-right: none;
 }
-
 
 
 
@@ -285,7 +283,7 @@ header{
 
 /*AQUI TERMINA AS CONFIGURAÇOES DO LOGIN*/
 
- .barra hr{
+ .barrinha hr{
   
     height: 20px;
 }/*AQUI É A BARRINHA BRANCA DO NAVBAR QUE SEPARA AS ABAS DO LOGIN*/
@@ -824,7 +822,31 @@ footer{
 
 
 
+@media screen and (max-width: 480px) {
+.faleconosco{
+display: none;
+}
 
+.titulopesquisa{
+    display: none;
+}
+.imagemprincipal    {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    object-fit: cover;
+}
+.artigos{
+display: none   ;    
+}
 
-
+.contatos1 {
+    flex: 0 0 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    color: #F65B38;
+    gap: 1rem;
+}
+}
 
