@@ -86,14 +86,13 @@ header{
     transition: 0.5s;
 
 }
+
 .abas a:hover{
-    font-size: 18px;
-    font-weight: 600;
-    background-color: trasiiton;
-    border-bottom: solid white 1px;
-
+    border-top: 1px solid rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(255, 255, 255);
+    border-left: none;
+    border-right: none;
 }
-
 
 
 
@@ -972,5 +971,27 @@ border-radius: 10px;
     color: var(--Branco);
     border-color: var(--Cor-Primaria);
 }
+@media screen and (max-width: 480px) {
+.imagenssec{
+  display:none;
+}
+.pesqfav{
+  display: none;
+}
+.imagempri{
+  width: 100%;
+  height: 100%;
+}
 
+.imagempri img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+}
+.imagens{
+background-color: white;
+border-radius:0px;
+}
 
+}
