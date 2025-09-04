@@ -9,7 +9,13 @@
    <!-- Firebase via CDN -->
    <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-      import { getAuth, createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+      import { 
+         getAuth, 
+         createUserWithEmailAndPassword, 
+         updateProfile, 
+         GoogleAuthProvider, 
+         signInWithPopup 
+      } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
       const firebaseConfig = {
          apiKey: "AIzaSyCYDGROxguHYX-YA-J-HqRRGSF3uN-ZEAs",
@@ -28,12 +34,19 @@
          document.getElementById(id).style.color = ok ? "green" : "red";
       }
 
+      // valida senha em tempo real
       window.validarSenha = function() {
          const senha = document.getElementById("password").value;
-         atualizarCor("req-caracteres", senha.length >= 6);
-         atualizarCor("req-especial", /[!@#$%^&*(),.?":{}|<>]/.test(senha));
+         const temLetras = /[a-zA-Z].*[a-zA-Z].*[a-zA-Z].*[a-zA-Z].*[a-zA-Z].*[a-zA-Z]/.test(senha); // pelo menos 6 letras
+         const temEspecial = /[!@#$%^&*(),.?":{}|<>]/.test(senha);
+         const semEspacos = !/\s/.test(senha);
+
+         atualizarCor("req-caracteres", temLetras);
+         atualizarCor("req-especial", temEspecial);
+         atualizarCor("req-espacos", semEspacos);
       }
 
+      // cadastro com email/senha
       window.registerUser = function(event) {
          event.preventDefault();
 
@@ -42,13 +55,17 @@
          const senha = document.getElementById("password").value;
          const confSenha = document.getElementById("confirm-password").value;
 
+         const temLetras = /[a-zA-Z].*[a-zA-Z].*[a-zA-Z].*[a-zA-Z].*[a-zA-Z].*[a-zA-Z]/.test(senha);
+         const temEspecial = /[!@#$%^&*(),.?":{}|<>]/.test(senha);
+         const semEspacos = !/\s/.test(senha);
+
          if(senha !== confSenha){
             alert("As senhas não coincidem!");
             return;
          }
 
-         if(senha.length < 6 || !/[!@#$%^&*(),.?":{}|<>]/.test(senha)){
-            alert("A senha não atende aos requisitos!");
+         if(!temLetras || !temEspecial || !semEspacos){
+            alert("A senha deve ter no mínimo 6 letras, pelo menos 1 caractere especial e não pode conter espaços!");
             return;
          }
 
@@ -65,6 +82,7 @@
             });
       }
 
+      // cadastro com Google
       window.registerGoogle = function() {
          signInWithPopup(auth, googleProvider)
             .then((result) => {
@@ -125,51 +143,54 @@
 </header>
 <body>
     <main>
-   <div class="titulos1">
-      <h3><b>SEJA AGORA</b> UM CLIENTE FÊNIX</h3>
-      <h1>SIGN-IN</h1>
-      <img src="img/icon-usuario.png" alt="icon-usuario">
-   </div>
-
-   <form onsubmit="registerUser(event)">
-      <label for="nome">Digite o seu Nome de Usuário</label>
-      <input type="text" placeholder="Nome" id="nome" required>
-
-      <label for="email">Digite o seu E-mail</label>
-      <input type="email" placeholder="E-mail" id="email" required>
-
-      <label for="password">Digite sua senha</label>
-      <input type="password" placeholder="Senha" id="password" required oninput="validarSenha()">
-
-      <div id="requisitos-senha">
-         <p id="req-caracteres" class="requisito">Mínimo de 6 caracteres</p>
-         <p id="req-especial" class="requisito">Pelo menos 1 caractere especial (!@#$%^&*(),.?":{}|<>)</p>
+      <div class="titulos1">
+         <h3><b>SEJA AGORA</b> UM CLIENTE FÊNIX</h3>
+         <h1>SIGN-IN</h1>
+         <img src="img/icon-usuario.png" alt="icon-usuario">
       </div>
 
-      <label for="confirm-password">Confirme sua senha</label>
-      <input type="password" placeholder="Confirmar a senha" id="confirm-password" required>
+      <form onsubmit="registerUser(event)">
+         <label for="nome">Digite o seu Nome de Usuário</label>
+         <input type="text" placeholder="Nome" id="nome" required>
 
-      <div class="barras">
-         <div class="barra"></div>
-         <p>ou, registre-se com</p>
-         <div class="barra"></div>
-      </div>
+         <label for="email">Digite o seu E-mail</label>
+         <input type="email" placeholder="E-mail" id="email" required>
 
-      <div class="opcoes-login">
-         <img src="img/logo-google.png" alt="logo-google" onclick="registerGoogle()" style="cursor:pointer;">  
-         <img src="img/logo-facebook.png" alt="logo-facebook">  
-         <img src="img/logo-apple.png" alt="logo-apple">  
-      </div>
+         <label for="password">Digite sua senha</label>
+         <input type="password" placeholder="Senha" id="password" required oninput="validarSenha()">
 
-      <div class="termos">
-         <input type="checkbox" id="aceito-termos" required>
-         <p>Ao continuar aceito e concordo com os <a href="politica-privacidade.html" target="_blank">termos de Política de Privacidade</a></p>
-      </div>
+         <!-- requisitos -->
+         <div id="requisitos-senha">
+            <p id="req-caracteres" class="requisito" style="color:red;">Mínimo de 6 letras (a-z ou A-Z)</p>
+            <p id="req-especial" class="requisito" style="color:red;">Pelo menos 1 caractere especial (!@#$%^&*...)</p>
+            <p id="req-espacos" class="requisito" style="color:red;">Não pode conter espaços</p>
+         </div>
 
-      <button type="submit" class="btn-entrar">Registrar</button>
-      <p>Já é um cliente Fênix ?</p>
-      <a class="registrar" href="log-in.html">Login</a>
-   </form>
+         <label for="confirm-password">Confirme sua senha</label>
+         <input type="password" placeholder="Confirmar a senha" id="confirm-password" required>
+
+         <div class="barras">
+            <div class="barra"></div>
+            <p>ou, registre-se com</p>
+            <div class="barra"></div>
+         </div>
+
+         <div class="opcoes-login">
+            <img src="img/logo-google.png" alt="logo-google" onclick="registerGoogle()" style="cursor:pointer;">  
+            <img src="img/logo-facebook.png" alt="logo-facebook">  
+            <img src="img/logo-apple.png" alt="logo-apple">  
+         </div>
+
+         <div class="termos">
+            <input type="checkbox" id="aceito-termos" required>
+            <p>Ao continuar aceito e concordo com os <a href="politica-privacidade.html" target="_blank">termos de Política de Privacidade</a></p>
+         </div>
+
+         <button type="submit" class="btn-entrar">Registrar</button>
+         <p>Já é um cliente Fênix ?</p>
+         <a class="registrar" href="log-in.html">Login</a>
+      </form>
+   </main>
 </main>
    <footer>
      <!-- Início do rodapé -->
