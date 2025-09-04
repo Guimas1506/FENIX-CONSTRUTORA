@@ -9,7 +9,7 @@
    <!-- Firebase via CDN -->
    <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-      import { getAuth, createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+      import { getAuth, createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
       const firebaseConfig = {
          apiKey: "AIzaSyCYDGROxguHYX-YA-J-HqRRGSF3uN-ZEAs",
@@ -23,9 +23,17 @@
       const app = initializeApp(firebaseConfig);
       const auth = getAuth(app);
       const googleProvider = new GoogleAuthProvider();
-      const facebookProvider = new FacebookAuthProvider();
 
-      // Cadastro com e-mail/senha
+      function atualizarCor(id, ok) {
+         document.getElementById(id).style.color = ok ? "green" : "red";
+      }
+
+      window.validarSenha = function() {
+         const senha = document.getElementById("password").value;
+         atualizarCor("req-caracteres", senha.length >= 6);
+         atualizarCor("req-especial", /[!@#$%^&*(),.?":{}|<>]/.test(senha));
+      }
+
       window.registerUser = function(event) {
          event.preventDefault();
 
@@ -36,6 +44,11 @@
 
          if(senha !== confSenha){
             alert("As senhas não coincidem!");
+            return;
+         }
+
+         if(senha.length < 6 || !/[!@#$%^&*(),.?":{}|<>]/.test(senha)){
+            alert("A senha não atende aos requisitos!");
             return;
          }
 
@@ -52,7 +65,6 @@
             });
       }
 
-      // Login com Google
       window.registerGoogle = function() {
          signInWithPopup(auth, googleProvider)
             .then((result) => {
@@ -64,20 +76,6 @@
                alert(`Erro ao entrar com Google: ${error.message}`);
             });
       }
-
-      // Login com Facebook
-      window.registerFacebook = function() {
-         signInWithPopup(auth, facebookProvider)
-            .then((result) => {
-               const user = result.user;
-               alert(`Bem-vindo, ${user.displayName || user.email}!`);
-               window.location.href = "index.html";
-            })
-            .catch((error) => {
-               alert(`Erro ao entrar com Facebook: ${error.message}`);
-            });
-      }
-
    </script>
 
 </head>
@@ -141,7 +139,12 @@
       <input type="email" placeholder="E-mail" id="email" required>
 
       <label for="password">Digite sua senha</label>
-      <input type="password" placeholder="Senha" id="password" required>
+      <input type="password" placeholder="Senha" id="password" required oninput="validarSenha()">
+
+      <div id="requisitos-senha">
+         <p id="req-caracteres" class="requisito">Mínimo de 6 caracteres</p>
+         <p id="req-especial" class="requisito">Pelo menos 1 caractere especial (!@#$%^&*(),.?":{}|<>)</p>
+      </div>
 
       <label for="confirm-password">Confirme sua senha</label>
       <input type="password" placeholder="Confirmar a senha" id="confirm-password" required>
@@ -154,7 +157,7 @@
 
       <div class="opcoes-login">
          <img src="img/logo-google.png" alt="logo-google" onclick="registerGoogle()" style="cursor:pointer;">  
-         <img src="img/logo-facebook.png" alt="logo-facebook" onclick="registerFacebook()" style="cursor:pointer;">  
+         <img src="img/logo-facebook.png" alt="logo-facebook">  
          <img src="img/logo-apple.png" alt="logo-apple">  
       </div>
 
