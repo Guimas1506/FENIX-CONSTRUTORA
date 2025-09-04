@@ -8,57 +8,77 @@
 
    <!-- Firebase via CDN -->
    <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-  import { getAuth, createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+      import { getAuth, createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyCYDGROxguHYX-YA-J-HqRRGSF3uN-ZEAs",
-    authDomain: "fenix-construtora-a34b5.firebaseapp.com",
-    projectId: "fenix-construtora-a34b5",
-    storageBucket: "fenix-construtora-a34b5.firebasestorage.app",
-    messagingSenderId: "928009241790",
-    appId: "1:928009241790:web:333b16b217a2ece01d8aef"
-  };
+      const firebaseConfig = {
+         apiKey: "AIzaSyCYDGROxguHYX-YA-J-HqRRGSF3uN-ZEAs",
+         authDomain: "fenix-construtora-a34b5.firebaseapp.com",
+         projectId: "fenix-construtora-a34b5",
+         storageBucket: "fenix-construtora-a34b5.firebasestorage.app",
+         messagingSenderId: "928009241790",
+         appId: "1:928009241790:web:333b16b217a2ece01d8aef"
+      };
 
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const provider = new GoogleAuthProvider();
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const googleProvider = new GoogleAuthProvider();
+      const facebookProvider = new FacebookAuthProvider();
 
-  // Cadastro com e-mail/senha
-  window.registerUser = function(event) {
-    event.preventDefault();
+      // Cadastro com e-mail/senha
+      window.registerUser = function(event) {
+         event.preventDefault();
 
-    const nome = document.getElementById("nome").value;
-    const email = document.getElementById("email").value;
-    const senha = document.getElementById("password").value;
+         const nome = document.getElementById("nome").value;
+         const email = document.getElementById("email").value;
+         const senha = document.getElementById("password").value;
+         const confSenha = document.getElementById("confirm-password").value;
 
-    createUserWithEmailAndPassword(auth, email, senha)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        // salvar o nome do usuário no perfil
-        updateProfile(user, { displayName: nome }).then(() => {
-          alert("Cadastro realizado com sucesso! Bem-vindo, " + nome);
-          window.location.href = "index.html";
-        });
-      })
-      .catch((error) => {
-        alert(`Erro ao cadastrar: ${error.message}`);
-      });
-  }
+         if(senha !== confSenha){
+            alert("As senhas não coincidem!");
+            return;
+         }
 
-  // Login com Google (mesmo no cadastro)
-  window.registerGoogle = function() {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        const user = result.user;
-        alert(`Bem-vindo, ${user.displayName}!`);
-        window.location.href = "index.html";
-      })
-      .catch((error) => {
-        alert(`Erro ao entrar com Google: ${error.message}`);
-      });
-  }
-</script>
+         createUserWithEmailAndPassword(auth, email, senha)
+            .then((userCredential) => {
+               const user = userCredential.user;
+               updateProfile(user, { displayName: nome }).then(() => {
+                  alert("Cadastro realizado com sucesso! Bem-vindo, " + nome);
+                  window.location.href = "index.html";
+               });
+            })
+            .catch((error) => {
+               alert(`Erro ao cadastrar: ${error.message}`);
+            });
+      }
+
+      // Login com Google
+      window.registerGoogle = function() {
+         signInWithPopup(auth, googleProvider)
+            .then((result) => {
+               const user = result.user;
+               alert(`Bem-vindo, ${user.displayName}!`);
+               window.location.href = "index.html";
+            })
+            .catch((error) => {
+               alert(`Erro ao entrar com Google: ${error.message}`);
+            });
+      }
+
+      // Login com Facebook
+      window.registerFacebook = function() {
+         signInWithPopup(auth, facebookProvider)
+            .then((result) => {
+               const user = result.user;
+               alert(`Bem-vindo, ${user.displayName || user.email}!`);
+               window.location.href = "index.html";
+            })
+            .catch((error) => {
+               alert(`Erro ao entrar com Facebook: ${error.message}`);
+            });
+      }
+
+   </script>
 
 </head>
 <link rel="stylesheet" href="sign-in.css">
@@ -107,46 +127,46 @@
 </header>
 <body>
     <main>
-  <div class="titulos1">
-    <h3><b>SEJA AGORA</b> UM CLIENTE FÊNIX</h3>
-    <h1>SIGN-IN</h1>
-    <img src="img/icon-usuario.png" alt="icon-usuario">
-  </div>
+   <div class="titulos1">
+      <h3><b>SEJA AGORA</b> UM CLIENTE FÊNIX</h3>
+      <h1>SIGN-IN</h1>
+      <img src="img/icon-usuario.png" alt="icon-usuario">
+   </div>
 
-  <form onsubmit="registerUser(event)">
-    <label for="nome">Digite o seu Nome de Usuário</label>
-    <input type="text" placeholder="Nome" id="nome" required>
+   <form onsubmit="registerUser(event)">
+      <label for="nome">Digite o seu Nome de Usuário</label>
+      <input type="text" placeholder="Nome" id="nome" required>
 
-    <label for="email">Digite o seu E-mail</label>
-    <input type="email" placeholder="E-mail" id="email" required>
+      <label for="email">Digite o seu E-mail</label>
+      <input type="email" placeholder="E-mail" id="email" required>
 
-    <label for="password">Digite sua senha</label>
-    <input type="password" placeholder="Senha" id="password" required>
+      <label for="password">Digite sua senha</label>
+      <input type="password" placeholder="Senha" id="password" required>
 
-    <label for="confirm-password">Confirme sua senha</label>
-    <input type="password" placeholder="Confirmar a senha" id="confirm-password" required>
+      <label for="confirm-password">Confirme sua senha</label>
+      <input type="password" placeholder="Confirmar a senha" id="confirm-password" required>
 
-    <div class="barras">
-      <div class="barra"></div>
-      <p>ou, registre-se com</p>
-      <div class="barra"></div>
-    </div>
+      <div class="barras">
+         <div class="barra"></div>
+         <p>ou, registre-se com</p>
+         <div class="barra"></div>
+      </div>
 
-    <div class="opcoes-login">
-       <img src="img/logo-google.png" alt="logo-google" onclick="registerGoogle()" style="cursor:pointer;">  
-      <img src="img/logo-facebook.png" alt="logo.facebook">  
-      <img src="img/logo-apple.png" alt="logo.apple">  
-    </div>
+      <div class="opcoes-login">
+         <img src="img/logo-google.png" alt="logo-google" onclick="registerGoogle()" style="cursor:pointer;">  
+         <img src="img/logo-facebook.png" alt="logo-facebook" onclick="registerFacebook()" style="cursor:pointer;">  
+         <img src="img/logo-apple.png" alt="logo-apple">  
+      </div>
 
-    <div class="termos">
-      <input type="checkbox" id="aceito-termos" required>
-      <p>Ao continuar aceito e concordo com os <a href="politica-privacidade.html" target="_blank">termos de Política de Privacidade</a></p>
-    </div>
+      <div class="termos">
+         <input type="checkbox" id="aceito-termos" required>
+         <p>Ao continuar aceito e concordo com os <a href="politica-privacidade.html" target="_blank">termos de Política de Privacidade</a></p>
+      </div>
 
-    <button type="submit" class="btn-entrar">Registrar</button>
-    <p>Já é um cliente Fênix ?</p>
-    <a class="registrar" href="log-in.html">Login</a>
-  </form>
+      <button type="submit" class="btn-entrar">Registrar</button>
+      <p>Já é um cliente Fênix ?</p>
+      <a class="registrar" href="log-in.html">Login</a>
+   </form>
 </main>
    <footer>
      <!-- Início do rodapé -->
