@@ -7,120 +7,118 @@
    <link rel="stylesheet" href="sign-in.css">
 
    <!-- Firebase via CDN -->
-   <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-      import { 
-         getAuth, 
-         createUserWithEmailAndPassword, 
-         updateProfile, 
-         GoogleAuthProvider, 
-         FacebookAuthProvider,
-         signInWithPopup,
-         signInWithEmailAndPassword
-      } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+     <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+  GoogleAuthProvider,
+  FacebookAuthProvider,
+  signInWithPopup,
+  signInWithEmailAndPassword,
+  fetchSignInMethodsForEmail,
+  linkWithCredential
+} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
-      const firebaseConfig = {
-         apiKey: "AIzaSyCYDGROxguHYX-YA-J-HqRRGSF3uN-ZEAs",
-         authDomain: "fenix-construtora-a34b5.firebaseapp.com",
-         projectId: "fenix-construtora-a34b5",
-         storageBucket: "fenix-construtora-a34b5.firebasestorage.app",
-         messagingSenderId: "928009241790",
-         appId: "1:928009241790:web:333b16b217a2ece01d8aef"
-      };
+const firebaseConfig = {
+  apiKey: "AIzaSyCYDGROxguHYX-YA-J-HqRRGSF3uN-ZEAs",
+  authDomain: "fenix-construtora-a34b5.firebaseapp.com",
+  projectId: "fenix-construtora-a34b5",
+  storageBucket: "fenix-construtora-a34b5.firebasestorage.app",
+  messagingSenderId: "928009241790",
+  appId: "1:928009241790:web:333b16b217a2ece01d8aef"
+};
 
-      const app = initializeApp(firebaseConfig);
-      const auth = getAuth(app);
-      const googleProvider = new GoogleAuthProvider();
-      const facebookProvider = new FacebookAuthProvider();
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
+const facebookProvider = new FacebookAuthProvider();
 
-      function atualizarCor(id, ok) {
-         document.getElementById(id).style.color = ok ? "green" : "red";
-      }
+// Função para atualizar cor dos requisitos
+function atualizarRequisito(id, ok) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.style.color = ok ? "green" : "red";
+}
 
-      window.validarSenha = function() {
-         const senha = document.getElementById("password").value;
-         const temLetras = /[a-zA-Z].*[a-zA-Z].*[a-zA-Z].*[a-zA-Z].*[a-zA-Z].*[a-zA-Z]/.test(senha);
-         const temEspecial = /[!@#$%^&*(),.?":{}|<>]/.test(senha);
-         const semEspacos = !/\s/.test(senha);
+// Função para validar senha e atualizar barra de força (imagem)
+window.validarSenha = function() {
+  const senha = document.getElementById("password").value;
 
-         atualizarCor("req-caracteres", temLetras);
-         atualizarCor("req-especial", temEspecial);
-         atualizarCor("req-espacos", semEspacos);
-      }
+  const letrasCount = (senha.match(/[a-zA-Z]/g) || []).length;
+  const numerosCount = (senha.match(/[0-9]/g) || []).length;
+  const temEspecial = /[!@#$%^&*(),.?":{}|<>]/.test(senha);
+  const semEspacos = !/\s/.test(senha);
 
-      window.registerUser = function(event) {
-         event.preventDefault();
+  // Atualiza os requisitos mínimos
+  atualizarRequisito("req-caracteres", letrasCount >= 6);
+  atualizarRequisito("req-especial", temEspecial);
+  atualizarRequisito("req-espacos", semEspacos);
 
-         const nome = document.getElementById("nome").value;
-         const email = document.getElementById("email").value;
-         const senha = document.getElementById("password").value;
-         const confSenha = document.getElementById("confirm-password").value;
+  // Atualiza imagem da barra de força
+  const barraImg = document.getElementById("senha-forca-img");
+  let nivel = 1; // fraca por padrão
+  if (letrasCount >= 6 && temEspecial && semEspacos) nivel = 2; // média
+  if (nivel === 2 && letrasCount >= 8 && numerosCount >= 2) nivel = 3; // forte
 
-         const temLetras = /[a-zA-Z].*[a-zA-Z].*[a-zA-Z].*[a-zA-Z].*[a-zA-Z].*[a-zA-Z]/.test(senha);
-         const temEspecial = /[!@#$%^&*(),.?":{}|<>]/.test(senha);
-         const semEspacos = !/\s/.test(senha);
+  // Escolhe a imagem de acordo com o nível
+  if (nivel === 1) barraImg.src = "img/senha-fraca.png";
+  else if (nivel === 2) barraImg.src = "img/senha-media.png";
+  else if (nivel === 3) barraImg.src = "img/senha-forte.png";
+};
 
-         if(senha !== confSenha){
-            alert("As senhas não coincidem!");
-            return;
-         }
+// Cadastro com email/senha
+window.registerUser = async function(event) {
+  event.preventDefault();
 
-         if(!temLetras || !temEspecial || !semEspacos){
-            alert("A senha deve ter no mínimo 6 letras, pelo menos 1 caractere especial e não pode conter espaços!");
-            return;
-         }
+  const nome = document.getElementById("nome").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const senha = document.getElementById("password").value;
+  const confSenha = document.getElementById("confirm-password").value;
 
-         createUserWithEmailAndPassword(auth, email, senha)
-            .then((userCredential) => {
-               const user = userCredential.user;
-               updateProfile(user, { displayName: nome }).then(() => {
-                  alert("Cadastro realizado com sucesso! Bem-vindo, " + nome);
-                  window.location.href = "index.html";
-               });
-            })
-            .catch((error) => {
-               alert(`Erro ao cadastrar: ${error.message}`);
-            });
-      }
+  const letrasCount = (senha.match(/[a-zA-Z]/g) || []).length;
+  const numerosCount = (senha.match(/[0-9]/g) || []).length;
+  const temEspecial = /[!@#$%^&*(),.?":{}|<>]/.test(senha);
+  const semEspacos = !/\s/.test(senha);
 
-      function handleSocialLogin(provider) {
-         signInWithPopup(auth, provider)
-            .then((result) => {
-               const user = result.user;
-               alert(`Bem-vindo, ${user.displayName || user.email}!`);
-               window.location.href = "index.html";
-            })
-            .catch(async (error) => {
-               if(error.code === 'auth/account-exists-with-different-credential') {
-                  const email = error.customData.email;
-                  const pendingCred = error.credential;
-                  const senha = prompt(`Uma conta já existe com o email ${email}. Digite a senha para vincular o login social:`);
+  if (senha !== confSenha) {
+    alert("As senhas não coincidem!");
+    return;
+  }
 
-                  if(!senha) return;
+  if (!(letrasCount >= 6 && temEspecial && semEspacos)) {
+    alert("A senha deve ter no mínimo 6 letras, pelo menos 1 caractere especial e não pode conter espaços!");
+    return;
+  }
 
-                  try {
-                     const userCredential = await signInWithEmailAndPassword(auth, email, senha);
-                     await userCredential.user.linkWithCredential(pendingCred);
-                     alert("Login vinculado com sucesso! Agora você pode usar este provedor para entrar.");
-                     window.location.href = "index.html";
-                  } catch(linkError) {
-                     alert(`Erro ao vincular conta: ${linkError.message}`);
-                  }
-               } else {
-                  alert(`Erro ao logar: ${error.message}`);
-               }
-            });
-      }
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
+    const user = userCredential.user;
+    await updateProfile(user, { displayName: nome });
+    alert("Cadastro realizado com sucesso! Bem-vindo, " + (nome || email));
+    window.location.href = "index.html";
+  } catch (error) {
+    console.error("Erro ao cadastrar:", error);
+    alert(`Erro ao cadastrar: ${error.message}`);
+  }
+};
 
-      window.registerGoogle = function() {
-         handleSocialLogin(googleProvider);
-      }
+// Login social
+async function socialLogin(provider) {
+  try {
+    const result = await signInWithPopup(auth, provider);
+    const user = result.user;
+    alert(`Bem-vindo, ${user.displayName || user.email}!`);
+    window.location.href = "index.html";
+  } catch (error) {
+    console.error("socialLogin error:", error);
+  }
+}
 
-      window.registerFacebook = function() {
-         handleSocialLogin(facebookProvider);
-      }
-   </script>
-
+window.registerGoogle = () => socialLogin(googleProvider);
+window.registerFacebook = () => socialLogin(facebookProvider);
+</script>
 </head>
 <link rel="stylesheet" href="sign-in.css">
 <header>
@@ -167,54 +165,60 @@
 
 </header>
 <body>
-   <main>
-   <div class="titulos1">
-      <h3><b>SEJA AGORA</b> UM CLIENTE FÊNIX</h3>
-      <h1>SIGN-IN</h1>
-      <img src="img/icon-usuario.png" alt="icon-usuario">
-   </div>
+  <main>
+  <div class="titulos1">
+    <h3><b>SEJA AGORA</b> UM CLIENTE FÊNIX</h3>
+    <h1>SIGN-IN</h1>
+    <img src="img/icon-usuario.png" alt="icon-usuario" />
+  </div>
 
-   <form onsubmit="registerUser(event)">
-      <label for="nome">Digite o seu Nome de Usuário</label>
-      <input type="text" placeholder="Nome" id="nome" required>
+  <form onsubmit="registerUser(event)">
+    <label for="nome">Digite o seu Nome de Usuário</label>
+    <input type="text" placeholder="Nome" id="nome" required />
 
-      <label for="email">Digite o seu E-mail</label>
-      <input type="email" placeholder="E-mail" id="email" required>
+    <label for="email">Digite o seu E-mail</label>
+    <input type="email" placeholder="E-mail" id="email" required />
 
-      <label for="password">Digite sua senha</label>
-      <input type="password" placeholder="Senha" id="password" required oninput="validarSenha()">
+    <label for="password">Digite sua senha</label>
+    <input type="password" placeholder="Senha" id="password" required oninput="validarSenha()" />
 
-      <div id="requisitos-senha">
-         <p id="req-caracteres" class="requisito" style="color:red;">Mínimo de 6 letras (a-z ou A-Z)</p>
-         <p id="req-especial" class="requisito" style="color:red;">Pelo menos 1 caractere especial (!@#$%^&*...)</p>
-         <p id="req-espacos" class="requisito" style="color:red;">Não pode conter espaços</p>
-      </div>
+    <!-- IMAGEM DA BARRA DE FORÇA PADRONIZADA -->
+    <div class="password-strength">
+      <img id="senha-forca-img" src="img/senha-fraca.png" alt="Força da senha" />
+    </div>
 
-      <label for="confirm-password">Confirme sua senha</label>
-      <input type="password" placeholder="Confirmar a senha" id="confirm-password" required>
+    <!-- Requisitos -->
+    <div id="requisitos-senha">
+      <p id="req-caracteres" class="requisito">Mínimo de 6 letras (a-z ou A-Z)</p>
+      <p id="req-especial" class="requisito">Pelo menos 1 caractere especial (!@#$%^&*...)</p>
+      <p id="req-espacos" class="requisito">Não pode conter espaços</p>
+    </div>
 
-      <div class="barras">
-         <div class="barra"></div>
-         <p>ou, registre-se com</p>
-         <div class="barra"></div>
-      </div>
+    <label for="confirm-password">Confirme sua senha</label>
+    <input type="password" placeholder="Confirmar a senha" id="confirm-password" required />
 
-      <div class="opcoes-login">
-         <img src="img/logo-google.png" alt="logo-google" onclick="registerGoogle()" style="cursor:pointer;">  
-          <img src="img/logo-facebook.png" alt="logo-facebook"  style="cursor:pointer;">
-          <!-- onclick="registerFacebook()" -->
-         <img src="img/logo-apple.png" alt="logo-apple">  
-      </div>
+    <div class="barras">
+      <div class="barra"></div>
+      <p>ou, registre-se com</p>
+      <div class="barra"></div>
+    </div>
 
-      <div class="termos">
-         <input type="checkbox" id="aceito-termos" required>
-         <p>Ao continuar aceito e concordo com os <a href="politica-privacidade.html" target="_blank">termos de Política de Privacidade</a></p>
-      </div>
+    <div class="opcoes-login">
+      <img src="img/logo-google.png" alt="logo-google" onclick="registerGoogle()" style="cursor:pointer;" />
+      <img src="img/logo-facebook.png" alt="logo-facebook" style="cursor:pointer;" />
+      <!-- onclick="registerFacebook()"  -->
+      <img src="img/logo-apple.png" alt="logo-apple" />
+    </div>
 
-      <button type="submit" class="btn-entrar">Registrar</button>
-      <p>Já é um cliente Fênix ?</p>
-      <a class="registrar" href="log-in.html">Login</a>
-   </form>
+    <div class="termos">
+      <input type="checkbox" id="aceito-termos" required />
+      <p>Ao continuar aceito e concordo com os <a href="politica-privacidade.html" target="_blank">termos de Política de Privacidade</a></p>
+    </div>
+
+    <button type="submit" class="btn-entrar">Registrar</button>
+    <p>Já é um cliente Fênix ?</p>
+    <a class="registrar" href="log-in.html">Login</a>
+  </form>
 </main>
    <footer>
      <!-- Início do rodapé -->

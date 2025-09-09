@@ -408,7 +408,21 @@ text-align: center;
 
 }
 
+ /* Barrinha de força */
+     .password-strength img {
+  display: block;
+  margin: 10px auto;
+  width: 200px;
+  height: 20px;
+  object-fit: cover;
+}
 
+/* Requisitos da senha */
+.requisito {
+  color: red;
+  margin: 3px 0;
+  transition: color 0.3s ease;
+}
 
 /* footer */
 
