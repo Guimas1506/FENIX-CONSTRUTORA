@@ -9,7 +9,13 @@
    <!-- Firebase via CDN -->
    <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-  import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+  import { 
+    getAuth, 
+    signInWithEmailAndPassword, 
+    GoogleAuthProvider, 
+    signInWithPopup, 
+    sendPasswordResetEmail 
+  } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyCYDGROxguHYX-YA-J-HqRRGSF3uN-ZEAs",
@@ -24,14 +30,14 @@
   const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
 
-  // login normal (email/senha)
+  // login normal
   window.loginUser = function(event) {
     event.preventDefault();
     const email = document.getElementById("email").value;
     const senha = document.getElementById("password").value;
 
     signInWithEmailAndPassword(auth, email, senha)
-      .then((userCredential) => {
+      .then(() => {
         alert("Login realizado com sucesso! Bem-vindo.");
         window.location.href = "index.html";
       })
@@ -40,7 +46,7 @@
       });
   }
 
-  // login com Google
+  // login Google
   window.loginGoogle = function() {
     signInWithPopup(auth, provider)
       .then((result) => {
@@ -52,55 +58,49 @@
         alert(`Erro ao entrar com Google: ${error.message}`);
       });
   }
+
+  // esqueceu a senha
+  window.resetPassword = function() {
+    const email = document.getElementById("email").value;
+
+    if (!email) {
+      alert("Digite seu e-mail no campo acima para recuperar a senha.");
+      return;
+    }
+
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        alert("E-mail de redefinição enviado! Verifique sua caixa de entrada.");
+      })
+      .catch((error) => {
+        alert(`Erro ao enviar redefinição: ${error.message}`);
+      });
+  }
 </script>
 
 </head>
-<link rel="stylesheet" href="log-in.css">
+<body>
 <header>
-   <!--AQUI COMEÇA AS CONFIGURAÇÕES DO NAVBAR-->
  <div class="navbar">
-    <!--AQUI É A LOGO DA FENIX-->
    <div class="logo">
      <img src="img/image 39.svg" alt="" />
    </div>
-   <!--AQUI SÃO AS ABAS DO SITE-->
    <div class="abas">
-                         <a href="./index.html">
-            <p>Inicio</p>
-          </a>
-          <a href="./sobre.html">
-            <p>Sobre Nós</p>
-          </a>
-          <a href="">
-            <p>Imóveis</p>
-          </a>
-          <a href="./serviços.html">
-            <p>Serviços</p>
-          </a>
-          <a href="./contato.html">
-            <p>Contato</p>
-          </a>
-            </div>
-   <!--AQUI É A BARRINHA BRANCA QUE SEPARA AS ABAS DO LOGIN-->
-   <div class="barrinha">
-     <hr>
+          <a href="./index.html"><p>Inicio</p></a>
+          <a href="./sobre.html"><p>Sobre Nós</p></a>
+          <a href=""><p>Imóveis</p></a>
+          <a href="./serviços.html"><p>Serviços</p></a>
+          <a href="./contato.html"><p>Contato</p></a>
    </div>
-   <!--AQUI SÃO OS BOTÕES DO LOGIN-->
+   <div class="barrinha"><hr></div>
    <div class="login">
-     <div class="sing">
-       <button id="but1" type="button"><p>Login</p></button>
-     </div>
-
-     <div class="log">
-       <button id="but2"><p>Sign-in</p></button>
-     </div>
+     <div class="sing"><button id="but1" type="button"><p>Login</p></button></div>
+     <div class="log"><button id="but2"><p>Sign-in</p></button></div>
    </div>
-
  </div>
-
 </header>
-<body>
-   <main>
+
+<main>
   <div class="titulos1">
     <h3><b>FALE AGORA</b> COM UM CONSULTOR FÊNIX</h3>
     <h1>LOG-IN</h1>
@@ -114,7 +114,10 @@
     <label for="password">Digite sua senha</label>
     <input type="password" placeholder="Senha" id="password" required>
 
-    <p class="esqueceuasenha">Esqueceu a senha? <span><a href="#">Clique aqui</a></span></p>
+    <!-- Link para reset de senha -->
+    <p class="esqueceuasenha">
+      Esqueceu a senha? <span><a href="#" onclick="resetPassword()">Clique aqui</a></span>
+    </p>
 
     <div class="barras">
       <div class="barra"></div>
@@ -124,8 +127,8 @@
 
     <div class="opcoes-login">
         <img src="img/logo-google.png" alt="logo-google" onclick="loginGoogle()" style="cursor:pointer;">  
-      <img src="img/logo-facebook.png" alt="logo.facebook">  
-      <img src="img/logo-apple.png" alt="logo.apple">  
+        <img src="img/logo-facebook.png" alt="logo.facebook">  
+        <img src="img/logo-apple.png" alt="logo.apple">  
     </div>
 
     <button type="submit" class="btn-entrar">Entrar</button>
@@ -133,76 +136,44 @@
     <a class="registrar" href="sign-in.html">Registre-se</a>
   </form>
 </main>
-   <footer>
-      <!-- Início do rodapé -->
-      <div class="rodape">
-         <!-- Seção do logotipo e título -->
-         <div class="foot-logo">
-           <!-- Logotipo da empresa -->
-           <img src="img/image 39.svg" alt="Logo" class="logo" />
-           <div class="titulos">
-           <!-- Título principal -->
-           <div class="titulo"><p>FÊNIX</p></div>
-           <!-- Subtítulo -->
-           <div class="subtitle"><p>CONSTRUTORA</p></div>
-           </div>
-         </div>
-         <!-- Seção de contatos -->
-         <div class="contatos">
-           <!-- Primeira coluna: Redes sociais -->
-           <div class="cont1">
-               <div class="cont-title1">
-                 <!-- Título da seção -->
-                 <h3>REDES SOCIAIS</h3>
-               </div>
-               <div class="conte">
-                 <!-- Ícone do Instagram -->
-                 <div class="icon">
-                   <img src="img/insta.png" alt="">
-                 </div>
-                 <!-- Nome da rede social -->
-                 <div class="rede">
-                   <p>INSTAGRAM</p>
-                 </div>      
-               </div>
-           </div>
-           <!-- Segunda coluna: Informações sobre a empresa -->
-           <div class="cont2">
-               <div class="titulo2">
-                 <!-- Título da seção -->
-                 <h3>NOSSA EMPRESA</h3>
-               </div>
-               <div class="abins">
-                 <!-- Links ou informações sobre a empresa -->
-                 <p>SOBRE NÓS</p>
-                 <p>CONTATO</p>
-                 <p>SERVIÇOS</p>
-               </div>
-           </div>
-           <!-- Terceira coluna: Produtos da empresa -->
-           <div class="cont3">
-               <div class="titulo3">
-                 <!-- Título da seção -->
-                 <h3>NOSSOS PRODUTOS</h3>
-               </div>
-               <div class="produts">
-                 <!-- Lista de produtos -->
-                 <p>PROJETOS</p>
-                 <p>IMÓVEIS</p>
-               </div>
-           </div>
-         </div>
-         <!-- Seção de direitos reservados -->
-         <div class="direitos-reservados" style="color: white;">
-           <p>&copy; 2025 Fênix Construtora. Todos os direitos reservados.</p>
-         </div>
-       </div>
-       <!-- Fim do rodapé -->
-      
-    </footer>
+
+<footer>
+  <div class="rodape">
+    <div class="foot-logo">
+      <img src="img/image 39.svg" alt="Logo" class="logo" />
+      <div class="titulos">
+        <div class="titulo"><p>FÊNIX</p></div>
+        <div class="subtitle"><p>CONSTRUTORA</p></div>
+      </div>
+    </div>
+    <div class="contatos">
+      <div class="cont1">
+        <div class="cont-title1"><h3>REDES SOCIAIS</h3></div>
+        <div class="conte">
+          <div class="icon"><img src="img/insta.png" alt=""></div>
+          <div class="rede"><p>INSTAGRAM</p></div>      
+        </div>
+      </div>
+      <div class="cont2">
+        <div class="titulo2"><h3>NOSSA EMPRESA</h3></div>
+        <div class="abins">
+          <p>SOBRE NÓS</p>
+          <p>CONTATO</p>
+          <p>SERVIÇOS</p>
+        </div>
+      </div>
+      <div class="cont3">
+        <div class="titulo3"><h3>NOSSOS PRODUTOS</h3></div>
+        <div class="produts">
+          <p>PROJETOS</p>
+          <p>IMÓVEIS</p>
+        </div>
+      </div>
+    </div>
+    <div class="direitos-reservados" style="color: white;">
+      <p>&copy; 2025 Fênix Construtora. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
 </body>
-
 </html>
-
-
-
