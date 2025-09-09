@@ -409,12 +409,15 @@ text-align: center;
 }
 
  /* Barrinha de força */
-     .password-strength img {
-  display: block;
-  margin: 10px auto;
-  width: 200px;
-  height: 20px;
-  object-fit: cover;
+     .password-strength {
+  text-align: center; /* centraliza a imagem */
+  margin: 10px 0;
+}
+
+.password-strength img {
+  width: 200px;       /* largura fixa, ajuste conforme necessário */
+  height: auto;       /* mantém a proporção */
+  object-fit: contain; /* garante que não corte a imagem */
 }
 
 /* Requisitos da senha */
