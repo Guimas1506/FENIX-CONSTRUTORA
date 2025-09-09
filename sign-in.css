@@ -410,14 +410,18 @@ text-align: center;
 
  /* Barrinha de força */
      .password-strength {
-  text-align: center; /* centraliza a imagem */
+  display: flex;           /* permite centralizar melhor */
+  justify-content: center; /* centraliza horizontalmente */
+  align-items: center;     /* centraliza verticalmente se precisar */
   margin: 10px 0;
+  overflow: visible;       /* garante que nada seja cortado */
 }
 
 .password-strength img {
-  width: 200px;       /* largura fixa, ajuste conforme necessário */
-  height: auto;       /* mantém a proporção */
-  object-fit: contain; /* garante que não corte a imagem */
+  max-width: 100%;         /* nunca ultrapassa a largura do contêiner */
+  width: 200px;            /* ajuste fixo desejado */
+  height: auto;            /* mantém proporção */
+  object-fit: contain;     /* evita corte da imagem */
 }
 
 /* Requisitos da senha */
