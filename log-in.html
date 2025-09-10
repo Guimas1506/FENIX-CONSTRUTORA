@@ -1,84 +1,153 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-   <title>Login</title>
-   <link rel="stylesheet" href="log-in.css">
+  <title>Login</title>
+  <link rel="stylesheet" href="log-in.css">
 
-   <!-- Firebase via CDN -->
-   <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-  import { 
-    getAuth, 
-    signInWithEmailAndPassword, 
-    GoogleAuthProvider, 
-    signInWithPopup, 
-    sendPasswordResetEmail 
-  } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+  <!-- Firebase via CDN -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { 
+      getAuth, 
+      signInWithEmailAndPassword, 
+      GoogleAuthProvider, 
+      signInWithPopup, 
+      sendPasswordResetEmail 
+    } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyCYDGROxguHYX-YA-J-HqRRGSF3uN-ZEAs",
-    authDomain: "fenix-construtora-a34b5.firebaseapp.com",
-    projectId: "fenix-construtora-a34b5",
-    storageBucket: "fenix-construtora-a34b5.firebasestorage.app",
-    messagingSenderId: "928009241790",
-    appId: "1:928009241790:web:333b16b217a2ece01d8aef"
-  };
+    const firebaseConfig = {
+      apiKey: "AIzaSyCYDGROxguHYX-YA-J-HqRRGSF3uN-ZEAs",
+      authDomain: "fenix-construtora-a34b5.firebaseapp.com",
+      projectId: "fenix-construtora-a34b5",
+      storageBucket: "fenix-construtora-a34b5.firebasestorage.app",
+      messagingSenderId: "928009241790",
+      appId: "1:928009241790:web:333b16b217a2ece01d8aef"
+    };
 
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const provider = new GoogleAuthProvider();
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
 
-  // login normal
-  window.loginUser = function(event) {
-    event.preventDefault();
-    const email = document.getElementById("email").value;
-    const senha = document.getElementById("password").value;
-
-    signInWithEmailAndPassword(auth, email, senha)
-      .then(() => {
-        alert("Login realizado com sucesso! Bem-vindo.");
-        window.location.href = "index.html";
-      })
-      .catch((error) => {
-        alert(`Erro ao entrar: ${error.message}`);
-      });
-  }
-
-  // login Google
-  window.loginGoogle = function() {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        const user = result.user;
-        alert(`Bem-vindo, ${user.displayName}!`);
-        window.location.href = "index.html";
-      })
-      .catch((error) => {
-        alert(`Erro ao entrar com Google: ${error.message}`);
-      });
-  }
-
-  // esqueceu a senha
-  window.resetPassword = function() {
-    const email = document.getElementById("email").value;
-
-    if (!email) {
-      alert("Digite seu e-mail no campo acima para recuperar a senha.");
-      return;
+    // Mostrar popup
+    window.showPopup = function(message) {
+      const popup = document.getElementById("popup");
+      document.getElementById("popup-message").innerText = message;
+      popup.style.display = "flex";
     }
 
-    sendPasswordResetEmail(auth, email)
-      .then(() => {
-        alert("E-mail de redefinição enviado! Verifique sua caixa de entrada.");
-      })
-      .catch((error) => {
-        alert(`Erro ao enviar redefinição: ${error.message}`);
-      });
-  }
-</script>
+    // Fechar popup
+    window.closePopup = function() {
+      document.getElementById("popup").style.display = "none";
+    }
 
+    // Fechar ao clicar fora
+    window.onclick = function(event) {
+      const popup = document.getElementById("popup");
+      if (event.target === popup) {
+        popup.style.display = "none";
+      }
+    }
+
+    // Login normal
+    window.loginUser = function(event) {
+      event.preventDefault();
+      const email = document.getElementById("email").value;
+      const senha = document.getElementById("password").value;
+
+      signInWithEmailAndPassword(auth, email, senha)
+        .then(() => {
+          showPopup("✅ Login realizado com sucesso! Bem-vindo.");
+          setTimeout(() => { window.location.href = "index.html"; }, 2000);
+        })
+        .catch((error) => {
+          showPopup(`❌ Erro ao entrar: ${error.message}`);
+        });
+    }
+
+    // Login Google
+    window.loginGoogle = function() {
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          const user = result.user;
+          showPopup(`✅ Bem-vindo, ${user.displayName}!`);
+          setTimeout(() => { window.location.href = "index.html"; }, 2000);
+        })
+        .catch((error) => {
+          showPopup(`❌ Erro ao entrar com Google: ${error.message}`);
+        });
+    }
+
+    // Redefinição de senha
+    window.resetPassword = function() {
+      const email = document.getElementById("email").value;
+
+      if (!email) {
+        showPopup("⚠️ Digite seu e-mail no campo acima para recuperar a senha.");
+        return;
+      }
+
+      sendPasswordResetEmail(auth, email)
+        .then(() => {
+          showPopup("📧 E-mail de redefinição enviado! Verifique sua caixa de entrada (inclusive spam).");
+        })
+        .catch((error) => {
+          showPopup(`❌ Erro ao enviar redefinição: ${error.message}`);
+        });
+    }
+  </script>
+
+  <style>
+    /* ====== POPUP ====== */
+    .popup {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .popup-content {
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+      text-align: center;
+      font-family: 'inter', sans-serif;
+      max-width: 400px;
+      width: 80%;
+      position: relative;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .popup-content p {
+      margin: 0;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #333;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
 </head>
 <body>
 <header>
@@ -87,11 +156,11 @@
      <img src="img/image 39.svg" alt="" />
    </div>
    <div class="abas">
-          <a href="./index.html"><p>Inicio</p></a>
-          <a href="./sobre.html"><p>Sobre Nós</p></a>
-          <a href=""><p>Imóveis</p></a>
-          <a href="./serviços.html"><p>Serviços</p></a>
-          <a href="./contato.html"><p>Contato</p></a>
+     <a href="./index.html"><p>Inicio</p></a>
+     <a href="./sobre.html"><p>Sobre Nós</p></a>
+     <a href=""><p>Imóveis</p></a>
+     <a href="./serviços.html"><p>Serviços</p></a>
+     <a href="./contato.html"><p>Contato</p></a>
    </div>
    <div class="barrinha"><hr></div>
    <div class="login">
@@ -115,7 +184,6 @@
     <label for="password">Digite sua senha</label>
     <input type="password" placeholder="Senha" id="password" required>
 
-    <!-- Link para reset de senha -->
     <p class="esqueceuasenha">
       Esqueceu a senha? <span><a href="#" onclick="resetPassword()">Clique aqui</a></span>
     </p>
@@ -176,5 +244,14 @@
     </div>
   </div>
 </footer>
+
+<!-- POPUP -->
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <span class="close-btn" onclick="closePopup()">&times;</span>
+    <p id="popup-message"></p>
+  </div>
+</div>
+
 </body>
 </html>
