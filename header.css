@@ -79,7 +79,7 @@ a{
     justify-content: center;
     font-weight: 300;
     width: 100px;
-    height: 40px;
+    height: 60px;
     color: white;
     margin-right: 30px;
     transition: 0.5s;
@@ -88,8 +88,8 @@ a{
 .abas a:hover{
     font-size: 18px;
     font-weight: 600;
-    background-color: trasiiton;
-    border-bottom: solid white 1px;
+    height: 40px;
+    border-bottom: solid white 0.5px;
 
 }
 
