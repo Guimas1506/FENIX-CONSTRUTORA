@@ -418,7 +418,7 @@ text-align: center;
 }
 
 .password-strength img {
-  width: 200px;       /* tamanho fixo desejado */
+  width: 20vw;       /* tamanho fixo desejado */
   max-width: 100%;    /* não ultrapassa a largura do contêiner */
   height: auto;       /* mantém proporção */
   object-fit: contain; /* evita corte */
