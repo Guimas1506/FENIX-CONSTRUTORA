@@ -93,7 +93,7 @@ body::-webkit-scrollbar{
 }
 
 aside{
-    border: solid;
+    border: solid red;
     display: flex;
     justify-content: center;
     width: 14vw;
@@ -120,10 +120,47 @@ aside{
 }
 
 
+/*CONFIGURAÇÕES BASICAS DO CONTEUD*/
+ .conteud{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+ }
 
+main{
+    border: solid blue;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+.indicator{
+    width: 100%;
+    height: 45px;
+    border: solid orange;
+    display: flex;
+}
 
+.title-page{
+    width: 100%;
+    height: 65px;
+    display: flex;
+    border: solid;
+    align-items: center;
+    justify-content: center;
+}
 
+.title-page h2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--Cor-Secundaria);
+    font-size: 35px;
+}
 
 
 
