@@ -341,7 +341,7 @@ section.slider{
 
     display: flex;
     z-index: 2;
-    margin-bottom: 30px;
+
 }
 
 .aplic-video video{
@@ -349,6 +349,13 @@ section.slider{
     height: 100%;
     display: flex;
 
+}
+
+video::-webkit-media-controls {
+  display: none !important;
+}
+video::-moz-media-controls {
+  display: none !important;
 }
 
 /*Aqui termina o video*/
