@@ -36,9 +36,11 @@ body::-webkit-scrollbar{
 
 /*AQUI COMEÇA O O NAVBAR*/
 
+/*AQUI COMEÇA O O NAVBAR*/
+
 .navbar{
     width: 100vw;
-    height: 12vh;
+    height: 9vh;
     background-color: var(--Cor-Primaria);
     display: flex;
     flex-direction: row;
@@ -53,7 +55,7 @@ body::-webkit-scrollbar{
 
 .logotipo span{
     color: var(--Cor-Secundaria);
-    font-size: 4.5vh;
+    font-size: 3.2vh;
     font-weight: 700;
     
 }
@@ -94,15 +96,258 @@ aside{
     border: solid;
     display: flex;
     justify-content: center;
-    width: 17vw;
-    height: 40vh;
+    width: 14vw;
+    height: 50vh;
     flex-direction: column;
 
 }
 
 .menu{
+    width: 80%;
+    height: 100%;
+    border: solid;
     display: flex;
     flex-direction: column;
-    align-items: start;
+    background-color: var(--Cor-Primaria);
+}
+
+.menu a{
+    color: var(--Branco);
+    font-size: 2vh;
+    font-weight: 500;
+    margin-left: 5%;
+    margin-top: 5%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*aqui começa o footer*/
+/*footer*/
+    footer{
+    width: 100%;    
+    height: 100%;
+    }
+    .rodape{
+        width: 100%;
+        height: 100%;
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+        flex-direction: column;
+     
+    
+    }
+    /* AQUI TERMINA A PARTE CENTRAL DO RODAPÉ*/
+    
+    
+    .foot-logo{
+        width: 90%;
+        height: 80px;
+        display: flex;
+      
+        align-items: center;
+    }
+    
+    .foot-logo img{
+        width: 70px;
+        height: 70px;
+    }
+    
+    .contatos{
+        width: 80%;
+        height: 350px;
+        display: flex;
+        justify-content: center;
+    
+    }
+    
+    .titulos{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+    
+        flex-direction: column;
+    }
+    
+    .titulo{
+        width: 160px;
+        height: 30px;
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 27px;
+        font-weight: 700;
+    }
+    
+    .subtitle{
+        width: 160px;
+        height: 25px;
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 14px;
+        font-weight: 700;
+    }
+    
+    
+    
+    .cont1{
+        width: 300px;
+        height: 270px;
+      
+        display: flex;
+        align-items: center;
+        margin: auto;
+        flex-direction: column;
+    }
+    
+    .cont-title1{
+        width: 200px;
+        height: 30px;
+    
+        color: white;
+        display:  flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+    
+    .conte{
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .icon{
+        width: 40px;
+        height: 40px;
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .icon img{
+        width: 30px;
+        height: 30px;
+        filter: grayscale(100%);
+        transition: 0.5s;
+    }
+    
+    .icon img:hover {
+        filter: grayscale(0%);
+        transform: rotateZ(360deg);
+    }
+    
+    .rede{
+        width: 140px;
+        height: 40px;
+    
+        color: white;
+        display: flex;
+        align-items: center;
+    }
+    
+    .rede p{
+        font-size: 15px;
+        font-weight: 500;
+    }
+    
+    /* AQUI TERMINA O CONTATO 1 */
+    
+    .cont2{
+        width: 300px;
+        height: 270px;
+     
+        display: flex;
+        align-items: center;
+        margin: auto;
+        flex-direction: column;
+    }
+    
+    .titulo2{
+        width: 200px;
+        height: 30px;
+     
+        color: white;
+        display:  flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+    
+    .abins{
+        display: flex;
+        flex-direction: column;
+        color: white;
+        align-items: center;
+    }
+    
+    .abins p{
+    
+        font-weight: 500;
+    
+    }
+    
+    .cont3{
+        width: 300px;
+        height: 270px;
+    
+        display: flex;
+        align-items: center;
+        margin: auto;
+        flex-direction: column;
+    }
+    
+    .titulo3{
+        width: 200px;
+        height: 30px;
+    
+        color: white;
+        display:  flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+    
+    .produts{
+        display: flex;
+        flex-direction: column;
+        color: white;
+        align-items: center;
+    }
+    
+    .produts p{
+    
+        font-weight: 500;
+    
+    }
+.faleconosco {
+    display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+    margin-right: 300px;
 }
