@@ -1239,8 +1239,7 @@ video::-moz-media-controls {
     justify-content: center;
     flex-direction: row;
     margin-left: 75px;
-    border: solid 1px;
-}
+
 
 .pesq-bar{
     width: 50%;
@@ -1344,7 +1343,7 @@ video::-moz-media-controls {
 .filtrosas3{
     width: 60%;
     height: 80%;
-    border: solid;
+
     display: flex;
     align-items: center;
     justify-content: center;
