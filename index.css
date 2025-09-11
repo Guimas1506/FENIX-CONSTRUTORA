@@ -1206,7 +1206,7 @@ video::-moz-media-controls {
     display: flex;
     flex-direction: column;
     width: 92%;
-    height: 1000px;
+    height: 100%;
     background-color: rgb(233, 233, 233);
     border-radius: 12px;
     margin: auto;
@@ -1232,13 +1232,14 @@ video::-moz-media-controls {
 
 
 .nav-list{
-    width: 70%;
+    width: 90%;
     height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    margin-left: 260px;
+    margin-left: 75px;
+    border: solid 1px;
 }
 
 .pesq-bar{
@@ -1263,6 +1264,8 @@ video::-moz-media-controls {
     width: 50%;
     height: 100%;
     display: flex;
+    
+
 
     
 }
@@ -1301,6 +1304,21 @@ video::-moz-media-controls {
     justify-content: center;
 }
 
+#preço{
+    color: var(--Cor-Terciaria);
+    display: flex;
+    font-size: 20px;
+}
+
+#all-preço{
+    color: var(--Cor-Terciaria);
+    display: flex;
+    font-size: 18px;
+    margin-left: 10px;
+    width: 150px;
+    font-weight: 400;
+}
+
 #tipo-imovel{
     width: 110px;
     height: 50px;
@@ -1324,13 +1342,13 @@ video::-moz-media-controls {
 }
 
 .filtrosas3{
-    width: 40%;
+    width: 60%;
     height: 80%;
-    background-image: url(img/image.png);
-    background-size: cover;
-    background-repeat: no-repeat;
+    border: solid;
     display: flex;
     align-items: center;
+    justify-content: center;
+    margin: auto;
 }
 
 

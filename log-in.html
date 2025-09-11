@@ -99,62 +99,22 @@
     }
   </script>
 
-  <style>
-    /* ====== POPUP ====== */
-    .popup {
-      display: none;
-      position: fixed;
-      z-index: 9999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.6);
-      justify-content: center;
-      align-items: center;
-    }
 
-    .popup-content {
-      background: #fff;
-      padding: 20px 30px;
-      border-radius: 12px;
-      box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
-      text-align: center;
-      font-family: 'inter', sans-serif;
-      max-width: 400px;
-      width: 80%;
-      position: relative;
-      animation: fadeIn 0.3s ease-in-out;
-    }
 
-    .popup-content p {
-      margin: 0;
-      font-size: 16px;
-      color: #333;
-    }
 
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 22px;
-      font-weight: bold;
-      color: #333;
-      cursor: pointer;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
-    }
-  </style>
 </head>
 <body>
 <header>
  <div class="navbar">
-   <div class="logo">
-     <img src="img/image 39.svg" alt="" />
-   </div>
+    <div class="logo">
+        <a href="./index.html">
+      <img src="img/fenix51.png" alt="" />
+    </a>
+    <div class="title-fenix">
+      <h3>FÊNIX <span>CONSTRUTORA</span></h3>
+      
+    </div>
+    </div>
    <div class="abas">
      <a href="./index.html"><p>Inicio</p></a>
      <a href="./sobre.html"><p>Sobre Nós</p></a>
@@ -178,8 +138,8 @@
   </div>
 
   <form onsubmit="loginUser(event)">
-    <label for="email">Digite o seu E-mail</label>
-    <input type="email" placeholder="E-mail" id="email" required>
+    <label for="email">Digite o seu Email</label>
+    <input type="email" placeholder="Email" id="email" required>
 
     <label for="password">Digite sua senha</label>
     <input type="password" placeholder="Senha" id="password" required>

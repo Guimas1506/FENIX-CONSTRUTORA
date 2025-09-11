@@ -14,12 +14,19 @@
     <link rel="stylesheet" href="footer.css">
 </head>
 
+
 <body>
     <script src="index.js" async></script>
     <header>
   <div class="navbar">
     <div class="logo">
+        <a href="./index.html">
       <img src="img/fenix51.png" alt="" />
+    </a>
+    <div class="title-fenix">
+      <h3>FÊNIX <span>CONSTRUTORA</span></h3>
+      
+    </div>
     </div>
 
     <div class="abas">
@@ -163,7 +170,7 @@ function proximaImg(){
 
         <div class="video">
             <div class="aplic-video">
-                <video controls width="250" loop autoplay="autoplay">
+                <video controls width="250" loop autoplay="autoplay" muted>
                     <source
                         src="img/videoplayback.mp4"
                         type="video/webm" />
@@ -209,7 +216,7 @@ function proximaImg(){
 
                     <div class="filtrosas">
                         <select name="tipo-imovel" aria-placeholder="Na Planta" id="tipo-imovel">
-                            <option value="">Na Planta</option>
+                            <option value="" disabled selected>Na Planta</option>
                             <option value="casa">Casa</option>
                             <option value="apartamento">Apartamento</option>
                             <option value="terreno">Terreno</option>
@@ -219,7 +226,7 @@ function proximaImg(){
 
                     <div class="filtrosas2">
                         <select name="tipo-imovel2" id="tipo-imovel2">
-                            <option value="">UF</option>
+                        <option value="" disabled selected>UF</option>
                             <option value="casa">Casa</option>
                             <option value="apartamento">Apartamento</option>
                             <option value="terreno">Terreno</option>
@@ -228,6 +235,9 @@ function proximaImg(){
                     </div>
 
                     <div class="filtrosas3">
+                        <h3 id="preço">Preço</h3>
+                        <input type="range" name="preco" id="preco" min="1000" max="10000" step="500" value="1000">
+                        <h3 id="all-preço">Todos os Preços</h3>
                     </div>
                 </div>
 
@@ -239,331 +249,10 @@ function proximaImg(){
 
 
             <!--aqui será a lista de produtos-->
-            <div class="list">
-                <div class="list1">
-
-                    <div class="card1">
-
-                        <img style="
-                        display: flex;
-                        width: 100%;
-                        height: 150px;
-                        object-fit: cover;
-                        border-radius: 10px 10px 0px 0px;
-                        " src="img/xacaras.png" alt="">
-
-                        <div class="card-title">
-                            <h4>Chácara Moderna</h4>
-                            <p>Rua N°
-                                Cidade - UF
-                            </p>
-                            <h3>R$ 1220,20</h3>
-                        </div>
-
-                            <div class="buttone1">
-                                <div class="icon-favorite1">
-                                   <button style="
-                                   width: 40px;
-                                   height: 40px;
-                                   border-radius: 100px;
-                                   display: flex;
-                                   align-items: center;
-                                   justify-content: center;
-                                   background-color: #FE4F3F;
-                                   border: none;" type="button">
-                                    
-                                    <img style="
-                                        width: 30px;
-                                        height: 30px;"
-                                        src="img/heart.png" alt="">
-                                   </button>
-                                </div>
-                                <button id="consul1" type="button">Consultar</button>
-                            </div>
-
-                    </div>
-
-                    <div class="card2">
-
-                        <img style="
-                        display: flex;
-                        width: 100%;
-                        height: 150px;
-                        object-fit: cover;
-                        border-radius: 10px 10px 0px 0px;
-                        " src="img/xacaras.png" alt="">
-
-                        <div class="card-title2">
-                            <h2>Chácara Moderna</h2>
-                            <p>Área construída: 218,49m²</p>
-                            <h3>R$ 1220,20</h3>
-                        </div>
-
-                         <div class="buttone1">
-                                <div class="icon-favorite1">
-                                   <button style="
-                                   width: 40px;
-                                   height: 40px;
-                                   border-radius: 100px;
-                                   display: flex;
-                                   align-items: center;
-                                   justify-content: center;
-                                   background-color: #FE4F3F;
-                                   border: none;" type="button">
-                                    
-                                    <img style="
-                                        width: 30px;
-                                        height: 30px;"
-                                        src="img/heart.png" alt="">
-                                   </button>
-                                </div>
-                                <button id="consul1" type="button">Consultar</button>
-                            </div>
-
-                    </div>
-
-                    <div class="card3">
-
-                       <img style="
-                        display: flex;
-                        width: 100%;
-                        height: 150px;
-                        object-fit: cover;
-                        border-radius: 10px 10px 0px 0px;
-                        " src="img/xacaras.png" alt="">
-
-                        <div class="card-title3">
-                            <h2>Chácara Moderna</h2>
-                            <p>Área construída: 218,49m²</p>
-                            <h3>R$ 1220,20</h3>
-                        </div>
-
-                         <div class="buttone1">
-                                <div class="icon-favorite1">
-                                   <button style="
-                                   width: 40px;
-                                   height: 40px;
-                                   border-radius: 100px;
-                                   display: flex;
-                                   align-items: center;
-                                   justify-content: center;
-                                   background-color: #FE4F3F;
-                                   border: none;" type="button">
-                                    
-                                    <img style="
-                                        width: 30px;
-                                        height: 30px;"
-                                        src="img/heart.png" alt="">
-                                   </button>
-                                </div>
-                                <button id="consul1" type="button">Consultar</button>
-                            </div>
-
-                    </div>
-
-                    <div class="card4">
-
-                        <img style="
-                        display: flex;
-                        width: 100%;
-                        height: 150px;
-                        object-fit: cover;
-                        border-radius: 10px 10px 0px 0px;
-                        " src="img/xacaras.png" alt="">
-
-                        <div class="card-title4">
-                            <h2>Chácara Moderna</h2>
-                            <p>Área construída: 218,49m²</p>
-                            <h3>R$ 1220,20</h3>
-                        </div>
-
-                        <div class="buttone1">
-                                <div class="icon-favorite1">
-                                   <button style="
-                                   width: 40px;
-                                   height: 40px;
-                                   border-radius: 100px;
-                                   display: flex;
-                                   align-items: center;
-                                   justify-content: center;
-                                   background-color: #FE4F3F;
-                                   border: none;" type="button">
-                                    
-                                    <img style="
-                                        width: 30px;
-                                        height: 30px;"
-                                        src="img/heart.png" alt="">
-                                   </button>
-                                </div>
-                                <button id="consul1" type="button">Consultar</button>
-                            </div>
-                    </div>
-
+           
                     
                     
-                </div>
-                <br>
-                <div class="list2">
-                    <div class="card6">
-
-                        <img style="
-                        display: flex;
-                        width: 100%;
-                        height: 150px;
-                        object-fit: cover;
-                        border-radius: 10px 10px 0px 0px;
-                        " src="img/xacaras.png" alt="">
-
-                        <div class="card-title6">
-                            <h2>Chácara Moderna</h2>
-                            <p>Área construída: 218,49m²</p>
-                            <h3>R$ 1220,20</h3>
-                        </div>
-
-                         <div class="buttone1">
-                                <div class="icon-favorite1">
-                                   <button style="
-                                   width: 40px;
-                                   height: 40px;
-                                   border-radius: 100px;
-                                   display: flex;
-                                   align-items: center;
-                                   justify-content: center;
-                                   background-color: #FE4F3F;
-                                   border: none;" type="button">
-                                    
-                                    <img style="
-                                        width: 30px;
-                                        height: 30px;"
-                                        src="img/heart.png" alt="">
-                                   </button>
-                                </div>
-                                <button id="consul1" type="button">Consultar</button>
-                            </div>
-
-                    </div>
-
-                    <div class="card7">
-
-                        <img style="
-                        display: flex;
-                        width: 100%;
-                        height: 150px;
-                        object-fit: cover;
-                        border-radius: 10px 10px 0px 0px;
-                        " src="img/xacaras.png" alt="">
-
-                        <div class="card-title7">
-                            <h2>Chácara Moderna</h2>
-                            <p>Área construída: 218,49m²</p>
-                            <h3>R$ 1220,20</h3>
-                        </div>
-
-                         <div class="buttone1">
-                                <div class="icon-favorite1">
-                                   <button style="
-                                   width: 40px;
-                                   height: 40px;
-                                   border-radius: 100px;
-                                   display: flex;
-                                   align-items: center;
-                                   justify-content: center;
-                                   background-color: #FE4F3F;
-                                   border: none;" type="button">
-                                    
-                                    <img style="
-                                        width: 30px;
-                                        height: 30px;"
-                                        src="img/heart.png" alt="">
-                                   </button>
-                                </div>
-                                <button id="consul1" type="button">Consultar</button>
-                            </div>
-
-                    </div>
-
-                    <div class="card8">
-
-                        <img style="
-                        display: flex;
-                        width: 100%;
-                        height: 150px;
-                        object-fit: cover;
-                        border-radius: 10px 10px 0px 0px;
-                        " src="img/xacaras.png" alt="">
-
-                        <div class="card-title8">
-                            <h2>Chácara Moderna</h2>
-                            <p>Área construída: 218,49m²</p>
-                            <h3>R$ 1220,20</h3>
-                        </div>
-
-                         <div class="buttone1">
-                                <div class="icon-favorite1">
-                                   <button style="
-                                   width: 40px;
-                                   height: 40px;
-                                   border-radius: 100px;
-                                   display: flex;
-                                   align-items: center;
-                                   justify-content: center;
-                                   background-color: #FE4F3F;
-                                   border: none;" type="button">
-                                    
-                                    <img style="
-                                        width: 30px;
-                                        height: 30px;"
-                                        src="img/heart.png" alt="">
-                                   </button>
-                                </div>
-                                <button id="consul1" type="button">Consultar</button>
-                            </div>
-
-                    </div>
-
-                    <div class="card9">
-
-                        <img style="
-                        display: flex;
-                        width: 100%;
-                        height: 150px;
-                        object-fit: cover;
-                        border-radius: 10px 10px 0px 0px;
-                        " src="img/xacaras.png" alt="">
-
-                        <div class="card-title9">
-                            <h2>Chácara Moderna</h2>
-                            <p>Área construída: 218,49m²</p>
-                            <h3>R$ 1220,20</h3>
-                        </div>
-
-                         <div class="buttone1">
-                                <div class="icon-favorite1">
-                                   <button style="
-                                   width: 40px;
-                                   height: 40px;
-                                   border-radius: 100px;
-                                   display: flex;
-                                   align-items: center;
-                                   justify-content: center;
-                                   background-color: #FE4F3F;
-                                   border: none;" type="button">
-                                    
-                                    <img style="
-                                        width: 30px;
-                                        height: 30px;"
-                                        src="img/heart.png" alt="">
-                                   </button>
-                                </div>
-                                <button id="consul1" type="button">Consultar</button>
-                            </div>
-
-                    </div>
-
-                    
-                </div>
-            </div>
-
+               
 
         </div>
 
