@@ -5,6 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Sign-in</title>
    <link rel="stylesheet" href="sign-in.css">
+   <link rel="stylesheet" href="header.css">
 
    <!-- Firebase via CDN -->
      <script type="module">
@@ -121,10 +122,8 @@ window.registerFacebook = () => socialLogin(facebookProvider);
 </script>
 </head>
 <link rel="stylesheet" href="sign-in.css">
-<header>
-    <!--AQUI COMEÇA AS CONFIGURAÇÕES DO NAVBAR-->
+    <header>
   <div class="navbar">
-     <!--AQUI É A LOGO DA FENIX-->
     <div class="logo">
         <a href="./index.html">
       <img src="img/fenix51.png" alt="" />
@@ -134,42 +133,59 @@ window.registerFacebook = () => socialLogin(facebookProvider);
       
     </div>
     </div>
-    <!--AQUI SÃO AS ABAS DO SITE-->
-     <div class="abas">
-                         <a href="./index.html">
-            <p>Inicio</p>
-          </a>
-          <a href="./sobre.html">
-            <p>Sobre Nós</p>
-          </a>
-          <a href="">
-            <p>Imóveis</p>
-          </a>
-          <a href="./serviços.html">
-            <p>Serviços</p>
-          </a>
-          <a href="./contato.html">
-            <p>Contato</p>
-          </a>
-            </div>
-    <!--AQUI É A BARRINHA BRANCA QUE SEPARA AS ABAS DO LOGIN-->
-    <div class="barrinha">
-      <hr>
-    </div>
-    <!--AQUI SÃO OS BOTÕES DO LOGIN-->
-    <div class="login">
-      <div class="sing">
-        <button id="but1" type="button"><p>Login</p></button>
-      </div>
 
-      <div class="log">
-        <button id="but2" type="button"><p>Sign-in</p></button>
-      </div>
+    <div class="abas">
+      <a href="./index.html"><p>Inicio</p></a>
+      <a href="./sobre.html"><p>Sobre Nós</p></a>
+      <a href=""><p>Imóveis</p></a>
+      <a href="./serviços.html"><p>Serviços</p></a>
+      <a href="./contato.html"><p>Contato</p></a>
     </div>
+
+    <div class="barra"><hr></div>
+
+
+
+    <!-- Menu do usuário logado (vai substituir o login/sign-in) -->
+
+    <div class="displau-subs" >
+        <div class="icon-person">
+            <img src="img/icon-usuario.png" alt="">
+        </div>
+    </div>
+
+    <div id="userArea" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span id="closeUserArea" class="close">&times;</span>
+    <h2 id="welcomeMsg">Bem-vindo(a), Usuário</h2>
+    <p id="userEmail">Email do usuário</p>
+
+    <div class="logadores">
+
+    <a id="logi" href="./log-in.html">
+    <button id="log">
+      <p>Login</p>
+    </button>
+    </a>
+
+
+    <a id="registeri" href="./sign-in.html">
+    <button id="register">
+      <p>Sign-in</p>
+    </button>
+</a>
+    
+    </div>
+        <button id="btnLogoutModal">
+        <img src="img/sair.png" alt="">
+    </button>
 
   </div>
-
+</div>
+    
+  </div>
 </header>
+
 <body>
   <main>
   <div class="titulos1">
@@ -204,9 +220,9 @@ window.registerFacebook = () => socialLogin(facebookProvider);
     <input type="password" placeholder="Confirmar a senha" id="confirm-password" required />
 
     <div class="barras">
-      <div class="barra"></div>
+      <div class="barrinha"></div>
       <p>ou, registre-se com</p>
-      <div class="barra"></div>
+      <div class="barrinha"></div>
     </div>
 
     <div class="opcoes-login">
@@ -293,6 +309,86 @@ window.registerFacebook = () => socialLogin(facebookProvider);
       <!-- Fim do rodapé -->
      
    </footer>
+
+        <!-- Firebase Script -->
+    <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCYDGROxguHYX-YA-J-HqRRGSF3uN-ZEAs",
+    authDomain: "fenix-construtora-a34b5.firebaseapp.com",
+    projectId: "fenix-construtora-a34b5",
+    storageBucket: "fenix-construtora-a34b5.firebasestorage.app",
+    messagingSenderId: "928009241790",
+    appId: "1:928009241790:web:333b16b217a2ece01d8aef"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  const logBtn = document.getElementById("log");
+  const registerBtn = document.getElementById("register");
+
+  // Atualiza visibilidade dos botões conforme login
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      btnLogoutModal.style.display = "flex";
+      logBtn.style.display = "none";
+      registerBtn.style.display = "none";
+    } else {
+      btnLogoutModal.style.display = "none";
+      logBtn.style.display = "flex";
+      registerBtn.style.display = "flex";
+    }
+  });
+
+
+
+
+  // Referências
+const iconPerson = document.querySelector(".icon-person");
+const userArea = document.getElementById("userArea");
+const closeUserArea = document.getElementById("closeUserArea");
+const welcomeMsg = document.getElementById("welcomeMsg");
+const userEmail = document.getElementById("userEmail");
+const btnLogoutModal = document.getElementById("btnLogoutModal");
+
+// Abrir área do usuário
+iconPerson.addEventListener("click", () => {
+  userArea.style.display = "flex";
+});
+
+// Fechar modal
+closeUserArea.addEventListener("click", () => {
+  userArea.style.display = "none";
+});
+
+// Fechar ao clicar fora
+window.addEventListener("click", (e) => {
+  if (e.target === userArea) {
+    userArea.style.display = "none";
+  }
+});
+
+// Atualizar dados do usuário quando logado
+onAuthStateChanged(auth, (user) => {
+  if(user){
+    welcomeMsg.textContent = `Bem-vindo(a), ${user.displayName || "Usuário"}`;
+    userEmail.textContent = user.email;
+  }
+});
+
+// Logout pelo modal
+btnLogoutModal.addEventListener("click", () => {
+  signOut(auth).then(() => {
+    alert("Logout realizado!");
+    window.location.reload();
+  }).catch((err) => alert(err.message));
+});
+
+</script>
+
 </body>
 
 </html>

@@ -40,21 +40,12 @@
 
     <div class="barra"><hr></div>
 
-    <div class="login" id="header-login" style="display: none;">
-      <!-- Botões padrão -->
-      <div class="sing">
-        <a href="./log-in.html"><button id="but1" type="button"><p>Login</p></button></a>
-      </div>
-      <div class="log">
-        <a href="./sign-in.html"><button id="but2" type="button"><p>Sign-in</p></button></a>
-      </div>
-    </div>
+
 
     <!-- Menu do usuário logado (vai substituir o login/sign-in) -->
 
-    <div class="displau-subs">
+    <div class="displau-subs" >
         <div class="icon-person">
-
             <img src="img/icon-usuario.png" alt="">
         </div>
     </div>
@@ -65,10 +56,26 @@
     <h2 id="welcomeMsg">Bem-vindo(a), Usuário</h2>
     <p id="userEmail">Email do usuário</p>
 
-    <button id="btnLogoutModal">
-        <p>Fazer Logout</p>
+    <div class="logadores">
+
+    <a id="logi" href="./log-in.html">
+    <button id="log">
+      <p>Login</p>
+    </button>
+    </a>
+
+
+    <a id="registeri" href="./sign-in.html">
+    <button id="register">
+      <p>Sign-in</p>
+    </button>
+</a>
+    
+    </div>
+        <button id="btnLogoutModal">
         <img src="img/sair.png" alt="">
     </button>
+
   </div>
 </div>
     
@@ -285,31 +292,24 @@
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
-  const headerLogin = document.getElementById("header-login");
-  const userMenu = document.querySelector(".displau-subs");
-  
-  const btnLogout = document.getElementById("btn-logout");
-  const barra = document.querySelector(".barra");
+  const logBtn = document.getElementById("log");
+  const registerBtn = document.getElementById("register");
 
-  // Verifica se há usuário logado
+  // Atualiza visibilidade dos botões conforme login
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      // Oculta botões login/sign-in
-      headerLogin.style.display = "none";
-      // Mostra menu do usuário
-      userMenu.style.display = "flex";
-      // Usa o displayName salvo no Firebase
-      welcomeMsg.textContent = `Bem-vindo(a), ${user.displayName || user.email}`;
+      btnLogoutModal.style.display = "flex";
+      logBtn.style.display = "none";
+      registerBtn.style.display = "none";
     } else {
-      // Mostra botões login/sign-in
-      headerLogin.style.display = "flex";
-      userMenu.style.display = "none";
-      
+      btnLogoutModal.style.display = "none";
+      logBtn.style.display = "flex";
+      registerBtn.style.display = "flex";
     }
   });
 
 
-  
+
 
   // Referências
 const iconPerson = document.querySelector(".icon-person");
