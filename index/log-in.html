@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Login</title>
+  <link rel="stylesheet" href="../Styles/log-in.css">
+  <link rel="stylesheet" href="../Styles/header.css">
+
+  <!-- Firebase via CDN -->
+    <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCYDGROxguHYX-YA-J-HqRRGSF3uN-ZEAs",
+    authDomain: "fenix-construtora-a34b5.firebaseapp.com",
+    projectId: "fenix-construtora-a34b5",
+    storageBucket: "fenix-construtora-a34b5.firebasestorage.app",
+    messagingSenderId: "928009241790",
+    appId: "1:928009241790:web:333b16b217a2ece01d8aef"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  const logBtn = document.getElementById("log");
+  const registerBtn = document.getElementById("register");
+
+  // Atualiza visibilidade dos botões conforme login
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      btnLogoutModal.style.display = "flex";
+      logBtn.style.display = "none";
+      registerBtn.style.display = "none";
+    } else {
+      btnLogoutModal.style.display = "none";
+      logBtn.style.display = "flex";
+      registerBtn.style.display = "flex";
+    }
+  });
+
+
+
+
+  // Referências
+const iconPerson = document.querySelector(".icon-person");
+const userArea = document.getElementById("userArea");
+const closeUserArea = document.getElementById("closeUserArea");
+const welcomeMsg = document.getElementById("welcomeMsg");
+const userEmail = document.getElementById("userEmail");
+const btnLogoutModal = document.getElementById("btnLogoutModal");
+
+// Abrir área do usuário
+iconPerson.addEventListener("click", () => {
+  userArea.style.display = "flex";
+});
+
+// Fechar modal
+closeUserArea.addEventListener("click", () => {
+  userArea.style.display = "none";
+});
+
+// Fechar ao clicar fora
+window.addEventListener("click", (e) => {
+  if (e.target === userArea) {
+    userArea.style.display = "none";
+  }
+});
+
+// Atualizar dados do usuário quando logado
+onAuthStateChanged(auth, (user) => {
+  if(user){
+    welcomeMsg.textContent = `Bem-vindo(a), ${user.displayName || "Usuário"}`;
+    userEmail.textContent = user.email;
+  }
+});
+
+// Logout pelo modal
+btnLogoutModal.addEventListener("click", () => {
+  signOut(auth).then(() => {
+    alert("Logout realizado!");
+    window.location.reload();
+  }).catch((err) => alert(err.message));
+});
+
+</script>
+
+
+
+
+</head>
+<body>
+    <header>
+  <div class="navbar">
+    <div class="logo">
+        <a href="./index.html">
+      <img src="../img/fenix51.png" alt="" />
+    </a>
+    <div class="title-fenix">
+      <h3>FÊNIX <span>CONSTRUTORA</span></h3>
+      
+    </div>
+    </div>
+
+    <div class="abas">
+      <a href="./index.html"><p>Inicio</p></a>
+      <a href="./sobre.html"><p>Sobre Nós</p></a>
+      <a href=""><p>Imóveis</p></a>
+      <a href="./serviços.html"><p>Serviços</p></a>
+      <a href="./contato.html"><p>Contato</p></a>
+    </div>
+
+    <div class="barra"><hr></div>
+
+
+
+    <!-- Menu do usuário logado (vai substituir o login/sign-in) -->
+
+    <div class="displau-subs" >
+        <div class="icon-person">
+            <img src="../img/icon-usuario.png" alt="">
+        </div>
+    </div>
+
+    <div id="userArea" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span id="closeUserArea" class="close">&times;</span>
+    <h2 id="welcomeMsg">Bem-vindo(a), Usuário</h2>
+    <p id="userEmail">Email do usuário</p>
+
+    <div class="logadores">
+
+    <a id="logi" href="./log-in.html">
+    <button id="log">
+      <p>Login</p>
+    </button>
+    </a>
+
+
+    <a id="registeri" href="./sign-in.html">
+    <button id="register">
+      <p>Sign-in</p>
+    </button>
+</a>
+    
+    </div>
+        <button id="btnLogoutModal">
+        <img src="../img/sair.png" alt="">
+    </button>
+
+  </div>
+</div>
+    
+  </div>
+</header>
+
+<main>
+  <div class="titulos1">
+    <h3><b>FALE AGORA</b> COM UM CONSULTOR FÊNIX</h3>
+    <h1>LOG-IN</h1>
+    <img src="../img/icon-usuario.png" alt="icon-usuario">
+  </div>
+
+  <form onsubmit="loginUser(event)">
+    <label for="email">Digite o seu Email</label>
+    <input type="email" placeholder="Email" id="email" required>
+
+    <label for="password">Digite sua senha</label>
+    <input type="password" placeholder="Senha" id="password" required>
+
+    <p class="esqueceuasenha">
+      Esqueceu a senha? <span><a href="#" onclick="resetPassword()">Clique aqui</a></span>
+    </p>
+
+    <div class="barras">
+      <div class="barrinha"></div>
+      <p>ou, entre com</p>
+      <div class="barrinha"></div>
+    </div>
+
+    <div class="opcoes-login">
+        <img src="../img/logo-google.png" alt="logo-google" onclick="loginGoogle()" style="cursor:pointer;">  
+        <img src="../img/logo-facebook.png" alt="logo.facebook">  
+        <img src="../img/logo-apple.png" alt="logo.apple">  
+    </div>
+
+    <button type="submit" class="btn-entrar">Entrar</button>
+    <p>É um cliente Fênix e não possui uma conta?</p>
+    <a class="registrar" href="sign-in.html">Registre-se</a>
+  </form>
+</main>
+
+<footer>
+  <div class="rodape">
+    <div class="foot-logo">
+      <img src="../img/image 39.svg" alt="Logo" class="logo" />
+      <div class="titulos">
+        <div class="titulo"><p>FÊNIX</p></div>
+        <div class="subtitle"><p>CONSTRUTORA</p></div>
+      </div>
+    </div>
+    <div class="contatos">
+      <div class="cont1">
+        <div class="cont-title1"><h3>REDES SOCIAIS</h3></div>
+        <div class="conte">
+          <div class="icon"><img src="../img/insta.png" alt=""></div>
+          <div class="rede"><p>INSTAGRAM</p></div>      
+        </div>
+      </div>
+      <div class="cont2">
+        <div class="titulo2"><h3>NOSSA EMPRESA</h3></div>
+        <div class="abins">
+          <p>SOBRE NÓS</p>
+          <p>CONTATO</p>
+          <p>SERVIÇOS</p>
+        </div>
+      </div>
+      <div class="cont3">
+        <div class="titulo3"><h3>NOSSOS PRODUTOS</h3></div>
+        <div class="produts">
+          <p>PROJETOS</p>
+          <p>IMÓVEIS</p>
+        </div>
+      </div>
+    </div>
+    <div class="direitos-reservados" style="color: white;">
+      <p>&copy; 2025 Fênix Construtora. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- POPUP -->
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <span class="close-btn" onclick="closePopup()">&times;</span>
+    <p id="popup-message"></p>
+  </div>
+</div>
+
+</body>
+</html>

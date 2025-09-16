@@ -1,0 +1,1437 @@
+hmtl{
+    overflow-x: hidden;
+    box-shadow: none;
+    
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+}
+
+body::-webkit-scrollbar{
+    display: none;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+:root{
+    --Cor-Primaria: #FE4F3F;
+    --Cor-Secundaria: #000000;
+    --Cor-Terciaria: #7C7C7C;
+    --Branco: #fff;
+}
+
+
+
+
+
+
+
+
+/*AQUI TERMINA AS CONFIGURAÇOES DO LOGIN*/
+
+.barra hr{
+    height: 20px;
+    
+}/*AQUI É A BARRINHA BRANCA DO NAVBAR QUE SEPARA AS ABAS DO LOGIN*/
+
+/*AQUI TERMINA O HEADER*/
+
+
+
+
+section.slider{
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    padding: 0 !important;
+    overflow: hidden;
+}
+
+.slider-content{
+    width: 400%;
+    height: auto;
+    display: flex;
+}
+
+.slider-content input, .img-mobile{
+    display: none;
+}
+
+.slide-box{
+    width: 25%;
+    height: auto;
+    position: relative;
+    text-align: center;
+    transition: 1s;
+}
+
+.slide-box img{
+    width: 100%;
+    height: 85vh;
+    display: flex;
+    margin: auto;
+}
+
+
+
+.nav-manual, .nav-auto{
+    position: absolute;
+    width: 100vw;
+    height: 80vh;
+    justify-content: center;
+    background-size: cover;
+    display: flex;
+    align-items: end;
+}
+
+.nav-manual .manual-btn, .nav-auto div{
+    border: 1px solid var(--Cor-Primaria);
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.nav-manual .manual-btn:not(:last-child), .nav-auto div:not(:last-child){
+    margin-right: 10px;
+}
+
+.nav-manual .manual-btn:hover{
+    background-color: var(--Cor-Primaria);
+}
+
+#radio1:checked ~ .nav-auto .auto-btn1, #radio2:checked ~ .nav-auto .auto-btn2, #radio3:checked ~ .nav-auto .auto-btn3{
+    background-color: var(--Cor-Primaria);
+}
+
+#radio1:checked ~ .primeiro{
+    margin-left: 0%;
+}
+
+#radio2:checked ~ .primeiro{
+    margin-left: -25%;
+}
+
+#radio3:checked ~ .primeiro{
+    margin-left: -50%;
+}
+
+@media screen and (max-width: 900px) {
+    .img-desktop{
+        display: none;
+    }
+
+    .img-mobile{
+        display: block;
+    }
+
+    .nav-auto, .nav-manual{
+        margin-top: 60%;
+    }
+}
+
+/*Aqui termina o baaner e começa o conteudo*/
+
+.conteud{
+    display: flex;
+    width: 100vw;
+    height: 90vh;
+
+    margin: 0;
+}
+
+.conteud1{
+    width: 30vw;
+    height: 80vh;
+
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;   
+    background-color: #FE4F3F;
+}
+
+.conteud2{
+    width: 70vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.toronto-conteud{
+    width: 100%;
+    height: 17%;
+    display: flex;
+    flex-direction: column;
+}
+
+.title-conteud2{
+    width: 45%; 
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: tomato;
+}
+
+.text-conteud2{
+    width: 45%;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+}
+
+.img-conteud2{
+    width: 50%;
+    height: 60%;
+    background-image: url(../img/image\ 7.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    margin-left: 10%;
+    z-index: 4;
+}
+
+.subimg-conteud2{
+    width: 50%;
+    height: 60%;
+    display: flex;
+    margin-left: 45%;
+    background-image: url(../img/image\ 8.png);
+    z-index: 1;
+    margin-top: -100px;
+    background-size: cover; 
+}
+
+
+
+.tit{
+    color: white;
+    width: 360px;
+    height: 100px;
+
+    display: flex;
+    margin-left: 15px;
+}
+
+.tit h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subtit{
+    color: white;
+    width: 310px;
+    height: 200px;
+    display: flex;
+    margin-left: 15px;
+    margin-top: 30px;
+
+}
+
+/*Aqui termina o conteudo*/
+
+/*Aqui começa o video*/
+
+.video{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+    justify-content: center;
+    
+    background-color: #FE4F3F;
+}
+
+.aplic-video{
+    width: 1000px;
+    height: 500px;
+
+    display: flex;
+    z-index: 2;
+
+}
+
+.aplic-video video{
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+}
+
+video::-webkit-media-controls {
+  display: none !important;
+}
+video::-moz-media-controls {
+  display: none !important;
+}
+
+/*Aqui termina o video*/
+
+.complem{
+    width: 80%;
+    height: 650px;
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.complem-iage{
+    width: 70vw;
+    height: 65vh;
+    background-color:  #FE4F3F;
+    background-image: url(../img/Mask\ group.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 440px;
+    display: flex;
+}
+
+.complem-teste{
+    width: 75vw;
+    height: 65vh;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.title-complem{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.ttt1{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FE4F3F;
+    font-size: 20px;
+}
+
+.sub-complem{
+    width: 100%;
+    height: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icone-complem{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.icone-comp1{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    flex-direction: row;
+}
+
+.icon1{
+    width: 60px;
+    height: 60px;
+    display: flex;
+    background-image: url(../img/home.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.icon-com{
+    width: 15vw;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: #FE4F3F;
+    font-weight: 900;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.icone-comp2{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    flex-direction: row;
+}
+
+.icon2{
+    width: 60px;
+    height: 60px;
+    display: flex;
+    background-image: url(../img/plant2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.icon-com2{
+    width: 15vw;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: #FE4F3F;
+    font-weight: 900;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.icone-comp3{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    flex-direction: row;
+    margin-left: 21%;
+}
+
+.icon3{
+    width: 60px;
+    height: 60px;
+    display: flex;
+    background-image: url(../img/martelo.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.icon-com3{
+    width: 20vw;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: #FE4F3F;
+    font-weight: 900;
+    font-size: 20px;
+    margin-left: 10px;
+
+}
+
+.icone-comp4{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    flex-direction: row;
+}
+
+.icon4{
+    width: 60px;
+    height: 60px;
+    display: flex;
+    background-image: url(../img/local.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.icon-com4{
+    width: 15vw;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: #FE4F3F;
+    font-weight: 900;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+
+
+.complem-co{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 150px;
+    height: 400px;
+    color: white;
+}
+
+.complem-title{
+    height: 90%;
+    width: 90%;
+    border: solid white;
+    display: flex;
+    margin: auto;
+}
+
+
+/*primeiro conteudo aqui*/
+
+
+
+
+.dec{
+    width: 300px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.dec1{
+    display: flex;
+    width: 100%;
+    height: 300px;
+
+    color: white;
+    flex-direction: column;
+
+}
+
+.dec2{
+    display: flex;
+    width: 100%;
+    height: 300px;
+    color: white;
+    flex-direction: column;
+}
+
+/*AQUI COMEÇA AS CONFIGURAÇÕES COMPLEMENT1*/
+
+.complement{
+    width: 100vw;
+    height: 100%;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+}
+
+/*AQUI COMEÇA O COMPLEMENTANDO1*/
+
+.complementando1{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    z-index: 1;
+}
+
+.comp1{
+    width: 900px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    background-color: #FE4F3F;
+    z-index: 2;
+    margin-top: -40px;
+}
+
+.title-comp1{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title-comp1 h2{
+    color: white;
+    font-size: 30px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.tect-comp1{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.tect-text{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    font-size: 14px;
+    justify-content: center;
+    margin-left: 85px;
+
+}
+
+.tect-text p{
+    height: 300px;
+
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+
+.img-tect{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    background-image: url(../img/Mask\ group.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.comp1-image{
+    width: 43vw;
+    height: 80vh;
+    display: flex;
+    z-index: 10;
+    margin-left: -120px;
+    margin-right: 50px;
+    margin-top: 70px;
+    background: url(../img/Mask\ group1.png);
+    background-size: cover;
+    border-radius: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+
+/*AQUI COMEÇA O COMPLEMENTANDO2*/
+
+.complementando2{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    justify-content: end;
+}
+
+
+.comp2-image{
+    width: 43vw;
+    height: 80vh;
+    display: flex;
+    border-radius: 100%;
+    z-index: 10;
+    margin-bottom: -50px;
+    margin-right: -60px;
+    background: url(../img/cara-chave.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
+
+.comp2{
+    width: 800px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    background-color: #FE4F3F;
+    z-index: 2;
+    margin-bottom: -40px;
+    
+}
+
+.title22{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title22 h2{
+    color: white;
+    font-size: 30px;
+
+}
+
+.img-tect2{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    background-image: url(../img/Mask\ group.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.tect-comp2{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.yect-text{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    font-size: 14px;
+    justify-content: center;
+    margin-left: 85px;
+}
+
+.yect-text p{
+    height: 300px;
+
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+/*AQUI TERMINA AS CONFIGURAÇÕES DO COMPLEMENT*/
+
+.list{
+    width: 80%;
+    height: 780px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+
+}
+
+
+.list1{
+    width: 90%;
+    height: 100%;
+    display: flex;
+}
+
+.card1{
+    width: 230px;
+    height: 280px;
+    margin: auto;
+    border-radius: 10px;
+    background-color: #D9D9D9;
+    border: solid 1px;
+
+}
+
+.card-title{
+    width: 100%;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+
+    
+}
+
+.card-title h4{
+    width: 100%;
+    height: 50px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 5px;
+    color: #FE4F3F;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+}
+
+.card-title p{
+    width: 100%;
+    height: 50px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+
+.card-title h3{
+    width: 100%;
+    height: 50px;
+    margin-top: 0px;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+
+.buttone1{
+    width: 100%;
+    margin-top: 0px;
+    height: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    
+}
+
+.icon-favorite1{
+    width: 40px;
+    height: 40px;
+    border: solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 7px;
+    border-radius: 100px;
+    border: none;
+}
+
+
+
+#consul1{
+    width: 160px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    background-color: #FE4F3F;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.card2{
+    width: 230px;
+    height: 280px;
+    margin: none;
+    border-radius: 10px;
+    margin: auto;
+    background-color: #D9D9D9;
+    border: solid 1px;
+}
+
+.card3{
+    width: 230px;
+    height: 280px;
+    margin: none;
+    border-radius: 10px;
+    margin: auto;
+    background-color: #D9D9D9;
+    border: solid 1px;
+}
+
+.card4{
+    width: 230px;
+    height: 280px;
+    margin: none;
+    border-radius: 10px;
+    margin: auto;
+    background-color: #D9D9D9;
+    border: solid 1px;
+}
+
+
+
+.card-title2{
+    width: 100%;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title2 h2{
+    width: 100%;
+    height: 50px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 5px;
+}
+
+.card-title2 p{
+    width: 100%;
+    height: 50px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 5px;
+}
+
+.card-title2 h3{
+    width: 100%;
+    height: 50px;
+    margin-top: 0px;
+    margin-left: 5px;
+}
+
+.card-title3{
+    width: 100%;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title3 h2{
+    width: 100%;
+    height: 50px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 5px;
+}
+
+.card-title3 p{
+    width: 100%;
+    height: 50px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 5px;
+}
+
+.card-title3 h3{
+    width: 100%;
+    height: 50px;
+    margin-top: 0px;
+    margin-left: 5px;
+}
+
+.card-title4{
+    width: 100%;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title4 h2{
+    width: 100%;
+    height: 50px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 5px;
+}
+
+.card-title4 p{
+    width: 100%;
+    height: 50px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 5px;
+}
+
+.card-title4 h3{
+    width: 100%;
+    height: 50px;
+    margin-top: 0px;
+    margin-left: 5px;
+}
+
+
+
+.list2{
+    width: 90%;
+    height: 100%;
+    display: flex;
+}
+
+.card6{
+    width: 230px;
+    height: 280px;
+    margin: auto;
+    border-radius: 10px;
+    background-color: #D9D9D9;
+    border: solid 1px;
+}
+
+.card-title6{
+    width: 100%;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title6 h2{
+    width: 100%;
+    height: 50px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 5px;
+
+}
+
+.card-title6 p{
+    width: 100%;
+    height: 50px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 5px;
+}
+
+.card-title6 h3{
+    width: 100%;
+    height: 50px;
+    margin-top: 0px;
+    margin-left: 5px;
+}
+
+
+.card7{
+    width: 230px;
+    height: 280px;
+    margin: auto;
+    border-radius: 10px;
+    background-color: #D9D9D9;
+    border: solid 1px;
+}
+
+.card-title7{
+    width: 100%;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title7 h2{
+    width: 100%;
+    height: 50px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 5px;
+}
+
+.card-title7 p{
+    width: 100%;
+    height: 50px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 5px;
+}
+
+.card-title7 h3{
+    width: 100%;
+    height: 50px;
+    margin-top: 0px;
+    margin-left: 5px;
+}
+
+
+
+.card8{
+    width: 230px;
+    height: 280px;
+    margin: auto;
+    border-radius: 10px;
+    background-color: #D9D9D9;
+    border: solid 1px;
+}
+
+.card-title8{
+    width: 100%;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title8 h2{
+    width: 100%;
+    height: 50px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 5px;
+}
+
+.card-title8 p{
+    width: 100%;
+    height: 50px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 5px;
+}
+
+.card-title8 h3{
+    width: 100%;
+    height: 50px;
+    margin-top: 0px;
+    margin-left: 5px;
+}
+
+
+
+.card9{
+    width: 230px;
+    height: 280px;
+    margin: auto;
+    border-radius: 10px;
+    background-color: #D9D9D9;
+    border: solid 1px;
+}
+
+.card-title9{
+    width: 100%;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title9 h2{
+    width: 100%;
+    height: 50px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 5px;
+}
+
+.card-title9 p{
+    width: 100%;
+    height: 50px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 5px;
+}
+
+.card-title9 h3{
+    width: 100%;
+    height: 50px;
+    margin-top: 0px;
+    margin-left: 5px;
+}
+
+
+
+
+.produts-list{
+    display: flex;
+    flex-direction: column;
+    width: 92%;
+    height: 100%;
+    background-color: rgb(233, 233, 233);
+    border-radius: 12px;
+    margin: auto;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+
+.title-produts-list{
+    width: 100%;
+    height: 9%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 28px;
+    
+}
+
+.title-produts-list h3{
+    color: #717171;
+}
+
+
+.nav-list{
+    width: 90%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin-left: 75px;
+}
+
+.pesq-bar{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#pesq-imovel{
+    width: 600px;
+    height: 45px;
+    display: flex;
+    border-radius: 10px;
+    border: solid 1px;
+    font-family:  "Montserrat", sans-serif;
+}
+
+
+.filtro{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    
+
+
+    
+}
+
+.icon-filtro{
+    width: 140px;
+    height: 100%;
+    display: flex;
+ 
+    font-size: 13px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+#filtr{
+    width: 35px;
+    height: 35px;
+    margin-left: 10px;
+}
+
+.filtrosas{
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filtrosas2{
+    height: 100%;
+    width: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#preço{
+    color: var(--Cor-Terciaria);
+    display: flex;
+    font-size: 20px;
+}
+
+#all-preço{
+    color: var(--Cor-Terciaria);
+    display: flex;
+    font-size: 18px;
+    margin-left: 10px;
+    width: 150px;
+    font-weight: 400;
+}
+
+#tipo-imovel{
+    width: 110px;
+    height: 50px;
+    display: flex;
+    border-radius: 12px;
+    border: none;
+    font-family:  "Montserrat", sans-serif;
+    align-items: center;
+    justify-content: center;
+}
+
+#tipo-imovel2{
+    width: 80px;
+    height: 50px;
+    display: flex;
+    border-radius: 12px;
+    border: none;
+    font-family:  "Montserrat", sans-serif;
+    align-items: center;
+    justify-content: center;
+}
+
+.filtrosas3{
+    width: 60%;
+    height: 80%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+
+
+
+
+
+
+/*----------------------------------------------------------------------------------------------------------------*/
+
+
+/*botoes de sair e favoritos*/
+.user-menu{
+    width: 30%;
+    height: 100%;
+    border: solid;
+    background-color: var(--Cor-Primaria);
+    display: flex;
+    flex-direction: row;
+    z-index: 2;
+}
+
+@media screen and (max-width: 480px) {
+.nav-auto, .nav-manual{
+    margin-top: -20px;
+}
+.conteud{
+    margin-top: 30px;
+}
+
+.conteud1{
+    width: 200px;
+    margin-left: 0px;
+    margin-right: 40px;
+}
+.conteud1 p{
+    width: 150px;
+    font-size: 12px;
+
+}
+.conteud1 h2{
+    width: 150px;
+    font-size: 18px;
+}
+.conteud2 h1{
+font-size: 25px;
+margin-bottom:35px;
+}
+.img-conteud2{
+    position: relative;
+    bottom: -50px;
+    width: 450px;
+    margin-left: -50px;
+}
+.video{
+    width:100% ;
+    height: 900px;
+    margin-right: 30;
+}
+.video video{
+width: 300px;    
+height: 600px;
+}
+.dec{
+    width: 300px;
+}
+.dec1{
+margin-bottom: 120px;
+}
+.filtro{
+margin-left: 50px;
+}
+.pesq-bar{
+    margin-left: -490px;
+    margin-right: -50px;
+}
+
+.card3, .card4, .card7, .card8{
+    display: none;
+}
+.produts-list{
+    width: 100%;
+}
+.filtro h2{
+    margin-left: 15px;
+    margin-right: -10px;
+    font-size: 15px;
+}
+#filtr{
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+}
+.card1, .card2 .card5, .card6{
+  margin-left: -50px;
+  margin-right: 30px;
+}
+.tect-text p{
+font-size: 11px;
+position: relative;
+bottom: 0px;
+}
+.title-comp1{
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+.comp1-image{
+ height: 300px;
+}
+
+ 
+.yect-text{
+    font-size: 11px;
+}
+.yect-text{
+    position:relative;
+    bottom: -30px;
+}
+.comp2{
+    height: 550px;
+    margin-bottom: 10px;
+}
+.comp2-image{
+    height: 320px;
+    position: relative;
+    top: -110px;
+}
+
+.abas{
+ display: none;   
+}
+ hr{
+    display: none;
+}
+.logo{
+    margin-right: 250px;}
+    .navbar{
+        background-color: #fff;
+    
+    }
+
+.titulos{
+    margin-left:-280px 
+}
+.foot-logo{
+    margin-left: 280px;
+}
+.footer h3{
+
+    font-size: 12px;
+}
+.cont1{
+font-size: 12px;}
+.cont2{
+    margin-left: -50px;
+    margin-right: -50px;
+font-size: 12px;}
+
+.cont3{
+font-size: 12px;}
+
+}
+
+
+
+
+
+
+ 

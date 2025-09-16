@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Sign-in</title>
+   <link rel="stylesheet" href="sign-in.css">
+   <link rel="stylesheet" href="header.css">
+
+   <!-- Firebase via CDN -->
+     <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+  GoogleAuthProvider,
+  FacebookAuthProvider,
+  signInWithPopup,
+  signInWithEmailAndPassword,
+  fetchSignInMethodsForEmail,
+  linkWithCredential
+} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCYDGROxguHYX-YA-J-HqRRGSF3uN-ZEAs",
+  authDomain: "fenix-construtora-a34b5.firebaseapp.com",
+  projectId: "fenix-construtora-a34b5",
+  storageBucket: "fenix-construtora-a34b5.firebasestorage.app",
+  messagingSenderId: "928009241790",
+  appId: "1:928009241790:web:333b16b217a2ece01d8aef"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
+const facebookProvider = new FacebookAuthProvider();
+
+// Função para atualizar cor dos requisitos
+function atualizarRequisito(id, ok) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.style.color = ok ? "green" : "red";
+}
+
+// Função para validar senha e atualizar barra de força (imagem)
+window.validarSenha = function() {
+  const senha = document.getElementById("password").value;
+
+  const letrasCount = (senha.match(/[a-zA-Z]/g) || []).length;
+  const numerosCount = (senha.match(/[0-9]/g) || []).length;
+  const temEspecial = /[!@#$%^&*(),.?":{}|<>]/.test(senha);
+  const semEspacos = !/\s/.test(senha);
+
+  // Atualiza os requisitos mínimos
+  atualizarRequisito("req-caracteres", letrasCount >= 6);
+  atualizarRequisito("req-especial", temEspecial);
+  atualizarRequisito("req-espacos", semEspacos);
+
+  // Atualiza imagem da barra de força
+  const barraImg = document.getElementById("senha-forca-img");
+  let nivel = 1; // fraca por padrão
+  if (letrasCount >= 6 && temEspecial && semEspacos) nivel = 2; // média
+  if (nivel === 2 && letrasCount >= 8 && numerosCount >= 2) nivel = 3; // forte
+
+  // Escolhe a imagem de acordo com o nível
+  if (nivel === 1) barraImg.src = "../img/senha-fraca.png";
+  else if (nivel === 2) barraImg.src = "../img/senha-media.png";
+  else if (nivel === 3) barraImg.src = "../img/senha-forte.png";
+};
+
+// Cadastro com email/senha
+window.registerUser = async function(event) {
+  event.preventDefault();
+
+  const nome = document.getElementById("nome").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const senha = document.getElementById("password").value;
+  const confSenha = document.getElementById("confirm-password").value;
+
+  const letrasCount = (senha.match(/[a-zA-Z]/g) || []).length;
+  const numerosCount = (senha.match(/[0-9]/g) || []).length;
+  const temEspecial = /[!@#$%^&*(),.?":{}|<>]/.test(senha);
+  const semEspacos = !/\s/.test(senha);
+
+  if (senha !== confSenha) {
+    alert("As senhas não coincidem!");
+    return;
+  }
+
+  if (!(letrasCount >= 6 && temEspecial && semEspacos)) {
+    alert("A senha deve ter no mínimo 6 letras, pelo menos 1 caractere especial e não pode conter espaços!");
+    return;
+  }
+
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
+    const user = userCredential.user;
+    await updateProfile(user, { displayName: nome });
+    alert("Cadastro realizado com sucesso! Bem-vindo, " + (nome || email));
+    window.location.href = "index.html";
+  } catch (error) {
+    console.error("Erro ao cadastrar:", error);
+    alert(`Erro ao cadastrar: ${error.message}`);
+  }
+};
+
+// Login social
+async function socialLogin(provider) {
+  try {
+    const result = await signInWithPopup(auth, provider);
+    const user = result.user;
+    alert(`Bem-vindo, ${user.displayName || user.email}!`);
+    window.location.href = "index.html";
+  } catch (error) {
+    console.error("socialLogin error:", error);
+  }
+}
+
+window.registerGoogle = () => socialLogin(googleProvider);
+window.registerFacebook = () => socialLogin(facebookProvider);
+</script>
+</head>
+<link rel="stylesheet" href="sign-in.css">
+    <header>
+  <div class="navbar">
+    <div class="logo">
+        <a href="./index.html">
+      <img src="../img/fenix51.png" alt="" />
+    </a>
+    <div class="title-fenix">
+      <h3>FÊNIX <span>CONSTRUTORA</span></h3>
+      
+    </div>
+    </div>
+
+    <div class="abas">
+      <a href="./index.html"><p>Inicio</p></a>
+      <a href="./sobre.html"><p>Sobre Nós</p></a>
+      <a href=""><p>Imóveis</p></a>
+      <a href="./serviços.html"><p>Serviços</p></a>
+      <a href="./contato.html"><p>Contato</p></a>
+    </div>
+
+    <div class="barra"><hr></div>
+
+
+
+    <!-- Menu do usuário logado (vai substituir o login/sign-in) -->
+
+    <div class="displau-subs" >
+        <div class="icon-person">
+            <img src="../img/icon-usuario.png" alt="">
+        </div>
+    </div>
+
+    <div id="userArea" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span id="closeUserArea" class="close">&times;</span>
+    <h2 id="welcomeMsg">Bem-vindo(a), Usuário</h2>
+    <p id="userEmail">Email do usuário</p>
+
+    <div class="logadores">
+
+    <a id="logi" href="./log-in.html">
+    <button id="log">
+      <p>Login</p>
+    </button>
+    </a>
+
+
+    <a id="registeri" href="./sign-in.html">
+    <button id="register">
+      <p>Sign-in</p>
+    </button>
+</a>
+    
+    </div>
+        <button id="btnLogoutModal">
+        <img src="../img/sair.png" alt="">
+    </button>
+
+  </div>
+</div>
+    
+  </div>
+</header>
+
+<body>
+  <main>
+  <div class="titulos1">
+    <h3><b>SEJA AGORA</b> UM CLIENTE FÊNIX</h3>
+    <h1>SIGN-IN</h1>
+    <img src="../img/icon-usuario.png" alt="icon-usuario" />
+  </div>
+
+  <form onsubmit="registerUser(event)">
+    <label for="nome">Digite o seu Nome de Usuário</label>
+    <input type="text" placeholder="Nome" id="nome" required />
+
+    <label for="email">Digite o seu E-mail</label>
+    <input type="email" placeholder="E-mail" id="email" required />
+
+    <label for="password">Digite sua senha</label>
+    <input type="password" placeholder="Senha" id="password" required oninput="validarSenha()" />
+
+    <!-- IMAGEM DA BARRA DE FORÇA PADRONIZADA -->
+    <div class="password-strength">
+      <img id="senha-forca-img" src="../img/senha-fraca.png" alt="Força da senha" />
+    </div>
+
+    <!-- Requisitos -->
+    <div id="requisitos-senha">
+      <p id="req-caracteres" class="requisito">Mínimo de 6 letras (a-z ou A-Z)</p>
+      <p id="req-especial" class="requisito">Pelo menos 1 caractere especial (!@#$%^&*...)</p>
+      <p id="req-espacos" class="requisito">Não pode conter espaços</p>
+    </div>
+
+    <label for="confirm-password">Confirme sua senha</label>
+    <input type="password" placeholder="Confirmar a senha" id="confirm-password" required />
+
+    <div class="barras">
+      <div class="barrinha"></div>
+      <p>ou, registre-se com</p>
+      <div class="barrinha"></div>
+    </div>
+
+    <div class="opcoes-login">
+      <img src="../img/logo-google.png" alt="logo-google" onclick="registerGoogle()" style="cursor:pointer;" />
+      <img src="../img/logo-facebook.png" alt="logo-facebook" style="cursor:pointer;" />
+      <!-- onclick="registerFacebook()"  -->
+      <img src="../img/logo-apple.png" alt="logo-apple" />
+    </div>
+
+    <div class="termos">
+      <input type="checkbox" id="aceito-termos" required />
+      <p>Ao continuar aceito e concordo com os <a href="politica-privacidade.html" target="_blank">Termos de Política de Privacidade</a></p>
+    </div>
+
+    <button type="submit" class="btn-entrar">Registrar</button>
+    <p>Já é um cliente Fênix ?</p>
+    <a class="registrar" href="log-in.html">Login</a>
+  </form>
+</main>
+   <footer>
+     <!-- Início do rodapé -->
+     <div class="rodape">
+        <!-- Seção do logotipo e título -->
+        <div class="foot-logo">
+          <!-- Logotipo da empresa -->
+          <img src="../img/image 39.svg" alt="Logo" class="logo" />
+          <div class="titulos">
+          <!-- Título principal -->
+          <div class="titulo"><p>FÊNIX</p></div>
+          <!-- Subtítulo -->
+          <div class="subtitle"><p>CONSTRUTORA</p></div>
+          </div>
+        </div>
+        <!-- Seção de contatos -->
+        <div class="contatos">
+          <!-- Primeira coluna: Redes sociais -->
+          <div class="cont1">
+              <div class="cont-title1">
+                <!-- Título da seção -->
+                <h3>REDES SOCIAIS</h3>
+              </div>
+              <div class="conte">
+                <!-- Ícone do Instagram -->
+                <div class="icon">
+                  <img src="../img/insta.png" alt="">
+                </div>
+                <!-- Nome da rede social -->
+                <div class="rede">
+                  <p>INSTAGRAM</p>
+                </div>      
+              </div>
+          </div>
+          <!-- Segunda coluna: Informações sobre a empresa -->
+          <div class="cont2">
+              <div class="titulo2">
+                <!-- Título da seção -->
+                <h3>NOSSA EMPRESA</h3>
+              </div>
+              <div class="abins">
+                <!-- Links ou informações sobre a empresa -->
+                <p>SOBRE NÓS</p>
+                <p>CONTATO</p>
+                <p>SERVIÇOS</p>
+              </div>
+          </div>
+          <!-- Terceira coluna: Produtos da empresa -->
+          <div class="cont3">
+              <div class="titulo3">
+                <!-- Título da seção -->
+                <h3>NOSSOS PRODUTOS</h3>
+              </div>
+              <div class="produts">
+                <!-- Lista de produtos -->
+                <p>PROJETOS</p>
+                <p>IMÓVEIS</p>
+              </div>
+          </div>
+        </div>
+        <!-- Seção de direitos reservados -->
+        <div class="direitos-reservados" style="color: white;">
+          <p>&copy; 2025 Fênix Construtora. Todos os direitos reservados.</p>
+        </div>
+      </div>
+      <!-- Fim do rodapé -->
+     
+   </footer>
+
+        <!-- Firebase Script -->
+    <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCYDGROxguHYX-YA-J-HqRRGSF3uN-ZEAs",
+    authDomain: "fenix-construtora-a34b5.firebaseapp.com",
+    projectId: "fenix-construtora-a34b5",
+    storageBucket: "fenix-construtora-a34b5.firebasestorage.app",
+    messagingSenderId: "928009241790",
+    appId: "1:928009241790:web:333b16b217a2ece01d8aef"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  const logBtn = document.getElementById("log");
+  const registerBtn = document.getElementById("register");
+
+  // Atualiza visibilidade dos botões conforme login
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      btnLogoutModal.style.display = "flex";
+      logBtn.style.display = "none";
+      registerBtn.style.display = "none";
+    } else {
+      btnLogoutModal.style.display = "none";
+      logBtn.style.display = "flex";
+      registerBtn.style.display = "flex";
+    }
+  });
+
+
+
+
+  // Referências
+const iconPerson = document.querySelector(".icon-person");
+const userArea = document.getElementById("userArea");
+const closeUserArea = document.getElementById("closeUserArea");
+const welcomeMsg = document.getElementById("welcomeMsg");
+const userEmail = document.getElementById("userEmail");
+const btnLogoutModal = document.getElementById("btnLogoutModal");
+
+// Abrir área do usuário
+iconPerson.addEventListener("click", () => {
+  userArea.style.display = "flex";
+});
+
+// Fechar modal
+closeUserArea.addEventListener("click", () => {
+  userArea.style.display = "none";
+});
+
+// Fechar ao clicar fora
+window.addEventListener("click", (e) => {
+  if (e.target === userArea) {
+    userArea.style.display = "none";
+  }
+});
+
+// Atualizar dados do usuário quando logado
+onAuthStateChanged(auth, (user) => {
+  if(user){
+    welcomeMsg.textContent = `Bem-vindo(a), ${user.displayName || "Usuário"}`;
+    userEmail.textContent = user.email;
+  }
+});
+
+// Logout pelo modal
+btnLogoutModal.addEventListener("click", () => {
+  signOut(auth).then(() => {
+    alert("Logout realizado!");
+    window.location.reload();
+  }).catch((err) => alert(err.message));
+});
+
+</script>
+
+</body>
+
+</html>
+
+

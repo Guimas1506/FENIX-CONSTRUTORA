@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+</head>
+<link rel="stylesheet" href="../Styles/menu.css">
+<body>
+      <header>
+  <div class="navbar">
+    <div class="logo">
+      <img src="../img/fenix51.png" alt="" />
+    </div>
+
+    <div class="abas">
+      <a href="./index.html"><p>Inicio</p></a>
+      <a href="./sobre.html"><p>Sobre Nós</p></a>
+      <a href=""><p>Imóveis</p></a>
+      <a href="./serviços.html"><p>Serviços</p></a>
+      <a href="./contato.html"><p>Contato</p></a>
+    </div>
+
+    <div class="barra"><hr></div>
+
+    <div class="login" id="header-login">
+      <!-- Botões padrão -->
+      <div class="sing">
+        <a href="./log-in.html"><button id="but1" type="button"><p>Login</p></button></a>
+      </div>
+      <div class="log">
+        <a href="./sign-in.html"><button id="but2" type="button"><p>Sign-in</p></button></a>
+      </div>
+    </div>
+
+    <!-- Menu do usuário logado (vai substituir o login/sign-in) -->
+
+    <div class="displau-subs" >
+        <div class="icon-person">
+
+            <img src="../img/icon-usuario.png" alt="">
+        </div>
+    </div>
+
+    <div id="userArea" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span id="closeUserArea" class="close">&times;</span>
+    <h2 id="welcomeMsg">Bem-vindo(a), Usuário</h2>
+    <p id="userEmail">Email do usuário</p>
+
+    <button id="btnLogoutModal">
+        <p>Fazer Logout</p>
+        <img src="../img/sair.png" alt="">
+    </button>
+  </div>
+</div>
+    
+  </div>
+</header>
+<p>Entre e acesse nossos mais novos imóveis, os seus favoritos e suas pesquisas salvas</p>
+<button style=" width:400px;background-color: #FE4F3F; color: white; border: none; padding: 12px 32px; border-radius: 5px; font-size: 28px; cursor: pointer;">
+    Login
+</button>
+<hr style="border: none; border-top: 1px solid #ccc; width: 100%; margin: 40px 0;">
+<nav>
+    <a href="imoveis.html">Imóveis</a>
+    <a href="">Favoritos</a>
+    <a href="sobre.html">Sobre nós</a>
+    <a href="serviços.html">Serviços</a>
+    <a href="contato.html">Contato</a>
+</nav>
+<footer>
+   <p> ®2025 todos os direitos reservados a Fênix Construtora. </p>
+    </footer>
+</body>
+</html>

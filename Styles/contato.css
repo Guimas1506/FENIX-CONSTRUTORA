@@ -1,0 +1,594 @@
+  @font-face {
+    font-family: 'inter';
+    src: url('fonts/Inter-VariableFont_opsz\,wght.ttf') format('truetype');
+}
+
+:root{
+    --Cor-Primaria: #FE4F3F;
+    --Cor-Secundaria: #000000;
+    --Cor-Terciaria: #7C7C7C;
+    --Branco: #fff;
+}
+
+body {
+    margin: 0;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'inter';
+}
+
+
+/*AQUI TERMINA AS CONFIGURAÇOES DO LOGIN*/
+
+ .barra hr{
+    height: 20px;
+}/*AQUI É A BARRINHA BRANCA DO NAVBAR QUE SEPARA AS ABAS DO LOGIN*/
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+
+}
+/*parte principal do projeto */
+/* Reset e configuração base */
+* {
+    box-sizing: border-box;
+}
+
+/* Tipografia principal */
+h1 {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    color: #F65B38;
+    margin: 0;
+}
+
+/* Seção título e pesquisa */
+.titulopesquisa {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 3rem 3rem 0 3rem;
+    gap: 2rem;
+}
+
+.titulopesquisa h1 {
+    flex-shrink: 0;
+}
+
+.pesquisa {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid gray;
+    border-radius: 15px;
+    min-width: 15rem;
+    max-width: 25rem;
+    height: 2.5rem;
+    padding: 0 1rem;
+    flex-shrink: 1;
+}
+
+.pesquisa img {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-left: auto;
+}
+
+/* Imagem principal */
+.imagemprincipal {
+    width: 100%;
+    max-width: 75rem;
+    height: auto;
+    aspect-ratio: 3/1;
+    object-fit: cover;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Texto principal */
+.texto1 {
+    max-width: 62.5rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Layout principal */
+main {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 0 2rem;
+    min-height: 6rem;
+}
+
+/* Seção artigos */
+.artigos {
+    flex: 0 0 18.75rem;
+    color: #F65B38;
+    
+}
+.ajusteartigos {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    max-width: 50rem;
+    text-align: center;
+    width: 100%;
+}
+
+/* Seção atendimentos */
+.atendimentos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+ width: 50vw;
+   
+    max-width: 50rem;
+    text-align: center;
+    position: relative;
+  
+}
+
+/* Contatos laterais */
+.contatos1 {
+    flex: 0 0 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    color: #F65B38;
+    gap: 1rem;
+}
+
+.contatos1 img {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.telefone, .whats, .email {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/*footer*/
+footer{
+    width: 100%;    
+    height: 100%;
+    }
+    .rodape{
+        width: 100%;
+        height: 100%;
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+        flex-direction: column;
+     
+    
+    }
+    /* AQUI TERMINA A PARTE CENTRAL DO RODAPÉ*/
+    
+    
+    .foot-logo{
+        width: 90%;
+        height: 80px;
+        display: flex;
+      
+        align-items: center;
+    }
+    
+    .foot-logo img{
+        width: 70px;
+        height: 70px;
+    }
+    
+    .contatos{
+        width: 80%;
+        height: 350px;
+        display: flex;
+        justify-content: center;
+    
+    }
+    
+    .titulos{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+    
+        flex-direction: column;
+    }
+    
+    .titulo{
+        width: 160px;
+        height: 30px;
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 27px;
+        font-weight: 700;
+    }
+    
+    .subtitle{
+        width: 160px;
+        height: 25px;
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 14px;
+        font-weight: 700;
+    }
+    
+    
+    
+    .cont1{
+        width: 300px;
+        height: 270px;
+      
+        display: flex;
+        align-items: center;
+        margin: auto;
+        flex-direction: column;
+    }
+    
+    .cont-title1{
+        width: 200px;
+        height: 30px;
+    
+        color: white;
+        display:  flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+    
+    .conte{
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .icon{
+        width: 40px;
+        height: 40px;
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .icon img{
+        width: 30px;
+        height: 30px;
+        filter: grayscale(100%);
+        transition: 0.5s;
+    }
+    
+    .icon img:hover {
+        filter: grayscale(0%);
+        transform: rotateZ(360deg);
+    }
+    
+    .rede{
+        width: 140px;
+        height: 40px;
+    
+        color: white;
+        display: flex;
+        align-items: center;
+    }
+    
+    .rede p{
+        font-size: 15px;
+        font-weight: 500;
+    }
+    
+    /* AQUI TERMINA O CONTATO 1 */
+    
+    .cont2{
+        width: 300px;
+        height: 270px;
+     
+        display: flex;
+        align-items: center;
+        margin: auto;
+        flex-direction: column;
+    }
+    
+    .titulo2{
+        width: 200px;
+        height: 30px;
+     
+        color: white;
+        display:  flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+    
+    .abins{
+        display: flex;
+        flex-direction: column;
+        color: white;
+        align-items: center;
+    }
+    
+    .abins p{
+    
+        font-weight: 500;
+    
+    }
+    
+    .cont3{
+        width: 300px;
+        height: 270px;
+    
+        display: flex;
+        align-items: center;
+        margin: auto;
+        flex-direction: column;
+    }
+    
+    .titulo3{
+        width: 200px;
+        height: 30px;
+    
+        color: white;
+        display:  flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+    
+    .produts{
+        display: flex;
+        flex-direction: column;
+        color: white;
+        align-items: center;
+    }
+    
+    .produts p{
+    
+        font-weight: 500;
+    
+    }
+.faleconosco {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+    margin-right: 300px;
+}
+
+/* Responsividade para tablets grandes */
+@media (max-width: 75rem) {
+    .imagemprincipal {
+        max-width: 95%;
+    }
+    
+    .texto1 {
+        max-width: 90%;
+    }
+    
+    .titulopesquisa {
+        margin: 2rem;
+    }
+}
+
+/* Responsividade para tablets */
+@media (max-width: 62rem) {
+    .titulopesquisa {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .pesquisa {
+        align-self: stretch;
+        max-width: none;
+    }
+    
+    main {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+    
+    .artigos, .atendimentos, .contatos1 {
+        width: 100%;
+        max-width: 50rem;
+    }
+    
+    .contatos1 {
+        align-items: flex-start;
+        padding-left: 2rem;
+    }
+    
+    .contatos {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cont1, .cont2, .cont3 {
+        max-width: 25rem;
+        width: 100%;
+    }
+}
+
+/* Responsividade para smartphones */
+@media (max-width: 48rem) {
+    .titulopesquisa {
+        margin: 1rem;
+    }
+    
+    main {
+        padding: 0 1rem;
+    }
+    
+    .contatos1 {
+        padding-left: 1rem;
+    }
+    
+    .telefone, .whats, .email {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.25rem;
+    }
+    
+    .foot-logo {
+        width: 95%;
+    }
+    
+    .contatos {
+        width: 95%;
+        padding: 1rem 0;
+    }
+}
+
+/* Responsividade para smartphones pequenos */
+@media (max-width: 36rem) {
+    .titulopesquisa {
+        margin: 0.5rem;
+    }
+    
+    .imagemprincipal {
+        aspect-ratio: 2/1;
+    }
+    
+    .artigos h3 {
+        text-align: center;
+    }
+    
+    .textoartigos {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+    
+    .textoartigos p {
+        flex: 1 1 45%;
+        min-width: 10rem;
+        text-align: center;
+    }
+}
+
+/* Responsividade para telas muito pequenas */
+@media (max-width: 25rem) {
+    .imagemprincipal {
+        aspect-ratio: 1.5/1;
+    }
+    
+    .textoartigos p {
+        flex: 1 1 100%;
+    }
+    
+    .cont1, .cont2, .cont3 {
+        min-width: auto;
+        width: 100%;
+    }
+}
+
+/* Ajustes para zoom */
+@media (min-resolution: 150dpi) and (max-resolution: 300dpi) {
+    .titulopesquisa {
+        gap: 1rem;
+    }
+    
+    main {
+        gap: 1rem;
+    }
+    
+    .contatos {
+        gap: 1rem;
+    }
+}
+
+/* Melhorias de acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    .icon img {
+        transition: none;
+    }
+    
+    .icon img:hover {
+        transform: none;
+    }
+}
+
+/*botoes de sair e favoritos*/
+ #btn-favoritos,
+#btn-logout {
+    background-color:white;
+    color: #FE4F3F;
+    border: 2px solid #FE4F3F;
+    border-radius: 8px;
+    padding: 5px 12px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s, border 0.3s;
+    margin-left: 5px;
+}
+
+.btn-favoritos:hover,
+.btn-logout:hover {
+    background-color: var(--Cor-Primaria);
+    color: var(--Branco);
+    border-color: var(--Cor-Primaria);
+}
+
+
+
+@media screen and (max-width: 480px) {
+.faleconosco{
+display: none;
+}
+
+.titulopesquisa{
+    display: none;
+}
+.imagemprincipal    {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    object-fit: cover;
+}
+.artigos{
+display: none   ;    
+}
+
+.contatos1 {
+    flex: 0 0 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    color: #F65B38;
+    gap: 1rem;
+}
+}
+
