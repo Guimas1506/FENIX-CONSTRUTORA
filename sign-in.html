@@ -4,11 +4,11 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Sign-in</title>
-   <link rel="stylesheet" href="../Styles/footer.css">
-   <link rel="stylesheet" href="../Styles/header.css">
+   <link rel="stylesheet" href="./Styles/footer.css">
+   <link rel="stylesheet" href="./Styles/header.css">
 
    <!-- Firebase via CDN -->
-     <script type="module">
+      <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 import {
   getAuth,
@@ -16,10 +16,7 @@ import {
   updateProfile,
   GoogleAuthProvider,
   FacebookAuthProvider,
-  signInWithPopup,
-  signInWithEmailAndPassword,
-  fetchSignInMethodsForEmail,
-  linkWithCredential
+  signInWithPopup
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
 const firebaseConfig = {
@@ -36,14 +33,12 @@ const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 const facebookProvider = new FacebookAuthProvider();
 
-// Função para atualizar cor dos requisitos
 function atualizarRequisito(id, ok) {
   const el = document.getElementById(id);
   if (!el) return;
   el.style.color = ok ? "green" : "red";
 }
 
-// Função para validar senha e atualizar barra de força (imagem)
 window.validarSenha = function() {
   const senha = document.getElementById("password").value;
 
@@ -52,24 +47,28 @@ window.validarSenha = function() {
   const temEspecial = /[!@#$%^&*(),.?":{}|<>]/.test(senha);
   const semEspacos = !/\s/.test(senha);
 
-  // Atualiza os requisitos mínimos
   atualizarRequisito("req-caracteres", letrasCount >= 6);
   atualizarRequisito("req-especial", temEspecial);
   atualizarRequisito("req-espacos", semEspacos);
 
-  // Atualiza imagem da barra de força
-  const barraImg = document.getElementById("senha-forca-img");
-  let nivel = 1; // fraca por padrão
-  if (letrasCount >= 6 && temEspecial && semEspacos) nivel = 2; // média
-  if (nivel === 2 && letrasCount >= 8 && numerosCount >= 2) nivel = 3; // forte
+  // Atualiza ícone
+  const infoIcon = document.getElementById("infoIcon");
+  if (letrasCount >= 6 && temEspecial && semEspacos) {
+    infoIcon.style.backgroundColor = "green";
+  } else {
+    infoIcon.style.backgroundColor = "red";
+  }
 
-  // Escolhe a imagem de acordo com o nível
-  if (nivel === 1) barraImg.src = "../img/senha-fraca.png";
-  else if (nivel === 2) barraImg.src = "../img/senha-media.png";
-  else if (nivel === 3) barraImg.src = "../img/senha-forte.png";
+  const barraImg = document.getElementById("senha-forca-img");
+  let nivel = 1;
+  if (letrasCount >= 6 && temEspecial && semEspacos) nivel = 2;
+  if (nivel === 2 && letrasCount >= 8 && numerosCount >= 2) nivel = 3;
+
+  if (nivel === 1) barraImg.src = "./img/senha-fraca.png";
+  else if (nivel === 2) barraImg.src = "./img/senha-media.png";
+  else if (nivel === 3) barraImg.src = "./img/senha-forte.png";
 };
 
-// Cadastro com email/senha
 window.registerUser = async function(event) {
   event.preventDefault();
 
@@ -79,7 +78,6 @@ window.registerUser = async function(event) {
   const confSenha = document.getElementById("confirm-password").value;
 
   const letrasCount = (senha.match(/[a-zA-Z]/g) || []).length;
-  const numerosCount = (senha.match(/[0-9]/g) || []).length;
   const temEspecial = /[!@#$%^&*(),.?":{}|<>]/.test(senha);
   const semEspacos = !/\s/.test(senha);
 
@@ -105,7 +103,6 @@ window.registerUser = async function(event) {
   }
 };
 
-// Login social
 async function socialLogin(provider) {
   try {
     const result = await signInWithPopup(auth, provider);
@@ -121,12 +118,12 @@ window.registerGoogle = () => socialLogin(googleProvider);
 window.registerFacebook = () => socialLogin(facebookProvider);
 </script>
 </head>
-<link rel="stylesheet" href="../Styles/sign-in.css">
+<link rel="stylesheet" href="./Styles/sign-in.css">
     <header>
   <div class="navbar">
     <div class="logo">
         <a href="./index.html">
-      <img src="../img/fenix51.png" alt="" />
+      <img src="./img/fenix51.png" alt="" />
     </a>
     <div class="title-fenix">
       <h3>FÊNIX <span>CONSTRUTORA</span></h3>
@@ -150,7 +147,7 @@ window.registerFacebook = () => socialLogin(facebookProvider);
 
     <div class="displau-subs" >
         <div class="icon-person">
-            <img src="../img/icon-usuario.png" alt="">
+            <img src="./img/icon-usuario.png" alt="">
         </div>
     </div>
 
@@ -177,7 +174,7 @@ window.registerFacebook = () => socialLogin(facebookProvider);
     
     </div>
         <button id="btnLogoutModal">
-        <img src="../img/sair.png" alt="">
+        <img src="./img/sair.png" alt="">
     </button>
 
   </div>
@@ -191,7 +188,7 @@ window.registerFacebook = () => socialLogin(facebookProvider);
   <div class="titulos1">
     <h3><b>SEJA AGORA</b> UM CLIENTE FÊNIX</h3>
     <h1>SIGN-IN</h1>
-    <img src="../img/icon-usuario.png" alt="icon-usuario" />
+    <img src="./img/icon-usuario.png" alt="icon-usuario" />
   </div>
 
   <form onsubmit="registerUser(event)">
@@ -202,18 +199,20 @@ window.registerFacebook = () => socialLogin(facebookProvider);
     <input type="email" placeholder="E-mail" id="email" required />
 
     <label for="password">Digite sua senha</label>
-    <input type="password" placeholder="Senha" id="password" required oninput="validarSenha()" />
 
-    <!-- IMAGEM DA BARRA DE FORÇA PADRONIZADA -->
-    <div class="password-strength">
-      <img id="senha-forca-img" src="../img/senha-fraca.png" alt="Força da senha" />
+    <!-- CAMPO DE SENHA + ÍCONE -->
+    <div class="senha-container">
+      <input type="password" placeholder="Senha" id="password" required oninput="validarSenha()" />
+      <div class="info-icon" id="infoIcon">i</div>
+      <div class="tooltip">
+        <p id="req-caracteres">Mínimo de 6 letras (a-z ou A-Z)</p>
+        <p id="req-especial">Pelo menos 1 caractere especial (!@#$%^&*...)</p>
+        <p id="req-espacos">Não pode conter espaços</p>
+      </div>
     </div>
 
-    <!-- Requisitos -->
-    <div id="requisitos-senha">
-      <p id="req-caracteres" class="requisito">Mínimo de 6 letras (a-z ou A-Z)</p>
-      <p id="req-especial" class="requisito">Pelo menos 1 caractere especial (!@#$%^&*...)</p>
-      <p id="req-espacos" class="requisito">Não pode conter espaços</p>
+    <div class="password-strength">
+      <img id="senha-forca-img" src="./img/senha-fraca.png" alt="Força da senha" />
     </div>
 
     <label for="confirm-password">Confirme sua senha</label>
@@ -226,10 +225,10 @@ window.registerFacebook = () => socialLogin(facebookProvider);
     </div>
 
     <div class="opcoes-login">
-      <img src="../img/logo-google.png" alt="logo-google" onclick="registerGoogle()" style="cursor:pointer;" />
-      <img src="../img/logo-facebook.png" alt="logo-facebook" style="cursor:pointer;" />
+      <img src="./img/logo-google.png" alt="logo-google" onclick="registerGoogle()" style="cursor:pointer;" />
+      <img src="./img/logo-facebook.png" alt="logo-facebook" style="cursor:pointer;" />
       <!-- onclick="registerFacebook()"  -->
-      <img src="../img/logo-apple.png" alt="logo-apple" />
+      <img src="./img/logo-apple.png" alt="logo-apple" />
     </div>
 
     <div class="termos">
@@ -248,7 +247,7 @@ window.registerFacebook = () => socialLogin(facebookProvider);
         <!-- Seção do logotipo e título -->
         <div class="foot-logo">
           <!-- Logotipo da empresa -->
-          <img src="../img/image 39.svg" alt="Logo" class="logo" />
+          <img src="./img/image 39.svg" alt="Logo" class="logo" />
           <div class="titulos">
           <!-- Título principal -->
           <div class="titulo"><p>FÊNIX</p></div>
@@ -267,7 +266,7 @@ window.registerFacebook = () => socialLogin(facebookProvider);
               <div class="conte">
                 <!-- Ícone do Instagram -->
                 <div class="icon">
-                  <img src="../img/insta.png" alt="">
+                  <img src="./img/insta.png" alt="">
                 </div>
                 <!-- Nome da rede social -->
                 <div class="rede">

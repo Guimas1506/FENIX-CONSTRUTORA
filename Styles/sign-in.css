@@ -164,6 +164,60 @@ text-align: center;
 
 }
 
+/* SENHA + ÍCONE */
+   .senha-container {
+      position: relative;
+      width: 100%;
+   }
+
+   .senha-container input {
+      width: 100%;
+      padding-right: 40px; /* espaço para o ícone não sobrepor o texto */
+   }
+
+   .info-icon {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      background: red;
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+   }
+
+   .tooltip {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 105%;
+      transform: translateY(-50%);
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 8px;
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+      z-index: 10;
+      width: 220px;
+   }
+
+   .tooltip p {
+      margin: 5px 0;
+      font-size: 14px;
+      color: red;
+   }
+
+   .info-icon:hover + .tooltip {
+      display: block;
+   }
+
  /* Barrinha de força */
      .password-strength {
   display: flex;           /* permite centralizar melhor */
