@@ -377,7 +377,6 @@ main {
     display: flex;
     flex-direction: column;
     color: #F65B38;
-    border: solid;
     height: 40%;
 align-items: center;
 justify-content: center;
@@ -653,7 +652,6 @@ margin-bottom:10px;
     justify-content: center;
 }
 .ajuste-atendimentos{
-    border:solid,#F65B38 ;
    display: flex;
    justify-content: center;
    align-items: center;
