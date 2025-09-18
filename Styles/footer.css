@@ -251,6 +251,7 @@ a{
     color: var(--Branco);
 }
 
+
 @media screen and (max-width: 480px) {
   
     /* footer */
@@ -269,16 +270,19 @@ a{
 font-size: 12px;
     position: relative;
     left: 33px;}
-.cont2{
-    margin-left: -50px;
+.cont2{position: relative;
+    left: -70px;
+    margin-left: 60px;
     margin-right: -50px;
 font-size: 12px;}
 
 .cont3{
     position: relative;
-    left: -33px;
+    left: -65px;
 font-size: 12px;
 margin-right: -50px;}
 
 body{overflow-x: hidden;}
-    }
+}
+
+
