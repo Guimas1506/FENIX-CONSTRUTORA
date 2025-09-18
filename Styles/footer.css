@@ -847,31 +847,5 @@ margin-right:80px;
 
 
 
-@media screen and (max-width: 480px) {
-.faleconosco{
-display: none;
-}
 
-.titulopesquisa{
-    display: none;
-}
-.imagemprincipal    {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    object-fit: cover;
-}
-.artigos{
-display: none   ;    
-}
-
-.contatos1 {
-    flex: 0 0 15rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    color: #F65B38;
-    gap: 1rem;
-}
-}
 
