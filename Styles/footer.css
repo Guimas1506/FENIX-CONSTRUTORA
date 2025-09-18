@@ -250,3 +250,35 @@ a{
 .direitos-reservados{
     color: var(--Branco);
 }
+
+@media screen and (max-width: 480px) {
+  
+    /* footer */
+.titulos{
+    margin-left:-280px 
+}
+
+.foot-logo{
+    margin-left: 280px;
+}
+.footer h3{
+
+    font-size: 12px;
+}
+.cont1{
+font-size: 12px;
+    position: relative;
+    left: 33px;}
+.cont2{
+    margin-left: -50px;
+    margin-right: -50px;
+font-size: 12px;}
+
+.cont3{
+    position: relative;
+    left: -33px;
+font-size: 12px;
+margin-right: -50px;}
+
+body{overflow-x: hidden;}
+    }
