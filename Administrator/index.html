@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
@@ -12,6 +12,55 @@
       rel="stylesheet"
     />
     <title>Administrator</title>
+
+    <!-- Proteção de página Admin -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+      import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+      import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+      // 🔧 CONFIG DO SEU PROJETO FIREBASE
+      const firebaseConfig = {
+        apiKey: "AIzaSyCYDGROxguHYX-YA-J-HqRRGSF3uN-ZEAs",
+        authDomain: "fenix-construtora-a34b5.firebaseapp.com",
+        projectId: "fenix-construtora-a34b5",
+        storageBucket: "fenix-construtora-a34b5.firebasestorage.app",
+        messagingSenderId: "928009241790",
+        appId: "1:928009241790:web:333b16b217a2ece01d8aef"
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const db = getFirestore(app);
+
+      // 🔒 VERIFICA SE USUÁRIO É ADMIN
+      onAuthStateChanged(auth, async (user) => {
+        if (!user) {
+          console.warn("Nenhum usuário logado, redirecionando para login...");
+          window.location.href = "../log-in.html"; 
+          return;
+        }
+
+        try {
+          const docRef = doc(db, "users", user.uid);
+          const docSnap = await getDoc(docRef);
+
+          if (docSnap.exists()) {
+            const data = docSnap.data();
+            if (data.admin === true) {
+              console.log("✅ Acesso de administrador confirmado!");
+              return; // deixa o usuário continuar
+            }
+          }
+
+          console.warn("Usuário logado mas não é admin. Redirecionando...");
+          window.location.href = "../index.html";
+        } catch (error) {
+          console.error("Erro ao verificar admin:", error);
+          window.location.href = "../index.html";
+        }
+      });
+    </script>
   </head>
   <body>
     <nav>
@@ -36,97 +85,77 @@
     <div class="conteud">
       <aside>
         <div class="menu">
-          <a href="#">Inicio</a>
+          <a href="../index.html">Inicio</a>
           <a href="#">Dashboard</a>
-          <a href="#">gerenciar</a>
+          <a href="#">Gerenciar</a>
         </div>
       </aside>
 
       <main>
-        <div class="indicator">
-
-        </div>
-
+        <div class="indicator"></div>
         <div class="title-page">
-            <h2>Produtos</h2>
+          <h2>Produtos</h2>
         </div>
-        
       </main>
-
     </div>
 
     <footer>
-      <!-- Início do rodapé -->
       <div class="rodape">
-        <!-- Seção do logotipo e título -->
         <div class="foot-logo">
-          <!-- Logotipo da empresa -->
           <img src="img/logo1.png" alt="Logo" class="logo" />
           <div class="titulos">
-            <!-- Título principal -->
             <div class="titulo">
               <p>FÊNIX</p>
             </div>
-            <!-- Subtítulo -->
             <div class="subtitle">
               <p>CONSTRUTORA</p>
             </div>
           </div>
         </div>
-        <!-- Seção de contatos -->
+
         <div class="contatos">
-          <!-- Primeira coluna: Redes sociais -->
           <div class="cont1">
             <div class="cont-title1">
-              <!-- Título da seção -->
               <h3>REDES SOCIAIS</h3>
             </div>
             <a href="https://www.instagram.com/fenixconstroi/#" target="_blank">
               <div class="conte">
-                <!-- Ícone do Instagram -->
                 <div class="icon">
                   <img src="img/instagram.png" alt="" />
                 </div>
-                <!-- Nome da rede social -->
                 <div class="rede">
                   <p>INSTAGRAM</p>
                 </div>
               </div>
             </a>
           </div>
-          <!-- Segunda coluna: Informações sobre a empresa -->
+
           <div class="cont2">
             <div class="titulo2">
-              <!-- Título da seção -->
               <h3>NOSSA EMPRESA</h3>
             </div>
             <div class="abins">
-              <!-- Links ou informações sobre a empresa -->
               <p>SOBRE NÓS</p>
               <p>CONTATO</p>
               <p>SERVIÇOS</p>
             </div>
           </div>
-          <!-- Terceira coluna: Produtos da empresa -->
+
           <div class="cont3">
             <div class="titulo3">
-              <!-- Título da seção -->
               <h3>NOSSOS PRODUTOS</h3>
             </div>
             <div class="produts">
-              <!-- Lista de produtos -->
               <p>PROJETOS</p>
               <p>IMÓVEIS</p>
             </div>
           </div>
         </div>
-        <!-- Seção de direitos reservados -->
 
         <div class="direitos-reservados">
           <p>&copy; 2025 Fênix Construtora. Todos os direitos reservados.</p>
         </div>
       </div>
-      <!-- Fim do rodapé -->
     </footer>
   </body>
 </html>

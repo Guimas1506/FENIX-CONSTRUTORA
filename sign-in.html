@@ -6,18 +6,20 @@
    <title>Sign-in</title>
    <link rel="stylesheet" href="./Styles/footer.css">
    <link rel="stylesheet" href="./Styles/header.css">
+   <link rel="stylesheet" href="./Styles/sign-in.css">
 
    <!-- Firebase via CDN -->
-      <script type="module">
+   <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  updateProfile,
-  GoogleAuthProvider,
-  FacebookAuthProvider,
-  signInWithPopup
+import { 
+  getAuth, 
+  createUserWithEmailAndPassword, 
+  updateProfile, 
+  GoogleAuthProvider, 
+  FacebookAuthProvider, 
+  signInWithPopup 
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCYDGROxguHYX-YA-J-HqRRGSF3uN-ZEAs",
@@ -30,6 +32,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app); // Firestore
 const googleProvider = new GoogleAuthProvider();
 const facebookProvider = new FacebookAuthProvider();
 
@@ -41,7 +44,6 @@ function atualizarRequisito(id, ok) {
 
 window.validarSenha = function() {
   const senha = document.getElementById("password").value;
-
   const letrasCount = (senha.match(/[a-zA-Z]/g) || []).length;
   const numerosCount = (senha.match(/[0-9]/g) || []).length;
   const temEspecial = /[!@#$%^&*(),.?":{}|<>]/.test(senha);
@@ -51,7 +53,6 @@ window.validarSenha = function() {
   atualizarRequisito("req-especial", temEspecial);
   atualizarRequisito("req-espacos", semEspacos);
 
-  // Atualiza ícone
   const infoIcon = document.getElementById("infoIcon");
   if (letrasCount >= 6 && temEspecial && semEspacos) {
     infoIcon.style.backgroundColor = "green";
@@ -94,7 +95,16 @@ window.registerUser = async function(event) {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
     const user = userCredential.user;
+
     await updateProfile(user, { displayName: nome });
+
+    // Adiciona usuário ao Firestore com admin = false
+    await setDoc(doc(db, "users", user.uid), {
+      nome: nome,
+      email: email,
+      admin: false
+    });
+
     alert("Cadastro realizado com sucesso! Bem-vindo, " + (nome || email));
     window.location.href = "index.html";
   } catch (error) {
@@ -118,6 +128,7 @@ window.registerGoogle = () => socialLogin(googleProvider);
 window.registerFacebook = () => socialLogin(facebookProvider);
 </script>
 </head>
+
 <link rel="stylesheet" href="./Styles/sign-in.css">
     <header>
   <div class="navbar">
