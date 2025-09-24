@@ -5,60 +5,89 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Imóveis</title>
+    <link rel="stylesheet" href="./Styles/header.css">
+  <link rel="stylesheet" href="./Styles/footer.css">
 </head>
 <link rel="stylesheet" href="./Styles/imovel.css">
-<header>
-  <!--AQUI COMEÇA AS CONFIGURAÇÕES DO NAVBAR-->
-  <div class="navbar">
-    <!--AQUI É A LOGO DA FENIX-->
-    <div class="logo">
-      <img src="img/logo.png" alt="" />
+  <header>
+    <div class="navbar">
+      <div class="logo">
+        <a href="./index.html">
+          <img src="./img/fenix51.png" alt="" />
+        </a>
+        <div class="title-fenix">
+          <h3>FÊNIX <span>CONSTRUTORA</span></h3>
 
-    </div>
-    <!--AQUI SÃO AS ABAS DO SITE-->
-    <div class="abas">
-                <a href="./index.html">
-            <p>Inicio</p>
-          </a>
-          <a href="./sobre.html">
-            <p>Sobre Nós</p>
-          </a>
-          <a href="./imoveis.html">
-            <p>Imóveis</p>
-          </a>
-          <a href="./serviços.html">
-            <p>Serviços</p>
-          </a>
-          <a href="./contato.html">
-            <p>Contato</p>
-          </a>
-    </div>
-    <!--AQUI É A BARRINHA BRANCA QUE SEPARA AS ABAS DO LOGIN-->
-    <div class="barrinha">
-      <hr>
-    </div>
-    <!--AQUI SÃO OS BOTÕES DO LOGIN-->
-          <div class="login">
-        <div class="sing">
-          <a href="./log-in.html">
-          <button id="but1" type="button">
-            <p>Login</p>
-          </button>
-          </a>
-        </div>
-
-        <div class="log">
-          <a href="./sign-in.html">
-          <button id="but2" type="button">
-            <p>Sign-in</p>
-          </button>
-          </a>
         </div>
       </div>
 
-  </div>
+      <div class="abas">
+        <a href="./index.html">
+          <p>Inicio</p>
+        </a>
+        <a href="./sobre.html">
+          <p>Sobre Nós</p>
+        </a>
+        <a href="">
+          <p>Imóveis</p>
+        </a>
+        <a href="./serviços.html">
+          <p>Serviços</p>
+        </a>
+        <a href="./contato.html">
+          <p>Contato</p>
+        </a>
+        <a href="./Administrator/index.html" id="adminButton" style="display:none;">
+        <p>ADM</p>
+        </a>
+        
+      </div>
 
-</header>
+      <div class="barra">
+        <hr>
+      </div>
+
+
+
+      <!-- Menu do usuário logado (vai substituir o login/sign-in) -->
+
+      <div class="displau-subs">
+        <div class="icon-person">
+          <img src="./img/icon-usuario.png" alt="">
+        </div>
+      </div>
+
+      <div id="userArea" class="modal" style="display:none;">
+        <div class="modal-content">
+          <span id="closeUserArea" class="close">&times;</span>
+          <h2 id="welcomeMsg">Bem-vindo(a), Usuário</h2>
+          <p id="userEmail">Email do usuário</p>
+
+          <div class="logadores">
+
+            <a id="logi" href="./log-in.html">
+              <button id="log">
+                <p>Login</p>
+              </button>
+            </a>
+
+
+            <a id="registeri" href="./sign-in.html">
+              <button id="register">
+                <p>Sign-in</p>
+              </button>
+            </a>
+
+          </div>
+          <button id="btnLogoutModal">
+            <img src="./img/sair.png" alt="">
+          </button>
+
+        </div>
+      </div>
+
+    </div>
+  </header>
 
 <body>
 

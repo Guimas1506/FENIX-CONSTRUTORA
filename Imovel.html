@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imovel</title>
+    <link rel="stylesheet" href="./Styles/header.css">
+  <link rel="stylesheet" href="./Styles/footer.css">
+  <link rel="stylesheet" href="./Styles/imolado.css">
+</head>
+
+
+<body>
+  <header>
+    <div class="navbar">
+      <div class="logo">
+        <a href="./index.html">
+          <img src="./img/fenix51.png" alt="" />
+        </a>
+        <div class="title-fenix">
+          <h3>FÊNIX <span>CONSTRUTORA</span></h3>
+
+        </div>
+      </div>
+
+      <div class="abas">
+        <a href="./index.html">
+          <p>Inicio</p>
+        </a>
+        <a href="./sobre.html">
+          <p>Sobre Nós</p>
+        </a>
+        <a href="">
+          <p>Imóveis</p>
+        </a>
+        <a href="./serviços.html">
+          <p>Serviços</p>
+        </a>
+        <a href="./contato.html">
+          <p>Contato</p>
+        </a>
+        <a href="./Administrator/index.html" id="adminButton" style="display:none;">
+        <p>ADM</p>
+        </a>
+        
+      </div>
+
+      <div class="barra">
+        <hr>
+      </div>
+
+
+
+      <!-- Menu do usuário logado (vai substituir o login/sign-in) -->
+
+      <div class="displau-subs">
+        <div class="icon-person">
+          <img src="./img/icon-usuario.png" alt="">
+        </div>
+      </div>
+
+      <div id="userArea" class="modal" style="display:none;">
+        <div class="modal-content">
+          <span id="closeUserArea" class="close">&times;</span>
+          <h2 id="welcomeMsg">Bem-vindo(a), Usuário</h2>
+          <p id="userEmail">Email do usuário</p>
+
+          <div class="logadores">
+
+            <a id="logi" href="./log-in.html">
+              <button id="log">
+                <p>Login</p>
+              </button>
+            </a>
+
+
+            <a id="registeri" href="./sign-in.html">
+              <button id="register">
+                <p>Sign-in</p>
+              </button>
+            </a>
+
+          </div>
+          <button id="btnLogoutModal">
+            <img src="./img/sair.png" alt="">
+          </button>
+
+        </div>
+      </div>
+
+    </div>
+  </header>
+  <div class="fav1">
+    <p style="color:#F65B38;" class="favoritos">Favoritos <img src="img/coracao.png" alt=""></p>
+  </div>
+  <main>
+
+    <h1 style="color: #7C7C7C;">Encontre o imóvel feito para você</h1>
+        <div class="produts-list">
+
+      <div class="nav-list">
+        <div class="pesq-bar">
+          <input type="search" name="" id="pesq-imovel" placeholder="Pesquisar Imóvel">
+        </div>
+
+        <div class="filtro">
+          <div class="icon-filtro">
+            <h2>Filtros</h2>
+            <img id="filtr" src="./img/filtro.png" alt="">
+          </div>
+
+          <div class="filtrosas">
+            <select name="tipo-imovel" aria-placeholder="Na Planta" id="tipo-imovel">
+              <option value="" disabled selected>Na Planta</option>
+              <option value="casa">Casa</option>
+              <option value="apartamento">Apartamento</option>
+              <option value="terreno">Terreno</option>
+              <option value="comercial">Comercial</option>
+            </select>
+          </div>
+
+          <div class="filtrosas2">
+            <select name="tipo-imovel2" id="tipo-imovel2">
+              <option value="" disabled selected>UF</option>
+              <option value="casa">Casa</option>
+              <option value="apartamento">Apartamento</option>
+              <option value="terreno">Terreno</option>
+              <option value="comercial">Comercial</option>
+            </select>
+          </div>
+
+          <div class="filtrosas3">
+            <h3 id="preço">Preço</h3>
+            <input type="range" name="preco" id="preco" min="1000" max="10000" step="500" value="1000">
+            <h3 id="all-preço">Todos os Preços</h3>
+          </div>
+        </div>
+
+
+
+      </div>
+    <div class="imoveis">
+      <div class="imovel1">
+
+
+        <img src="img/casa1.png" alt="">
+        <div class=" imoveldesc">
+          <p style="margin-left:25px;color: #F65B38;">Imóvel1</p>
+          <div style="margin-left: 25px; margin-top: -15px;" class="infolocal">
+            <p style="color: rgb(0, 0, 0); margin-right: 50px;">Cidade - UF</p>
+            <p style="color: rgb(0, 0, 0); margin-right: 50px;">Rua Nº</p>
+          </div>
+          <h2 style="margin-left: 25px ; margin-top: -10px;">R$ 000,00</h2>
+          <p style="margin-top: -10px; margin-left: 19px;">*m² tot *quartos *banheiros *vagas </p>
+          <p style="margin-left: 20px;margin-top: -5px;">Moderno • Espaçoso • Bem localizado • Confortável • Pronto
+            para
+            morar</p>
+          <div class="situacaoatual">
+            <img style="width: 20px; height: 20px; margin-left: 3px;" src="img/naplanta.png" alt="">
+            <p style="font-weight: bolder; margin-top: -11px; margin-right: 10px;">Na planta</p>
+            <p style="font-weight: bolder; margin-top: -11px;margin-right:500px; ">Prazo</p>
+            <div class="nomeimovel">
+
+              <img src="img/iconecoracao.png" alt="">
+              <img src="img/Iconetelefone-removebg-preview.png" alt="">
+              <img style="margin-right: 30px;" src="img/Iconewhats-removebg-preview.png" alt="">
+              
+              <button
+                style="margin-bottom:30px ;background-color: #ff6746; color: #fff; border: none; padding: 10px 40px; border-radius: 10px; cursor: pointer; font-size: 16px;">
+                Consultar
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="imovel2">
+
+
+        <img src="img/casa1.png" alt="">
+        <div class=" imoveldesc">
+          <p style="margin-left:25px;color: #F65B38;">Imóvel1</p>
+          <div style="margin-left: 25px; margin-top: -15px;" class="infolocal">
+            <p style="color: rgb(0, 0, 0); margin-right: 50px;">Cidade - UF</p>
+            <p style="color: rgb(0, 0, 0); margin-right: 50px;">Rua Nº</p>
+          </div>
+          <h2 style="margin-left: 25px ; margin-top: -10px;">R$ 000,00</h2>
+          <p style="margin-top: -10px; margin-left: 19px;">*m² tot *quartos *banheiros *vagas </p>
+          <p style="margin-left: 20px;margin-top: -5px;">Moderno • Espaçoso • Bem localizado • Confortável • Pronto
+            para
+            morar</p>
+          <div class="situacaoatual">
+            <img style="width: 20px; height: 20px; margin-left: 3px;" src="img/naplanta.png" alt="">
+            <p style="font-weight: bolder; margin-top: -11px; margin-right: 10px;">Na planta</p>
+            <p style="font-weight: bolder; margin-top: -11px;margin-right:500px; ">Prazo</p>
+            <div class="nomeimovel">
+
+              <img src="img/iconecoracao.png" alt="">
+              <img src="img/Iconetelefone-removebg-preview.png" alt="">
+              <img style="margin-right: 30px;" src="img/Iconewhats-removebg-preview.png" alt="">
+              <button
+                style="margin-bottom:30px ;background-color: #ff6746; color: #fff; border: none; padding: 10px 40px; border-radius: 10px; cursor: pointer; font-size: 16px;">
+                Consultar
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="imovel3">
+
+
+        <img src="img/casa1.png" alt="">
+        <div class=" imoveldesc">
+          <p style="margin-left:25px;color: #F65B38;">Imóvel1</p>
+          <div style="margin-left: 25px; margin-top: -15px;" class="infolocal">
+            <p style="color: rgb(0, 0, 0); margin-right: 50px;">Cidade - UF</p>
+            <p style="color: rgb(0, 0, 0); margin-right: 50px;">Rua Nº</p>
+          </div>
+          <h2 style="margin-left: 25px ; margin-top: -10px;">R$ 000,00</h2>
+          <p style="margin-top: -10px; margin-left: 19px;">*m² tot *quartos *banheiros *vagas </p>
+          <p style="margin-left: 20px;margin-top: -5px;">Moderno • Espaçoso • Bem localizado • Confortável • Pronto
+            para
+            morar</p>
+          <div class="situacaoatual">
+            <img style="width: 20px; height: 20px; margin-left: 3px;" src="img/naplanta.png" alt="">
+            <p style="font-weight: bolder; margin-top: -11px; margin-right: 10px;">Na planta</p>
+            <p style="font-weight: bolder; margin-top: -11px;margin-right:500px; ">Prazo</p>
+            <div class="nomeimovel">
+
+              <img src="img/iconecoracao.png" alt="">
+              <img src="img/Iconetelefone-removebg-preview.png" alt="">
+              <img style="margin-right: 30px;" src="img/Iconewhats-removebg-preview.png" alt="">
+              <button
+                style="margin-bottom:30px ;background-color: #ff6746; color: #fff; border: none; padding: 10px 40px; border-radius: 10px; cursor: pointer; font-size: 16px;">
+                Consultar
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="imovel4">
+
+
+        <img src="img/casa1.png" alt="">
+        <div class=" imoveldesc">
+          <p style="margin-left:25px;color: #F65B38;">Imóvel1</p>
+          <div style="margin-left: 25px; margin-top: -15px;" class="infolocal">
+            <p style="color: rgb(0, 0, 0); margin-right: 50px;">Cidade - UF</p>
+            <p style="color: rgb(0, 0, 0); margin-right: 50px;">Rua Nº</p>
+          </div>
+          <h2 style="margin-left: 25px ; margin-top: -10px;">R$ 000,00</h2>
+          <p style="margin-top: -10px; margin-left: 19px;">*m² tot *quartos *banheiros *vagas </p>
+          <p style="margin-left: 20px;margin-top: -5px;">Moderno • Espaçoso • Bem localizado • Confortável • Pronto
+            para
+            morar</p>
+          <div class="situacaoatual">
+            <img style="width: 20px; height: 20px; margin-left: 3px;" src="img/naplanta.png" alt="">
+            <p style="font-weight: bolder; margin-top: -11px; margin-right: 10px;">Na planta</p>
+            <p style="font-weight: bolder; margin-top: -11px;margin-right:500px; ">Prazo</p>
+            <div class="nomeimovel">
+
+              <img src="img/iconecoracao.png" alt="">
+              <img src="img/Iconetelefone-removebg-preview.png" alt="">
+              <img style="margin-right: 30px;" src="img/Iconewhats-removebg-preview.png" alt="">
+              <button
+                style="margin-bottom:30px ;background-color: #ff6746; color: #fff; border: none; padding: 10px 40px; border-radius: 10px; cursor: pointer; font-size: 16px;">
+                Consultar
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="imovel5">
+
+
+        <img src="img/casa1.png" alt="">
+        <div class=" imoveldesc">
+          <p style="margin-left:25px;color: #F65B38;">Imóvel1</p>
+          <div style="margin-left: 25px; margin-top: -15px;" class="infolocal">
+            <p style="color: rgb(0, 0, 0); margin-right: 50px;">Cidade - UF</p>
+            <p style="color: rgb(0, 0, 0); margin-right: 50px;">Rua Nº</p>
+          </div>
+          <h2 style="margin-left: 25px ; margin-top: -10px;">R$ 000,00</h2>
+          <p style="margin-top: -10px; margin-left: 19px;">*m² tot *quartos *banheiros *vagas </p>
+          <p style="margin-left: 20px;margin-top: -5px;">Moderno • Espaçoso • Bem localizado • Confortável • Pronto
+            para
+            morar</p>
+          <div class="situacaoatual">
+            <img style="width: 20px; height: 20px; margin-left: 3px;" src="img/naplanta.png" alt="">
+            <p style="font-weight: bolder; margin-top: -11px; margin-right: 10px;">Na planta</p>
+            <p style="font-weight: bolder; margin-top: -11px;margin-right:500px; ">Prazo</p>
+            <div class="nomeimovel">
+
+              <img src="img/iconecoracao.png" alt="">
+              <img src="img/Iconetelefone-removebg-preview.png" alt="">
+              <img style="margin-right: 30px;" src="img/Iconewhats-removebg-preview.png" alt="">
+              <button
+                style="margin-bottom:30px ;background-color: #ff6746; color: #fff; border: none; padding: 10px 40px; border-radius: 10px; cursor: pointer; font-size: 16px;">
+                Consultar
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="imovel6">
+
+
+        <img src="img/casa1.png" alt="">
+        <div class=" imoveldesc">
+          <p style="margin-left:25px;color: #F65B38;">Imóvel1</p>
+          <div style="margin-left: 25px; margin-top: -15px;" class="infolocal">
+            <p style="color: rgb(0, 0, 0); margin-right: 50px;">Cidade - UF</p>
+            <p style="color: rgb(0, 0, 0); margin-right: 50px;">Rua Nº</p>
+          </div>
+          <h2 style="margin-left: 25px ; margin-top: -10px;">R$ 000,00</h2>
+          <p style="margin-top: -10px; margin-left: 19px;">*m² tot *quartos *banheiros *vagas </p>
+          <p style="margin-left: 20px;margin-top: -5px;">Moderno • Espaçoso • Bem localizado • Confortável • Pronto
+            para
+            morar</p>
+          <div class="situacaoatual">
+            <img style="width: 20px; height: 20px; margin-left: 3px;" src="img/naplanta.png" alt="">
+            <p style="font-weight: bolder; margin-top: -11px; margin-right: 10px;">Na planta</p>
+            <p style="font-weight: bolder; margin-top: -11px;margin-right:500px; ">Prazo</p>
+            <div class="nomeimovel">
+
+              <img src="img/iconecoracao.png" alt="">
+              <img src="img/Iconetelefone-removebg-preview.png" alt="">
+              <img style="margin-right: 30px;" src="img/Iconewhats-removebg-preview.png" alt="">
+              <button
+                style="margin-bottom:30px ;background-color: #ff6746; color: #fff; border: none; padding: 10px 40px; border-radius: 10px; cursor: pointer; font-size: 16px;">
+                Consultar
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="imovel7">
+
+
+        <img src="img/casa1.png" alt="">
+        <div class=" imoveldesc">
+          <p style="margin-left:25px;color: #F65B38;">Imóvel1</p>
+          <div style="margin-left: 25px; margin-top: -15px;" class="infolocal">
+            <p style="color: rgb(0, 0, 0); margin-right: 50px;">Cidade - UF</p>
+            <p style="color: rgb(0, 0, 0); margin-right: 50px;">Rua Nº</p>
+          </div>
+          <h2 style="margin-left: 25px ; margin-top: -10px;">R$ 000,00</h2>
+          <p style="margin-top: -10px; margin-left: 19px;">*m² tot *quartos *banheiros *vagas </p>
+          <p style="margin-left: 20px;margin-top: -5px;">Moderno • Espaçoso • Bem localizado • Confortável • Pronto
+            para
+            morar</p>
+          <div class="situacaoatual">
+            <img style="width: 20px; height: 20px; margin-left: 3px;" src="img/naplanta.png" alt="">
+            <p style="font-weight: bolder; margin-top: -11px; margin-right: 10px;">Na planta</p>
+            <p style="font-weight: bolder; margin-top: -11px;margin-right:500px; ">Prazo</p>
+            <div class="nomeimovel">
+
+              <img src="img/iconecoracao.png" alt="">
+              <img src="img/Iconetelefone-removebg-preview.png" alt="">
+              <img style="margin-right: 30px;" src="img/Iconewhats-removebg-preview.png" alt="">
+              <button
+                style="margin-bottom:30px ;background-color: #ff6746; color: #fff; border: none; padding: 10px 40px; border-radius: 10px; cursor: pointer; font-size: 16px;">
+                Consultar
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="imovel8">
+
+
+        <img src="img/casa1.png" alt="">
+        <div class=" imoveldesc">
+          <p style="margin-left:25px;color: #F65B38;">Imóvel1</p>
+          <div style="margin-left: 25px; margin-top: -15px;" class="infolocal">
+            <p style="color: rgb(0, 0, 0); margin-right: 50px;">Cidade - UF</p>
+            <p style="color: rgb(0, 0, 0); margin-right: 50px;">Rua Nº</p>
+          </div>
+          <h2 style="margin-left: 25px ; margin-top: -10px;">R$ 000,00</h2>
+          <p style="margin-top: -10px; margin-left: 19px;">*m² tot *quartos *banheiros *vagas </p>
+          <p style="margin-left: 20px;margin-top: -5px;">Moderno • Espaçoso • Bem localizado • Confortável • Pronto
+            para
+            morar</p>
+          <div class="situacaoatual">
+            <img style="width: 20px; height: 20px; margin-left: 3px;" src="img/naplanta.png" alt="">
+            <p style="font-weight: bolder; margin-top: -11px; margin-right: 10px;">Na planta</p>
+            <p style="font-weight: bolder; margin-top: -11px;margin-right:500px; ">Prazo</p>
+            <div class="nomeimovel">
+
+              <img src="img/iconecoracao.png" alt="">
+              <img src="img/Iconetelefone-removebg-preview.png" alt="">
+              <img style="margin-right: 30px;" src="img/Iconewhats-removebg-preview.png" alt="">
+              <button
+                style="margin-bottom:30px ;background-color: #ff6746; color: #fff; border: none; padding: 10px 40px; border-radius: 10px; cursor: pointer; font-size: 16px;">
+                Consultar
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="navegacao">
+        <div style="display: flex; gap: 12px; align-items: center; justify-content: center; margin: 32px 0;">
+          <button
+            style="width: 40px; height: 40px; border: 2px solid #F65B38; border-radius: 50%; background: #fff; color: #F65B38; font-size: 18px; font-weight: bold; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+            1
+          </button>
+          <button
+            style="background: none; border: none; color: #7C7C7C; font-size: 18px; font-weight: bold; text-decoration: underline; cursor: pointer;">
+            2
+          </button>
+          <button
+            style="background: none; border: none; color: #7C7C7C; font-size: 18px; font-weight: bold; text-decoration: underline; cursor: pointer;">
+            3
+          </button>
+          <button
+            style="width: 40px; height: 40px; border: 2px solid #F65B38; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+            <svg width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 5l5 5-5 5" stroke="#F65B38" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <!-- Início do rodapé -->
+    <div class="rodape">
+      <!-- Seção do logotipo e título -->
+      <div class="foot-logo">
+        <!-- Logotipo da empresa -->
+        <img src="./img/fenix51.png" alt="Logo" class="logo" />
+        <div class="titulos">
+          <!-- Título principal -->
+          <div class="titulo">
+            <p>FÊNIX</p>
+          </div>
+          <!-- Subtítulo -->
+          <div class="subtitle">
+            <p>CONSTRUTORA</p>
+          </div>
+        </div>
+      </div>
+      <!-- Seção de contatos -->
+      <div class="contatos">
+        <!-- Primeira coluna: Redes sociais -->
+        <div class="cont1">
+          <div class="cont-title1">
+            <!-- Título da seção -->
+            <h3>REDES SOCIAIS</h3>
+          </div>
+          <a href="https://www.instagram.com/fenixconstroi/#" target="_blank">
+
+            <div class="conte">
+              <!-- Ícone do Instagram -->
+             
+                <div class="icon">
+                  <img src="./img/instagram.png" alt="" />
+                </div>
+                <!-- Nome da rede social -->
+                <div class="rede">
+                  <p>INSTAGRAM</p>
+                </div>
+
+              
+
+            </div>
+          </a>
+        </div>
+        <!-- Segunda coluna: Informações sobre a empresa -->
+        <div class="cont2">
+          <div class="titulo2">
+            <!-- Título da seção -->
+            <h3>NOSSA EMPRESA</h3>
+          </div>
+          <div class="abins">
+            <!-- Links ou informações sobre a empresa -->
+            <p>SOBRE NÓS</p>
+            <p>CONTATO</p>
+            <p>SERVIÇOS</p>
+          </div>
+        </div>
+        <!-- Terceira coluna: Produtos da empresa -->
+        <div class="cont3">
+          <div class="titulo3">
+            <!-- Título da seção -->
+            <h3>NOSSOS PRODUTOS</h3>
+          </div>
+          <div class="produts">
+            <!-- Lista de produtos -->
+            <p>PROJETOS</p>
+            <p>IMÓVEIS</p>
+          </div>
+        </div>
+      </div>
+      <!-- Seção de direitos reservados -->
+
+      <div class="direitos-reservados">
+        <p>&copy; 2025 Fênix Construtora. Todos os direitos reservados.</p>
+      </div>
+    </div>
+    <!-- Fim do rodapé -->
+  </footer>
+
+  <!-- Firebase Script -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCYDGROxguHYX-YA-J-HqRRGSF3uN-ZEAs",
+      authDomain: "fenix-construtora-a34b5.firebaseapp.com",
+      projectId: "fenix-construtora-a34b5",
+      storageBucket: "fenix-construtora-a34b5.firebasestorage.app",
+      messagingSenderId: "928009241790",
+      appId: "1:928009241790:web:333b16b217a2ece01d8aef"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    const logBtn = document.getElementById("log");
+    const registerBtn = document.getElementById("register");
+
+    // Atualiza visibilidade dos botões conforme login
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        btnLogoutModal.style.display = "flex";
+        logBtn.style.display = "none";
+        registerBtn.style.display = "none";
+      } else {
+        btnLogoutModal.style.display = "none";
+        logBtn.style.display = "flex";
+        registerBtn.style.display = "flex";
+      }
+    });
+
+
+
+
+    // Referências
+    const iconPerson = document.querySelector(".icon-person");
+    const userArea = document.getElementById("userArea");
+    const closeUserArea = document.getElementById("closeUserArea");
+    const welcomeMsg = document.getElementById("welcomeMsg");
+    const userEmail = document.getElementById("userEmail");
+    const btnLogoutModal = document.getElementById("btnLogoutModal");
+
+    // Abrir área do usuário
+    iconPerson.addEventListener("click", () => {
+      userArea.style.display = "flex";
+    });
+
+    // Fechar modal
+    closeUserArea.addEventListener("click", () => {
+      userArea.style.display = "none";
+    });
+
+    // Fechar ao clicar fora
+    window.addEventListener("click", (e) => {
+      if (e.target === userArea) {
+        userArea.style.display = "none";
+      }
+    });
+
+    // Atualizar dados do usuário quando logado
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        welcomeMsg.textContent = `Bem-vindo(a), ${user.displayName || "Usuário"}`;
+        userEmail.textContent = user.email;
+      }
+    });
+
+    // Logout pelo modal
+    btnLogoutModal.addEventListener("click", () => {
+      signOut(auth).then(() => {
+        alert("Logout realizado!");
+        window.location.reload();
+      }).catch((err) => alert(err.message));
+    });
+
+  </script>
+
+</body>
+
+</html>
