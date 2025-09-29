@@ -88,12 +88,16 @@ header{
     color: white;
     margin-right: 30px;
     transition: 0.5s;
+
 }
+
 
 .abas a:hover{
     font-size: 18px;
     font-weight: 600;
-    height: 40px;
+    height: 40px ;
+
+
     border-bottom: solid white 0.5px;
 
 }
