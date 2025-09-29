@@ -31,11 +31,20 @@ overflow-x: hidden;
 }/*AQUI É A BARRINHA BRANCA DO NAVBAR QUE SEPARA AS ABAS DO LOGIN*/
 main{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
 
+    
+
+    width: 73%;
+
+
+
+        margin-top: 2rem;
+
+    flex-direction: row;
+
+    gap: 2rem;
+    padding: 0 2rem;
+    min-height: 6rem;
 }
 /*parte principal do projeto */
 /* Reset e configuração base */
@@ -103,16 +112,7 @@ h1 {
 }
 
 /* Layout principal */
-main {
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 2rem;
-    padding: 0 2rem;
-    min-height: 6rem;
-}
+
 
 /* Seção artigos */
 .artigos {
@@ -121,14 +121,12 @@ main {
     
 }
 .ajusteartigos {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    flex: 1;
-    max-width: 50rem;
-    text-align: center;
-    width: 100%;
+width: 30%;
+height: 20%;
+
+align-items: center;
+justify-content: center;
+text-align: center;
 }
 
 /* Seção atendimentos */
