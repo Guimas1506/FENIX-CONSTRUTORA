@@ -1,7 +1,4 @@
-@font-face {
-    font-family: 'inter';
-    src: url('fonts/Inter-VariableFont_opsz\,wght.ttf') format('truetype');
-}
+
 
 :root{
     --Cor-Primaria: #FE4F3F;
@@ -12,7 +9,7 @@
 
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: "Inter", sans-serif;
     background: #ffffff;
 background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 45%);
     display: flex;
