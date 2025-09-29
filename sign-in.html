@@ -335,12 +335,14 @@ window.registerFacebook = () => socialLogin(facebookProvider);
 
 
   // Referências
+const logBtn = document.getElementById("log");
+const registerBtn = document.getElementById("register");
 const iconPerson = document.querySelector(".icon-person");
 const userArea = document.getElementById("userArea");
 const closeUserArea = document.getElementById("closeUserArea");
 const welcomeMsg = document.getElementById("welcomeMsg");
 const userEmail = document.getElementById("userEmail");
-const btnLogoutModal = document.getElementById("btnLogoutModal");
+const btnLogoutModal = document.getElementById("btnLogoutModal"); 
 
 // Abrir área do usuário
 iconPerson.addEventListener("click", () => {
@@ -376,6 +378,26 @@ btnLogoutModal.addEventListener("click", () => {
 
 });
 
+
+onAuthStateChanged(auth, async (user) => {
+  if (user) {
+    btnLogoutModal.style.display = "flex";
+    logBtn.style.display = "none";
+    registerBtn.style.display = "none";
+
+    // Pega dados do Firestore
+    const docRef = doc(db, "users", user.uid);
+    const docSnap = await getDoc(docRef);
+    const nome = docSnap.exists() ? docSnap.data().nome : user.displayName || "Usuário";
+
+    welcomeMsg.textContent = `Bem-vindo(a), ${nome}`;
+    userEmail.textContent = user.email;
+  } else {
+    btnLogoutModal.style.display = "none";
+    logBtn.style.display = "flex";
+    registerBtn.style.display = "flex";
+  }
+});
 
 
 

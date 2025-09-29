@@ -530,18 +530,16 @@
     const auth = getAuth(app);
 
     const logBtn = document.getElementById("log");
-    const registerBtn = document.getElementById("register");
+    const loginbtn = document.querySelector(".logadores #register");
 
     // Atualiza visibilidade dos botões conforme login
     onAuthStateChanged(auth, (user) => {
       if (user) {
         btnLogoutModal.style.display = "flex";
         logBtn.style.display = "none";
-        registerBtn.style.display = "none";
       } else {
         btnLogoutModal.style.display = "none";
         logBtn.style.display = "flex";
-        registerBtn.style.display = "flex";
       }
     });
 
