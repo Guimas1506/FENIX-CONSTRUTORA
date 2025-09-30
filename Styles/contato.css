@@ -29,12 +29,15 @@ overflow-x: hidden;
  .barra hr{
     height: 20px;
 }/*AQUI É A BARRINHA BRANCA DO NAVBAR QUE SEPARA AS ABAS DO LOGIN*/
+
 main{
     display: flex;
 
+    justify-content: center;
     
 
-    width: 73%;
+    width: 77%;
+
 
 
 
@@ -42,7 +45,7 @@ main{
 
     flex-direction: row;
 
-    gap: 2rem;
+    gap: 10rem;
     padding: 0 2rem;
     min-height: 6rem;
 }
@@ -106,9 +109,11 @@ h1 {
 
 /* Texto principal */
 .texto1 {
-    max-width: 62.5rem;
+    width: 96%;
     margin: 0 auto;
     padding: 0 1rem;
+    font-size: 20px;
+
 }
 
 /* Layout principal */
@@ -120,6 +125,8 @@ h1 {
     color: #F65B38;
     
 }
+
+
 .ajusteartigos {
 width: 30%;
 height: 20%;
@@ -127,6 +134,9 @@ height: 20%;
 align-items: center;
 justify-content: center;
 text-align: center;
+
+
+
 }
 
 /* Seção atendimentos */
@@ -141,6 +151,7 @@ text-align: center;
     max-width: 50rem;
     text-align: center;
     position: relative;
+
   
 }
 
