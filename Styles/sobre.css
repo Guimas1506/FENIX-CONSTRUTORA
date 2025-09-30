@@ -220,10 +220,11 @@ body::-webkit-scrollbar{
 }
 
 .title-conteud2{
-    width: 60%;
+    width: 53%;
     height: 70px;
     align-items: center;
     display: flex;
+
 }
 
 .title-conteud2 h2{
@@ -441,7 +442,7 @@ body::-webkit-scrollbar{
     width: 60px;
     height: 60px;
     display: flex;
-    background-image: url(img/home.png);
+    background-image: url(../img/home.png);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -471,7 +472,7 @@ body::-webkit-scrollbar{
     width: 60px;
     height: 60px;
     display: flex;
-    background-image: url(img/plant2.png);
+    background-image: url(../img/plant2.png);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -501,7 +502,7 @@ body::-webkit-scrollbar{
     width: 60px;
     height: 60px;
     display: flex;
-    background-image: url(img/martelo.png);
+    background-image: url(../img/martelo.png);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -532,7 +533,7 @@ body::-webkit-scrollbar{
     width: 60px;
     height: 60px;
     display: flex;
-    background-image: url(img/local.png);
+    background-image: url(../img/local.png);
     background-repeat: no-repeat;
     background-size: cover;
 }
