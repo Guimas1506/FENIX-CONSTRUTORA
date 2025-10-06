@@ -13,6 +13,8 @@
     />
     <title>Administrator</title>
 
+    <script src="opçao.js"></script>
+
     <!-- Proteção de página Admin -->
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
@@ -89,13 +91,26 @@
           <a href="#">Dashboard</a>
 
           <div class="gerenciar">
-            <select name="gerenciar" id="gerenciar" place>
-              <option value="">gerenciar</option>
-              <option value=""></option>
-              <option value=""></option>
-              <option value=""></option>
-            </select>
+
+            <div class="title-gerence">
+
+              <img src="img/big-gear.png" id="gear" alt="icone">
+
+              <p>Gerenciar</p>
+
+              <img src="img/seta-direita.png" id="seta" alt="seta">
+
+            </div>
+
+            <div class="options-gerence">
+              <a href="">Produtos</a>
+              <a href="">Usuários</a>
+              <a href="">Categorias</a>
+              <a href="">Dashboard</a>
+            </div>
+
           </div>
+
         </div>
       </aside>
 
