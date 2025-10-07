@@ -1,188 +1,186 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="shortcut icon" type="imagex/png" href="img/logo1.png" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <title>Administrator</title>
 
-    <script src="opçao.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="shortcut icon" type="imagex/png" href="img/logo1.png" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet" />
+  <title>Administrator</title>
 
-    <!-- Proteção de página Admin -->
-    <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-      import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-      import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+  <script src="opçao.js">
+  </script>
 
-      // 🔧 CONFIG DO SEU PROJETO FIREBASE
-      const firebaseConfig = {
-        apiKey: "AIzaSyCYDGROxguHYX-YA-J-HqRRGSF3uN-ZEAs",
-        authDomain: "fenix-construtora-a34b5.firebaseapp.com",
-        projectId: "fenix-construtora-a34b5",
-        storageBucket: "fenix-construtora-a34b5.firebasestorage.app",
-        messagingSenderId: "928009241790",
-        appId: "1:928009241790:web:333b16b217a2ece01d8aef"
-      };
+  <!-- Proteção de página Admin -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
-      const app = initializeApp(firebaseConfig);
-      const auth = getAuth(app);
-      const db = getFirestore(app);
+    // 🔧 CONFIG DO SEU PROJETO FIREBASE
+    const firebaseConfig = {
+      apiKey: "AIzaSyCYDGROxguHYX-YA-J-HqRRGSF3uN-ZEAs",
+      authDomain: "fenix-construtora-a34b5.firebaseapp.com",
+      projectId: "fenix-construtora-a34b5",
+      storageBucket: "fenix-construtora-a34b5.firebasestorage.app",
+      messagingSenderId: "928009241790",
+      appId: "1:928009241790:web:333b16b217a2ece01d8aef"
+    };
 
-      // 🔒 VERIFICA SE USUÁRIO É ADMIN
-      onAuthStateChanged(auth, async (user) => {
-        if (!user) {
-          console.warn("Nenhum usuário logado, redirecionando para login...");
-          window.location.href = "../log-in.html"; 
-          return;
-        }
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
 
-        try {
-          const docRef = doc(db, "users", user.uid);
-          const docSnap = await getDoc(docRef);
+    // 🔒 VERIFICA SE USUÁRIO É ADMIN
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        console.warn("Nenhum usuário logado, redirecionando para login...");
+        window.location.href = "../log-in.html";
+        return;
+      }
 
-          if (docSnap.exists()) {
-            const data = docSnap.data();
-            if (data.admin === true) {
-              console.log("✅ Acesso de administrador confirmado!");
-              return; // deixa o usuário continuar
-            }
+      try {
+        const docRef = doc(db, "users", user.uid);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          if (data.admin === true) {
+            console.log("✅ Acesso de administrador confirmado!");
+            return; // deixa o usuário continuar
           }
-
-          console.warn("Usuário logado mas não é admin. Redirecionando...");
-          window.location.href = "../index.html";
-        } catch (error) {
-          console.error("Erro ao verificar admin:", error);
-          window.location.href = "../index.html";
         }
-      });
-    </script>
-  </head>
-  <body>
-    <nav>
-      <div class="navbar">
-        <div class="logo">
-          <div class="logotipo">
-            <img src="img/logo1.png" alt="Logo" />
-            <span>Administrator</span>
-          </div>
-        </div>
-        <div class="notification">
-          <img src="img/notification.png" alt="Notification" />
-          <span>
-            <img src="img/Nav.png" alt="" />
-          </span>
+
+        console.warn("Usuário logado mas não é admin. Redirecionando...");
+        window.location.href = "../index.html";
+      } catch (error) {
+        console.error("Erro ao verificar admin:", error);
+        window.location.href = "../index.html";
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <nav>
+    <div class="navbar">
+      <div class="logo">
+        <div class="logotipo">
+          <img src="img/logo1.png" alt="Logo" />
+          <span>Administrator</span>
         </div>
       </div>
-    </nav>
-
-    <!--AQUI TERMINA O NAVBAR DO PROJETO ADM-->
-
-    <div class="conteud">
-      <aside>
-        <div class="menu">
-          <a href="../index.html">Inicio</a>
-          <a href="#">Dashboard</a>
-
-          <div class="gerenciar">
-
-            <div class="title-gerence">
-
-              <img src="img/big-gear.png" id="gear" alt="icone">
-
-              <p>Gerenciar</p>
-
-              <img src="img/seta-direita.png" id="seta" alt="seta">
-
-            </div>
-
-            <div class="options-gerence">
-              <a href="">Produtos</a>
-              <a href="">Usuários</a>
-              <a href="">Categorias</a>
-              <a href="">Dashboard</a>
-            </div>
-
-          </div>
-
-        </div>
-      </aside>
-
-      <main>
-
-        <div class="indicator">
-
-        </div>
-        <div class="title-page">
-          <h2>Produtos</h2>
-        </div>
-
-      </main>
+      <div class="notification">
+        <img src="img/notification.png" alt="Notification" />
+        <span>
+          <img src="img/Nav.png" alt="" />
+        </span>
+      </div>
     </div>
+  </nav>
 
-    <footer>
-      <div class="rodape">
-        <div class="foot-logo">
-          <img src="img/logo1.png" alt="Logo" class="logo" />
-          <div class="titulos">
-            <div class="titulo">
-              <p>FÊNIX</p>
-            </div>
-            <div class="subtitle">
-              <p>CONSTRUTORA</p>
-            </div>
-          </div>
-        </div>
+  <!--AQUI TERMINA O NAVBAR DO PROJETO ADM-->
 
-        <div class="contatos">
-          <div class="cont1">
-            <div class="cont-title1">
-              <h3>REDES SOCIAIS</h3>
-            </div>
-            <a href="https://www.instagram.com/fenixconstroi/#" target="_blank">
-              <div class="conte">
-                <div class="icon">
-                  <img src="img/instagram.png" alt="" />
-                </div>
-                <div class="rede">
-                  <p>INSTAGRAM</p>
-                </div>
-              </div>
-            </a>
+  <div class="conteud">
+    <aside>
+      <div class="menu">
+        <a href="../index.html">Início</a>
+        <a href="#">Dashboard</a>
+
+        <div class="gerenciar">
+
+          <div class="title-gerence">
+            <img src="img/big-gear.png" id="gear" alt="icone">
+            <p>Gerenciar</p>
+            <img src="img/seta-direita.png" id="seta" alt="seta">
           </div>
 
-          <div class="cont2">
-            <div class="titulo2">
-              <h3>NOSSA EMPRESA</h3>
-            </div>
-            <div class="abins">
-              <p>SOBRE NÓS</p>
-              <p>CONTATO</p>
-              <p>SERVIÇOS</p>
-            </div>
+          <!-- Submenu escondido inicialmente -->
+          <div class="options-gerence">
+            <a href="#">Usuários</a>
+            <a href="#">Permissões</a>
+            <a href="#">Configurações</a>
           </div>
 
-          <div class="cont3">
-            <div class="titulo3">
-              <h3>NOSSOS PRODUTOS</h3>
-            </div>
-            <div class="produts">
-              <p>PROJETOS</p>
-              <p>IMÓVEIS</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="direitos-reservados">
-          <p>&copy; 2025 Fênix Construtora. Todos os direitos reservados.</p>
         </div>
       </div>
-    </footer>
-  </body>
+    </aside>
+
+    <main>
+
+      <div class="indicator">
+
+      </div>
+      <div class="title-page">
+        <h2>Produtos</h2>
+      </div>
+
+    </main>
+  </div>
+
+  <footer>
+    <div class="rodape">
+      <div class="foot-logo">
+        <img src="img/logo1.png" alt="Logo" class="logo" />
+        <div class="titulos">
+          <div class="titulo">
+            <p>FÊNIX</p>
+          </div>
+          <div class="subtitle">
+            <p>CONSTRUTORA</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contatos">
+        <div class="cont1">
+          <div class="cont-title1">
+            <h3>REDES SOCIAIS</h3>
+          </div>
+          <a href="https://www.instagram.com/fenixconstroi/#" target="_blank">
+            <div class="conte">
+              <div class="icon">
+                <img src="img/instagram.png" alt="" />
+              </div>
+              <div class="rede">
+                <p>INSTAGRAM</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="cont2">
+          <div class="titulo2">
+            <h3>NOSSA EMPRESA</h3>
+          </div>
+          <div class="abins">
+            <p>SOBRE NÓS</p>
+            <p>CONTATO</p>
+            <p>SERVIÇOS</p>
+          </div>
+        </div>
+
+        <div class="cont3">
+          <div class="titulo3">
+            <h3>NOSSOS PRODUTOS</h3>
+          </div>
+          <div class="produts">
+            <p>PROJETOS</p>
+            <p>IMÓVEIS</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="direitos-reservados">
+        <p>&copy; 2025 Fênix Construtora. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+
 </html>

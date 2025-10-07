@@ -126,7 +126,7 @@ aside{
     align-items: start;
     justify-content: start;
     flex-direction: column;
-    border: solid;
+
     color: white;
 
 }
@@ -134,7 +134,7 @@ aside{
 .title-gerence{
     width: 100%;
     height: 10%;
-    border: solid orange;
+
     align-items: center;
     justify-content: center;
     margin: 0;
@@ -165,7 +165,7 @@ aside{
 .options-gerence{
     width: 100%;
     height: 100%;
-    border: solid;
+
     gap: 0.2rem;
     display: flex;
     align-items: center;
@@ -180,7 +180,7 @@ aside{
     width: 100%;
     height: 100%;
     margin: 0;
-    border: solid red;
+
     font-weight: 300;
 }
 
