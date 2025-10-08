@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="shortcut icon" type="imagex/png" href="img/logo1.png" />
@@ -13,7 +13,7 @@
     rel="stylesheet" />
   <title>Administrator</title>
 
-  <script src="opçao.js">
+  <script src="js/opçao.js">
   </script>
 
   <!-- Proteção de página Admin -->
@@ -132,17 +132,67 @@
           <div class="campos-filtros">
 
             <form action="">
+
               <select name="all-types" id="all-types">
-                
+                <option value="" disabled selected>-Todos os Tipos-</option>
+                <option value="casa">Casa</option>
               </select>
+
+              <select name="Status" id="Status">
+                <option value="" disabled selected>-Status-</option>
+                <option value="">casa</option>
+              </select>
+
+              <select name="time" id="time">
+                <option value="" disabled selected>-Do Mais Recente ao Mais Antigo-</option>
+                <option value="">Casa</option>
+              </select>
+
+              <select name="UF" id="UF">
+                <option value="" disabled selected>-UF-</option>
+                <option value="SP">São Paulo</option>
+              </select>
+
+              <select name="city" id="city">
+                <option value="" disabled selected>-Cidade-</option>
+                <option value="são paulo">São Paulo</option>
+              </select>
+
+              <select name="sale" id="sale">
+                <option value="" disabled selected>-Venda/Aluguel-</option>
+                <option value="venda">Venda</option>
+              </select>
+
+            <div class="rangers">
+
+              <div class="ranger1">
+                <p>Área</p>
+                <input type="range" min="0" max="1000" value="500" class="slider" id="myRange">
+                <p>Todas as areas</p>
+              </div>
+
+              <div class="ranger2">
+                <p>Preço</p>
+                <input type="range" min="0" max="1000" value="500" class="slider" id="myRange">
+                <p>Todos os Preços</p>
+              </div>
+              
+            </div>
+
+            <div class="aplicador">
+              <button id="aplicar">Aplicar</button>
+            </div>
+
             </form>
           </div>
-
-
-
         </div>
-
       </div>
+
+      <div class="adcionar">
+        <button id="addi-produto" onclick="window.location.href='adicionar-produto.html'">Adicionar Produto</button>
+      </div>
+
+
 
     </main>
   </div>

@@ -245,44 +245,182 @@ main{
 
 .filtros{
     width: 80vw;
-    height: 35vh;
-    margin-top: 20px;
+    height: 40vh;
+    margin-top: 5px;
     margin-bottom: 20px;
     align-items: center;
     display: flex;
     flex-direction: column;
-    border: solid var(--Cor-Terciaria);
     box-shadow: -5px 5px 4px rgba(0, 0, 0, 0.25);
 }
 
 .title-filtros{
-    width: 90%;
+    width: 95%;
     height: 20%;
     display: flex;
     align-items: center;
     color: var(--Cor-Secundaria);
 
-    border: solid black;
+
 }
 
 .true-filtros{
-    width: 90%;
+    width: 95%;
     height: 100%;
-    border: solid blue;
+
     display: flex;
     flex-direction: column;
 }
 
 .campos-filtros{
     width: 100%;
-    height: 80%;
-    border: solid orange;
+
+    display: grid;
 }
 
+/*filtros*/
+
+#all-types{
+    width: 30%;
+    height: 50px;
+    margin-left: 20px;
+    margin-top: 15px;
+    border: solid var(--Cor-Terciaria) 1px;
+    border-radius: 20px;
+    padding-left: 10px;
+    font-size: 16px;
+     font-family: "Inter", sans-serif;
+}
+
+#Status{
+        width: 30%;
+    height: 50px;
+    margin-left: 20px;
+    margin-top: 15px;
+    border: solid var(--Cor-Terciaria) 1px;
+    border-radius: 20px;
+    padding-left: 10px;
+    font-size: 16px;
+     font-family: "Inter", sans-serif;
+}
+
+#time{
+        width: 30%;
+    height: 50px;
+    margin-left: 20px;
+    margin-top: 15px;
+    border: solid var(--Cor-Terciaria) 1px;
+    border-radius: 20px;
+    padding-left: 10px;
+    font-size: 16px;
+     font-family: "Inter", sans-serif;
+}
+
+#UF{
+        width: 20%;
+    height: 50px;
+    margin-left: 20px;
+    margin-top: 15px;
+    border: solid var(--Cor-Terciaria) 1px;
+    border-radius: 20px;
+    padding-left: 10px;
+    font-size: 16px;
+     font-family: "Inter", sans-serif;
+}
+
+#city{
+        width: 20%;
+    height: 50px;
+    margin-left: 20px;
+    margin-top: 15px;
+    border: solid var(--Cor-Terciaria) 1px;
+    border-radius: 20px;
+    padding-left: 10px;
+    font-size: 16px;
+     font-family: "Inter", sans-serif;
+}
+
+#sale{
+        width: 15%;
+    height: 50px;
+    margin-left: 20px;
+    margin-top: 15px;
+    border: solid var(--Cor-Terciaria) 1px;
+    border-radius: 20px;
+    padding-left: 10px;
+    font-size: 16px;
+     font-family: "Inter", sans-serif;
+}
+
+.rangers{
+    width: 60%;
+    height: 50px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.ranger1{
+    width: 45%;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ranger2{
+        width: 45%;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.aplicador{
+    width: 20%;
+    height: 60px;
+    display: flex;
+    align-items: center;
 
 
+ 
+}
 
+#aplicar{
+    width: 50%;
+    height: 80%;
+    background-color: var(--Cor-Secundaria);
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-size: 15px;
+       font-weight: 600;
+            font-family: "Inter", sans-serif;
+}
 
+.adcionar{
+    width: 93%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+#addi-produto{
+    width: 15%;
+    height: 80%;
+    background-color: var(--Cor-Secundaria);
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
+}
 /*AQUI TERMINA A AREA DE PRODUTOS*/
 
 
