@@ -1,3 +1,45 @@
+hmtl{
+    overflow-x: hidden;
+    box-shadow: none;
+    
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+}
+
+a{
+    text-decoration: none;
+    list-style-type: none;
+}
+
+
+body::-webkit-scrollbar{
+    display: none;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+:root{
+    --Cor-Primaria: black;
+    --Cor-Secundaria: #FE4F3F;
+    --Cor-Terciaria: #7C7C7C;
+    --Branco: #fff;
+}
+
+
+/*TERMINA AS CONFIGURAÇOES BASICAS PARA O DESENVOLVIMENTO*/
+
+/*AQUI COMEÇA O O NAVBAR*/
+
+
+
+
+
 .navbar{
     width: 100vw;
     height: 9vh;
@@ -147,4 +189,53 @@ aside{
 
 #button-produtos{
     background-color: #FE4F3F;
+}
+
+/*CONFIGURAÇÕES BASICAS DO CONTEUD*/
+ .conteud{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+ }
+
+main{
+    border: solid blue;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.indicator{
+    width: 100%;
+    height: 45px;
+
+    display: flex;
+    flex-direction: row;
+    color: var(--Cor-Terciaria);
+    align-items: center;
+}
+
+#home{
+    color: var(--Cor-Secundaria);
+}
+
+.title-page{
+    width: 100%;
+    height: 65px;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.title-page h2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--Cor-Secundaria);
+    font-size: 35px;
 }
