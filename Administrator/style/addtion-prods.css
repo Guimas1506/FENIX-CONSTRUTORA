@@ -1,0 +1,200 @@
+html{
+    overflow-x: hidden;
+    box-shadow: none;
+    
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+}
+
+a{
+    text-decoration: none;
+    list-style-type: none;
+}
+
+
+body::-webkit-scrollbar{
+    display: none;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+:root{
+    --Cor-Primaria: black;
+    --Cor-Secundaria: #FE4F3F;
+    --Cor-Terciaria: #7C7C7C;
+    --Branco: #fff;
+}
+
+/*TERMINA AS CONFIGURAÇOES BASICAS PARA O DESENVOLVIMENTO*/
+
+/*AQUI COMEÇA O MAIN DO PROJETO*/
+
+.tie-page{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.tie-page h1{
+    color: var(--Cor-Secundaria);
+    font-weight: 700;
+}
+
+/*AQUI COMEÇA A PARTE PRINCIPAL DO PRODUTOS*/
+
+#prods{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#title-form{
+    width: 15%;
+    height: 60%;
+    margin: 0;
+    font-weight: 700;
+    font-size: 20px;
+
+    display: flex;
+    align-items: center;
+
+}
+
+.search{
+    width: 40%;
+    height: 90px;
+    border: solid red;
+    justify-content: center;
+    gap: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+
+}
+.pesquise{
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    border: solid;
+    font-size: 16px;
+    display: flex;
+    font-weight: 700;
+}
+
+#search-name{
+    width: 70%;
+    height: 50%;
+    font-size: 16px;
+    display: flex;
+    border: solid var(--Cor-Terciaria) 1px;
+    border-radius: 20px;
+}
+
+/*AQUI COMEÇA A AREA DOS OPTIONS*/
+
+.detalhes{
+    width: 45%;
+    height: 100%;
+    border: solid;
+    display: grid;
+    
+}
+
+.localizacao{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#local{
+    width: 30%;
+    height: 1%;
+    display: flex;
+    align-items: center;
+}
+
+.options-prods{
+    width: 100%;
+    height: 100%;
+    gap: 0.2rem;
+    display: block;
+}
+
+#UF{
+    width: 40%;
+    height: 38px;
+    display: flex;
+    border-radius: 15px;
+    border: solid var(--Cor-Terciaria) 1px;
+}
+
+#city{
+        width: 40%;
+    height: 38px;
+    display: flex;
+    border-radius: 15px;
+      border: solid var(--Cor-Terciaria) 1px;
+
+}
+
+#rua{
+    width: 70%;
+    height: 38px;
+    display: flex;
+    border-radius: 15px;
+      border: solid var(--Cor-Terciaria) 1px;
+}
+
+#preco{
+    width: 40%;
+    height: 38px;
+    display: flex;
+    border-radius: 15px;
+      border: solid var(--Cor-Terciaria) 1px;
+}
+
+#stats{
+    width: 40%;
+    height: 38px;
+    display: flex;
+    border-radius: 15px;
+      border: solid var(--Cor-Terciaria) 1px;
+}
+
+#dia{
+    width: 40%;
+    height: 38px;
+    display: flex;
+    border-radius: 15px;
+      border: solid var(--Cor-Terciaria) 1px;
+}
+
+.descri{
+    width: 100%;
+    height: 30%;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#descricao{
+    width: 60%;
+    height: 90%;
+    display: flex;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    border-radius: 20px;
+}

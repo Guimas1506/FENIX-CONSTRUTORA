@@ -50,7 +50,7 @@
 
             <!-- Submenu escondido inicialmente -->
             <div class="options-gerence">
-              <a id="button-produtos" href="">Produtos</a>
+              <a id="button-produtos" href="produtos.html">Produtos</a>
               <a href="#">Usuários</a>
               <a href="#">Permissões</a>
               <a href="#">Configurações</a>
@@ -59,7 +59,89 @@
         </div>
       </aside>
 
-      <main></main>
+      <main>
+        <div class="indicator">
+          <p id="home">🏠Home /</p>
+          <p>Gerenciar /</p>
+          <p>Produtos</p>
+        </div>
+
+        <div class="tie-page">
+          <h1>Editar Produtos</h1>
+        </div>
+
+        <!--aqui começa a parte principal da aba produtos-->
+
+        <form id="prods" action="">
+
+          <div class="search">
+            <div class="pesquise">
+              <p id="title-form">Nome</p>
+              <input type="search" name="search-name" id="search-name" placeholder="Pesquise o Imovel Desejado"/>
+            </div>
+          </div>
+
+          <!--AQUI VAI FICAR A AREA DAS FOTOS-->
+
+          <!--AQUI TERMINA A AREA DAS FOTOS-->
+
+
+          <div class="detalhes">
+
+            <div class="options-prods">
+              <h2 id="local">Localização</h2>
+              <div class="localizacao">
+
+              <select name="UF" id="UF">
+                <option value="" disabled selected>-UF-</option>
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+              </select>
+
+              <select name="city" id="city">
+                <option value="" disabled selected>-Cidade-</option>
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+              </select>
+
+              </div>
+              <h2 id="local">Endereço</h2>
+              <select name="Rua" id="rua">
+                <option value="" disabled selected>-Rua,N°-</option>
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+              </select>
+
+              <h2 id="local">Preço</h2>
+              <input type="number" name="preco" id="preco" placeholder="Preço" min="0" step="0.10" />
+
+              <h2 id="local">Status</h2>
+              <select name="status" id="stats">
+                <option value="" disabled selected>Na Planta</option>
+                <option value="">sucesso</option>
+                <option value="">dessussesso</option>
+              </select>
+
+              <h2 id="local">Prazo</h2>
+              <input type="date" name="data" id="dia">
+
+
+              <h2 id="local">Descrição</h2>
+              
+              <div class="descri">
+              <textarea name="descricao" id="descricao" placeholder="Digite a descrição do imóvel" maxlength="500" rows="4" cols="50"></textarea>
+              <p id="desc-count" style="font-size: 0.9em; color: #888;">0/500 caracteres</p>
+              <script src="js/description.js"></script>
+              </div>
+
+            </div>
+
+
+          </div>
+
+        </form>
+
+      </main>
     </div>
     <footer>
       <div class="rodape">
