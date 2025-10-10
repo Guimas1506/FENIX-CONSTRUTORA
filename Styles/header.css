@@ -1,3 +1,4 @@
+
 hmtl{
     overflow-x: hidden;
     box-shadow: none;
@@ -88,16 +89,12 @@ header{
     color: white;
     margin-right: 30px;
     transition: 0.5s;
-
 }
-
 
 .abas a:hover{
     font-size: 18px;
     font-weight: 600;
-    height: 40px ;
-
-
+    height: 40px;
     border-bottom: solid white 0.5px;
 
 }
@@ -332,7 +329,6 @@ header{
 #logi{
     width: 90%;
     height: 40%;
-
 }
 
 #log p{
@@ -356,11 +352,29 @@ header{
 #registeri{
     width: 90%;
     height: 40%;
-
 }
-
-
+.menu{
+    display: none;
+   
+}
 
 /*aqui termina a area modal*/
 
 
+@media screen and ( max-width: 480px) {
+
+.menu{
+    display: block;
+    position: relative;
+  
+}
+.icon-person{
+    display: none;
+}
+.abas{
+    display: none;
+}
+hr{
+    display: none;
+}
+}
