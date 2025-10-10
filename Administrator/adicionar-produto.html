@@ -130,12 +130,53 @@
               
               <div class="descri">
               <textarea name="descricao" id="descricao" placeholder="Digite a descrição do imóvel" maxlength="500" rows="4" cols="50"></textarea>
-              <p id="desc-count" style="font-size: 0.9em; color: #888;">0/500 caracteres</p>
+              <p id="desc-count">0/500 caracteres</p>
               <script src="js/description.js"></script>
               </div>
 
+
             </div>
 
+            <h2 id="local">Detalhes</h2>
+            
+              <div class="detals-prods">
+                <div class="ranges-container">
+                  <div class="range-row">
+                    Plantas
+                    <input type="range" id="quartos" name="quartos" min="0" max="10" value="0" class="range-input">
+                    <span id="quartos-value" class="range-value">00</span>
+                  </div>
+                  <div class="range-row">
+                    Áreas
+                    <input type="range" id="banheiros" name="banheiros" min="0" max="10" value="0" class="range-input">
+                    <span id="banheiros-value" class="range-value">00</span>
+                  </div>
+                  <div class="range-row">
+                    Quartos
+                    <input type="range" id="vagas" name="vagas" min="0" max="10" value="0" class="range-input">
+                    <span id="vagas-value" class="range-value">00</span>
+                  </div>
+                  <div class="range-row">
+                    Vagas
+                    <input type="range" id="suites" name="suites" min="0" max="10" value="0" class="range-input">
+                    <span id="suites-value" class="range-value">00</span>
+                  </div>
+
+                  <div class="range-row">
+                    Banheiros
+                    <input type="range" id="suites" name="suites" min="0" max="10" value="0" class="range-input">
+                    <span id="suites-value" class="range-value">00</span>
+                  </div>
+                  
+                </div>
+
+                <script src="js/ranges.js"></script>
+
+
+                
+
+
+              </div>
 
           </div>
 
