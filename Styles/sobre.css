@@ -929,17 +929,7 @@ body::-webkit-scrollbar{
         text-align: center;
     }
 
-    /*footer*/
-
-    .rodape{
-        height: 900px;
-        display: grid;
-    }
-    .contatos{
-        display: flex;
-        flex-direction: column;
-    }
-
+    
 }
 
 /*botoes de sair e favoritos*/
@@ -1087,8 +1077,31 @@ body::-webkit-scrollbar{
     justify-content: center;
     margin-bottom: 20px;
 }
+    /* footer */
+.titulos{
+    margin-left:-280px 
 }
 
-@media (max-width: 768px) {
- 
+.foot-logo{
+    margin-left: 280px;
 }
+.footer h3{
+
+    font-size: 12px;
+}
+.cont1{
+font-size: 12px;
+    position: relative;
+    left: 33px;}
+.cont2{
+    margin-left: -50px;
+    margin-right: -50px;
+font-size: 12px;}
+
+.cont3{
+    position: relative;
+    left: -33px;
+font-size: 12px;
+margin-right: -50px;}
+}
+
