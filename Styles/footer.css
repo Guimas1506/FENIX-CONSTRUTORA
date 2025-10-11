@@ -255,11 +255,11 @@ a{
   
     /* footer */
 .titulos{
-    margin-left:-280px 
+    margin-left:70px 
 }
 
 .foot-logo{
-    margin-left: 280px;
+    margin-left: -180px;
 }
 .footer h3{
 
@@ -280,6 +280,10 @@ font-size: 12px;}
     left: -65px;
 font-size: 12px;
 margin-right: -50px;}
+.foot-logo img{
+    position: relative;
+    left: 100px;
+}
 
 body{overflow-x: hidden;}
 }
