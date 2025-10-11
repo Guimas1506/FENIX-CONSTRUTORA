@@ -393,161 +393,6 @@ footer{
     margin-right: 300px;
 }
 
-/* Responsividade para tablets grandes */
-@media (max-width: 75rem) {
-    .imagemprincipal {
-        max-width: 95%;
-    }
-    
-    .texto1 {
-        max-width: 90%;
-    }
-    
-    .titulopesquisa {
-        margin: 2rem;
-    }
-}
-
-/* Responsividade para tablets */
-@media (max-width: 62rem) {
-    .titulopesquisa {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-    }
-    
-    .pesquisa {
-        align-self: stretch;
-        max-width: none;
-    }
-    
-    main {
-        flex-direction: column;
-        align-items: center;
-        gap: 2rem;
-    }
-    
-    .artigos, .atendimentos, .contatos1 {
-        width: 100%;
-        max-width: 50rem;
-    }
-    
-    .contatos1 {
-        align-items: flex-start;
-        padding-left: 2rem;
-    }
-    
-    .contatos {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .cont1, .cont2, .cont3 {
-        max-width: 25rem;
-        width: 100%;
-    }
-}
-
-/* Responsividade para smartphones */
-@media (max-width: 48rem) {
-    .titulopesquisa {
-        margin: 1rem;
-    }
-    
-    main {
-        padding: 0 1rem;
-    }
-    
-    .contatos1 {
-        padding-left: 1rem;
-    }
-    
-    .telefone, .whats, .email {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 0.25rem;
-    }
-    
-    .foot-logo {
-        width: 95%;
-    }
-    
-    .contatos {
-        width: 95%;
-        padding: 1rem 0;
-    }
-}
-
-/* Responsividade para smartphones pequenos */
-@media (max-width: 36rem) {
-    .titulopesquisa {
-        margin: 0.5rem;
-    }
-    
-    .imagemprincipal {
-        aspect-ratio: 2/1;
-    }
-    
-    .artigos h3 {
-        text-align: center;
-    }
-    
-    .textoartigos {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.5rem;
-    }
-    
-    .textoartigos p {
-        flex: 1 1 45%;
-        min-width: 10rem;
-        text-align: center;
-    }
-}
-
-/* Responsividade para telas muito pequenas */
-@media (max-width: 25rem) {
-    .imagemprincipal {
-        aspect-ratio: 1.5/1;
-    }
-    
-    .textoartigos p {
-        flex: 1 1 100%;
-    }
-    
-    .cont1, .cont2, .cont3 {
-        min-width: auto;
-        width: 100%;
-    }
-}
-
-/* Ajustes para zoom */
-@media (min-resolution: 150dpi) and (max-resolution: 300dpi) {
-    .titulopesquisa {
-        gap: 1rem;
-    }
-    
-    main {
-        gap: 1rem;
-    }
-    
-    .contatos {
-        gap: 1rem;
-    }
-}
-
-/* Melhorias de acessibilidade */
-@media (prefers-reduced-motion: reduce) {
-    .icon img {
-        transition: none;
-    }
-    
-    .icon img:hover {
-        transform: none;
-    }
-}
 
 /*botoes de sair e favoritos*/
  #btn-favoritos,
@@ -600,5 +445,31 @@ display: none   ;
     color: #F65B38;
     gap: 1rem;
 }
+  /* footer */
+.titulos{
+    margin-left:-280px 
+}
+
+.foot-logo{
+    margin-left: 280px;
+}
+.footer h3{
+
+    font-size: 12px;
+}
+.cont1{
+font-size: 12px;
+    position: relative;
+    left: 33px;}
+.cont2{
+    margin-left: -50px;
+    margin-right: -50px;
+font-size: 12px;}
+
+.cont3{
+    position: relative;
+    left: -33px;
+font-size: 12px;
+margin-right: -50px;}
 }
 
