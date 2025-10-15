@@ -1,8 +1,11 @@
-function updateValue(id) {
-                  document.getElementById(id + '-value').textContent = document.getElementById(id).value;
-                }
-                ['quartos', 'banheiros', 'vagas', 'suites'].forEach(function(id) {
-                  document.getElementById(id).addEventListener('input', function() {
-                    updateValue(id);
-                  });
-                });
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.range-row').forEach(row => {
+    const input = row.querySelector('.range-input');
+    const display = row.querySelector('.range-value');
+    if (!input || !display) return;
+    display.textContent = String(input.value).padStart(2, '0');
+    input.addEventListener('input', () => {
+      display.textContent = String(input.value).padStart(2, '0');
+    });
+  });
+});

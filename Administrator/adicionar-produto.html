@@ -1,96 +1,97 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Administrator</title>
-    <link rel="stylesheet" href="style/nav-menu.css" />
-    <link rel="stylesheet" href="style/addtion-prods.css" />
-    <link rel="stylesheet" href="style/footer.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="shortcut icon" type="imagex/png" href="img/logo1.png" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <nav>
-      <div class="navbar">
-        <div class="logo">
-          <div class="logotipo">
-            <img src="img/logo1.png" alt="Logo" />
-            <span>Administrator</span>
-          </div>
-        </div>
-        <div class="notification">
-          <img src="img/notification.png" alt="Notification" />
-          <span>
-            <img src="img/Nav.png" alt="" />
-          </span>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administrator</title>
+  <link rel="stylesheet" href="style/nav-menu.css" />
+  <link rel="stylesheet" href="style/addtion-prods.css" />
+  <link rel="stylesheet" href="style/footer.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="shortcut icon" type="imagex/png" href="img/logo1.png" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <nav>
+    <div class="navbar">
+      <div class="logo">
+        <div class="logotipo">
+          <img src="img/logo1.png" alt="Logo" />
+          <span>Administrator</span>
         </div>
       </div>
-    </nav>
+      <div class="notification">
+        <img src="img/notification.png" alt="Notification" />
+        <span>
+          <img src="img/Nav.png" alt="" />
+        </span>
+      </div>
+    </div>
+  </nav>
 
-    <!--AQUI TERMINA O NAVBAR DO PROJETO ADM-->
+  <!--AQUI TERMINA O NAVBAR DO PROJETO ADM-->
 
-    <div class="conteud">
-      <aside>
-        <div class="menu">
-          <a href="../index.html">Início</a>
-          <a href="#">Dashboard</a>
+  <div class="conteud">
+    <aside>
+      <div class="menu">
+        <a href="../index.html">Início</a>
+        <a href="#">Dashboard</a>
 
-          <div class="gerenciar">
-            <div class="title-gerence">
-              <img src="img/big-gear.png" id="gear" alt="icone" />
-              <p>Gerenciar</p>
-              <img src="img/seta-direita.png" id="seta" alt="seta" />
-            </div>
-
-            <!-- Submenu escondido inicialmente -->
-            <div class="options-gerence">
-              <a id="button-produtos" href="produtos.html">Produtos</a>
-              <a href="#">Usuários</a>
-              <a href="#">Permissões</a>
-              <a href="#">Configurações</a>
-            </div>
-          </div>
-        </div>
-      </aside>
-
-      <main>
-        <div class="indicator">
-          <p id="home">🏠Home /</p>
-          <p>Gerenciar /</p>
-          <p>Produtos</p>
-        </div>
-
-        <div class="tie-page">
-          <h1>Editar Produtos</h1>
-        </div>
-
-        <!--aqui começa a parte principal da aba produtos-->
-
-        <form id="prods" action="">
-
-          <div class="search">
-            <div class="pesquise">
-              <p id="title-form">Nome</p>
-              <input type="search" name="search-name" id="search-name" placeholder="Pesquise o Imovel Desejado"/>
-            </div>
+        <div class="gerenciar">
+          <div class="title-gerence">
+            <img src="img/big-gear.png" id="gear" alt="icone" />
+            <p>Gerenciar</p>
+            <img src="img/seta-direita.png" id="seta" alt="seta" />
           </div>
 
-          <!--AQUI VAI FICAR A AREA DAS FOTOS-->
+          <!-- Submenu escondido inicialmente -->
+          <div class="options-gerence">
+            <a id="button-produtos" href="produtos.html">Produtos</a>
+            <a href="#">Usuários</a>
+            <a href="#">Permissões</a>
+            <a href="#">Configurações</a>
+          </div>
+        </div>
+      </div>
+    </aside>
 
-          <!--AQUI TERMINA A AREA DAS FOTOS-->
+    <main>
+      <div class="indicator">
+        <p id="home">🏠Home /</p>
+        <p>Gerenciar /</p>
+        <p>Produtos</p>
+      </div>
+
+      <div class="tie-page">
+        <h1>Editar Produtos</h1>
+      </div>
+
+      <!--aqui começa a parte principal da aba produtos-->
+
+      <form id="prods" action="">
+
+        <div class="search">
+          <div class="pesquise">
+            <p id="title-form">Nome</p>
+            <input type="search" name="search-name" id="search-name" placeholder="Pesquise o Imovel Desejado" />
+          </div>
+        </div>
+
+        <!--AQUI VAI FICAR A AREA DAS FOTOS-->
+
+        <!--AQUI TERMINA A AREA DAS FOTOS-->
 
 
-          <div class="detalhes">
+        <div class="detalhes">
 
-            <div class="options-prods">
-              <h2 id="local">Localização</h2>
-              <div class="localizacao">
+          <div class="options-prods">
+            <h2 id="local">Localização</h2>
+            <div class="localizacao">
 
               <select name="UF" id="UF">
                 <option value="" disabled selected>-UF-</option>
@@ -104,143 +105,154 @@
                 <option value="AL">Alagoas</option>
               </select>
 
-              </div>
-              <h2 id="local">Endereço</h2>
-              <select name="Rua" id="rua">
-                <option value="" disabled selected>-Rua,N°-</option>
-                <option value="AC">Acre</option>
-                <option value="AL">Alagoas</option>
-              </select>
+            </div>
+            <h2 id="local">Endereço</h2>
+            <select name="Rua" id="rua">
+              <option value="" disabled selected>-Rua,N°-</option>
+              <option value="AC">Acre</option>
+              <option value="AL">Alagoas</option>
+            </select>
 
-              <h2 id="local">Preço</h2>
-              <input type="number" name="preco" id="preco" placeholder="Preço" min="0" step="0.10" />
+            <h2 id="local">Preço</h2>
+            <input type="number" name="preco" id="preco" placeholder="Preço" min="0" step="0.10" />
 
-              <h2 id="local">Status</h2>
-              <select name="status" id="stats">
-                <option value="" disabled selected>Na Planta</option>
-                <option value="">sucesso</option>
-                <option value="">dessussesso</option>
-              </select>
+            <h2 id="local">Status</h2>
+            <select name="status" id="stats">
+              <option value="" disabled selected>Na Planta</option>
+              <option value="">sucesso</option>
+              <option value="">dessussesso</option>
+            </select>
 
-              <h2 id="local">Prazo</h2>
-              <input type="date" name="data" id="dia">
+            <h2 id="local">Prazo</h2>
+            <input type="date" name="data" id="dia">
 
 
-              <h2 id="local">Descrição</h2>
-              
-              <div class="descri">
-              <textarea name="descricao" id="descricao" placeholder="Digite a descrição do imóvel" maxlength="500" rows="4" cols="50"></textarea>
+            <h2 id="local">Descrição</h2>
+
+            <div class="descri">
+              <textarea name="descricao" id="descricao" placeholder="Digite a descrição do imóvel" maxlength="500"
+                rows="4" cols="50"></textarea>
               <p id="desc-count">0/500 caracteres</p>
               <script src="js/description.js"></script>
-              </div>
-
-
             </div>
 
-            <h2 id="local">Detalhes</h2>
-            
-              <div class="detals-prods">
-                <div class="ranges-container">
-                  <div class="range-row">
-                    Plantas
-                    <input type="range" id="quartos" name="quartos" min="0" max="10" value="0" class="range-input">
-                    <span id="quartos-value" class="range-value">00</span>
-                  </div>
-                  <div class="range-row">
-                    Áreas
-                    <input type="range" id="banheiros" name="banheiros" min="0" max="10" value="0" class="range-input">
-                    <span id="banheiros-value" class="range-value">00</span>
-                  </div>
-                  <div class="range-row">
-                    Quartos
-                    <input type="range" id="vagas" name="vagas" min="0" max="10" value="0" class="range-input">
-                    <span id="vagas-value" class="range-value">00</span>
-                  </div>
-                  <div class="range-row">
-                    Vagas
-                    <input type="range" id="suites" name="suites" min="0" max="10" value="0" class="range-input">
-                    <span id="suites-value" class="range-value">00</span>
-                  </div>
-
-                  <div class="range-row">
-                    Banheiros
-                    <input type="range" id="suites" name="suites" min="0" max="10" value="0" class="range-input">
-                    <span id="suites-value" class="range-value">00</span>
-                  </div>
-                  
-                </div>
-
-                <script src="js/ranges.js"></script>
-
-
-                
-
-
-              </div>
 
           </div>
 
-        </form>
+          <h2 id="local">Detalhes</h2>
 
-      </main>
-    </div>
-    <footer>
-      <div class="rodape">
-        <div class="foot-logo">
-          <img src="img/logo1.png" alt="Logo" class="logo" />
-          <div class="titulos">
-            <div class="titulo">
-              <p>FÊNIX</p>
+          <div class="detals-prods">
+            <div class="ranges-container">
+
+              <div class="range-row">
+                Plantas
+                <input type="range" id="plantas" name="plantas" min="0" max="10" value="0" class="range-input">
+                <span id="plantas-value" class="range-value">00</span>
+              </div>
+
+              <div class="range-row">
+                Áreas
+                <input type="range" id="areas" name="areas" min="0" max="10" value="0" class="range-input">
+                <span class="range-value">00</span>
+              </div>
+
+              <div class="range-row">
+                Quartos
+                <input type="range" id="quartos" name="quartos" min="0" max="10" value="0" class="range-input">
+                <span id="quartos-value" class="range-value">00</span>
+              </div>
+
+              <div class="range-row">
+                Vagas
+                <input type="range" id="vagas" name="vagas" min="0" max="10" value="0" class="range-input">
+                <span id="vagas-value" class="range-value">00</span>
+              </div>
+
+              <div class="range-row">
+                Banheiros
+                <input type="range" id="banheiros" name="banheiros" min="0" max="10" value="0" class="range-input">
+                <span id="banheiros-value" class="range-value">00</span>
+              </div>
+
             </div>
-            <div class="subtitle">
-              <p>CONSTRUTORA</p>
-            </div>
+
+            <script src="js/ranges.js"></script>
           </div>
+
+
+          
+
+
+
+
+
+
         </div>
 
-        <div class="contatos">
-          <div class="cont1">
-            <div class="cont-title1">
-              <h3>REDES SOCIAIS</h3>
-            </div>
-            <a href="https://www.instagram.com/fenixconstroi/#" target="_blank">
-              <div class="conte">
-                <div class="icon">
-                  <img src="img/instagram.png" alt="" />
-                </div>
-                <div class="rede">
-                  <p>INSTAGRAM</p>
-                </div>
-              </div>
-            </a>
-          </div>
+  </div>
 
-          <div class="cont2">
-            <div class="titulo2">
-              <h3>NOSSA EMPRESA</h3>
-            </div>
-            <div class="abins">
-              <p>SOBRE NÓS</p>
-              <p>CONTATO</p>
-              <p>SERVIÇOS</p>
-            </div>
-          </div>
+  </form>
 
-          <div class="cont3">
-            <div class="titulo3">
-              <h3>NOSSOS PRODUTOS</h3>
-            </div>
-            <div class="produts">
-              <p>PROJETOS</p>
-              <p>IMÓVEIS</p>
-            </div>
+  </main>
+  </div>
+  <footer>
+    <div class="rodape">
+      <div class="foot-logo">
+        <img src="img/logo1.png" alt="Logo" class="logo" />
+        <div class="titulos">
+          <div class="titulo">
+            <p>FÊNIX</p>
           </div>
-        </div>
-
-        <div class="direitos-reservados">
-          <p>&copy; 2025 Fênix Construtora. Todos os direitos reservados.</p>
+          <div class="subtitle">
+            <p>CONSTRUTORA</p>
+          </div>
         </div>
       </div>
-    </footer>
-  </body>
+
+      <div class="contatos">
+        <div class="cont1">
+          <div class="cont-title1">
+            <h3>REDES SOCIAIS</h3>
+          </div>
+          <a href="https://www.instagram.com/fenixconstroi/#" target="_blank">
+            <div class="conte">
+              <div class="icon">
+                <img src="img/instagram.png" alt="" />
+              </div>
+              <div class="rede">
+                <p>INSTAGRAM</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="cont2">
+          <div class="titulo2">
+            <h3>NOSSA EMPRESA</h3>
+          </div>
+          <div class="abins">
+            <p>SOBRE NÓS</p>
+            <p>CONTATO</p>
+            <p>SERVIÇOS</p>
+          </div>
+        </div>
+
+        <div class="cont3">
+          <div class="titulo3">
+            <h3>NOSSOS PRODUTOS</h3>
+          </div>
+          <div class="produts">
+            <p>PROJETOS</p>
+            <p>IMÓVEIS</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="direitos-reservados">
+        <p>&copy; 2025 Fênix Construtora. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+
 </html>
