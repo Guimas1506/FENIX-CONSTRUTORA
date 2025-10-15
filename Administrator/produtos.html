@@ -14,57 +14,10 @@
     href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
     rel="stylesheet" />
   <title>Administrator</title>
-
+  
+  <link rel="stylesheet" href="style/produtos.css">
+  <script type="module" src="js/produtos.js"></script>
   <script src="js/opçao.js">
-  </script>
-
-  <!-- Proteção de página Admin -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
-
-    // 🔧 CONFIG DO SEU PROJETO FIREBASE
-    const firebaseConfig = {
-      apiKey: "AIzaSyCYDGROxguHYX-YA-J-HqRRGSF3uN-ZEAs",
-      authDomain: "fenix-construtora-a34b5.firebaseapp.com",
-      projectId: "fenix-construtora-a34b5",
-      storageBucket: "fenix-construtora-a34b5.firebasestorage.app",
-      messagingSenderId: "928009241790",
-      appId: "1:928009241790:web:333b16b217a2ece01d8aef"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
-
-    // 🔒 VERIFICA SE USUÁRIO É ADMIN
-    onAuthStateChanged(auth, async (user) => {
-      if (!user) {
-        console.warn("Nenhum usuário logado, redirecionando para login...");
-        window.location.href = "../log-in.html";
-        return;
-      }
-
-      try {
-        const docRef = doc(db, "users", user.uid);
-        const docSnap = await getDoc(docRef);
-
-        if (docSnap.exists()) {
-          const data = docSnap.data();
-          if (data.admin === true) {
-            console.log("✅ Acesso de administrador confirmado!");
-            return; // deixa o usuário continuar
-          }
-        }
-
-        console.warn("Usuário logado mas não é admin. Redirecionando...");
-        window.location.href = "../index.html";
-      } catch (error) {
-        console.error("Erro ao verificar admin:", error);
-        window.location.href = "../index.html";
-      }
-    });
   </script>
 </head>
 
@@ -116,102 +69,80 @@
     </aside>
 
     <main>
-
       <div class="indicator">
         <p id="home"> 🏠Home /</p>
-
-        <a href="">
-        <p> Gerenciar /</p>
-      </a>
-      <a href="produtos.html">
-        <p> Produtos</p>
-      </a>
+        <a href="#"><p> Gerenciar /</p></a>
+        <a href="produtos.html"><p> Produtos</p></a>
       </div>
 
       <div class="title-page">
         <h2>Produtos</h2>
       </div>
 
+      <!-- FILTROS -->
       <div class="filtros">
-        <div class="title-filtros">
-          <h1>Filtros</h1>
-        </div>
-
+        <div class="title-filtros"><h1>Filtros</h1></div>
         <div class="true-filtros">
-
           <div class="campos-filtros">
-
-            <form action="">
-
+            <form id="form-filtros">
               <select name="all-types" id="all-types">
-                <option value="" disabled selected>-Todos os Tipos-</option>
+                <option value="" selected>-Todos os Tipos-</option>
                 <option value="casa">Casa</option>
               </select>
 
               <select name="Status" id="Status">
-                <option value="" disabled selected>-Status-</option>
-                <option value="">casa</option>
-              </select>
-
-              <select name="time" id="time">
-                <option value="" disabled selected>-Do Mais Recente ao Mais Antigo-</option>
-                <option value="">Casa</option>
+                <option value="" selected>-Status-</option>
+                <option value="disponivel">Disponível</option>
+                <option value="vendido">Vendido</option>
               </select>
 
               <select name="UF" id="UF">
-                <option value="" disabled selected>-UF-</option>
+                <option value="" selected>-UF-</option>
                 <option value="SP">São Paulo</option>
+                <option value="RJ">Rio de Janeiro</option>
               </select>
 
               <select name="city" id="city">
-                <option value="" disabled selected>-Cidade-</option>
+                <option value="" selected>-Cidade-</option>
                 <option value="são paulo">São Paulo</option>
+                <option value="rio de janeiro">Rio de Janeiro</option>
               </select>
 
               <select name="sale" id="sale">
-                <option value="" disabled selected>-Venda/Aluguel-</option>
+                <option value="" selected>-Venda/Aluguel-</option>
                 <option value="venda">Venda</option>
+                <option value="aluguel">Aluguel</option>
               </select>
 
-            <div class="rangers">
+              <div class="rangers">
+                <div class="ranger1">
+                  <p>Área (m²)</p>
+                  <input type="range" min="0" max="1000" value="1000" class="slider" id="area-range">
+                  <p id="area-label">Todas as áreas</p>
+                </div>
 
-              <div class="ranger1">
-                <p>Área</p>
-                <input type="range" min="0" max="1000" value="500" class="slider" id="myRange">
-                <p>Todas as areas</p>
+                <div class="ranger2">
+                  <p>Preço (R$)</p>
+                  <input type="range" min="0" max="1000000" value="1000000" class="slider" id="preco-range">
+                  <p id="preco-label">Todos os preços</p>
+                </div>
               </div>
 
-              <div class="ranger2">
-                <p>Preço</p>
-                <input type="range" min="0" max="1000" value="500" class="slider" id="myRange">
-                <p>Todos os Preços</p>
+              <div class="aplicador">
+                <button id="aplicar">Aplicar</button>
               </div>
-              
-            </div>
-
-            <div class="aplicador">
-              <button id="aplicar">Aplicar</button>
-            </div>
-
             </form>
           </div>
         </div>
       </div>
 
+      <!-- BOTÃO ADICIONAR -->
       <div class="adcionar">
         <button id="addi-produto" onclick="window.location.href='adicionar-produto.html'">Adicionar Produto</button>
       </div>
 
-      <!-- 
-      OLHA È AQUI, VIU
-      -->
-
-       <!--
-      no css coloca o width 100% e o heigth tambem.
-      coloca border solid para que vc possa vizualizar a área
-       -->
-
-
+      <!-- CONTAINER DOS IMÓVEIS -->
+      <div id="lista-imoveis-container"></div>
     </main>
   </div>
 
@@ -273,6 +204,8 @@
       </div>
     </div>
   </footer>
+
+  
 </body>
 
 </html>

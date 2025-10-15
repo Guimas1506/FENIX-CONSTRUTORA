@@ -14,6 +14,9 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
     rel="stylesheet" />
+
+    <script type="module" src="js/adicionar-produto.js"></script>
+
 </head>
 
 <body>
@@ -68,132 +71,110 @@
       </div>
 
       <div class="tie-page">
-        <h1>Editar Produtos</h1>
+        <h1>Adicionar/Editar Produto</h1>
       </div>
 
-      <!--aqui começa a parte principal da aba produtos-->
-
-      <form id="prods" action="">
-
+      <form id="prods">
+        <!-- Nome -->
         <div class="search">
           <div class="pesquise">
             <p id="title-form">Nome</p>
-            <input type="search" name="search-name" id="search-name" placeholder="Pesquise o Imovel Desejado" />
+            <input type="search" id="search-name" placeholder="Nome do imóvel" required />
           </div>
         </div>
 
-        <!--AQUI VAI FICAR A AREA DAS FOTOS-->
+        <!-- Imagem -->
+        <div class="fotos">
+          <h2>Imagem do Imóvel</h2>
+          <input type="file" id="imagem" accept="image/*" />
+          <img id="preview" style="max-width: 200px; margin-top: 10px; display:none;">
+        </div>
 
-        <!--AQUI TERMINA A AREA DAS FOTOS-->
-
-
+        <!-- Detalhes -->
         <div class="detalhes">
-
           <div class="options-prods">
-            <h2 id="local">Localização</h2>
+            <h2>Localização</h2>
             <div class="localizacao">
-
-              <select name="UF" id="UF">
+              <select id="UF" required>
                 <option value="" disabled selected>-UF-</option>
                 <option value="AC">Acre</option>
                 <option value="AL">Alagoas</option>
+                <!-- Continue com todas as UFs -->
               </select>
 
-              <select name="city" id="city">
+              <select id="city" required>
                 <option value="" disabled selected>-Cidade-</option>
-                <option value="AC">Acre</option>
-                <option value="AL">Alagoas</option>
+                <option value="Rio Branco">Rio Branco</option>
+                <option value="Maceió">Maceió</option>
+                <!-- Continue com as cidades -->
               </select>
-
             </div>
-            <h2 id="local">Endereço</h2>
-            <select name="Rua" id="rua">
-              <option value="" disabled selected>-Rua,N°-</option>
-              <option value="AC">Acre</option>
-              <option value="AL">Alagoas</option>
+
+            <h2>Endereço</h2>
+            <input type="text" id="rua" placeholder="Rua, número" required />
+
+            <h2>Preço</h2>
+            <input type="number" id="preco" placeholder="Preço" min="0" step="0.01" required />
+
+            <h2>Status</h2>
+            <select id="stats" required>
+              <option value="" disabled selected>Selecione</option>
+              <option value="Na Planta">Na Planta</option>
+              <option value="Pronto">Pronto</option>
             </select>
 
-            <h2 id="local">Preço</h2>
-            <input type="number" name="preco" id="preco" placeholder="Preço" min="0" step="0.10" />
+            <h2>Prazo</h2>
+            <input type="date" id="dia" />
 
-            <h2 id="local">Status</h2>
-            <select name="status" id="stats">
-              <option value="" disabled selected>Na Planta</option>
-              <option value="">sucesso</option>
-              <option value="">dessussesso</option>
-            </select>
-
-            <h2 id="local">Prazo</h2>
-            <input type="date" name="data" id="dia">
-
-
-            <h2 id="local">Descrição</h2>
-
+            <h2>Descrição</h2>
             <div class="descri">
-              <textarea name="descricao" id="descricao" placeholder="Digite a descrição do imóvel" maxlength="500"
-                rows="4" cols="50"></textarea>
+              <textarea id="descricao" placeholder="Digite a descrição do imóvel" maxlength="500" rows="4"></textarea>
               <p id="desc-count">0/500 caracteres</p>
               <script src="js/description.js"></script>
             </div>
-
-
           </div>
 
-          <h2 id="local">Detalhes</h2>
-
+          <!-- Detalhes Extras -->
+          <h2>Detalhes Extras</h2>
           <div class="detals-prods">
             <div class="ranges-container">
-
               <div class="range-row">
                 Plantas
-                <input type="range" id="plantas" name="plantas" min="0" max="10" value="0" class="range-input">
-                <span id="plantas-value" class="range-value">00</span>
+                <input type="range" id="plantas" min="0" max="10" value="0" class="range-input">
+                <span id="plantas-value" class="range-value">0</span>
               </div>
 
               <div class="range-row">
                 Áreas
-                <input type="range" id="areas" name="areas" min="0" max="10" value="0" class="range-input">
-                <span class="range-value">00</span>
+                <input type="range" id="areas" min="0" max="10" value="0" class="range-input">
+                <span id="areas-value" class="range-value">0</span>
               </div>
 
               <div class="range-row">
                 Quartos
-                <input type="range" id="quartos" name="quartos" min="0" max="10" value="0" class="range-input">
-                <span id="quartos-value" class="range-value">00</span>
+                <input type="range" id="quartos" min="0" max="10" value="0" class="range-input">
+                <span id="quartos-value" class="range-value">0</span>
               </div>
 
               <div class="range-row">
                 Vagas
-                <input type="range" id="vagas" name="vagas" min="0" max="10" value="0" class="range-input">
-                <span id="vagas-value" class="range-value">00</span>
+                <input type="range" id="vagas" min="0" max="10" value="0" class="range-input">
+                <span id="vagas-value" class="range-value">0</span>
               </div>
 
               <div class="range-row">
                 Banheiros
-                <input type="range" id="banheiros" name="banheiros" min="0" max="10" value="0" class="range-input">
-                <span id="banheiros-value" class="range-value">00</span>
+                <input type="range" id="banheiros" min="0" max="10" value="0" class="range-input">
+                <span id="banheiros-value" class="range-value">0</span>
               </div>
-
             </div>
-
             <script src="js/ranges.js"></script>
           </div>
-
-
-          
-
-
-
-
-
-
         </div>
 
-  </div>
-
-  </form>
-
-  </main>
+        <button type="submit" class="btn-salvar">Salvar Imóvel</button>
+      </form>
+    </main>
   </div>
   <footer>
     <div class="rodape">
