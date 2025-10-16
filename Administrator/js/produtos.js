@@ -1,5 +1,7 @@
+// Imports
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getFirestore, collection, getDocs, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+import { getFirestore, collection, getDocs, doc, deleteDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 import { getStorage, ref, deleteObject } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js";
 
 // Config Firebase
@@ -15,12 +17,13 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const storage = getStorage(app);
+const auth = getAuth(app);
 
 // Container de imóveis
 const container = document.getElementById("lista-imoveis-container");
-let listaImoveis = []; // lista completa do Firestore
+let listaImoveis = [];
 
-// Função para exibir imóveis
+// Função para mostrar imóveis
 function mostrarImoveis(lista) {
   container.innerHTML = "";
   lista.forEach((data) => {
@@ -28,12 +31,12 @@ function mostrarImoveis(lista) {
     card.classList.add("imovel-card");
 
     card.innerHTML = `
-      <img src="${data.imagemURL}" alt="${data.nome}" class="imovel-img">
+      <img src="${data.imagemURL || 'img/placeholder.png'}" alt="${data.nome}" class="imovel-img">
       <div class="imovel-info">
         <h3>${data.nome}</h3>
         <p><strong>Cidade:</strong> ${data.cidade} - ${data.uf}</p>
         <p><strong>Endereço:</strong> ${data.endereco}</p>
-        <p><strong>Preço:</strong> R$ ${Number(data.preco).toLocaleString()}</p>
+        <p><strong>Preço:</strong> R$ ${Number(data.preco || 0).toLocaleString()}</p>
       </div>
       <div class="imovel-actions">
         <button class="editar-btn">Editar</button>
@@ -41,24 +44,24 @@ function mostrarImoveis(lista) {
       </div>
     `;
 
+    // Editar
     card.querySelector(".editar-btn").addEventListener("click", () => {
       window.location.href = `adicionar-produto.html?id=${data.id}`;
     });
 
+    // Excluir
     card.querySelector(".excluir-btn").addEventListener("click", async () => {
       if (!confirm("Tem certeza que quer excluir este imóvel?")) return;
-
       try {
         await deleteDoc(doc(db, "imoveis", data.id));
 
         if (data.imagemPath) {
-          const imageRef = ref(storage, data.imagemPath);
-          await deleteObject(imageRef);
+          await deleteObject(ref(storage, data.imagemPath));
         }
 
         alert("Imóvel excluído!");
         card.remove();
-        listaImoveis = listaImoveis.filter(i => i.id !== data.id); // remove da lista local
+        listaImoveis = listaImoveis.filter(i => i.id !== data.id);
       } catch (err) {
         alert("Erro ao excluir imóvel: " + err.message);
       }
@@ -68,12 +71,12 @@ function mostrarImoveis(lista) {
   });
 }
 
-// Carrega todos os imóveis do Firestore
+// Carrega todos os imóveis
 async function carregarImoveis() {
   try {
     const querySnapshot = await getDocs(collection(db, "imoveis"));
     listaImoveis = [];
-    querySnapshot.forEach((docSnap) => {
+    querySnapshot.forEach(docSnap => {
       const data = docSnap.data();
       data.id = docSnap.id;
       listaImoveis.push(data);
@@ -85,65 +88,44 @@ async function carregarImoveis() {
   }
 }
 
-// Filtra imóveis de acordo com os filtros selecionados
+// Filtros compatíveis com os campos do Firestore
 function aplicarFiltros() {
-  const tipo = document.getElementById("all-types").value;
-  const status = document.getElementById("Status").value;
   const uf = document.getElementById("UF").value;
-  const cidade = document.getElementById("city").value;
-  const venda = document.getElementById("sale").value;
-  const areaMax = parseFloat(document.getElementById("area-range")?.value) || Infinity;
+  const cidade = document.getElementById("city").value.toLowerCase();
   const precoMax = parseFloat(document.getElementById("preco-range")?.value) || Infinity;
+  const areaMax = parseFloat(document.getElementById("area-range")?.value) || Infinity;
 
   const filtrados = listaImoveis.filter(imovel => {
-    if (tipo && imovel.tipo !== tipo) return false;
-    if (status && imovel.stats !== status) return false;
     if (uf && imovel.uf !== uf) return false;
-    if (cidade && imovel.cidade.toLowerCase() !== cidade.toLowerCase()) return false;
-    if (venda && imovel.venda !== venda) return false;
-    if (imovel.areas && imovel.areas > areaMax) return false;
+    if (cidade && imovel.cidade.toLowerCase() !== cidade) return false;
     if (imovel.preco && imovel.preco > precoMax) return false;
+    if (imovel.areas && imovel.areas > areaMax) return false;
     return true;
   });
 
   mostrarImoveis(filtrados);
 }
 
-// Inicializa
-carregarImoveis();
-
-// Evento do botão "Aplicar"
+// Botão aplicar filtros
 document.getElementById("aplicar")?.addEventListener("click", (e) => {
   e.preventDefault();
   aplicarFiltros();
 });
 
+// Verifica se o usuário é admin
+onAuthStateChanged(auth, async (user) => {
+  if (!user) return window.location.href = "../log-in.html";
 
+  try {
+    const docSnap = await getDoc(doc(db, "users", user.uid));
+    if (!docSnap.exists() || !docSnap.data().admin) {
+      window.location.href = "../index.html";
+    }
+  } catch (err) {
+    console.error("Erro ao verificar admin:", err);
+    window.location.href = "../index.html";
+  }
+});
 
-    // 🔒 VERIFICA SE USUÁRIO É ADMIN
-    onAuthStateChanged(auth, async (user) => {
-      if (!user) {
-        console.warn("Nenhum usuário logado, redirecionando para login...");
-        window.location.href = "../log-in.html";
-        return;
-      }
-
-      try {
-        const docRef = doc(db, "users", user.uid);
-        const docSnap = await getDoc(docRef);
-
-        if (docSnap.exists()) {
-          const data = docSnap.data();
-          if (data.admin === true) {
-            console.log("✅ Acesso de administrador confirmado!");
-            return; // deixa o usuário continuar
-          }
-        }
-
-        console.warn("Usuário logado mas não é admin. Redirecionando...");
-        window.location.href = "../index.html";
-      } catch (error) {
-        console.error("Erro ao verificar admin:", error);
-        window.location.href = "../index.html";
-      }
-    });
+// Inicializa
+carregarImoveis();
