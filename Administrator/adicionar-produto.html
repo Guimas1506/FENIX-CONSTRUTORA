@@ -15,7 +15,7 @@
     href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
     rel="stylesheet" />
 
-    <script type="module" src="js/adicionar-produto.js"></script>
+  <script type="module" src="js/adicionar-produto.js"></script>
 
 </head>
 
@@ -135,9 +135,10 @@
           </div>
 
           <!-- Detalhes Extras -->
-          <h2>Detalhes Extras</h2>
+
           <div class="detals-prods">
             <div class="ranges-container">
+              <h2>Detalhes Extras</h2>
               <div class="range-row">
                 Plantas
                 <input type="range" id="plantas" min="0" max="10" value="0" class="range-input">
@@ -169,10 +170,30 @@
               </div>
             </div>
             <script src="js/ranges.js"></script>
+
+            <div class="checkb">
+              <div class="checkboxing">
+                <input type="checkbox" name="piscina" id="piscina">
+                <h3>Piscina</h3>
+                <input type="checkbox" name="churras" id="churras">
+                <h3>Churrasqueira</h3>
+                <input type="checkbox" name="fit" id="fit">
+                <h3>Fitness</h3>
+              </div>
+            </div>
+
           </div>
         </div>
 
-        <button type="submit" class="btn-salvar">Salvar Imóvel</button>
+        <div class="btn-alt">
+
+          <div class="config-btn-alt">
+            <button type="submit" class="btn-salvar">Salvar Alteração</button>
+            <button type="reset" class="btn-excluir">Descartar Alterações</button>
+          </div>
+
+        </div>
+
       </form>
     </main>
   </div>

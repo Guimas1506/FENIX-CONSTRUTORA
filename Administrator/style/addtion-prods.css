@@ -207,11 +207,13 @@ body::-webkit-scrollbar{
 
 .detals-prods{
     width: 70%;
-    height: 200px;
+    height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-top: 170px;
     gap: 0;
+
     
 
 }
@@ -282,3 +284,65 @@ body::-webkit-scrollbar{
   color: var(--Cor-Secundaria);
 }
 
+
+/*FIM DAS CONFIGURAÇÕES DO RANGES*/
+
+/*INICIO DOS CHECKBOX*/
+
+.checkb{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    
+}
+
+.checkboxing{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+.btn-alt{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-top: 20px;
+}
+
+.config-btn-alt{
+    width: 40%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.btn-salvar{
+    width: 40%;
+    height: 80%;
+    background-color: var(--Cor-Secundaria);
+    color: var(--Branco);
+    font-size: 16px;
+    font-weight: 100;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.btn-excluir{
+    width: 40%;
+    height: 80%;
+    background-color: var(--Cor-Primaria);
+    color: var(--Branco);
+    font-size: 16px;
+    font-weight: 100;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
