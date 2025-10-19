@@ -1349,7 +1349,35 @@ margin-left: 50px;
     display: none;
 }
 .produts-list{
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 98%;
+   height: 200px;
+}
+.pesq-bar{
+    width: 10px;
+    position: relative;
+    right: -160px;
+    bottom: -20px;
+}
+#all-preço{
+    width: 300px;
+}
+.filtro,.filtrosas,.filtrosas2{
+    position: relative;
+    right: -120px;
+    bottom: -10px;
+}
+.filtro h2,.filtro img{
+    position:relative;
+    right: -115px;
+    bottom: -10px;
+}
+.filtrosas3{
+    width: 400px;
+    position: relative;
+    bottom: -100px;
+    left: -260px;
 }
 .filtro h2{
     margin-left: 15px;
@@ -1448,8 +1476,34 @@ margin-right: -50px;}
   margin-top:20px;
    
 }
+
+.icone-complem img{
+display: none;
+}
 .icone-complem div{
 margin-bottom: 15px;
+}
+.complem-iage{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+  
+    height: 300px;
+    aspect-ratio: 1 / 1;
+width: 250px;
+height: 250px;
+position: relative;
+top:-90px;
+}
+.complem{
+    display: flex;
+    flex-direction: column;
+}
+.complem-teste{
+    position: relative;
+    top: -40px;
+    
 }
 body{overflow-x: hidden;}
 }
