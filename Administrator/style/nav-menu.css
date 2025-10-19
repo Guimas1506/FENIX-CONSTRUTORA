@@ -102,15 +102,18 @@ aside{
     height: 50vh;
     flex-direction: column;
 
+
 }
 
 .menu{
-    width: 80%;
+    width: 95%;
     height: 100%;
 
     display: flex;
     flex-direction: column;
     background-color: var(--Cor-Primaria);
+
+    
 }
 
 .menu a{
@@ -120,36 +123,88 @@ aside{
     margin-left: 5%;
     margin-top: 5%;
 
+    height: 45px;
+    display: flex;
+    align-items: center;
+
 }
+
+.inicio{
+        width: 100%;
+    height: 12%;
+
+    align-items: center;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    font-size: 18px;
+}
+
+.inicio a{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    
+}
+
+#homening{
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+
+.dash{
+     width: 100%;
+    height: 12%;
+
+    align-items: center;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    font-size: 18px;
+}
+
+.dash a{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
 
 .gerenciar{
     width: 100%;
-    height: 60%;
+    height: 260px;
     display: flex;
     align-items: start;
     justify-content: start;
     flex-direction: column;
-
     color: white;
 
 }
 
 .title-gerence{
     width: 100%;
-    height: 25%;
-
+    height: 20%;
     align-items: center;
     justify-content: center;
     margin: 0;
     display: flex;
     align-items: center;
     flex-direction: row;
+    font-size: 18px;
 
 }
 
 #seta{
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
     display: flex;
     align-items: center;
     justify-content: end;
@@ -157,8 +212,8 @@ aside{
 }
 
 #gear{
-    width: 15px;
-    height: 15px;
+    width: 25px;
+    height: 25px;
     display: flex;
     align-items: center;
     justify-content: end;
