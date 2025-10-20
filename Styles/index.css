@@ -1396,32 +1396,38 @@ margin-left: 50px;
 .tect-text p{
 font-size: 11px;
 position: relative;
-bottom: 0px;
+bottom: -10px;
 }
 .title-comp1{
     margin-top: 10px;
     margin-bottom: 15px;
 }
 .comp1-image{
- height: 300px;
+ height: 250px;
 }
 
- 
-.yect-text{
+ .comp1{
+    margin-bottom:10px ;
+    margin-left: 10px;
+    height: 450px;
+ }
+.yect-text p{
     font-size: 11px;
+      position:relative;
+    bottom: -60px;
 }
-.yect-text{
-    position:relative;
-    bottom: -30px;
-}
+
 .comp2{
+    width: 1500px;
     height: 550px;
     margin-bottom: 10px;
 }
 .comp2-image{
-    height: 320px;
+    width:400px ;
+    height: 280px;
     position: relative;
     top: -110px;
+    right: -50px;
 }
 
 .abas{
