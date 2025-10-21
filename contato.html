@@ -5,6 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="shortcut icon" type="imagex/png" href="./img/logo1.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
   <title> FENIX CONSTRUTORA - Contato</title>
 </head>
 
@@ -12,6 +17,8 @@
 <link rel="stylesheet" href="./Styles/contato.css">
 <link rel="stylesheet" href="./Styles/header.css">
 <link rel="stylesheet" href="./Styles/footer.css">
+  <link rel="stylesheet" href="Styles/UserArea.css">
+
     <header>
   <div class="navbar">
     <div class="logo">
@@ -52,34 +59,25 @@
         </div>
     </div>
 
-    <div id="userArea" class="modal" style="display:none;">
-  <div class="modal-content">
-    <span id="closeUserArea" class="close">&times;</span>
-    <h2 id="welcomeMsg">Bem-vindo(a), Usuário</h2>
-    <p id="userEmail">Email do usuário</p>
+      <div id="userArea" class="modal" style="display:none;">
+        <div class="modal-content">
+          <span id="closeUserArea" class="close">&times;</span>
+          <h2 id="welcomeMsg">Bem-vindo(a), Usuário</h2>
+          <p id="userEmail">Email do usuário</p>
 
-    <div class="logadores">
+          <div class="logadores">
 
-    <a id="logi" href="./log-in.html">
-    <button id="log">
-      <p>Login</p>
-    </button>
-    </a>
+            <a id="log" href="log-in.html">Acesse o Login</a>
 
+            <a id="register" href="sign-in.html">Se Registre</a>
 
-    <a id="registeri" href="./sign-in.html">
-    <button id="register">
-      <p>Sign-in</p>
-    </button>
-</a>
-    
-    </div>
-        <button id="btnLogoutModal">
-        <img src="./img/sair.png" alt="">
-    </button>
+          </div>
+          <button id="btnLogoutModal">
+            <img src="./img/sair.png" alt="">
+          </button>
 
-  </div>
-</div>
+        </div>
+      </div>
     
   </div>
 </header>

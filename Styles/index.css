@@ -32,6 +32,7 @@ body::-webkit-scrollbar{
 
 
 
+
 /*AQUI TERMINA AS CONFIGURAÇOES DO LOGIN*/
 
 .barra hr{
@@ -72,7 +73,7 @@ section.slider{
 
 .slide-box img{
     width: 100%;
-    height: 85vh;
+    height: 75vh;
     display: flex;
     margin: auto;object-fit: cover;
 }
@@ -82,7 +83,7 @@ section.slider{
 .nav-manual, .nav-auto{
     position: absolute;
     width: 100vw;
-    height: 80vh;
+    height: 70vh;
     justify-content: center;
     background-size: cover;
     display: flex;
