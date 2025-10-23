@@ -1,0 +1,296 @@
+html{
+    overflow-x: hidden;
+    box-shadow: none;
+    
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+}
+
+a{
+    text-decoration: none;
+    list-style-type: none;
+}
+
+
+body::-webkit-scrollbar{
+    display: none;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+:root{
+    --Cor-Primaria: black;
+    --Cor-Secundaria: #FE4F3F;
+    --Cor-Terciaria: #7C7C7C;
+    --Branco: #fff;
+}
+
+
+/*TERMINA AS CONFIGURAÇOES BASICAS PARA O DESENVOLVIMENTO*/
+
+/*AQUI COMEÇA O O NAVBAR*/
+
+
+
+
+
+.navbar{
+    width: 100vw;
+    height: 9vh;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+}
+
+.logotipo{
+    width: 50vw;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.logotipo span{
+    color: var(--Cor-Secundaria);
+    font-size: 3.2vh;
+    font-weight: 700;
+    
+}
+
+.logotipo img{
+    width: auto;
+    height: 85%;
+    display: flex;
+    margin-left: 2vh;
+}
+
+/*AQUI COMEÇA A PARTE DE NOTIFICAÇÃO E LOGIN*/
+
+.notification{
+    width: 50vw;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.notification img{
+    width: auto;
+    height: 35%;
+    display: flex;
+    margin-right: 2vh;
+}
+
+.notification span{
+        width: auto;
+    height: 115%;
+    display: flex;
+    margin-right: 2vh;
+    align-items: center;
+}
+
+aside{
+
+    display: flex;
+    justify-content: center;
+    width: 14vw;
+    height: 50vh;
+    flex-direction: column;
+
+
+}
+
+.menu{
+    width: 95%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    background-color: var(--Branco);
+
+    
+}
+
+.menu a{
+    color: var(--Cor-Primaria);
+    font-size: 2vh;
+    font-weight: 500;
+    margin-left: 5%;
+    margin-top: 5%;
+
+    height: 45px;
+    display: flex;
+    align-items: center;
+
+}
+
+.inicio{
+        width: 100%;
+    height: 12%;
+
+    align-items: center;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    font-size: 18px;
+}
+
+.inicio a{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    
+}
+
+#homening{
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+
+.dash{
+     width: 100%;
+    height: 12%;
+
+    align-items: center;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    font-size: 18px;
+}
+
+.dash a{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+
+.gerenciar{
+    width: 100%;
+    height: 260px;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+    color: white;
+
+}
+
+.title-gerence{
+    width: 100%;
+    height: 20%;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    font-size: 18px;
+
+}
+
+#seta{
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-left: 25%;
+}
+
+#gear{
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-right: 2%;
+}
+
+.options-gerence{
+    width: 100%;
+    height: 100%;
+
+    gap: 0.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.options-gerence a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+
+    font-weight: 300;
+}
+
+#button-produtos{
+    background-color: #FE4F3F;
+}
+
+/*CONFIGURAÇÕES BASICAS DO CONTEUD*/
+ .conteud{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+ }
+
+main{
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.indicator{
+    width: 100%;
+    height: 45px;
+
+    display: flex;
+    flex-direction: row;
+    color: var(--Cor-Terciaria);
+    align-items: center;
+}
+
+#home{
+    color: var(--Cor-Secundaria);
+}
+
+.title-page{
+    width: 100%;
+    height: 65px;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.title-page h2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--Cor-Secundaria);
+    font-size: 35px;
+}

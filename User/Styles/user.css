@@ -1,0 +1,16 @@
+/* styles.css */
+html, body { height: 100%; margin: 0; }
+
+body .bg-eagle {
+  /* caminho relativo ao seu projeto */
+  background-image: url("../img/Mask\ group.png");
+  background-repeat: no-repeat;
+  background-position: right bottom; /* canto inferior direito */
+  background-size: 40% auto; /* ajusta o tamanho; use 'cover' se preferir cobrir tudo */
+  background-attachment: fixed; /* fica fixo ao rolar a página */
+}
+
+/* responsividade: reduz a imagem em telas pequenas */
+@media (max-width: 768px) {
+  body { background-size: 60% auto; }
+}

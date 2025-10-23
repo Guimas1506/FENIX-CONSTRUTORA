@@ -22,7 +22,7 @@
 
 .modal-content {
     border-radius: 10px;
-  background: #fff;
+  background-color: var(--Branco);
   padding: 20px 30px;
   width: 20vw;
   height: 80vh;
@@ -35,7 +35,12 @@
   border: solid var(--Cor-Primaria) 3px;
 
 }
-
+.modal-container{
+    position: relative;
+    contain: content;
+    height: auto;
+    width: auto;
+}
 .modal-content h2 {
   margin-bottom: 10px;
   color: var(--Cor-Primaria);
@@ -94,8 +99,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
-
+    margin: 0; padding: 0;
+}
+.logadores p{
+    margin: 0; padding: 0;
+    display: flex;
+    width: 100%; height: 100%;
+    align-items: center; justify-content: center;
 }
 
 #log{
@@ -142,7 +152,7 @@
 }
 
 #adminButton{
-        width: 100%;
+    width: 100%;
     height: 15%;
     display: flex;
     align-items: center;
@@ -154,7 +164,7 @@
     transition: 0.5s;
     border: solid 1px;
     text-align: center;
-
+    margin: 0; padding: 0;
 
 
 }

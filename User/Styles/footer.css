@@ -1,0 +1,291 @@
+html{
+    overflow-x: hidden;
+    box-shadow: none;
+    
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+    
+}
+
+body::-webkit-scrollbar{
+    display: none;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+:root{
+    --Cor-Primaria: #FE4F3F;
+    --Cor-Secundaria: #000000;
+    --Cor-Terciaria: #7C7C7C;
+    --Branco: #fff;
+}
+
+
+/* AQUI é o header*/
+a{
+    text-decoration: none;
+    list-style-type: none;
+}
+
+/*AQUI TERMINA A PARTE CENTRAL DO PROJETO*/
+
+.rodape{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--Cor-Primaria);
+    flex-direction: column;
+    border: solid;
+
+}
+/* AQUI TERMINA A PARTE CENTRAL DO RODAPÉ*/
+
+
+.foot-logo{
+    width: 90%;
+    height: 80px;
+    display: flex;
+  
+    align-items: center;
+}
+
+.foot-logo img{
+    width: 70px;
+    height: 70px;
+}
+
+.contatos{
+    width: 80%;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.titulos{
+    width: 200px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+
+    flex-direction: column;
+}
+
+.titulo{
+    width: 160px;
+    height: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--Branco);
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.subtitle{
+    width: 160px;
+    height: 25px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--Branco);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+
+.cont1{
+    width: 100%;
+    height: 270px;
+
+    display: flex;
+    align-items: center;
+    margin: auto;
+    flex-direction: column;
+}
+
+.cont-title1{
+    width: 200px;
+    height: 30px;
+
+    color: var(--Branco);
+    display:  flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.conte{
+    width: 8vw;
+    height: 50%;
+    align-items: center;
+    justify-content: center;
+
+    display: flex;
+    flex-direction: row;
+
+    
+}
+
+
+
+.icon{
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon img{
+    width: 30px;
+    height: 30px;
+    filter: grayscale(100%);
+    transition: 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon img:hover {
+    filter: grayscale(0%);
+    transform: rotateZ(360deg);
+}
+
+.rede{
+    width: 140px;
+    height: 40px;
+    color: var(--Branco);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rede p{
+    font-size: 16.5px;
+    font-weight: 500;
+}
+
+/* AQUI TERMINA O CONTATO 1 */
+
+.cont2{
+    width: 100%;
+    height: 270px;
+ 
+    display: flex;
+    align-items: center;
+    margin: auto;
+    flex-direction: column;
+}
+
+.titulo2{
+    width: 200px;
+    height: 30px;
+ 
+    color: var(--Branco);
+    display:  flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.abins{
+    display: flex;
+    flex-direction: column;
+    color: var(--Branco);
+    align-items: center;
+}
+
+.abins p{
+
+    font-weight: 500;
+
+}
+
+.cont3{
+    width: 100%;
+    height: 270px;
+
+    display: flex;
+    align-items: center;
+    margin: auto;
+    flex-direction: column;
+}
+
+.titulo3{
+    width: 200px;
+    height: 30px;
+
+    color: var(--Branco);
+    display:  flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.produts{
+    display: flex;
+    flex-direction: column;
+    color: var(--Branco);
+    align-items: center;
+}
+
+.produts p{
+
+    font-weight: 500;
+
+}
+
+.direitos-reservados{
+    color: var(--Branco);
+}
+
+@media screen and (max-width: 480px) {
+  
+    /* footer */
+.titulos{
+    margin-left:70px 
+}
+
+.foot-logo{
+    margin-left: -180px;
+}
+.footer h3{
+
+    font-size: 12px;
+}
+.cont1{
+font-size: 12px;
+    position: relative;
+    left: 33px;}
+.cont2{position: relative;
+    left: -70px;
+    margin-left: 60px;
+    margin-right: -50px;
+font-size: 12px;}
+
+.cont3{
+    position: relative;
+    left: -65px;
+font-size: 12px;
+margin-right: -50px;}
+.foot-logo img{
+    position: relative;
+    left: 100px;
+}
+
+body{overflow-x: hidden;}
+}
+

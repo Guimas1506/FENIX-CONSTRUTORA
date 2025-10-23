@@ -45,6 +45,10 @@ header{
     height: 70px;
     background-color: #FE4F3F;
     z-index: 1;
+    position: absolute;
+-webkit-box-shadow: 0px 21px 29px -12px rgba(31, 31, 31, 1);
+-moz-box-shadow: 0px 21px 29px -12px rgba(31, 31, 31, 1);
+box-shadow: 0px 21px 29px -12px rgba(31, 31, 31, 1);
     
 }/*AQUI TERMINA A PARTE CENTRAL DO PROJETO*/
 
