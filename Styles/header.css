@@ -45,10 +45,7 @@ header{
     height: 70px;
     background-color: #FE4F3F;
     z-index: 1;
-    position: absolute;
--webkit-box-shadow: 0px 21px 29px -12px rgba(31, 31, 31, 1);
--moz-box-shadow: 0px 21px 29px -12px rgba(31, 31, 31, 1);
-box-shadow: 0px 21px 29px -12px rgba(31, 31, 31, 1);
+
     
 }/*AQUI TERMINA A PARTE CENTRAL DO PROJETO*/
 
@@ -115,65 +112,13 @@ box-shadow: 0px 21px 29px -12px rgba(31, 31, 31, 1);
     align-items: center;
 }
 
-#but1{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: "Montserrat", sans-serif;
-    color: white;
-    font-size: 15px;
-    background: none;
-    border-radius: 100px;
-    border: solid #FE4F3F;
-    width: 130px;
-    height: 40px;
-    margin: auto;
-    margin-right: 10px;
-    font-weight: 300;
-    transition: 0.5s;
-}
 
-#but1:hover{
-    border:solid white 1px;
-
-}
-
-#but2{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: "Montserrat", sans-serif;
-    color: white;
-    font-size: 15px;
-    background: none;
-    border-radius: 100px;
-    border: solid white;
-    border-width: 1px;
-    width: 100px;
-    height: 40px;
-    margin-right: 10px;
-    font-weight: 300;
-    transition: 0.5s;
-
-}
-
-#but2:hover{
-    background-color: white;
-    color: black;
-    font-weight: 400;
-
-}
-
-#btn-logout{
-    width: 60px;
-    height: 50px;
-}
 
 
 .displau-subs{
     display: flex;
 
-    width: 12vw;
+    width: 14%;
     height: 100%;
 
     align-items: center;
@@ -186,6 +131,12 @@ box-shadow: 0px 21px 29px -12px rgba(31, 31, 31, 1);
     align-items: center;
     justify-content: center;
     display: flex;
+    transition: 0.2s ease;
+}
+
+.icon-person:hover{
+    transform: scale(0.9);
+
 }
 
 .icon-person img{
