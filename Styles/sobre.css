@@ -293,6 +293,7 @@ body::-webkit-scrollbar{
     margin: auto;
     align-items: center;
     justify-content: center;
+    margin-bottom: 40px;
 }
 
 .complem-iage{
@@ -304,6 +305,8 @@ body::-webkit-scrollbar{
     background-repeat: no-repeat;
     background-size: 440px;
     display: flex;
+
+
 }
 
 .complem-teste{

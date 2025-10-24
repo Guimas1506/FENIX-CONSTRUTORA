@@ -285,6 +285,7 @@ video::-moz-media-controls {
     margin: auto;
     align-items: center;
     justify-content: center;
+    margin-bottom: 40px;
 }
 
 .complem-iage{
