@@ -130,3 +130,89 @@ btnLogoutModal && btnLogoutModal.addEventListener("click", () => {
     })
     .catch((err) => alert(err.message));
 });
+
+// -------------------- CARREGAR IMÓVEIS --------------------
+import { collection, getDocs } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+async function carregarImoveisUsuario() {
+  console.log("🔍 Função carregarImoveisUsuario foi chamada");
+  
+  const container = document.getElementById("lista-imoveis-usuario");
+  console.log("📦 Container encontrado:", container);
+  
+  if (!container) {
+    console.error("❌ Container 'lista-imoveis-usuario' não foi encontrado no HTML!");
+    return;
+  }
+  
+  try {
+    container.innerHTML = '<p style="text-align: center; padding: 20px; color: #666; font-size: 18px;">⏳ Carregando imóveis...</p>';
+    
+    console.log("🔥 Buscando imóveis no Firebase...");
+    const querySnapshot = await getDocs(collection(db, "imoveis"));
+    console.log("✅ Total de imóveis encontrados:", querySnapshot.size);
+    
+    if (querySnapshot.empty) {
+      console.warn("⚠️ Nenhum imóvel encontrado na coleção");
+      container.innerHTML = '<p style="text-align: center; padding: 40px; color: #999; font-size: 18px;">📭 Nenhum imóvel disponível no momento.</p>';
+      return;
+    }
+    
+    container.innerHTML = '';
+    
+    querySnapshot.forEach((doc) => {
+      const imovel = doc.data();
+      console.log("🏠 Imóvel carregado:", imovel);
+      const card = criarCardUsuario(imovel, doc.id);
+      container.appendChild(card);
+    });
+    
+    console.log("✨ Imóveis carregados com sucesso!");
+    
+  } catch (error) {
+    console.error("❌ Erro ao carregar imóveis:", error);
+    container.innerHTML = `<p style="text-align: center; color: red; padding: 20px;">❌ Erro: ${error.message}</p>`;
+  }
+}
+
+function criarCardUsuario(imovel, id) {
+  const card = document.createElement('div');
+  card.className = 'imovel-card-usuario';
+  
+  card.innerHTML = `
+    <img src="${imovel.imagemURL || './img/placeholder.png'}" alt="${imovel.nome}" onerror="this.src='./img/logo1.png'">
+    <div class="card-content">
+      <h3>${imovel.nome || 'Imóvel Sem Nome'}</h3>
+      <p><strong>📍</strong> ${imovel.cidade || 'N/A'} - ${imovel.uf || ''}</p>
+      <p><strong>💰</strong> R$ ${imovel.preco ? Number(imovel.preco).toLocaleString('pt-BR', {minimumFractionDigits: 2}) : '0,00'}</p>
+      <p><strong>📏</strong> ${imovel.areas || '0'}m²</p>
+      <div class="card-detalhes">
+        <span>🛏️ ${imovel.quartos || 0} quartos</span>
+        <span>🚗 ${imovel.vagas || 0} vagas</span>
+        <span>🚿 ${imovel.banheiros || 0} banheiros</span>
+      </div>
+      <button onclick="verDetalhesImovel('${id}')">Ver Detalhes</button>
+    </div>
+  `;
+  
+  return card;
+}
+
+window.verDetalhesImovel = function(id) {
+  console.log("👀 Ver detalhes do imóvel:", id);
+  alert('Ver detalhes do imóvel ID: ' + id);
+}
+
+// TENTA CARREGAR IMEDIATAMENTE
+console.log("🚀 Script index.js carregado!");
+carregarImoveisUsuario();
+
+// E TAMBÉM quando o DOM estiver pronto (dupla garantia)
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    console.log("📄 DOM carregado, tentando novamente...");
+    carregarImoveisUsuario();
+  });
+} else {
+  console.log("📄 DOM já estava pronto");
+}

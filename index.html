@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FÊNIX CONSTRUTORA - Inicio</title>
   <link rel="stylesheet" href="./Styles/index.css" />
+  <link rel="stylesheet" href="./Styles/imoveisloading.css" />
   <link rel="shortcut icon" type="imagex/png" href="./img/logo1.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,11 +16,13 @@
   <link rel="stylesheet" href="./Styles/header.css">
   <link rel="stylesheet" href="./Styles/footer.css">
   <link rel="stylesheet" href="Styles/UserArea.css">
+  <script type="module" src="index.js" async></script>
+  <script type="module" src="carregar-imoveis.js"></script>
 </head>
 
 
 <body>
-  <script type="module" src="index.js" async></script>
+ 
   <header>
     <div class="navbar">
       <div class="logo">
@@ -283,6 +286,25 @@
 
 
       <!--aqui será a lista de produtos-->
+      <!-- CONTAINER DOS IMÓVEIS -->
+<div id="lista-imoveis-usuario"></div> <!-- TEM QUE TER ESSA LINHA! -->
+</div>
+<!-- Botão Ver Mais -->
+<div style="text-align: center; padding: 30px;">
+  <button id="btn-ver-mais" style="
+    padding: 15px 40px;
+    background: #FE4F3F;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    display: none;
+  " onclick="window.location.href='Imovel.html'">
+    Ver Todos os Imóveis →
+  </button>
+</div>
 
 
 
