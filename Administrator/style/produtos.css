@@ -1,24 +1,91 @@
-.lista-imoveis {
+/* ==================== CARDS ADMIN ==================== */
+#lista-imoveis-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-  margin-top: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+  padding: 30px;
 }
 
 .imovel-card {
-  border: 1px solid #ccc;
-  border-radius: 10px;
+  background: white;
+  border-radius: 12px;
   overflow: hidden;
-  background: #fff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
 }
 
-.imovel-img {
+.imovel-card img {
   width: 100%;
-  height: 180px;
+  height: 200px;
   object-fit: cover;
 }
 
-.imovel-info {
+.card-info-admin {
+  padding: 15px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-info-admin h3 {
+  margin: 0 0 10px 0;
+  color: #FE4F3F;
+  font-size: 1.2em;
+}
+
+.card-info-admin p {
+  margin: 5px 0;
+  color: #333;
+  font-size: 0.95em;
+}
+
+.card-detalhes-admin {
+  display: flex;
+  gap: 12px;
+  margin: 10px 0;
+  padding: 10px 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.card-detalhes-admin span {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.card-actions-admin {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.editar-btn {
+  flex: 1;
   padding: 10px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.editar-btn:hover {
+  background: #45a049;
+}
+
+.excluir-btn {
+  flex: 1;
+  padding: 10px;
+  background: #f44336;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.excluir-btn:hover {
+  background: #da190b;
 }
