@@ -35,9 +35,19 @@ body::-webkit-scrollbar{
     display: flex;
     flex-direction: row;
     align-items: center;
-    color: rgb(255, 255, 255);
-    background-color: var();
+    color: var(--Cor-Primaria);
+    background-color: var(--Branco);
     border-radius: 0px 30px 30px 0px;
+    border-color: white;
+    margin-bottom: 6px;
+    transition: 0.5s;
+}
+
+#config-button1:hover{
+    border: solid 1px rgb(192, 192, 192);
+    transition: 0.5s;
+    border-left: none;
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.25);
 }
 
 
@@ -64,16 +74,15 @@ body::-webkit-scrollbar{
     display: flex;
     flex-direction: row;
     align-items: center;
-    color: var(--Cor-Primaria);
+    color: var(--Branco);
+    background-color: var(--Cor-Secundaria);
     border-radius: 0px 30px 30px 0px;
     border-left: none;
+    border-color: white;
+    margin-bottom: 6px;
+    transition: 0.5s;
 }
 
-#config-button2:hover{
-    border: solid 1px rgb(192, 192, 192);
-    transition: 0.5s;
-    border-left: none;
-}
 
 
 #config-button2 p{
@@ -101,12 +110,16 @@ body::-webkit-scrollbar{
     align-items: center;
     color: var(--Cor-Primaria);
     border-radius: 0px 30px 30px 0px;
+    border-color: white;
+    margin-bottom: 6px;
+    transition: 0.5s;
 }
 
 #config-button3:hover{
     border: solid 1px var(--Cor-Terciaria);
     transition: 0.5s;
     border-left: none;
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.25);
 }
 
 #config-button3 p{
@@ -132,12 +145,16 @@ body::-webkit-scrollbar{
     align-items: center;
     color: var(--Cor-Primaria);
     border-radius: 0px 30px 30px 0px;
+    border-color: white;
+    margin-bottom: 6px;
+    transition: 0.5s;
 }
 
 #config-button4:hover{
     border: solid 1px var(--Cor-Terciaria);
     transition: 0.5s;
     border-left: none;
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.25);
 }
 
 #config-button4 p{
