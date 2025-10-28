@@ -190,26 +190,41 @@ section.slider{
 }
 
 .img-conteud2{
-    width: 50%;
-    height: 60%;
-    background-image: url(../img/image\ 7.jpg);
+    width: 60%;
+    height: 70%;
+    background-image: url(../img/house1.jpeg);
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
-    margin-left: 10%;
+    margin-left: 8%;
     z-index: 4;
+    transition: all 0.5s;
+    
+
+}
+
+.img-conteud2:hover{
+    transform: scale(1.05);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .subimg-conteud2{
-    width: 50%;
-    height: 60%;
+    width: 60%;
+    height: 70%;
     display: flex;
-    margin-left: 45%;
-    background-image: url(../img/image\ 8.png);
+    margin-left: 35%;
+    background-image: url(../img/plantaismo.jpeg);
     z-index: 1;
     margin-top: -100px;
     background-size: cover; 
+    transition: all 0.5s;
+
 }
+
+.subimg-conteud2:hover{
+    transform: scale(1.05);
+    z-index: 5;
+box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;}
 
 
 
