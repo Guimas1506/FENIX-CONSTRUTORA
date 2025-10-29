@@ -529,7 +529,6 @@ video::-moz-media-controls {
     height: 3vw;
     display: flex;
     align-items: center;
-    border: solid;
     color: white;
     font-size: 27px;
     font-weight: 700;
@@ -548,7 +547,6 @@ video::-moz-media-controls {
     margin-top: 5px;
     margin-bottom: 0;
     text-align: start;
-    border: solid;
 }
 
 #chorumi{
