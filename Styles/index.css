@@ -259,7 +259,7 @@ box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30p
 
 .video{
     width: 100%;
-    height: 500px;
+    height: 600px;
     display: flex;
     align-items: center;
     z-index: 1;
@@ -269,9 +269,8 @@ box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30p
 }
 
 .aplic-video{
-    width: 1000px;
-    height: 500px;
-
+    width: 60%;
+    height: 100%;
     display: flex;
     z-index: 2;
 
@@ -510,32 +509,105 @@ video::-moz-media-controls {
 
 /*primeiro conteudo aqui*/
 
+.desc-video{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+}
 
-
-
-.dec{
-    width: 300px;
-    height: 500px;
+.text-number-one{
+    width: 100%;
+    height: 65%;
     display: flex;
     flex-direction: column;
 }
 
-.dec1{
-    display: flex;
+#text-number-title{
     width: 100%;
-    height: 300px;
-
+    height: 3vw;
+    display: flex;
+    align-items: center;
+    border: solid;
     color: white;
-    flex-direction: column;
-
+    font-size: 27px;
+    font-weight: 700;
+    margin-top: 40px;
+    margin-bottom: 0
 }
 
-.dec2{
+#text-number-sub{
+    width: 90%;
+    height: 100vh;
     display: flex;
-    width: 100%;
-    height: 300px;
+    align-items: center;
+    justify-content: center;
     color: white;
-    flex-direction: column;
+    font-size: 17px;
+    margin-top: 5px;
+    margin-bottom: 0;
+    text-align: start;
+    border: solid;
+}
+
+#chorumi{
+    width: 100%;
+    height: 15vh;
+    display: block;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 0;
+    justify-content: center;
+    font-size: 35px;
+    font-weight: 800;
+    color: white;
+}
+
+#sub-chorumi{
+    width: 60%;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: start;
+}
+
+.mais{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 0;
+    text-align: start;
+    cursor: pointer;
+}
+
+
+#plus{
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F65B38;
+    color: white;
+    z-index: 10;
+    margin-bottom: -30px;
+    font-size: 20px;
+    margin-left: -35px;
+
+
 }
 
 /*AQUI COMEÇA AS CONFIGURAÇÕES COMPLEMENT1*/
