@@ -17,8 +17,7 @@
   
   <link rel="stylesheet" href="style/produtos.css">
   <script type="module" src="js/produtos.js"></script>
-  <script src="js/opçao.js">
-  </script>
+  <script src="js/opçao.js"></script>
 </head>
 
 <body>
@@ -95,51 +94,93 @@
 
             
             <form id="form-filtros">
-              <select name="all-types" id="all-types">
-                <option value="" selected disabled>-Todos os Tipos-</option>
-                <option value="casa">Casa</option>
-              </select>
-
+              <!-- Status - CORRIGIDO -->
               <select name="Status" id="Status">
-                <option value="" selected disabled>-Status-</option>
-                <option value="disponivel">Disponível</option>
-                <option value="vendido">Vendido</option>
+                <option value="" selected>-Status-</option>
+                <option value="Na Planta">Na Planta</option>
+                <option value="Pronto">Pronto</option>
               </select>
 
+              <!-- UF - CORRIGIDO com todas as UFs -->
               <select name="UF" id="UF">
-                <option value="" selected disabled>-UF-</option>
-                <option value="SP">São Paulo</option>
+                <option value="" selected>-UF-</option>
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+                <option value="AP">Amapá</option>
+                <option value="AM">Amazonas</option>
+                <option value="BA">Bahia</option>
+                <option value="CE">Ceará</option>
+                <option value="DF">Distrito Federal</option>
+                <option value="ES">Espírito Santo</option>
+                <option value="GO">Goiás</option>
+                <option value="MA">Maranhão</option>
+                <option value="MT">Mato Grosso</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="PA">Pará</option>
+                <option value="PB">Paraíba</option>
+                <option value="PR">Paraná</option>
+                <option value="PE">Pernambuco</option>
+                <option value="PI">Piauí</option>
                 <option value="RJ">Rio de Janeiro</option>
+                <option value="RN">Rio Grande do Norte</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="RO">Rondônia</option>
+                <option value="RR">Roraima</option>
+                <option value="SC">Santa Catarina</option>
+                <option value="SP">São Paulo</option>
+                <option value="SE">Sergipe</option>
+                <option value="TO">Tocantins</option>
               </select>
 
+              <!-- Cidade - CORRIGIDO -->
               <select name="city" id="city">
-                <option value="" selected disabled>-Cidade-</option>
-                <option value="são paulo">São Paulo</option>
-                <option value="rio de janeiro">Rio de Janeiro</option>
+                <option value="" selected>-Cidade-</option>
+                <option value="Rio Branco">Rio Branco</option>
+                <option value="Maceió">Maceió</option>
+                <option value="Macapá">Macapá</option>
+                <option value="Manaus">Manaus</option>
+                <option value="Salvador">Salvador</option>
+                <option value="Fortaleza">Fortaleza</option>
+                <option value="Brasília">Brasília</option>
+                <option value="Vitória">Vitória</option>
+                <option value="Goiânia">Goiânia</option>
+                <option value="São Luís">São Luís</option>
+                <option value="Cuiabá">Cuiabá</option>
+                <option value="Campo Grande">Campo Grande</option>
+                <option value="Belo Horizonte">Belo Horizonte</option>
+                <option value="Belém">Belém</option>
+                <option value="João Pessoa">João Pessoa</option>
+                <option value="Curitiba">Curitiba</option>
+                <option value="Recife">Recife</option>
+                <option value="Teresina">Teresina</option>
+                <option value="Rio de Janeiro">Rio de Janeiro</option>
+                <option value="Natal">Natal</option>
+                <option value="Porto Alegre">Porto Alegre</option>
+                <option value="Porto Velho">Porto Velho</option>
+                <option value="Boa Vista">Boa Vista</option>
+                <option value="Florianópolis">Florianópolis</option>
+                <option value="São Paulo">São Paulo</option>
+                <option value="Aracaju">Aracaju</option>
+                <option value="Palmas">Palmas</option>
               </select>
 
-              <select name="sale" id="sale">
-                <option value="" selected disabled>-Venda/Aluguel-</option>
-                <option value="venda">Venda</option>
-                <option value="aluguel">Aluguel</option>
-              </select>
-
+              <!-- INPUTS NUMÉRICOS (substituindo os sliders) -->
               <div class="rangers">
                 <div class="ranger1">
-                  <p>Área (m²)</p>
-                  <input type="range" min="0" max="1000" value="1000" class="slider" id="area-range">
-                  <p id="area-label">Todas as áreas</p>
+                  <p>Área Máxima (m²)</p>
+                  <input type="number" min="0" max="10000" placeholder="Ex: 150" id="area-input">
                 </div>
 
                 <div class="ranger2">
-                  <p>Preço (R$)</p>
-                  <input type="range" min="0" max="1000000" value="1000000" class="slider" id="preco-range">
-                  <p id="preco-label">Todos os preços</p>
+                  <p>Preço Máximo (R$)</p>
+                  <input type="number" min="0" max="100000000" placeholder="Ex: 500000" id="preco-input">
                 </div>
               </div>
 
               <div class="aplicador">
-                <button id="aplicar">Aplicar</button>
+                <button type="button" id="aplicar">Aplicar</button>
+                <button type="button" id="limpar">Limpar Filtros</button>
               </div>
             </form>
           </div>

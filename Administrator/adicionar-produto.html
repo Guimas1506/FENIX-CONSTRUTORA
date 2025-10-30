@@ -109,14 +109,62 @@
                 <option value="" disabled selected>-UF-</option>
                 <option value="AC">Acre</option>
                 <option value="AL">Alagoas</option>
-                <!-- Continue com todas as UFs -->
+                <option value="AP">Amapá</option>
+                <option value="AM">Amazonas</option>
+                <option value="BA">Bahia</option>
+                <option value="CE">Ceará</option>
+                <option value="DF">Distrito Federal</option>
+                <option value="ES">Espírito Santo</option>
+                <option value="GO">Goiás</option>
+                <option value="MA">Maranhão</option>
+                <option value="MT">Mato Grosso</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="PA">Pará</option>
+                <option value="PB">Paraíba</option>
+                <option value="PR">Paraná</option>
+                <option value="PE">Pernambuco</option>
+                <option value="PI">Piauí</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="RN">Rio Grande do Norte</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="RO">Rondônia</option>
+                <option value="RR">Roraima</option>
+                <option value="SC">Santa Catarina</option>
+                <option value="SP">São Paulo</option>
+                <option value="SE">Sergipe</option>
+                <option value="TO">Tocantins</option>
               </select>
 
               <select id="city" required>
                 <option value="" disabled selected>-Cidade-</option>
                 <option value="Rio Branco">Rio Branco</option>
                 <option value="Maceió">Maceió</option>
-                <!-- Continue com as cidades -->
+                <option value="Macapá">Macapá</option>
+                <option value="Manaus">Manaus</option>
+                <option value="Salvador">Salvador</option>
+                <option value="Fortaleza">Fortaleza</option>
+                <option value="Brasília">Brasília</option>
+                <option value="Vitória">Vitória</option>
+                <option value="Goiânia">Goiânia</option>
+                <option value="São Luís">São Luís</option>
+                <option value="Cuiabá">Cuiabá</option>
+                <option value="Campo Grande">Campo Grande</option>
+                <option value="Belo Horizonte">Belo Horizonte</option>
+                <option value="Belém">Belém</option>
+                <option value="João Pessoa">João Pessoa</option>
+                <option value="Curitiba">Curitiba</option>
+                <option value="Recife">Recife</option>
+                <option value="Teresina">Teresina</option>
+                <option value="Rio de Janeiro">Rio de Janeiro</option>
+                <option value="Natal">Natal</option>
+                <option value="Porto Alegre">Porto Alegre</option>
+                <option value="Porto Velho">Porto Velho</option>
+                <option value="Boa Vista">Boa Vista</option>
+                <option value="Florianópolis">Florianópolis</option>
+                <option value="São Paulo">São Paulo</option>
+                <option value="Aracaju">Aracaju</option>
+                <option value="Palmas">Palmas</option>
               </select>
             </div>
 
@@ -149,17 +197,20 @@
           <div class="detals-prods">
             <div class="ranges-container">
               <h2>Detalhes Extras</h2>
+
+              <!-- ÁREA AGORA É INPUT NUMÉRICO -->
+              <div class="input-row">
+                <label for="areas">Área (m²)</label>
+                <input type="number" id="areas" min="0" max="10000" placeholder="Ex: 150" class="input-number" required>
+              </div>
+              
               <div class="range-row">
                 Plantas
                 <input type="range" id="plantas" min="0" max="10" value="0" class="range-input">
                 <span id="plantas-value" class="range-value">0</span>
               </div>
 
-              <div class="range-row">
-                Áreas
-                <input type="range" id="areas" min="0" max="10" value="0" class="range-input">
-                <span id="areas-value" class="range-value">0</span>
-              </div>
+              
 
               <div class="range-row">
                 Quartos

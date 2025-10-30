@@ -23,21 +23,21 @@ const auth = getAuth(app);
 const container = document.getElementById("lista-imoveis-container");
 let listaImoveis = [];
 
-// Função para mostrar imóveis COM O NOVO LAYOUT
+// Função para mostrar imóveis
 function mostrarImoveis(lista) {
   console.log("📋 Mostrando", lista.length, "imóveis");
   container.innerHTML = "";
   
-  // Força estilo no container
+  if (lista.length === 0) {
+    container.innerHTML = '<p style="text-align: center; padding: 40px; color: #999; font-size: 1.1em;">Nenhum imóvel encontrado com os filtros aplicados.</p>';
+    return;
+  }
+  
   container.setAttribute('style', 'display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; padding: 30px;');
   
   lista.forEach((data) => {
     const card = document.createElement("div");
-    
-    // Força TUDO inline
     card.setAttribute('style', 'background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 10px rgba(0,0,0,0.1); display: flex; flex-direction: column;');
-
-    
 
     card.innerHTML = `
       <img src="${data.imagemURL || 'img/placeholder.png'}" 
@@ -60,6 +60,9 @@ function mostrarImoveis(lista) {
         <p style="margin: 5px 0; color: #333; font-size: 0.95em;">
           <strong>Área:</strong> ${data.areas || 0}m²
         </p>
+        <p style="margin: 5px 0; color: #333; font-size: 0.95em;">
+          <strong>Status:</strong> ${data.stats || 'N/A'}
+        </p>
         
         <div style="display: flex; gap: 12px; margin: 10px 0; padding: 10px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee;">
           <span style="font-size: 0.9em; color: #666;">🛏️ ${data.quartos || 0}</span>
@@ -78,7 +81,6 @@ function mostrarImoveis(lista) {
       </div>
     `;
 
-    // Eventos dos botões
     const btnEditar = card.querySelector(".btn-editar-admin");
     const btnExcluir = card.querySelector(".btn-excluir-admin");
     
@@ -116,36 +118,119 @@ async function carregarImoveis() {
       data.id = docSnap.id;
       listaImoveis.push(data);
     });
-    console.log("✅ Imóveis carregados:", listaImoveis.length);
+    console.log("✅ Total de imóveis carregados:", listaImoveis.length);
+    if (listaImoveis.length > 0) {
+      console.log("Exemplo de imóvel:", listaImoveis[0]);
+    }
     mostrarImoveis(listaImoveis);
   } catch (err) {
     console.error("❌ Erro ao carregar:", err);
   }
 }
 
-// Filtros
+// FUNÇÃO DE FILTROS - COM INPUTS NUMÉRICOS
 function aplicarFiltros() {
-  const uf = document.getElementById("UF")?.value;
-  const cidade = document.getElementById("city")?.value.toLowerCase();
-  const precoMax = parseFloat(document.getElementById("preco-range")?.value) || Infinity;
-  const areaMax = parseFloat(document.getElementById("area-range")?.value) || Infinity;
+  console.log("🔍 Aplicando filtros...");
+  
+  // Pega os valores dos campos de filtro
+  const statusSelecionado = document.getElementById("Status")?.value || "";
+  const ufSelecionado = document.getElementById("UF")?.value || "";
+  const cidadeSelecionada = document.getElementById("city")?.value || "";
+  
+  // Pega valores dos inputs numéricos (vazio = sem filtro)
+  const areaInput = document.getElementById("area-input")?.value;
+  const precoInput = document.getElementById("preco-input")?.value;
+  
+  const areaMax = areaInput && areaInput !== "" ? parseFloat(areaInput) : null;
+  const precoMax = precoInput && precoInput !== "" ? parseFloat(precoInput) : null;
 
+  console.log("📊 Filtros selecionados:", {
+    status: statusSelecionado || "Todos",
+    uf: ufSelecionado || "Todas",
+    cidade: cidadeSelecionada || "Todas",
+    areaMax: areaMax ? `até ${areaMax}m²` : "Todas",
+    precoMax: precoMax ? `até R$ ${precoMax.toLocaleString('pt-BR')}` : "Todos"
+  });
+
+  // Filtra a lista
   const filtrados = listaImoveis.filter(imovel => {
-    if (uf && imovel.uf !== uf) return false;
-    if (cidade && imovel.cidade?.toLowerCase() !== cidade) return false;
-    if (imovel.preco && imovel.preco > precoMax) return false;
-    if (imovel.areas && imovel.areas > areaMax) return false;
+    // Filtro Status - compara exatamente com "Na Planta" ou "Pronto"
+    if (statusSelecionado !== "") {
+      if (imovel.stats !== statusSelecionado) {
+        return false;
+      }
+    }
+
+    // Filtro UF - compara exatamente
+    if (ufSelecionado !== "") {
+      if (imovel.uf !== ufSelecionado) {
+        return false;
+      }
+    }
+
+    // Filtro Cidade - compara exatamente
+    if (cidadeSelecionada !== "") {
+      if (imovel.cidade !== cidadeSelecionada) {
+        return false;
+      }
+    }
+
+    // Filtro Área - só aplica se valor foi digitado
+    if (areaMax !== null) {
+      const areaImovel = parseFloat(imovel.areas) || 0;
+      if (areaImovel > areaMax) {
+        return false;
+      }
+    }
+
+    // Filtro Preço - só aplica se valor foi digitado
+    if (precoMax !== null) {
+      const precoImovel = parseFloat(imovel.preco) || 0;
+      if (precoImovel > precoMax) {
+        return false;
+      }
+    }
+
     return true;
   });
 
+  console.log(`✅ Resultado: ${filtrados.length} de ${listaImoveis.length} imóveis`);
   mostrarImoveis(filtrados);
 }
 
-// Botão aplicar
-document.getElementById("aplicar")?.addEventListener("click", (e) => {
-  e.preventDefault();
-  aplicarFiltros();
-});
+// Função para limpar filtros
+function limparFiltros() {
+  console.log("🧹 Limpando filtros...");
+  
+  // Reseta os selects
+  document.getElementById("Status").value = "";
+  document.getElementById("UF").value = "";
+  document.getElementById("city").value = "";
+  
+  // Limpa os inputs numéricos
+  document.getElementById("area-input").value = "";
+  document.getElementById("preco-input").value = "";
+  
+  // Mostra todos os imóveis
+  mostrarImoveis(listaImoveis);
+}
+
+// Event Listeners
+const btnAplicar = document.getElementById("aplicar");
+if (btnAplicar) {
+  btnAplicar.addEventListener("click", (e) => {
+    e.preventDefault();
+    aplicarFiltros();
+  });
+}
+
+const btnLimpar = document.getElementById("limpar");
+if (btnLimpar) {
+  btnLimpar.addEventListener("click", (e) => {
+    e.preventDefault();
+    limparFiltros();
+  });
+}
 
 // Verifica admin
 onAuthStateChanged(auth, async (user) => {
