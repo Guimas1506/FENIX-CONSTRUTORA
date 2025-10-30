@@ -23,17 +23,18 @@ const auth = getAuth(app);
 const container = document.getElementById("lista-imoveis-container");
 let listaImoveis = [];
 
-// Função para mostrar imóveis
+// Função para mostrar imóveis COM GRID DE 4 COLUNAS
 function mostrarImoveis(lista) {
   console.log("📋 Mostrando", lista.length, "imóveis");
   container.innerHTML = "";
   
   if (lista.length === 0) {
-    container.innerHTML = '<p style="text-align: center; padding: 40px; color: #999; font-size: 1.1em;">Nenhum imóvel encontrado com os filtros aplicados.</p>';
+    container.innerHTML = '<p style="text-align: center; padding: 40px; color: #999; font-size: 1.1em; grid-column: 1 / -1;">Nenhum imóvel encontrado com os filtros aplicados.</p>';
     return;
   }
   
-  container.setAttribute('style', 'display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; padding: 30px;');
+  // GRID COM 4 COLUNAS
+  container.setAttribute('style', 'display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; padding: 30px; width: 93%; margin: 0 auto;');
   
   lista.forEach((data) => {
     const card = document.createElement("div");
@@ -137,7 +138,7 @@ function aplicarFiltros() {
   const ufSelecionado = document.getElementById("UF")?.value || "";
   const cidadeSelecionada = document.getElementById("city")?.value || "";
   
-  // Pega valores dos inputs numéricos (vazio = sem filtro)
+  // Pega valores dos INPUTS NUMÉRICOS (não ranges!)
   const areaInput = document.getElementById("area-input")?.value;
   const precoInput = document.getElementById("preco-input")?.value;
   
@@ -154,21 +155,21 @@ function aplicarFiltros() {
 
   // Filtra a lista
   const filtrados = listaImoveis.filter(imovel => {
-    // Filtro Status - compara exatamente com "Na Planta" ou "Pronto"
+    // Filtro Status
     if (statusSelecionado !== "") {
       if (imovel.stats !== statusSelecionado) {
         return false;
       }
     }
 
-    // Filtro UF - compara exatamente
+    // Filtro UF
     if (ufSelecionado !== "") {
       if (imovel.uf !== ufSelecionado) {
         return false;
       }
     }
 
-    // Filtro Cidade - compara exatamente
+    // Filtro Cidade
     if (cidadeSelecionada !== "") {
       if (imovel.cidade !== cidadeSelecionada) {
         return false;
@@ -207,7 +208,7 @@ function limparFiltros() {
   document.getElementById("UF").value = "";
   document.getElementById("city").value = "";
   
-  // Limpa os inputs numéricos
+  // Limpa os INPUTS NUMÉRICOS
   document.getElementById("area-input").value = "";
   document.getElementById("preco-input").value = "";
   
