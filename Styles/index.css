@@ -196,7 +196,7 @@ section.slider{
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
-    margin-left: 8%;
+    margin-left: 4%;
     z-index: 4;
     transition: all 0.5s;
     
@@ -510,7 +510,7 @@ video::-moz-media-controls {
 /*primeiro conteudo aqui*/
 
 .desc-video{
-    width: 20%;
+    width: 25%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -550,11 +550,11 @@ video::-moz-media-controls {
 }
 
 #chorumi{
-    width: 100%;
+    width: 20vw;
     height: 15vh;
     display: block;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 10px;
     margin-bottom: 0;
     justify-content: center;
     font-size: 35px;
@@ -563,7 +563,7 @@ video::-moz-media-controls {
 }
 
 #sub-chorumi{
-    width: 60%;
+    width: 11vw;
     height: 5vh;
     display: flex;
     align-items: center;
@@ -598,7 +598,7 @@ video::-moz-media-controls {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #F65B38;
+    background-color: black;
     color: white;
     z-index: 10;
     margin-bottom: -30px;
