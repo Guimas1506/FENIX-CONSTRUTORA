@@ -10,7 +10,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
     rel="stylesheet">
-  <title> FENIX CONSTRUTORA - Contato</title>
+  <title>FENIX CONSTRUTORA - Contato</title>
 </head>
 
 <body>
@@ -27,9 +27,9 @@
         </a>
         <div class="title-fenix">
           <h3>FÊNIX <span>CONSTRUTORA</span></h3>
-
         </div>
       </div>
+      
       <div class="menu">
         <a href="./menu.html" class="menu-btn"
           style="display: flex; align-items: center; cursor: pointer; margin-left: 20px;">
@@ -39,8 +39,9 @@
             <span style="display: block; height: 4px; background: #ffffff; border-radius: 2px;"></span>
             <span style="display: block; height: 4px; background: #ffffff; border-radius: 2px;"></span>
           </div>
+        </a>
       </div>
-      </a>
+      
       <div class="abas">
         <a href="./index.html">
           <p>Inicio</p>
@@ -63,10 +64,7 @@
         <hr>
       </div>
 
-
-
-      <!-- Menu do usuário logado (vai substituir o login/sign-in) -->
-
+      <!-- Menu do usuário -->
       <div class="displau-subs">
         <div class="icon-person">
           <img src="./img/icon-usuario.png" alt="">
@@ -75,46 +73,44 @@
 
       <div id="userArea" class="modal" style="display:none;">
         <div class="modal-content">
+          <div class="modal-container">
+            <img src="./img/logo1.png" alt="Logo" class="logo-fundo">
+          </div>
           <span id="closeUserArea" class="close">&times;</span>
           <h2 id="welcomeMsg">Bem-vindo(a), Usuário</h2>
           <p id="userEmail">Email do usuário</p>
 
           <div class="logadores">
-
             <a id="log" href="log-in.html">Acesse o Login</a>
-
             <a id="register" href="sign-in.html">Se Registre</a>
-
+            <a href="User/user.html">Usuario</a>
+            <a href="./Administrator/produtos.html" id="adminButton" style="display:none;">
+              <p>ADM</p>
+            </a>
           </div>
+          
           <button id="btnLogoutModal">
             <img src="./img/sair.png" alt="">
           </button>
-
         </div>
       </div>
-
     </div>
   </header>
 
   <div class="titulopesquisa">
     <h1 class="faleconosco">Fale conosco</h1>
     <form class="pesquisa" action="#" method="get">
-
-
-      </button>
     </form>
   </div>
+  
   <img class="imagemprincipal" src="./img/ImagemPrincipal.png" alt="imagem Principal">
+  
   <p class="texto1">Entre em contato com a Fênix Construtora e descubra como podemos ajudar a transformar seu sonho em realidade. Nossa equipe está pronta para esclarecer dúvidas, apresentar projetos e oferecer soluções personalizadas, garantindo um atendimento rápido, eficiente e de confiança.
 
 Seja para obter informações sobre chácaras, residenciais, imóveis comerciais ou projetos sob medida, estamos à disposição para guiar você em cada etapa do seu investimento, com atenção aos detalhes e foco na sua satisfação.
   </p>
 
   <div class="conteud">
-
-
-
-
     <div class="atendimentos">
       <h1>Atendimento via WhatsApp</h1>
 
@@ -123,8 +119,8 @@ Seja para obter informações sobre chácaras, residenciais, imóveis comerciais
 Nosso objetivo é oferecer uma experiência ágil, transparente e eficiente, garantindo suporte em todas as etapas do processo, desde a escolha do imóvel até a entrega final. Se você deseja conhecer nossas chácaras, residenciais modernos ou imóveis comerciais, ou precisa de consultoria para projetos personalizados, nossa equipe está pronta para auxiliar com dedicação e profissionalismo.
         <br>
         <br> Com o atendimento via WhatsApp, você tem conveniência, confiança e suporte direto, conectando-se de forma simples e segura com a Fênix Construtora, sempre focada em entregar qualidade, inovação e satisfação completa em cada projeto.
-      
       </p>
+      
       <p>Estamos disponíveis para atender todos os dias, garantindo que suas necessidades sejam atendidas com atenção e rapidez, tornando o processo de escolha e aquisição do imóvel claro, seguro e sem complicações, para que você possa focar no que realmente importa: realizar seu sonho com tranquilidade e segurança.</p>
 
       <h1>Atendimento via telefone</h1>
@@ -135,9 +131,10 @@ Nossa equipe altamente qualificada está preparada para esclarecer dúvidas, ori
         <br>
         <br>
        Com o atendimento telefônico, você tem comodidade e praticidade ao falar diretamente com profissionais especializados, que acompanham cada etapa do seu projeto, desde o planejamento até a entrega final. Nosso objetivo é tornar o processo de escolha, compra ou reforma claro, eficiente e tranquilo, garantindo que seus sonhos se tornem realidade com confiança, segurança e qualidade.
-      
       </p>
+      
       <p>Estamos sempre à disposição para oferecer suporte completo e transformar cada ligação em um passo importante para a realização do seu sonho imobiliário.</p>
+      
       <h1>Nos contate!</h1>
       <div class="contatos1">
         <div class="telefone">
@@ -151,8 +148,6 @@ Nossa equipe altamente qualificada está preparada para esclarecer dúvidas, ori
         <div class="email">
           <img src="./img/Iconeemail.PNG" alt="">
           <p>(**) *****-****</p>
-
-
         </div>
         <h3 style="color: #F65B38;">São Paulo / Mairinque - SP</h3>
         <div class="fale-conosco">
@@ -163,11 +158,6 @@ Nossa equipe altamente qualificada está preparada para esclarecer dúvidas, ori
         </div>
       </div>
     </div>
-
-
-  </div>
-
-
   </div>
 
   <footer>
@@ -239,7 +229,6 @@ Nossa equipe altamente qualificada está preparada para esclarecer dúvidas, ori
       </div>
     </div>
     <!-- Fim do rodapé -->
-
   </footer>
 
   <!-- Firebase via CDN -->

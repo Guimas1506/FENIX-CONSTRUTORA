@@ -1,8 +1,7 @@
 // carregar-imoveis-pagina.js - BASEADO NO SEU carregar-imoveis.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-import { doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { getFirestore, collection, getDocs, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCYDGROxguHYX-YA-J-HqRRGSF3uN-ZEAs",
@@ -32,11 +31,11 @@ const adminButton = document.getElementById("adminButton");
 
 onAuthStateChanged(auth, async (user) => {
   if (user) {
-    btnLogoutModal.style.display = "flex";
-    logBtn.style.display = "none";
-    registerBtn.style.display = "none";
-    welcomeMsg.textContent = `Bem-vindo(a), ${user.displayName || "Usuário"}`;
-    userEmail.textContent = user.email;
+    if (btnLogoutModal) btnLogoutModal.style.display = "flex";
+    if (logBtn) logBtn.style.display = "none";
+    if (registerBtn) registerBtn.style.display = "none";
+    if (welcomeMsg) welcomeMsg.textContent = `Bem-vindo(a), ${user.displayName || "Usuário"}`;
+    if (userEmail) userEmail.textContent = user.email;
 
     const docRef = doc(db, "users", user.uid);
     try {
@@ -49,33 +48,39 @@ onAuthStateChanged(auth, async (user) => {
       console.error("Erro ao verificar admin:", err);
     }
   } else {
-    btnLogoutModal.style.display = "none";
-    logBtn.style.display = "flex";
-    registerBtn.style.display = "flex";
+    if (btnLogoutModal) btnLogoutModal.style.display = "none";
+    if (logBtn) logBtn.style.display = "flex";
+    if (registerBtn) registerBtn.style.display = "flex";
     if (adminButton) adminButton.style.display = "none";
   }
 });
 
-iconPerson && iconPerson.addEventListener("click", () => {
-  userArea.style.display = "flex";
-});
+if (iconPerson) {
+  iconPerson.addEventListener("click", () => {
+    if (userArea) userArea.style.display = "flex";
+  });
+}
 
-closeUserArea && closeUserArea.addEventListener("click", () => {
-  userArea.style.display = "none";
-});
+if (closeUserArea) {
+  closeUserArea.addEventListener("click", () => {
+    if (userArea) userArea.style.display = "none";
+  });
+}
 
 window.addEventListener("click", (e) => {
   if (e.target === userArea) {
-    userArea.style.display = "none";
+    if (userArea) userArea.style.display = "none";
   }
 });
 
-btnLogoutModal && btnLogoutModal.addEventListener("click", () => {
-  signOut(auth).then(() => {
-    alert("Logout realizado!");
-    window.location.reload();
-  }).catch((err) => alert(err.message));
-});
+if (btnLogoutModal) {
+  btnLogoutModal.addEventListener("click", () => {
+    signOut(auth).then(() => {
+      alert("Logout realizado!");
+      window.location.reload();
+    }).catch((err) => alert(err.message));
+  });
+}
 
 // ==================== FUNÇÃO DE FAVORITAR ====================
 window.toggleFavorito = function(event, id) {
@@ -83,6 +88,8 @@ window.toggleFavorito = function(event, id) {
   event.preventDefault();
   
   const btn = document.getElementById(`fav-${id}`);
+  if (!btn) return;
+  
   const span = btn.querySelector('span');
   
   if (span.textContent === '♡') {
@@ -90,11 +97,13 @@ window.toggleFavorito = function(event, id) {
     span.style.color = '#FF0000';
     btn.style.background = '#FFE5E5';
     btn.style.borderColor = '#FF0000';
+    console.log("❤️ FAVORITADO!");
   } else {
     span.textContent = '♡';
     span.style.color = '#FE4F3F';
     btn.style.background = 'rgba(255,255,255,0.95)';
     btn.style.borderColor = '#FE4F3F';
+    console.log("💔 DESFAVORITADO!");
   }
   
   btn.style.transform = 'scale(1.2)';
@@ -136,6 +145,11 @@ async function carregarTodosImoveis() {
     const querySnapshot = await getDocs(collection(db, "imoveis"));
     console.log("✅ Documentos encontrados:", querySnapshot.size);
     
+    if (querySnapshot.empty) {
+      container.innerHTML = '<p style="text-align: center; padding: 40px; color: #999; grid-column: 1 / -1;">📭 Nenhum imóvel disponível.</p>';
+      return;
+    }
+    
     todosImoveis = [];
     querySnapshot.forEach((doc) => {
       const data = doc.data();
@@ -157,6 +171,8 @@ async function carregarTodosImoveis() {
 function exibirMaisImoveis(quantidade) {
   const container = document.getElementById("lista-imoveis-pagina");
   const btnCarregarMais = document.getElementById("btn-carregar-mais");
+  
+  if (!container) return;
   
   const inicio = imoveisExibidos;
   const fim = Math.min(inicio + quantidade, todosImoveis.length);
@@ -182,6 +198,7 @@ function exibirMaisImoveis(quantidade) {
       <div style="position: relative;">
         <img src="${imovel.imagemURL || './img/logo1.png'}" 
              alt="${imovel.nome}"
+             onerror="this.src='./img/logo1.png'"
              style="width: 100%; height: 200px; object-fit: cover; display: block;">
         
         <button onclick="toggleFavorito(event, '${imovel.id}')" 
@@ -218,6 +235,17 @@ function exibirMaisImoveis(quantidade) {
         </button>
       </div>
     `;
+    
+    // Hover effect
+    card.addEventListener('mouseenter', () => {
+      card.style.transform = 'translateY(-5px)';
+      card.style.boxShadow = '0 8px 20px rgba(0,0,0,0.15)';
+    });
+    
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'translateY(0)';
+      card.style.boxShadow = '0 3px 10px rgba(0,0,0,0.1)';
+    });
     
     container.appendChild(card);
   }
