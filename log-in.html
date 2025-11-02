@@ -100,11 +100,14 @@
     </div>
 
     <div class="opcoes-login">
-        <img src="./img/logo-google.png" alt="logo-google" onclick="loginGoogle()" style="cursor:pointer;">
+      <div class="btn-google"  onclick="loginGoogle()">
+        <img src="./img/logo-google.png" alt="logo-google"  style="cursor:pointer;">
+        <p>Entrar com o Google</p>
+      </div>
     </div>
 
     <button type="submit" class="btn-entrar">Entrar</button>
-    <p>É um cliente Fênix e não possui uma conta?</p>
+    <p id="not-cont">É um cliente Fênix e não possui uma conta?</p>
     <a class="registrar" href="sign-in.html">Registre-se</a>
   </form>
 </main>

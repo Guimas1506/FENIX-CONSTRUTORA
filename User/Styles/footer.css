@@ -249,7 +249,7 @@ a{
 }
 
 .direitos-reservados{
-    color: var(--Branco);
+    color: var(--Cor-Secundaria);
 }
 
 @media screen and (max-width: 480px) {
