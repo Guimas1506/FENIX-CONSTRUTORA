@@ -12,15 +12,15 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
     rel="stylesheet" />
-    <link rel="stylesheet" href="Styles/dados.css">
-    <link rel="stylesheet" href="Styles/style.css">
-    <link rel="stylesheet" href="Styles/footer.css">
-    <link rel="stylesheet" href="Styles/nav-menu.css">
+  <link rel="stylesheet" href="Styles/dados.css">
+  <link rel="stylesheet" href="Styles/style.css">
+  <link rel="stylesheet" href="Styles/footer.css">
+  <link rel="stylesheet" href="Styles/nav-menu.css">
   <title>Usuários</title>
 </head>
 
 <body>
-    <div class="bg-eagle" aria-hidden="true"></div>
+  <div class="bg-eagle" aria-hidden="true"></div>
   <nav>
     <div class="navbar">
       <div class="logo">
@@ -69,8 +69,88 @@
 
     <main>
 
-      
-      
+
+      <div class="main-title">
+        <h2>
+          Dados e Privacidade
+        </h2>
+      </div>
+
+      <div class="info-container">
+
+        <div class="title-dads">
+          <h2>
+            Termos de Politica e Privacidade
+          </h2>
+        </div>
+
+        <hr style="width: 95%;">
+
+        <div class="info-item">
+          <div class="info-header" onclick="toggleInfo(this)">
+            <h2>Termos de Politica</h2>
+            <span class="arrow">
+              <img src="img/Group 8.png" alt="">
+            </span>
+          </div>
+          <div class="info-content">
+            <p>Aqui você pode visualizar e editar suas informações pessoais, como nome, endereço e contatos.</p>
+          </div>
+        </div>
+
+        <hr style="width: 95%;">
+
+        <div class="info-item">
+          <div class="info-header" onclick="toggleInfo(this)">
+            <h2>Termos e Privacidade</h2>
+            <span class="arrow">
+              <img src="img/Group 8.png" alt="">
+            </span>
+          </div>
+          <div class="info-content">
+            <p>Gerencie suas configurações de conta, senha e preferências de segurança.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-title">
+        <h2>
+          Mais Opções
+        </h2>
+      </div>
+
+
+      <div class="excluir">
+
+        <div class="details-excluir">
+          <div class="title-excluir">
+            <h2>
+              Excluir Dados as Contas
+            </h2>
+          </div>
+
+          <div class="det-sub">
+            <p>
+              Ao excluir sua conta, todos os seus dados, informações pessoais e histórico serão permanentemente removidos. Esta ação é irreversível e você não poderá recuperar sua conta ou conteúdos associados após a exclusão.
+            </p>
+          </div>
+
+          <div class="btn-exc">
+            <button id="button-exc" onclick="confirmarExclusao()">
+            Excluir Conta
+            </button>
+            <script src="js/confirmação.js"></script>
+          </div>
+
+        </div>
+
+        <div class="image-excluir">
+          <img src="img/ex.png" alt="img-lixo">
+        </div>
+
+      </div>
+
+      <script src="js/dados.js"></script>
     </main>
 
 
@@ -88,7 +168,6 @@
     </div>
   </footer>
 
-  
 </body>
 
 </html>
