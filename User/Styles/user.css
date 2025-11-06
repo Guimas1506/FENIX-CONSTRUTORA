@@ -631,3 +631,75 @@ body::-webkit-scrollbar{
     font-weight: 400;
     text-decoration: underline;
 }
+
+
+/* perfil: foto redonda */
+#user-photo,
+.conteud-user img,
+.user-photo {
+  width: 120px !important;
+  height: 120px !important;
+  display: block !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;   /* corta e centraliza */
+  overflow: hidden !important;
+  border: 2px solid #fff !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12) !important;
+}
+
+/* versão menor (ex.: ícones) */
+.avatar-sm {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* força avatar redondo e sobrescreve regras conflitantes */
+#user-photo,
+.conteud-user img#user-photo,
+.conteud-user .image-user,
+.image-user#user-photo {
+  width: 200px !important;
+  height: 200px !important;
+  display: block !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  overflow: hidden !important;
+  border: 2px solid #fff !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12) !important;
+}
+
+/* Se a foto estiver em um wrapper (div com background-image) */
+.photo-wrapper,
+.user-photo-wrapper {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-block;
+  background-size: cover;
+  background-position: center;
+}
+
+/* versão menor */
+.avatar-sm {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+}
+
+#remove-photo-btn {
+  margin-top: 8px;
+  padding: 6px 10px;
+  background: transparent;
+  border: 1px solid #e74c3c;
+  color: #e74c3c;
+  border-radius: 6px;
+  cursor: pointer;
+}
+#remove-photo-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}

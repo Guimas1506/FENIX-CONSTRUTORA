@@ -1,7 +1,14 @@
 {
-
-  "rules": {
-    ".read": false,
-    ".write": false
+ "rules": {
+  "users": {
+  "$uid": {
+    ".read": "$uid === auth.uid",
+      ".write": "$uid === auth.uid"
+      }
+    },
+    "imoveis": {
+      ".read": true,
+      ".write": "auth != null"
+    }
   }
 }
