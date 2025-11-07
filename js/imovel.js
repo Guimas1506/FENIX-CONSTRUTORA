@@ -1,4 +1,4 @@
-// carregar-imoveis-pagina.js - BASEADO NO SEU carregar-imoveis.js
+// imovel.js - Carrega e exibe lista de imóveis com paginação
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 import { getFirestore, collection, getDocs, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
@@ -192,6 +192,7 @@ function exibirMaisImoveis(quantidade) {
       transition: all 0.3s ease !important;
       display: flex !important;
       flex-direction: column !important;
+      cursor: pointer !important;
     `;
     
     card.innerHTML = `
@@ -227,7 +228,7 @@ function exibirMaisImoveis(quantidade) {
           <span style="font-size: 0.9em; color: #666;">🚗 ${imovel.vagas || 0}</span>
           <span style="font-size: 0.9em; color: #666;">🚿 ${imovel.banheiros || 0}</span>
         </div>
-        <button onclick="alert('Detalhes: ${imovel.nome}')" 
+        <button onclick="window.location.href='detalhes.html?id=${imovel.id}'" 
                 style="width: 100%; padding: 12px; margin-top: auto; background: #FE4F3F; color: white; border: none; border-radius: 8px; font-size: 1em; font-weight: 600; cursor: pointer; transition: background 0.3s ease;"
                 onmouseover="this.style.background='#e63e2e'"
                 onmouseout="this.style.background='#FE4F3F'">
@@ -236,7 +237,7 @@ function exibirMaisImoveis(quantidade) {
       </div>
     `;
     
-    // Hover effect
+    // Hover effect no card
     card.addEventListener('mouseenter', () => {
       card.style.transform = 'translateY(-5px)';
       card.style.boxShadow = '0 8px 20px rgba(0,0,0,0.15)';
@@ -264,7 +265,7 @@ function exibirMaisImoveis(quantidade) {
   }
 }
 
-// Event listener do botão
+// Event listener do botão "Carregar Mais"
 const btnCarregarMais = document.getElementById("btn-carregar-mais");
 if (btnCarregarMais) {
   btnCarregarMais.addEventListener("click", () => {

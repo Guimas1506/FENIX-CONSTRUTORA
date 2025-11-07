@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes do Imóvel - Fênix Construtora</title>
+  <link rel="stylesheet" href="./Styles/header.css">
+  <link rel="stylesheet" href="./Styles/footer.css">
+  <link rel="stylesheet" href="./Styles/UserArea.css">
+  <link rel="stylesheet" href="./Styles/detalhes.css">
+  <link rel="shortcut icon" type="imagex/png" href="./img/logo1.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <div class="navbar">
+      <div class="logo">
+        <a href="./index.html">
+          <img src="./img/fenix51.png" alt="Logo" />
+        </a>
+        <div class="title-fenix">
+          <h3>FÊNIX <span>CONSTRUTORA</span></h3>
+        </div>
+      </div>
+
+      <div class="abas">
+        <a href="./index.html"><p>Inicio</p></a>
+        <a href="./sobre.html"><p>Sobre Nós</p></a>
+        <a href="Imovel.html"><p>Imóveis</p></a>
+        <a href="./serviços.html"><p>Serviços</p></a>
+        <a href="./contato.html"><p>Contato</p></a>
+      </div>
+
+      <div class="barra"><hr></div>
+
+      <!-- Menu do usuário -->
+      <div class="displau-subs">
+        <div class="icon-person">
+          <img src="./img/icon-usuario.png" alt="Usuário">
+        </div>
+      </div>
+
+      <div id="userArea" class="modal" style="display:none;">
+        <div class="modal-content">
+          <div class="modal-container">
+            <img src="./img/logo1.png" alt="Logo" class="logo-fundo">
+          </div>
+          <span id="closeUserArea" class="close">&times;</span>
+          <h2 id="welcomeMsg">Bem-vindo(a), Usuário</h2>
+          <p id="userEmail">Email do usuário</p>
+
+          <div class="logadores">
+            <a id="log" href="log-in.html">Acesse o Login</a>
+            <a id="register" href="sign-in.html">Se Registre</a>
+            <a href="User/user.html">Usuario</a>
+            <a href="./Administrator/produtos.html" id="adminButton" style="display:none;">
+              <p>ADM</p>
+            </a>
+          </div>
+          
+          <button id="btnLogoutModal">
+            <img src="./img/sair.png" alt="Sair">
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Loading -->
+    <div id="loading" style="text-align: center; padding: 60px; font-size: 20px; color: #666;">
+      ⏳ Carregando detalhes do imóvel...
+    </div>
+
+    <!-- Conteúdo do imóvel (oculto inicialmente) -->
+    <div id="conteudo-imovel" style="display: none;">
+      
+      <!-- Seção de navegação -->
+      <div class="navegacao">
+        <a href="Imovel.html" class="voltar">← Voltar para imóveis</a>
+        <button id="btn-favorito" class="btn-fav">
+          <span id="icone-fav">♡</span> Favoritar
+        </button>
+      </div>
+
+      <!-- Imagem principal -->
+      <div class="imagem-principal">
+        <img id="imagem-destaque" src="./img/logo1.png" alt="Imóvel">
+      </div>
+
+      <!-- Informações principais -->
+      <div class="info-container">
+        <div class="info-principal">
+          <div class="cabecalho-imovel">
+            <h1 id="nome-imovel">Nome do Imóvel</h1>
+            <div class="localizacao-badge">
+              <img src="./img/localizacao.png" alt="📍" style="width: 16px; height: 16px;">
+              <span id="localizacao-completa">Cidade - UF</span>
+            </div>
+          </div>
+
+          <div class="preco-container">
+            <h2 class="preco" id="preco-imovel">R$ 0,00</h2>
+            <div class="status-badge" id="status-badge">
+              <img src="./img/naplanta.png" alt="Status" style="width: 20px; height: 20px;">
+              <span id="status-texto">Status</span>
+              <span id="prazo-texto" style="margin-left: 10px; font-weight: 600;"></span>
+            </div>
+          </div>
+
+          <!-- Características -->
+          <div class="caracteristicas">
+            <div class="carac-item">
+              <img src="./img/casa.png" alt="🏠">
+              <span id="plantas-num">0</span> Plantas
+            </div>
+            <div class="carac-item">
+              <img src="./img/tamanho.png" alt="📏">
+              <span id="area-num">0</span> m²
+            </div>
+            <div class="carac-item">
+              <img src="./img/cama.png" alt="🛏️">
+              <span id="quartos-num">0</span> Quartos
+            </div>
+            <div class="carac-item">
+              <img src="./img/Carro.png" alt="🚗">
+              <span id="vagas-num">0</span> Vagas
+            </div>
+            <div class="carac-item">
+              <img src="./img/Banheiro.png" alt="🚿">
+              <span id="banheiros-num">0</span> Banheiros
+            </div>
+          </div>
+
+          <!-- Botão de ação -->
+          <div class="acoes">
+            <button id="btn-whatsapp" class="btn-primario" style="max-width: 400px; margin: 0 auto;">
+              <img src="./img/Iconewhats.PNG" alt="WhatsApp" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+              Entrar em contato via WhatsApp
+            </button>
+          </div>
+
+          <!-- Descrição -->
+          <div class="descricao-section">
+            <h3>Descrição</h3>
+            <p id="descricao-texto">Carregando descrição...</p>
+          </div>
+
+          <!-- Localização -->
+          <div class="localizacao-section">
+            <h3>Localização</h3>
+            <div class="endereco-completo">
+              <img src="./img/localizacao.png" alt="📍" style="width: 18px; height: 18px;">
+              <div>
+                <p id="endereco-rua">Endereço</p>
+                <p id="endereco-cidade">Cidade - UF</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Características extras -->
+          <div class="extras-section" id="extras-section" style="display: none;">
+            <h3>Características adicionais</h3>
+            <div class="extras-lista" id="extras-lista">
+              <!-- Será preenchido dinamicamente -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Imóveis similares -->
+      <div class="similares-section">
+        <h2>Imóveis similares</h2>
+        <div id="lista-similares" class="lista-similares">
+          <!-- Será preenchido dinamicamente -->
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="rodape">
+      <div class="foot-logo">
+        <img src="./img/fenix51.png" alt="Logo" class="logo" />
+        <div class="titulos">
+          <div class="titulo"><p>FÊNIX</p></div>
+          <div class="subtitle"><p>CONSTRUTORA</p></div>
+        </div>
+      </div>
+
+      <div class="contatos">
+        <div class="cont1">
+          <div class="cont-title1">
+            <h3>REDES SOCIAIS</h3>
+          </div>
+          <a href="https://www.instagram.com/fenixconstroi/#" target="_blank">
+            <div class="conte">
+              <div class="icon">
+                <img src="./img/instagram.png" alt="Instagram" />
+              </div>
+              <div class="rede">
+                <p>INSTAGRAM</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="cont2">
+          <div class="titulo2">
+            <h3>NOSSA EMPRESA</h3>
+          </div>
+          <div class="abins">
+            <p>SOBRE NÓS</p>
+            <p>CONTATO</p>
+            <p>SERVIÇOS</p>
+          </div>
+        </div>
+
+        <div class="cont3">
+          <div class="titulo3">
+            <h3>NOSSOS PRODUTOS</h3>
+          </div>
+          <div class="produts">
+            <p>PROJETOS</p>
+            <p>IMÓVEIS</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="direitos-reservados">
+        <p>&copy; 2025 Fênix Construtora. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/detalhes.js"></script>
+</body>
+
+</html>
