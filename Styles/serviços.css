@@ -524,6 +524,7 @@ body::-webkit-scrollbar{
     align-items: center;
     justify-content: center;
     margin-left: -200px;
+    margin-bottom: 10px;
 }
 
 .icon-cont{
@@ -555,5 +556,64 @@ body::-webkit-scrollbar{
     flex-direction: column;
     padding: 2rem;
     margin-right: 300px;
+}
+.servic-title3{
+    margin-bottom: 55px;
+}
+.servic-title{
+    margin-bottom: 70px;
+
+}
+.servic-text p{
+    width: 200px;
+   margin-bottom:-30px;
+}
+.servic-text2 p{
+    width: 200px;
+   margin-bottom:-30px;
+}
+.servic1-img{
+    width: 95vw;
+    height: 100%;
+    display: flex;
+margin-top: 20px;
+    background-image: url(../img/xavex.png);
+ background-size:initial;
+ background-clip: padding-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 0%
+}
+.servic2-img{
+    width: 95vw;
+    height: 80%;
+    display: flex;
+margin-top: 20px;
+    background-image: url(../img/verceste.png);
+ background-size:initial;
+ background-clip: padding-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 0%
+}
+.service1{
+    margin-bottom:150px ;
+    height: 320px;
+}
+.service2{
+    margin-bottom:50px ;
+    height: 450px;
+}
+.servic3-img{
+    width: 95vw;
+    height: 100%;
+    display: flex;
+margin-top: 20px;
+    background-image: url(../img/martela-a-dor.png);
+ background-size:initial;
+ background-clip: padding-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 0%
 }
 }
