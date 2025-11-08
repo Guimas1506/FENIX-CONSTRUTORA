@@ -132,11 +132,18 @@ async function carregarTodosImoveis() {
   // FORÇA O ESTILO DO CONTAINER
   container.style.cssText = `
     display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
     gap: 25px !important;
     padding: 30px !important;
     width: 95% !important;
     margin: 0 auto !important;
+    
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr !important;
+      padding: 15px !important;
+      gap: 15px !important;
+      width: 100% !important;
+    }
   `;
   
   try {
