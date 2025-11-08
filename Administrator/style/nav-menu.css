@@ -97,7 +97,7 @@ body::-webkit-scrollbar{
 aside{
 
     display: flex;
-    justify-content: center;
+
     width: 14vw;
     height: 50vh;
     flex-direction: column;
@@ -105,146 +105,11 @@ aside{
 
 }
 
-.menu{
-    width: 95%;
-    height: 100%;
-
-    display: flex;
-    flex-direction: column;
-    background-color: var(--Cor-Primaria);
-
-    
-}
-
-.menu a{
-    color: var(--Branco);
-    font-size: 2vh;
-    font-weight: 500;
-    margin-left: 5%;
-    margin-top: 5%;
-
-    height: 45px;
-    display: flex;
-    align-items: center;
-
-}
-
-.inicio{
-        width: 100%;
-    height: 12%;
-
-    align-items: center;
-    margin: 0;
-    display: flex;
-    flex-direction: row;
-    font-size: 18px;
-}
-
-.inicio a{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    
-}
-
-#homening{
-    width: 25px;
-    height: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-
-}
-
-
-.dash{
-     width: 100%;
-    height: 12%;
-
-    align-items: center;
-    margin: 0;
-    display: flex;
-    flex-direction: row;
-    font-size: 18px;
-}
-
-.dash a{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-}
-
-
-.gerenciar{
-    width: 100%;
-    height: 260px;
-    display: flex;
-    align-items: start;
-    justify-content: start;
-    flex-direction: column;
-    color: white;
-
-}
-
-.title-gerence{
-    width: 100%;
-    height: 20%;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    font-size: 18px;
-
-}
-
-#seta{
+.icon img{
     width: 20px;
     height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    margin-left: 25%;
 }
 
-#gear{
-    width: 25px;
-    height: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    margin-right: 2%;
-}
-
-.options-gerence{
-    width: 100%;
-    height: 100%;
-
-    gap: 0.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.options-gerence a{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-
-    font-weight: 300;
-}
-
-#button-produtos{
-    background-color: #FE4F3F;
-}
 
 /*CONFIGURAÇÕES BASICAS DO CONTEUD*/
  .conteud{
@@ -262,6 +127,7 @@ main{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-left: 10px;
 }
 
 .indicator{

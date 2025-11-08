@@ -32,25 +32,60 @@ body::-webkit-scrollbar{
 }
 
 
-/*aqui começa o menu*/
+/*Aqui termina as configurações centrais do projeto*/
 
 
+.title-users{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.title-users h1{
+    color: var(--Cor-Secundaria);
+}
 
 
-/*Aqui termina o menu*/
+.searching{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.sirch{
+    width: 30%;
+    height: 80%;
+    border: solid 1px var(--Cor-Terciaria);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+}
 
-/*AQUI COMEÇA A AREA DE PRODUTOS*/
+#sear{
+    width: 80%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
 
 .filtros{
     width: 80vw;
-    height: 40vh;
+    height: 30vh;
     margin-top: 5px;
     margin-bottom: 20px;
     align-items: center;
     display: flex;
     flex-direction: column;
     box-shadow: -5px 5px 4px rgba(0, 0, 0, 0.25);
+    margin-top: 30px;
 }
 
 .title-filtros{
@@ -139,8 +174,8 @@ body::-webkit-scrollbar{
      font-family: "Inter", sans-serif;
 }
 
-#sale{
-        width: 15%;
+#new-ant{
+         width: 20%;
     height: 50px;
     margin-left: 20px;
     margin-top: 15px;
@@ -151,58 +186,12 @@ body::-webkit-scrollbar{
      font-family: "Inter", sans-serif;
 }
 
-.rangers{
-    width: 60%;
-    height: 50px;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-}
-
-.ranger1{
-    width: 45%;
-    height: 50px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.ranger2{
-        width: 45%;
-    height: 50px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#area-input{
-    width: 200px;
-    height: 30px;
-    display: flex;
-    border: solid 1px var(--Cor-Terciaria);
-    border-radius: 10px;
-}
-
-#preco-input{
-        width: 200px;
-    height: 30px;
-    display: flex;
-    border: solid 1px var(--Cor-Terciaria);
-    border-radius: 10px;
-}
 
 .aplicador{
     width: 30%;
     height: 60px;
     display: flex;
     align-items: center;
-
-
  
 }
 
@@ -241,7 +230,7 @@ body::-webkit-scrollbar{
 
 #addi-produto{
     width: 15%;
-    height: 80%;
+    height: 70%;
     background-color: var(--Cor-Secundaria);
     border: none;
     border-radius: 20px;
@@ -251,9 +240,3 @@ body::-webkit-scrollbar{
     font-family: "Inter", sans-serif;
 }
 /*AQUI TERMINA A AREA DE PRODUTOS*/
-
-
-
-
-
-

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Administrator</title>
+    <link rel="stylesheet" href="style/footer.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="shortcut icon" type="imagex/png" href="img/logo1.png" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet" />
+    <script type="module" src="js/adicionar-produto.js"></script>
+
+    <link rel="stylesheet" href="style/addUser.css">
+    <link rel="stylesheet" href="style/nav-menu.css">
+    <link rel="stylesheet" href="style/sidebar.css">
+</head>
+
+<body>
+    <nav>
+        <div class="navbar">
+            <div class="logo">
+                <div class="logotipo">
+                    <img src="img/logo1.png" alt="Logo" />
+                    <span>Administrator</span>
+                </div>
+            </div>
+            <div class="notification">
+                <img src="img/notification.png" alt="Notification" />
+                <span>
+                    <img src="img/Nav.png" alt="" />
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <!--AQUI TERMINA O NAVBAR DO PROJETO ADM-->
+
+    <div class="conteud">
+        <aside>
+            <div class="sidebar">
+                <ul>
+                    <li class="menu-item ">
+                        <a href="../index.html" onclick="setActive(this.parentElement)">
+                            <span class="icon"><img src="img/homening.png" alt=""></span> Início
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="dashboard.html" onclick="setActive(this.parentElement)">
+                            <span class="icon"><img src="img/macs.png" alt=""></span> Dashboards
+                        </a>
+                    </li>
+
+                    <li class="menu-item active" onclick="toggleSubMenu(this)">
+                        <span class="icon"><img src="img/big-gear.png" alt=""></span> Gerenciar ▾
+                    </li>
+
+                    <ul class="submenu">
+                        <li class="submenu-item">
+                            <a href="produtos.html" onclick="setActive(this.parentElement)">Produtos</a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="usuario.html" onclick="setActive(this.parentElement)">Usuários</a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="categorias.html" onclick="setActive(this.parentElement)">Categorias</a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="dashboard.html" onclick="setActive(this.parentElement)">Dashboard</a>
+                        </li>
+                    </ul>
+
+                </ul>
+            </div>
+
+            <script src="js/sidebar.js"></script>
+        </aside>
+
+
+
+
+
+
+
+        <main>
+            <div class="indicator">
+                <p>🏠Home /</p>
+                <p> Gerenciar /</p>
+                <p> Usuarios /</p>
+                <p style="color: #ff5643;">Gerenciar Usuario</p>
+            </div>
+
+            <div class="title-gerence">
+                <h2>Gerenciar Usuários</h2>
+            </div>
+
+            <div class="dads-user">
+                <div class="dads">
+
+                    <div class="name">
+                        <div class="conteud-name">
+                            <h3>Nome</h3>
+                            <input type="text" name="name" id="name" placeholder="Nome Disponivel">
+                        </div>
+                    </div>
+
+                    <div class="email">
+                        <div class="conteud-email">
+                            <h3>Email</h3>
+                            <input type="email" name="email" id="email" placeholder="Email Disponivel">
+                        </div>
+                    </div>
+
+                    <div class="telephone">
+                        <div class="conteud-phone">
+                            <h3>Email</h3>
+                            <div class="insert-tel">
+                                <input type="text" id="subTell" placeholder="DDI">
+                                <input type="tel" name="tel" id="tel" placeholder="Tel Disponivel">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cargo">
+                        <div class="selecter-cargo">
+                            <h3>Cargo</h3>
+                            <select name="Status" id="Status">
+                                <option value="" selected disabled>-Cargo-</option>
+                                <option value="ADM">Administrador</option>
+                                <option value="Usuario">Usuario</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="btn-alt">
+
+                        <div class="config-btn-alt">
+                            <button type="submit" class="btn-salvar">Salvar Alteração</button>
+                            <button type="reset" class="btn-excluir">Descartar Alterações</button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="user-dads">
+                    <div class="user-foto">
+                        <img src="img/do-utilizador.png" alt="Foto Usuario">
+                    </div>
+
+                    <div class="entrada">
+                        <div class="date-enter">
+                            <div class="iconen">
+                                <img src="img/enter.png" alt="">
+                            </div>
+
+                            
+
+
+                        </div>
+                        <div class="acessou">
+                            <div class="tempo-acess">
+                                <img src="img/eye.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+    </div>
+
+    </main>
+
+
+
+
+
+
+    </div>
+    <footer>
+        <div class="rodape">
+            <div class="foot-logo">
+                <img src="img/logo1.png" alt="Logo" class="logo" />
+                <div class="titulos">
+                    <div class="titulo">
+                        <p>FÊNIX</p>
+                    </div>
+                    <div class="subtitle">
+                        <p>CONSTRUTORA</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contatos">
+                <div class="cont1">
+                    <div class="cont-title1">
+                        <h3>REDES SOCIAIS</h3>
+                    </div>
+                    <a href="https://www.instagram.com/fenixconstroi/#" target="_blank">
+                        <div class="conte">
+                            <div class="icon">
+                                <img src="img/instagram.png" alt="" />
+                            </div>
+                            <div class="rede">
+                                <p>INSTAGRAM</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="cont2">
+                    <div class="titulo2">
+                        <h3>NOSSA EMPRESA</h3>
+                    </div>
+                    <div class="abins">
+                        <p>SOBRE NÓS</p>
+                        <p>CONTATO</p>
+                        <p>SERVIÇOS</p>
+                    </div>
+                </div>
+
+                <div class="cont3">
+                    <div class="titulo3">
+                        <h3>NOSSOS PRODUTOS</h3>
+                    </div>
+                    <div class="produts">
+                        <p>PROJETOS</p>
+                        <p>IMÓVEIS</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="direitos-reservados">
+                <p>&copy; 2025 Fênix Construtora. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

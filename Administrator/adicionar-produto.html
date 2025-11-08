@@ -16,7 +16,8 @@
     rel="stylesheet" />
 
   <script type="module" src="js/adicionar-produto.js"></script>
-
+  <link rel="stylesheet" href="style/nav-menu.css">
+  <link rel="stylesheet" href="style/sidebar.css">
 </head>
 
 <body>
@@ -41,37 +42,43 @@
 
   <div class="conteud">
     <aside>
-      <div class="menu">
+      <div class="sidebar">
+        <ul>
+          <li class="menu-item ">
+            <a href="../index.html" onclick="setActive(this.parentElement)">
+              <span class="icon"><img src="img/homening.png" alt=""></span> Início
+            </a>
+          </li>
 
-        <div class="inicio">
-        <img src="img/homening.png" id="homening" alt="">
-        <a href="../index.html">Início</a>
-        </div>
+          <li class="menu-item">
+            <a href="dashboard.html" onclick="setActive(this.parentElement)">
+              <span class="icon"><img src="img/macs.png" alt=""></span> Dashboards
+            </a>
+          </li>
 
-        <div class="dash">
-          <img src="img/macs.png" id="homening" alt="">
-        <a href="#">Dashboard</a>
-        </div>
+          <li class="menu-item active" onclick="toggleSubMenu(this)">
+            <span class="icon"><img src="img/big-gear.png" alt=""></span> Gerenciar ▾
+          </li>
 
-        <div class="gerenciar">
+          <ul class="submenu">
+            <li class="submenu-item">
+              <a href="produtos.html" onclick="setActive(this.parentElement)">Produtos</a>
+            </li>
+            <li class="submenu-item">
+              <a href="usuario.html" onclick="setActive(this.parentElement)">Usuários</a>
+            </li>
+            <li class="submenu-item">
+              <a href="categorias.html" onclick="setActive(this.parentElement)">Categorias</a>
+            </li>
+            <li class="submenu-item">
+              <a href="dashboard.html" onclick="setActive(this.parentElement)">Dashboard</a>
+            </li>
+          </ul>
 
-            <div class="title-gerence">
-              <img src="img/big-gear.png" id="gear" alt="icone">
-              <p>Gerenciar</p>
-              <img src="img/seta-direita.png" id="seta" alt="seta">
-            </div>
-
-          <!-- Submenu escondido inicialmente -->
-          <div class="options-gerence">
-            <a id="button-produtos" href="produtos.html">Produtos</a>
-            <a href="#">Usuários</a>
-            <a href="#">Categorias</a>
-            <a href="#">Configurações</a>
-          </div>
-
-        </div>
-
+        </ul>
       </div>
+
+      <script src="js/sidebar.js"></script>
     </aside>
     <main>
       <div class="indicator">

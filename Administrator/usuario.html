@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" href="style/footer.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="shortcut icon" type="imagex/png" href="img/logo1.png" />
+    <script src="js/sidebar.js"></script>
+    <link rel="stylesheet" href="style/nav-menu.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style/usuario.css">
+    <link rel="stylesheet" href="style/sidebar.css">
+    <title>Administrator</title>
+
+
+</head>
+
+<body>
+
+    <body>
+        <nav>
+            <div class="navbar">
+                <div class="logo">
+                    <div class="logotipo">
+                        <img src="img/logo1.png" alt="Logo" />
+                        <span>Administrator</span>
+                    </div>
+                </div>
+                <div class="notification">
+                    <img src="img/notification.png" alt="Notification" />
+                    <span>
+                        <img src="img/Nav.png" alt="" />
+                    </span>
+                </div>
+            </div>
+        </nav>
+
+        <!--AQUI TERMINA O NAVBAR DO PROJETO ADM-->
+
+        <div class="conteud">
+            <aside>
+                <div class="sidebar">
+                    <ul>
+                        <li class="menu-item ">
+                            <a href="../index.html" onclick="setActive(this.parentElement)">
+                                <span class="icon"><img src="img/homening.png" alt=""></span> Início
+                            </a>
+                        </li>
+
+                        <li class="menu-item">
+                            <a href="dashboard.html" onclick="setActive(this.parentElement)">
+                                <span class="icon"><img src="img/macs.png" alt=""></span> Dashboards
+                            </a>
+                        </li>
+
+                        <li class="menu-item active" onclick="toggleSubMenu(this)">
+                            <span class="icon"><img src="img/big-gear.png" alt=""></span> Gerenciar ▾
+                        </li>
+
+                        <ul class="submenu">
+                            <li class="submenu-item">
+                                <a href="produtos.html" onclick="setActive(this.parentElement)">Produtos</a>
+                            </li>
+                            <li class="submenu-item">
+                                <a href="usuario.html" onclick="setActive(this.parentElement)">Usuários</a>
+                            </li>
+                            <li class="submenu-item">
+                                <a href="categorias.html" onclick="setActive(this.parentElement)">Categorias</a>
+                            </li>
+                            <li class="submenu-item">
+                                <a href="dashboard.html" onclick="setActive(this.parentElement)">Dashboard</a>
+                            </li>
+                        </ul>
+
+                    </ul>
+                </div>
+
+                <script src="js/sidebar.js"></script>
+            </aside>
+
+
+            <main>
+                <div class="indicator">
+                    <p>🏠Home /</p>
+                    <p> Gerenciar /</p>
+                    <p style="color: #ff5643;"> Usuarios</p>
+                </div>
+
+                <div class="title-users">
+                    <h1>Usuarios</h1>
+                </div>
+
+                <div class="searching">
+                    <div class="sirch">
+                        <img src="img/lupo.png" alt="lupin">
+                        <input type="search" name="pesquisa" id="sear" placeholder="Perquisar">
+                    </div>
+                </div>
+
+
+                <div class="filtros">
+                    <div class="title-filtros">
+                        <h1>Filtros</h1>
+                    </div>
+                    <div class="true-filtros">
+                        <div class="campos-filtros">
+
+
+                            <form id="form-filtros">
+                                <!-- Status - CORRIGIDO -->
+                                <select name="Status" id="Status">
+                                    <option value="" selected disabled>-Status-</option>
+                                    <option value="Na Planta">Na Planta</option>
+                                    <option value="Pronto">Pronto</option>
+                                </select>
+
+                                <!-- UF - CORRIGIDO com todas as UFs -->
+                                <select name="UF" id="UF">
+                                    <option value="" selected disabled>-UF-</option>
+                                    <option value="AC">Acre</option>
+                                    <option value="AL">Alagoas</option>
+                                    <option value="AP">Amapá</option>
+                                    <option value="AM">Amazonas</option>
+                                    <option value="BA">Bahia</option>
+                                    <option value="CE">Ceará</option>
+                                    <option value="DF">Distrito Federal</option>
+                                    <option value="ES">Espírito Santo</option>
+                                    <option value="GO">Goiás</option>
+                                    <option value="MA">Maranhão</option>
+                                    <option value="MT">Mato Grosso</option>
+                                    <option value="MS">Mato Grosso do Sul</option>
+                                    <option value="MG">Minas Gerais</option>
+                                    <option value="PA">Pará</option>
+                                    <option value="PB">Paraíba</option>
+                                    <option value="PR">Paraná</option>
+                                    <option value="PE">Pernambuco</option>
+                                    <option value="PI">Piauí</option>
+                                    <option value="RJ">Rio de Janeiro</option>
+                                    <option value="RN">Rio Grande do Norte</option>
+                                    <option value="RS">Rio Grande do Sul</option>
+                                    <option value="RO">Rondônia</option>
+                                    <option value="RR">Roraima</option>
+                                    <option value="SC">Santa Catarina</option>
+                                    <option value="SP">São Paulo</option>
+                                    <option value="SE">Sergipe</option>
+                                    <option value="TO">Tocantins</option>
+                                </select>
+
+                                <!-- Cidade - CORRIGIDO -->
+                                <select name="city" id="city">
+                                    <option value="" selected disabled>-Cidade-</option>
+                                    <option value="Rio Branco">Rio Branco</option>
+                                    <option value="Maceió">Maceió</option>
+                                    <option value="Macapá">Macapá</option>
+                                    <option value="Manaus">Manaus</option>
+                                    <option value="Salvador">Salvador</option>
+                                    <option value="Fortaleza">Fortaleza</option>
+                                    <option value="Brasília">Brasília</option>
+                                    <option value="Vitória">Vitória</option>
+                                    <option value="Goiânia">Goiânia</option>
+                                    <option value="São Luís">São Luís</option>
+                                    <option value="Cuiabá">Cuiabá</option>
+                                    <option value="Campo Grande">Campo Grande</option>
+                                    <option value="Belo Horizonte">Belo Horizonte</option>
+                                    <option value="Belém">Belém</option>
+                                    <option value="João Pessoa">João Pessoa</option>
+                                    <option value="Curitiba">Curitiba</option>
+                                    <option value="Recife">Recife</option>
+                                    <option value="Teresina">Teresina</option>
+                                    <option value="Rio de Janeiro">Rio de Janeiro</option>
+                                    <option value="Natal">Natal</option>
+                                    <option value="Porto Alegre">Porto Alegre</option>
+                                    <option value="Porto Velho">Porto Velho</option>
+                                    <option value="Boa Vista">Boa Vista</option>
+                                    <option value="Florianópolis">Florianópolis</option>
+                                    <option value="São Paulo">São Paulo</option>
+                                    <option value="Aracaju">Aracaju</option>
+                                    <option value="Palmas">Palmas</option>
+                                </select>
+
+
+                                <select name="novo/ant" id="new-ant">
+                                    <option value="" selected disabled>-Tempo-</option>
+                                    <option value="the-new-a-old">Do Mais Recente ao Mais Antigo</option>
+                                    <option value="the-old-a-new">Do Mais Antigo Ao Mais Novo</option>
+                                </select>
+
+
+                                <div class="aplicador">
+                                    <button type="button" id="aplicar">Aplicar</button>
+                                    <button type="button" id="limpar">Limpar Filtros</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="adcionar">
+                    <div class="adcionar">
+                        <button id="addi-produto" onclick="window.location.href='AddUser.html'">Adicionar</button>
+                    </div>
+                </div>
+
+
+            </main>
+        </div>
+
+        <footer>
+            <div class="rodape">
+                <div class="foot-logo">
+                    <img src="img/logo1.png" alt="Logo" class="logo" />
+                    <div class="titulos">
+                        <div class="titulo">
+                            <p>FÊNIX</p>
+                        </div>
+                        <div class="subtitle">
+                            <p>CONSTRUTORA</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contatos">
+                    <div class="cont1">
+                        <div class="cont-title1">
+                            <h3>REDES SOCIAIS</h3>
+                        </div>
+                        <a href="https://www.instagram.com/fenixconstroi/#" target="_blank">
+                            <div class="conte">
+                                <div class="icon">
+                                    <img src="img/instagram.png" alt="" />
+                                </div>
+                                <div class="rede">
+                                    <p>INSTAGRAM</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="cont2">
+                        <div class="titulo2">
+                            <h3>NOSSA EMPRESA</h3>
+                        </div>
+                        <div class="abins">
+                            <p>SOBRE NÓS</p>
+                            <p>CONTATO</p>
+                            <p>SERVIÇOS</p>
+                        </div>
+                    </div>
+
+                    <div class="cont3">
+                        <div class="titulo3">
+                            <h3>NOSSOS PRODUTOS</h3>
+                        </div>
+                        <div class="produts">
+                            <p>PROJETOS</p>
+                            <p>IMÓVEIS</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="direitos-reservados">
+                    <p>&copy; 2025 Fênix Construtora. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </footer>
+
+
+    </body>
+
+</body>
+
+</html>

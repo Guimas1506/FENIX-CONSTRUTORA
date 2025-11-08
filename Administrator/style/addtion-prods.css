@@ -33,6 +33,73 @@ body::-webkit-scrollbar{
 
 /*TERMINA AS CONFIGURAÇOES BASICAS PARA O DESENVOLVIMENTO*/
 
+
+/*aqui começa o menu*/
+
+
+
+.sidebar {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  color: #fff;
+  padding-top: 10px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.menu-item,
+.submenu-item {
+  padding: 14px;
+  height: 35px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+  align-items: center;
+  user-select: none;
+  font-size: 15px;
+  margin-top: 5px;
+}
+
+.menu-item a,
+.submenu-item a {
+  color: inherit;
+  text-decoration: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+.menu-item:hover,
+.submenu-item:hover {
+  background: #222;
+}
+
+.active {
+  background: #ff5643; /* vermelho do print */
+}
+
+.submenu {
+  display: none;
+  background: #111;
+}
+
+.submenu-item {
+  padding-left: 40px;
+}
+
+.submenu.show {
+  display: block;
+}
+
+/*aqui termina o menu*/
+
 /*AQUI COMEÇA O MAIN DO PROJETO*/
 
 .tie-page{
