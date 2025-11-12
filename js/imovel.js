@@ -115,8 +115,50 @@ window.toggleFavorito = function(event, id) {
 // ==================== SISTEMA DE CARREGAR MAIS ====================
 let todosImoveis = [];
 let imoveisExibidos = 0;
+let imoveisFiltrados = []; // Lista filtrada pela pesquisa
 const IMOVEIS_INICIAIS = 16;
 const IMOVEIS_POR_CARREGAMENTO = 8;
+
+// ==================== FUNÇÃO DE PESQUISA POR NOME ====================
+window.pesquisarPorNome = function() {
+  const input = document.getElementById("input-pesquisa-nome");
+  const btnLimpar = document.getElementById("btn-limpar-pesquisa");
+  const termoPesquisa = input.value.toLowerCase().trim();
+  
+  console.log("🔍 Pesquisando por:", termoPesquisa);
+  
+  // Mostra/esconde botão de limpar
+  btnLimpar.style.display = termoPesquisa ? "block" : "none";
+  
+  // Filtra imóveis pelo nome
+  if (termoPesquisa === "") {
+    imoveisFiltrados = [...todosImoveis];
+  } else {
+    imoveisFiltrados = todosImoveis.filter(imovel => 
+      (imovel.nome || "").toLowerCase().includes(termoPesquisa)
+    );
+  }
+  
+  console.log(`📊 Encontrados ${imoveisFiltrados.length} imóveis`);
+  
+  // Reseta a exibição
+  const container = document.getElementById("lista-imoveis-pagina");
+  container.innerHTML = '';
+  imoveisExibidos = 0;
+  
+  if (imoveisFiltrados.length === 0) {
+    container.innerHTML = '<p style="text-align: center; padding: 40px; color: #999; grid-column: 1 / -1; font-size: 18px;">📭 Nenhum imóvel encontrado com esse nome.</p>';
+    document.getElementById("btn-carregar-mais").style.display = "none";
+  } else {
+    exibirMaisImoveis(IMOVEIS_INICIAIS);
+  }
+}
+
+// Event listener para pesquisa em tempo real
+const inputPesquisa = document.getElementById("input-pesquisa-nome");
+if (inputPesquisa) {
+  inputPesquisa.addEventListener("input", window.pesquisarPorNome);
+}
 
 async function carregarTodosImoveis() {
   console.log("🔍 Carregando TODOS os imóveis...");
@@ -132,18 +174,11 @@ async function carregarTodosImoveis() {
   // FORÇA O ESTILO DO CONTAINER
   container.style.cssText = `
     display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+    grid-template-columns: repeat(4, 1fr) !important;
     gap: 25px !important;
     padding: 30px !important;
     width: 95% !important;
     margin: 0 auto !important;
-    
-    @media (max-width: 480px) {
-      grid-template-columns: 1fr !important;
-      padding: 15px !important;
-      gap: 15px !important;
-      width: 100% !important;
-    }
   `;
   
   try {
@@ -164,6 +199,8 @@ async function carregarTodosImoveis() {
       todosImoveis.push(data);
     });
     
+    imoveisFiltrados = [...todosImoveis]; // Inicializa lista filtrada
+    
     console.log(`📊 Total de ${todosImoveis.length} imóveis carregados`);
     
     container.innerHTML = '';
@@ -182,12 +219,12 @@ function exibirMaisImoveis(quantidade) {
   if (!container) return;
   
   const inicio = imoveisExibidos;
-  const fim = Math.min(inicio + quantidade, todosImoveis.length);
+  const fim = Math.min(inicio + quantidade, imoveisFiltrados.length);
   
   console.log(`📄 Adicionando imóveis ${inicio + 1} até ${fim}`);
   
   for (let i = inicio; i < fim; i++) {
-    const imovel = todosImoveis[i];
+    const imovel = imoveisFiltrados[i];
     const card = document.createElement('div');
     card.className = 'imovel-card-usuario';
     
@@ -262,12 +299,12 @@ function exibirMaisImoveis(quantidade) {
   
   // Controla botão "Carregar Mais"
   if (btnCarregarMais) {
-    if (imoveisExibidos >= todosImoveis.length) {
+    if (imoveisExibidos >= imoveisFiltrados.length) {
       btnCarregarMais.style.display = "none";
       console.log("✅ Todos os imóveis foram exibidos");
     } else {
       btnCarregarMais.style.display = "block";
-      console.log(`📊 Mostrando ${imoveisExibidos} de ${todosImoveis.length}`);
+      console.log(`📊 Mostrando ${imoveisExibidos} de ${imoveisFiltrados.length}`);
     }
   }
 }

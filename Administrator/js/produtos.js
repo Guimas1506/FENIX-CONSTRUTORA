@@ -22,6 +22,41 @@ const auth = getAuth(app);
 // Container de imóveis
 const container = document.getElementById("lista-imoveis-container");
 let listaImoveis = [];
+let listaFiltradaAtual = []; // Lista após aplicar TODOS os filtros
+
+// ==================== FUNÇÃO DE PESQUISA POR NOME ====================
+window.pesquisarPorNomeAdmin = function() {
+  const input = document.getElementById("input-pesquisa-nome-admin");
+  const btnLimpar = document.getElementById("btn-limpar-pesquisa-admin");
+  
+  if (!input || !btnLimpar) {
+    console.error("Elementos de pesquisa não encontrados!");
+    return;
+  }
+  
+  const termoPesquisa = input.value.toLowerCase().trim();
+  
+  console.log("🔍 Admin - Pesquisando por:", termoPesquisa);
+  
+  // Mostra/esconde botão de limpar
+  btnLimpar.style.display = termoPesquisa ? "block" : "none";
+  
+  // Reaplica todos os filtros incluindo o nome
+  aplicarFiltros();
+}
+
+// INICIALIZA Event listener quando o DOM estiver pronto
+window.addEventListener('DOMContentLoaded', () => {
+  console.log("📄 DOM carregado - Configurando event listeners");
+  
+  const inputPesquisaAdmin = document.getElementById("input-pesquisa-nome-admin");
+  if (inputPesquisaAdmin) {
+    inputPesquisaAdmin.addEventListener("input", window.pesquisarPorNomeAdmin);
+    console.log("✅ Event listener da pesquisa configurado");
+  } else {
+    console.error("❌ Input de pesquisa não encontrado no DOM");
+  }
+});
 
 // Função para mostrar imóveis COM GRID DE 4 COLUNAS
 function mostrarImoveis(lista) {
@@ -43,6 +78,7 @@ function mostrarImoveis(lista) {
     card.innerHTML = `
       <img src="${data.imagemURL || 'img/placeholder.png'}" 
            alt="${data.nome}"
+           onerror="this.src='img/logo1.png'"
            style="width: 100%; height: 200px; object-fit: cover; display: block;">
       
       <div style="padding: 15px; flex: 1; display: flex; flex-direction: column;">
@@ -99,6 +135,7 @@ function mostrarImoveis(lista) {
         alert("Imóvel excluído!");
         card.remove();
         listaImoveis = listaImoveis.filter(i => i.id !== data.id);
+        listaFiltradaAtual = listaFiltradaAtual.filter(i => i.id !== data.id);
       } catch (err) {
         alert("Erro ao excluir: " + err.message);
       }
@@ -123,29 +160,33 @@ async function carregarImoveis() {
     if (listaImoveis.length > 0) {
       console.log("Exemplo de imóvel:", listaImoveis[0]);
     }
-    mostrarImoveis(listaImoveis);
+    listaFiltradaAtual = [...listaImoveis];
+    mostrarImoveis(listaFiltradaAtual);
   } catch (err) {
     console.error("❌ Erro ao carregar:", err);
   }
 }
 
-// FUNÇÃO DE FILTROS - COM INPUTS NUMÉRICOS
+// FUNÇÃO DE FILTROS - COM INPUTS NUMÉRICOS E PESQUISA POR NOME
 function aplicarFiltros() {
   console.log("🔍 Aplicando filtros...");
   
-  // Pega os valores dos campos de filtro
+  // Pega valores dos filtros
   const statusSelecionado = document.getElementById("Status")?.value || "";
   const ufSelecionado = document.getElementById("UF")?.value || "";
   const cidadeSelecionada = document.getElementById("city")?.value || "";
-  
-  // Pega valores dos INPUTS NUMÉRICOS (não ranges!)
   const areaInput = document.getElementById("area-input")?.value;
   const precoInput = document.getElementById("preco-input")?.value;
+  
+  // Pega termo de pesquisa (com verificação extra)
+  const inputPesquisa = document.getElementById("input-pesquisa-nome-admin");
+  const termoPesquisa = inputPesquisa ? inputPesquisa.value.toLowerCase().trim() : "";
   
   const areaMax = areaInput && areaInput !== "" ? parseFloat(areaInput) : null;
   const precoMax = precoInput && precoInput !== "" ? parseFloat(precoInput) : null;
 
-  console.log("📊 Filtros selecionados:", {
+  console.log("📊 Filtros aplicados:", {
+    nome: termoPesquisa || "Todos",
     status: statusSelecionado || "Todos",
     uf: ufSelecionado || "Todas",
     cidade: cidadeSelecionada || "Todas",
@@ -155,6 +196,15 @@ function aplicarFiltros() {
 
   // Filtra a lista
   const filtrados = listaImoveis.filter(imovel => {
+    // Filtro NOME (pesquisa)
+    if (termoPesquisa !== "") {
+      const nomeImovel = (imovel.nome || "").toLowerCase();
+      if (!nomeImovel.includes(termoPesquisa)) {
+        console.log(`❌ "${imovel.nome}" não contém "${termoPesquisa}"`);
+        return false;
+      }
+    }
+
     // Filtro Status
     if (statusSelecionado !== "") {
       if (imovel.stats !== statusSelecionado) {
@@ -176,7 +226,7 @@ function aplicarFiltros() {
       }
     }
 
-    // Filtro Área - só aplica se valor foi digitado
+    // Filtro Área
     if (areaMax !== null) {
       const areaImovel = parseFloat(imovel.areas) || 0;
       if (areaImovel > areaMax) {
@@ -184,7 +234,7 @@ function aplicarFiltros() {
       }
     }
 
-    // Filtro Preço - só aplica se valor foi digitado
+    // Filtro Preço
     if (precoMax !== null) {
       const precoImovel = parseFloat(imovel.preco) || 0;
       if (precoImovel > precoMax) {
@@ -196,7 +246,8 @@ function aplicarFiltros() {
   });
 
   console.log(`✅ Resultado: ${filtrados.length} de ${listaImoveis.length} imóveis`);
-  mostrarImoveis(filtrados);
+  listaFiltradaAtual = filtrados;
+  mostrarImoveis(listaFiltradaAtual);
 }
 
 // Função para limpar filtros
@@ -204,16 +255,26 @@ function limparFiltros() {
   console.log("🧹 Limpando filtros...");
   
   // Reseta os selects
-  document.getElementById("Status").value = "";
-  document.getElementById("UF").value = "";
-  document.getElementById("city").value = "";
+  const statusSelect = document.getElementById("Status");
+  const ufSelect = document.getElementById("UF");
+  const citySelect = document.getElementById("city");
+  const areaInput = document.getElementById("area-input");
+  const precoInput = document.getElementById("preco-input");
+  const inputPesquisa = document.getElementById("input-pesquisa-nome-admin");
+  const btnLimparPesquisa = document.getElementById("btn-limpar-pesquisa-admin");
   
-  // Limpa os INPUTS NUMÉRICOS
-  document.getElementById("area-input").value = "";
-  document.getElementById("preco-input").value = "";
+  if (statusSelect) statusSelect.value = "";
+  if (ufSelect) ufSelect.value = "";
+  if (citySelect) citySelect.value = "";
+  if (areaInput) areaInput.value = "";
+  if (precoInput) precoInput.value = "";
+  
+  if (inputPesquisa) inputPesquisa.value = "";
+  if (btnLimparPesquisa) btnLimparPesquisa.style.display = "none";
   
   // Mostra todos os imóveis
-  mostrarImoveis(listaImoveis);
+  listaFiltradaAtual = [...listaImoveis];
+  mostrarImoveis(listaFiltradaAtual);
 }
 
 // Event Listeners

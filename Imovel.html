@@ -76,6 +76,25 @@
         Encontre o imóvel feito para você
       </h1>
 
+      <!-- BARRA DE PESQUISA POR NOME -->
+      <div style="max-width: 600px; margin: 0 auto 30px; padding: 0 20px;">
+        <div style="position: relative;">
+          <input 
+            type="text" 
+            id="input-pesquisa-nome" 
+            placeholder="Pesquisar por imóvel..."
+            style="width: 100%; padding: 15px 50px 15px 20px; border: 2px solid #ddd; border-radius: 25px; font-size: 16px; transition: all 0.3s;"
+            onfocus="this.style.borderColor='#FE4F3F'"
+            onblur="this.style.borderColor='#ddd'">
+          <button 
+            id="btn-limpar-pesquisa"
+            style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #999; font-size: 20px; cursor: pointer; display: none;"
+            onclick="document.getElementById('input-pesquisa-nome').value=''; this.style.display='none'; window.pesquisarPorNome();">
+            ✕
+          </button>
+        </div>
+      </div>
+
       <!-- CONTAINER DOS IMÓVEIS -->
       <div id="lista-imoveis-pagina"></div>
 

@@ -104,6 +104,26 @@
         <div class="title-filtros">
           <h1>Filtros</h1>
         </div>
+
+        <!-- BARRA DE PESQUISA POR NOME -->
+        <div style="padding: 0 20px 20px;">
+          <div style="position: relative; max-width: 500px;">
+            <input 
+              type="text" 
+              id="input-pesquisa-nome-admin" 
+              placeholder="Pesquisar por imóvel..."
+              style="width: 100%; padding: 12px 45px 12px 15px; border: 2px solid #ddd; border-radius: 20px; font-size: 15px; transition: all 0.3s;"
+              onfocus="this.style.borderColor='#FE4F3F'"
+              onblur="this.style.borderColor='#ddd'">
+            <button 
+              id="btn-limpar-pesquisa-admin"
+              style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #999; font-size: 18px; cursor: pointer; display: none;"
+              onclick="document.getElementById('input-pesquisa-nome-admin').value=''; this.style.display='none'; window.pesquisarPorNomeAdmin();">
+              ✕
+            </button>
+          </div>
+        </div>
+
         <div class="true-filtros">
           <div class="campos-filtros">
 
