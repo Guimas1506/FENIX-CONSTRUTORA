@@ -1,4 +1,4 @@
-// index.js - Arquivo unificado para a página inicial
+
 // ==================== FIREBASE SETUP ====================
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";

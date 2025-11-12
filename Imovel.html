@@ -76,21 +76,137 @@
         Encontre o imóvel feito para você
       </h1>
 
-      <!-- BARRA DE PESQUISA POR NOME -->
-      <div style="max-width: 600px; margin: 0 auto 30px; padding: 0 20px;">
-        <div style="position: relative;">
-          <input 
-            type="text" 
-            id="input-pesquisa-nome" 
-            placeholder="Pesquisar por imóvel..."
-            style="width: 100%; padding: 15px 50px 15px 20px; border: 2px solid #ddd; border-radius: 25px; font-size: 16px; transition: all 0.3s;"
-            onfocus="this.style.borderColor='#FE4F3F'"
-            onblur="this.style.borderColor='#ddd'">
-          <button 
-            id="btn-limpar-pesquisa"
-            style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #999; font-size: 20px; cursor: pointer; display: none;"
-            onclick="document.getElementById('input-pesquisa-nome').value=''; this.style.display='none'; window.pesquisarPorNome();">
-            ✕
+      <!-- SEÇÃO DE FILTROS -->
+      <div style="background: white; border-radius: 16px; padding: 30px; margin-bottom: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+        <h2 style="color: #FE4F3F; margin-bottom: 20px; font-size: 1.5em;">🔍 Filtros de Busca</h2>
+        
+        <!-- BARRA DE PESQUISA POR NOME -->
+        <div style="margin-bottom: 20px;">
+          <div style="position: relative;">
+            <input 
+              type="text" 
+              id="input-pesquisa-nome" 
+              placeholder="Pesquisar por imóvel..."
+              style="width: 100%; padding: 15px 50px 15px 20px; border: 2px solid #ddd; border-radius: 12px; font-size: 16px; transition: all 0.3s;"
+              onfocus="this.style.borderColor='#FE4F3F'"
+              onblur="this.style.borderColor='#ddd'">
+            <button 
+              id="btn-limpar-pesquisa"
+              style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #999; font-size: 20px; cursor: pointer; display: none;"
+              onclick="document.getElementById('input-pesquisa-nome').value=''; this.style.display='none'; window.pesquisarPorNome();">
+              ✕
+            </button>
+          </div>
+        </div>
+
+        <!-- FILTROS AVANÇADOS -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px;">
+          
+          <!-- Status -->
+          <div>
+            <label style="display: block; margin-bottom: 5px; color: #666; font-weight: 600;">Status</label>
+            <select id="filtro-status" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 15px; cursor: pointer;">
+              <option value="">Todos</option>
+              <option value="Na Planta">Na Planta</option>
+              <option value="Pronto">Pronto</option>
+            </select>
+          </div>
+
+          <!-- UF -->
+          <div>
+            <label style="display: block; margin-bottom: 5px; color: #666; font-weight: 600;">Estado (UF)</label>
+            <select id="filtro-uf" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 15px; cursor: pointer;">
+              <option value="">Todos</option>
+              <option value="AC">Acre</option>
+              <option value="AL">Alagoas</option>
+              <option value="AP">Amapá</option>
+              <option value="AM">Amazonas</option>
+              <option value="BA">Bahia</option>
+              <option value="CE">Ceará</option>
+              <option value="DF">Distrito Federal</option>
+              <option value="ES">Espírito Santo</option>
+              <option value="GO">Goiás</option>
+              <option value="MA">Maranhão</option>
+              <option value="MT">Mato Grosso</option>
+              <option value="MS">Mato Grosso do Sul</option>
+              <option value="MG">Minas Gerais</option>
+              <option value="PA">Pará</option>
+              <option value="PB">Paraíba</option>
+              <option value="PR">Paraná</option>
+              <option value="PE">Pernambuco</option>
+              <option value="PI">Piauí</option>
+              <option value="RJ">Rio de Janeiro</option>
+              <option value="RN">Rio Grande do Norte</option>
+              <option value="RS">Rio Grande do Sul</option>
+              <option value="RO">Rondônia</option>
+              <option value="RR">Roraima</option>
+              <option value="SC">Santa Catarina</option>
+              <option value="SP">São Paulo</option>
+              <option value="SE">Sergipe</option>
+              <option value="TO">Tocantins</option>
+            </select>
+          </div>
+
+          <!-- Cidade -->
+          <div>
+            <label style="display: block; margin-bottom: 5px; color: #666; font-weight: 600;">Cidade</label>
+            <select id="filtro-cidade" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 15px; cursor: pointer;">
+              <option value="">Todas</option>
+              <option value="Rio Branco">Rio Branco</option>
+              <option value="Maceió">Maceió</option>
+              <option value="Macapá">Macapá</option>
+              <option value="Manaus">Manaus</option>
+              <option value="Salvador">Salvador</option>
+              <option value="Fortaleza">Fortaleza</option>
+              <option value="Brasília">Brasília</option>
+              <option value="Vitória">Vitória</option>
+              <option value="Goiânia">Goiânia</option>
+              <option value="São Luís">São Luís</option>
+              <option value="Cuiabá">Cuiabá</option>
+              <option value="Campo Grande">Campo Grande</option>
+              <option value="Belo Horizonte">Belo Horizonte</option>
+              <option value="Belém">Belém</option>
+              <option value="João Pessoa">João Pessoa</option>
+              <option value="Curitiba">Curitiba</option>
+              <option value="Recife">Recife</option>
+              <option value="Teresina">Teresina</option>
+              <option value="Rio de Janeiro">Rio de Janeiro</option>
+              <option value="Natal">Natal</option>
+              <option value="Porto Alegre">Porto Alegre</option>
+              <option value="Porto Velho">Porto Velho</option>
+              <option value="Boa Vista">Boa Vista</option>
+              <option value="Florianópolis">Florianópolis</option>
+              <option value="São Paulo">São Paulo</option>
+              <option value="Aracaju">Aracaju</option>
+              <option value="Palmas">Palmas</option>
+            </select>
+          </div>
+
+          <!-- Área Máxima -->
+          <div>
+            <label style="display: block; margin-bottom: 5px; color: #666; font-weight: 600;">Área Máxima (m²)</label>
+            <input type="number" id="filtro-area" placeholder="Ex: 150" min="0" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 15px;">
+          </div>
+
+          <!-- Preço Máximo -->
+          <div>
+            <label style="display: block; margin-bottom: 5px; color: #666; font-weight: 600;">Preço Máximo (R$)</label>
+            <input type="number" id="filtro-preco" placeholder="Ex: 500000" min="0" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 15px;">
+          </div>
+
+        </div>
+
+        <!-- BOTÕES DE AÇÃO -->
+        <div style="display: flex; gap: 15px; justify-content: center;">
+          <button id="btn-aplicar-filtros" style="padding: 12px 40px; background: #FE4F3F; color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s; box-shadow: 0 2px 10px rgba(254, 79, 63, 0.3);"
+            onmouseover="this.style.background='#e63e2e'; this.style.transform='translateY(-2px)'" 
+            onmouseout="this.style.background='#FE4F3F'; this.style.transform='translateY(0)'">
+            ✓ Aplicar Filtros
+          </button>
+          <button id="btn-limpar-filtros" style="padding: 12px 40px; background: #666; color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s;"
+            onmouseover="this.style.background='#555'; this.style.transform='translateY(-2px)'" 
+            onmouseout="this.style.background='#666'; this.style.transform='translateY(0)'">
+            ✕ Limpar Filtros
           </button>
         </div>
       </div>

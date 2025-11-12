@@ -130,34 +130,149 @@ window.pesquisarPorNome = function() {
   // Mostra/esconde botão de limpar
   btnLimpar.style.display = termoPesquisa ? "block" : "none";
   
-  // Filtra imóveis pelo nome
-  if (termoPesquisa === "") {
-    imoveisFiltrados = [...todosImoveis];
-  } else {
-    imoveisFiltrados = todosImoveis.filter(imovel => 
-      (imovel.nome || "").toLowerCase().includes(termoPesquisa)
-    );
-  }
-  
-  console.log(`📊 Encontrados ${imoveisFiltrados.length} imóveis`);
-  
-  // Reseta a exibição
-  const container = document.getElementById("lista-imoveis-pagina");
-  container.innerHTML = '';
-  imoveisExibidos = 0;
-  
-  if (imoveisFiltrados.length === 0) {
-    container.innerHTML = '<p style="text-align: center; padding: 40px; color: #999; grid-column: 1 / -1; font-size: 18px;">📭 Nenhum imóvel encontrado com esse nome.</p>';
-    document.getElementById("btn-carregar-mais").style.display = "none";
-  } else {
-    exibirMaisImoveis(IMOVEIS_INICIAIS);
-  }
+  // Aplica todos os filtros
+  aplicarTodosFiltros();
 }
 
 // Event listener para pesquisa em tempo real
 const inputPesquisa = document.getElementById("input-pesquisa-nome");
 if (inputPesquisa) {
   inputPesquisa.addEventListener("input", window.pesquisarPorNome);
+}
+
+// ==================== APLICAR TODOS OS FILTROS ====================
+function aplicarTodosFiltros() {
+  console.log("🔍 Aplicando TODOS os filtros...");
+  
+  const container = document.getElementById("lista-imoveis-pagina");
+  
+  // Pega valores de todos os filtros
+  const termoPesquisa = document.getElementById("input-pesquisa-nome")?.value.toLowerCase().trim() || "";
+  const statusSelecionado = document.getElementById("filtro-status")?.value || "";
+  const ufSelecionado = document.getElementById("filtro-uf")?.value || "";
+  const cidadeSelecionada = document.getElementById("filtro-cidade")?.value || "";
+  const areaInput = document.getElementById("filtro-area")?.value;
+  const precoInput = document.getElementById("filtro-preco")?.value;
+  
+  const areaMax = areaInput && areaInput !== "" ? parseFloat(areaInput) : null;
+  const precoMax = precoInput && precoInput !== "" ? parseFloat(precoInput) : null;
+  
+  console.log("📊 Filtros aplicados:", {
+    nome: termoPesquisa || "Todos",
+    status: statusSelecionado || "Todos",
+    uf: ufSelecionado || "Todos",
+    cidade: cidadeSelecionada || "Todas",
+    areaMax: areaMax ? `até ${areaMax}m²` : "Todas",
+    precoMax: precoMax ? `até R$ ${precoMax.toLocaleString('pt-BR')}` : "Todos"
+  });
+  
+  // Filtra imóveis
+  imoveisFiltrados = todosImoveis.filter(imovel => {
+    // Filtro NOME
+    if (termoPesquisa !== "") {
+      const nomeImovel = (imovel.nome || "").toLowerCase();
+      if (!nomeImovel.includes(termoPesquisa)) {
+        return false;
+      }
+    }
+    
+    // Filtro STATUS
+    if (statusSelecionado !== "") {
+      if (imovel.stats !== statusSelecionado) {
+        return false;
+      }
+    }
+    
+    // Filtro UF
+    if (ufSelecionado !== "") {
+      if (imovel.uf !== ufSelecionado) {
+        return false;
+      }
+    }
+    
+    // Filtro CIDADE
+    if (cidadeSelecionada !== "") {
+      if (imovel.cidade !== cidadeSelecionada) {
+        return false;
+      }
+    }
+    
+    // Filtro ÁREA
+    if (areaMax !== null) {
+      const areaImovel = parseFloat(imovel.areas) || 0;
+      if (areaImovel > areaMax) {
+        return false;
+      }
+    }
+    
+    // Filtro PREÇO
+    if (precoMax !== null) {
+      const precoImovel = parseFloat(imovel.preco) || 0;
+      if (precoImovel > precoMax) {
+        return false;
+      }
+    }
+    
+    return true;
+  });
+  
+  console.log(`✅ Resultado: ${imoveisFiltrados.length} de ${todosImoveis.length} imóveis`);
+  
+  // Reseta a exibição
+  container.innerHTML = '';
+  imoveisExibidos = 0;
+  
+  if (imoveisFiltrados.length === 0) {
+    container.innerHTML = '<p style="text-align: center; padding: 40px; color: #999; grid-column: 1 / -1; font-size: 18px;">📭 Nenhum imóvel encontrado com esses filtros.</p>';
+    document.getElementById("btn-carregar-mais").style.display = "none";
+  } else {
+    exibirMaisImoveis(IMOVEIS_INICIAIS);
+  }
+}
+
+// ==================== LIMPAR TODOS OS FILTROS ====================
+function limparTodosFiltros() {
+  console.log("🧹 Limpando TODOS os filtros...");
+  
+  // Limpa pesquisa
+  const inputPesquisa = document.getElementById("input-pesquisa-nome");
+  const btnLimparPesquisa = document.getElementById("btn-limpar-pesquisa");
+  if (inputPesquisa) inputPesquisa.value = "";
+  if (btnLimparPesquisa) btnLimparPesquisa.style.display = "none";
+  
+  // Limpa selects
+  const filtroStatus = document.getElementById("filtro-status");
+  const filtroUf = document.getElementById("filtro-uf");
+  const filtroCidade = document.getElementById("filtro-cidade");
+  if (filtroStatus) filtroStatus.value = "";
+  if (filtroUf) filtroUf.value = "";
+  if (filtroCidade) filtroCidade.value = "";
+  
+  // Limpa inputs numéricos
+  const filtroArea = document.getElementById("filtro-area");
+  const filtroPreco = document.getElementById("filtro-preco");
+  if (filtroArea) filtroArea.value = "";
+  if (filtroPreco) filtroPreco.value = "";
+  
+  // Reseta lista
+  imoveisFiltrados = [...todosImoveis];
+  
+  // Reseta exibição
+  const container = document.getElementById("lista-imoveis-pagina");
+  container.innerHTML = '';
+  imoveisExibidos = 0;
+  exibirMaisImoveis(IMOVEIS_INICIAIS);
+}
+
+// ==================== EVENT LISTENERS DOS BOTÕES ====================
+const btnAplicarFiltros = document.getElementById("btn-aplicar-filtros");
+if (btnAplicarFiltros) {
+  btnAplicarFiltros.addEventListener("click", aplicarTodosFiltros);
+}
+
+const btnLimparFiltros = document.getElementById("btn-limpar-filtros");
+if (btnLimparFiltros) {
+  btnLimparFiltros.addEventListener("click", limparTodosFiltros);
 }
 
 async function carregarTodosImoveis() {
