@@ -1,6 +1,6 @@
 /* ========== CARDS DE IMÓVEIS PARA USUÁRIO ========== */
 #lista-imoveis-usuario {
-  display: grid;
+  display: block;
   grid-template-columns: repeat(4, 1fr); /* 4 colunas fixas */
   gap: 25px;
   padding: 30px;

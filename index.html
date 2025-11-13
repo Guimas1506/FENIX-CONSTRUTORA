@@ -85,31 +85,43 @@
       <div id="userArea" class="modal" style="display:none;">
 
         <div class="modal-content">
-          <div class="modal-container">
-            <img src="./img/logo1.png" alt="Logo" class="logo-fundo">
+          <div class="info-container">
+            <div class="modal-container">
+              <img src="./img/user v3.png" alt="Logo" class="logo-fundo">
+            </div>
+            <h2 id="welcomeMsg">Bem-vindo(a), Usuário</h2>
           </div>
           <span id="closeUserArea" class="close">&times;</span>
-          <h2 id="welcomeMsg">Bem-vindo(a), Usuário</h2>
+
           <p id="userEmail">Email do usuário</p>
 
           <div class="logadores">
+
+            <a href="./Administrator/produtos.html" id="adminButton" style="display:none;">
+              <p>ADM</p>
+            </a>
+
+            <hr id="linha">
 
             <a id="log" href="log-in.html">Acesse o Login</a>
 
             <a id="register" href="sign-in.html">Se Registre</a>
 
-            <a href="User/user.html">Usuario</a>
-            
-            <a href="favoritos.html" >Meus Favoritos
-      </a>
-            
-            <a href="./Administrator/produtos.html" id="adminButton" style="display:none;">
-              <p>ADM</p>
+            <hr id="linha">
+
+            <a id="log" href="User/user.html">Usuario</a>
+
+            <a id="log" href="favoritos.html">
+
+              <p>Meus Favoritos</p>
             </a>
+
+            <button id="btnLogoutModal">
+              <img src="./img/sair.png" alt="">
+            </button>
+
           </div>
-          <button id="btnLogoutModal">
-            <img src="./img/sair.png" alt="">
-          </button>
+
 
         </div>
       </div>
@@ -197,7 +209,7 @@
     <div class="video">
       <div class="aplic-video">
         <video controls width="250" loop autoplay="autoplay" muted>
-          <source src="./img/videoplayback.mp4" type="video/webm" />
+          <source src="./img/CHÁCARA.mp4" type="video/webm" />
       </div>
 
 
@@ -234,7 +246,7 @@
         </p>
 
         <div class="mais">
-          <a href="" id="plus">Mais Sobre</a>
+          <a href="Imovel.html" id="plus">Mais Sobre</a>
         </div>
 
       </div>
@@ -249,7 +261,7 @@
       <!-- CONTAINER DOS IMÓVEIS -->
       <div id="lista-imoveis-usuario"></div>
     </div>
-    
+
     <!-- Botão Ver Mais -->
     <div style="text-align: center; padding: 30px;">
       <button id="btn-ver-mais" style="
@@ -264,10 +276,9 @@
         display: none;
         transition: all 0.3s;
         box-shadow: 0 4px 12px rgba(254, 79, 63, 0.3);
-      " 
-      onclick="window.location.href='Imovel.html'"
-      onmouseover="this.style.background='#e63e2e'; this.style.transform='translateY(-2px)'" 
-      onmouseout="this.style.background='#FE4F3F'; this.style.transform='translateY(0)'">
+      " onclick="window.location.href='Imovel.html'"
+        onmouseover="this.style.background='#e63e2e'; this.style.transform='translateY(-2px)'"
+        onmouseout="this.style.background='#FE4F3F'; this.style.transform='translateY(0)'">
         Ver Todos os Imóveis →
       </button>
     </div>
