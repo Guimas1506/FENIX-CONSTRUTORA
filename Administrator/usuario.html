@@ -22,8 +22,6 @@
 </head>
 
 <body>
-
-    <body>
         <nav>
             <div class="navbar">
                 <div class="logo">
@@ -96,6 +94,8 @@
                     <h1>Usuarios</h1>
                 </div>
 
+                <!-- (debug panel removed) -->
+
                 <div class="searching">
                     <div class="sirch">
                         <img src="img/lupo.png" alt="lupin">
@@ -113,16 +113,23 @@
 
 
                             <form id="form-filtros">
-                                <!-- Status - CORRIGIDO -->
-                                <select name="Status" id="Status">
-                                    <option value="" selected disabled>-Status-</option>
-                                    <option value="Na Planta">Na Planta</option>
-                                    <option value="Pronto">Pronto</option>
+                                <!-- Cargo/Role filter -->
+                                <select name="role" id="role-filter">
+                                    <option value="" selected>-Cargo (Todos)-</option>
+                                    <option value="admin">Administrador</option>
+                                    <option value="user">Usuário</option>
+                                </select>
+
+                                <!-- Status filter -->
+                                <select name="status" id="status-filter">
+                                    <option value="" selected>-Status (Todos)-</option>
+                                    <option value="Ativo">Ativo</option>
+                                    <option value="Desativado">Desativado</option>
                                 </select>
 
                                 <!-- UF - CORRIGIDO com todas as UFs -->
                                 <select name="UF" id="UF">
-                                    <option value="" selected disabled>-UF-</option>
+                                    <option value="" selected>-Estado (Todos)-</option>
                                     <option value="AC">Acre</option>
                                     <option value="AL">Alagoas</option>
                                     <option value="AP">Amapá</option>
@@ -154,7 +161,7 @@
 
                                 <!-- Cidade - CORRIGIDO -->
                                 <select name="city" id="city">
-                                    <option value="" selected disabled>-Cidade-</option>
+                                    <option value="" selected>-Cidade (Todas)-</option>
                                     <option value="Rio Branco">Rio Branco</option>
                                     <option value="Maceió">Maceió</option>
                                     <option value="Macapá">Macapá</option>
@@ -185,10 +192,10 @@
                                 </select>
 
 
-                                <select name="novo/ant" id="new-ant">
-                                    <option value="" selected disabled>-Tempo-</option>
-                                    <option value="the-new-a-old">Do Mais Recente ao Mais Antigo</option>
-                                    <option value="the-old-a-new">Do Mais Antigo Ao Mais Novo</option>
+                                <select name="sort" id="sort">
+                                    <option value="" selected>-Ordenar por (Padrão)-</option>
+                                    <option value="name-asc">Nome (A-Z)</option>
+                                    <option value="name-desc">Nome (Z-A)</option>
                                 </select>
 
 
@@ -207,6 +214,68 @@
                         <button id="addi-produto" onclick="window.location.href='AddUser.html'">Adicionar</button>
                     </div>
                 </div>
+
+                <!-- users list (rendered by Administrator/js/usuario.js) -->
+                <div id="users-list-placeholder"></div>
+
+                <!-- Edit User Modal -->
+                <div id="edit-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999; align-items:center; justify-content:center;">
+                  <div style="background:#fff; border-radius:8px; padding:24px; max-width:500px; width:90%; max-height:90vh; overflow-y:auto;">
+                    <h2 style="margin-top:0; color:var(--Cor-Secundaria);">Editar Usuário</h2>
+                    
+                    <form id="edit-form" style="display:flex; flex-direction:column; gap:12px;">
+                      <div>
+                        <label style="display:block; font-weight:600; margin-bottom:4px;">Nome</label>
+                        <input type="text" id="edit-nome" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box;"/>
+                      </div>
+
+                      <div>
+                        <label style="display:block; font-weight:600; margin-bottom:4px;">Email</label>
+                        <input type="email" id="edit-email" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box;" readonly/>
+                        <small style="color:#999;">Email não pode ser alterado aqui</small>
+                      </div>
+
+                      <div>
+                        <label style="display:block; font-weight:600; margin-bottom:4px;">Telefone</label>
+                        <input type="tel" id="edit-telefone" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box;"/>
+                      </div>
+
+                      <div>
+                        <label style="display:block; font-weight:600; margin-bottom:4px;">Cidade</label>
+                        <input type="text" id="edit-cidade" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box;"/>
+                      </div>
+
+                      <div>
+                        <label style="display:block; font-weight:600; margin-bottom:4px;">Estado (UF)</label>
+                        <input type="text" id="edit-uf" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box;" maxlength="2"/>
+                      </div>
+
+                      <div>
+                        <label style="display:block; font-weight:600; margin-bottom:4px;">Status</label>
+                        <select id="edit-status" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box;">
+                          <option value="Ativo">Ativo</option>
+                          <option value="Desativado">Desativado</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <label style="display:block; font-weight:600; margin-bottom:4px;">Cargo</label>
+                        <select id="edit-role" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box;">
+                          <option value="user">Usuário</option>
+                          <option value="admin">Administrador</option>
+                        </select>
+                      </div>
+
+                      <div style="display:flex; gap:8px; margin-top:12px;">
+                        <button type="button" id="edit-save" style="flex:1; padding:10px; background:var(--Cor-Secundaria); color:#fff; border:none; border-radius:4px; cursor:pointer; font-weight:600;">Salvar</button>
+                        <button type="button" id="edit-delete" style="flex:1; padding:10px; background:#dc3545; color:#fff; border:none; border-radius:4px; cursor:pointer; font-weight:600;">Deletar</button>
+                        <button type="button" id="edit-cancel" style="flex:1; padding:10px; background:#6c757d; color:#fff; border:none; border-radius:4px; cursor:pointer; font-weight:600;">Cancelar</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+                
 
 
             </main>
@@ -273,6 +342,8 @@
 
 
     </body>
+
+    <script type="module" src="js/usuario.js"></script>
 
 </body>
 
