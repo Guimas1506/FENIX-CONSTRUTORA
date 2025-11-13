@@ -85,21 +85,96 @@ if (btnLogoutModal) {
 // ==================== FUNÇÃO DE FAVORITAR ====================
 const btnFavorito = document.getElementById("btn-favorito");
 const iconeFav = document.getElementById("icone-fav");
+let imovelAtualId = null; // Guarda o ID do imóvel atual
 
-if (btnFavorito) {
-  btnFavorito.addEventListener("click", () => {
-    if (iconeFav.textContent === '♡') {
-      iconeFav.textContent = '♥';
-      iconeFav.style.color = '#FF0000';
-      btnFavorito.style.background = '#FFE5E5';
-      btnFavorito.style.borderColor = '#FF0000';
-      console.log("❤️ FAVORITADO!");
-    } else {
-      iconeFav.textContent = '♡';
-      iconeFav.style.color = '#FE4F3F';
-      btnFavorito.style.background = 'white';
-      btnFavorito.style.borderColor = '#FE4F3F';
-      console.log("💔 DESFAVORITADO!");
+async function configurarBotaoFavoritar(imovelId) {
+  imovelAtualId = imovelId;
+  
+  if (!btnFavorito || !iconeFav) return;
+  
+  // Carrega estado inicial do favorito
+  const user = auth.currentUser;
+  if (user) {
+    try {
+      const favoritosDoc = await getDoc(doc(db, "favoritos", user.uid));
+      if (favoritosDoc.exists()) {
+        const favoritos = favoritosDoc.data().imoveis || [];
+        const isFavorited = favoritos.includes(imovelId);
+        
+        if (isFavorited) {
+          iconeFav.textContent = '♥';
+          iconeFav.style.color = '#FF0000';
+          btnFavorito.style.background = '#FFE5E5';
+          btnFavorito.style.borderColor = '#FF0000';
+        }
+      }
+    } catch (err) {
+      console.log("Erro ao carregar favorito:", err);
+    }
+  }
+  
+  // Adiciona evento de clique
+  btnFavorito.addEventListener("click", async () => {
+    const user = auth.currentUser;
+    
+    // Verifica se está logado
+    if (!user) {
+      alert("Por favor, faça login para favoritar imóveis!");
+      if (userArea) userArea.style.display = "flex";
+      return;
+    }
+    
+    const isFavorited = iconeFav.textContent === '♥';
+    
+    try {
+      const { doc: docRef, getDoc, setDoc, updateDoc, arrayUnion, arrayRemove } = await import("https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js");
+      
+      const favoritosRef = docRef(db, "favoritos", user.uid);
+      const favoritosSnap = await getDoc(favoritosRef);
+      
+      if (isFavorited) {
+        // DESFAVORITAR
+        if (favoritosSnap.exists()) {
+          await updateDoc(favoritosRef, {
+            imoveis: arrayRemove(imovelAtualId)
+          });
+        }
+        
+        iconeFav.textContent = '♡';
+        iconeFav.style.color = '#FE4F3F';
+        btnFavorito.style.background = 'white';
+        btnFavorito.style.borderColor = '#FE4F3F';
+        console.log("💔 DESFAVORITADO!");
+        
+      } else {
+        // FAVORITAR
+        if (favoritosSnap.exists()) {
+          await updateDoc(favoritosRef, {
+            imoveis: arrayUnion(imovelAtualId)
+          });
+        } else {
+          await setDoc(favoritosRef, {
+            imoveis: [imovelAtualId],
+            userId: user.uid
+          });
+        }
+        
+        iconeFav.textContent = '♥';
+        iconeFav.style.color = '#FF0000';
+        btnFavorito.style.background = '#FFE5E5';
+        btnFavorito.style.borderColor = '#FF0000';
+        console.log("❤️ FAVORITADO!");
+      }
+      
+      // Animação
+      btnFavorito.style.transform = 'scale(1.1)';
+      setTimeout(() => {
+        btnFavorito.style.transform = 'scale(1)';
+      }, 200);
+      
+    } catch (error) {
+      console.error("Erro ao favoritar:", error);
+      alert("Erro ao favoritar. Tente novamente.");
     }
   });
 }
@@ -190,6 +265,9 @@ async function carregarDetalhesImovel() {
     // Esconde loading e mostra conteúdo
     document.getElementById("loading").style.display = "none";
     document.getElementById("conteudo-imovel").style.display = "block";
+
+    // Configura botão de favoritar
+    configurarBotaoFavoritar(imovelId);
 
     // Configura botão do WhatsApp
     configurarBotaoWhatsApp(imovel.nome, imovelId);
