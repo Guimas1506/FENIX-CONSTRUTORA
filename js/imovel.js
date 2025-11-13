@@ -83,41 +83,105 @@ if (btnLogoutModal) {
 }
 
 // ==================== FUNÇÃO DE FAVORITAR ====================
-window.toggleFavorito = function(event, id) {
+window.toggleFavorito = async function(event, id) {
   event.stopPropagation();
   event.preventDefault();
+  
+  const user = auth.currentUser;
+  
+  // Verifica se está logado
+  if (!user) {
+    alert("Por favor, faça login para favoritar imóveis!");
+    if (userArea) userArea.style.display = "flex";
+    return;
+  }
   
   const btn = document.getElementById(`fav-${id}`);
   if (!btn) return;
   
   const span = btn.querySelector('span');
+  const isFavorited = span.textContent === '♥';
   
-  if (span.textContent === '♡') {
-    span.textContent = '♥';
-    span.style.color = '#FF0000';
-    btn.style.background = '#FFE5E5';
-    btn.style.borderColor = '#FF0000';
-    console.log("❤️ FAVORITADO!");
-  } else {
-    span.textContent = '♡';
-    span.style.color = '#FE4F3F';
-    btn.style.background = 'rgba(255,255,255,0.95)';
-    btn.style.borderColor = '#FE4F3F';
-    console.log("💔 DESFAVORITADO!");
+  try {
+    // Importa funções do Firestore
+    const { doc: docRef, getDoc, setDoc, updateDoc, arrayUnion, arrayRemove } = await import("https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js");
+    
+    const favoritosRef = docRef(db, "favoritos", user.uid);
+    const favoritosSnap = await getDoc(favoritosRef);
+    
+    if (isFavorited) {
+      // DESFAVORITAR
+      if (favoritosSnap.exists()) {
+        await updateDoc(favoritosRef, {
+          imoveis: arrayRemove(id)
+        });
+      }
+      
+      span.textContent = '♡';
+      span.style.color = '#FE4F3F';
+      btn.style.background = 'rgba(255,255,255,0.95)';
+      btn.style.borderColor = '#FE4F3F';
+      console.log("💔 DESFAVORITADO!");
+      
+    } else {
+      // FAVORITAR
+      if (favoritosSnap.exists()) {
+        await updateDoc(favoritosRef, {
+          imoveis: arrayUnion(id)
+        });
+      } else {
+        await setDoc(favoritosRef, {
+          imoveis: [id],
+          userId: user.uid
+        });
+      }
+      
+      span.textContent = '♥';
+      span.style.color = '#FF0000';
+      btn.style.background = '#FFE5E5';
+      btn.style.borderColor = '#FF0000';
+      console.log("❤️ FAVORITADO!");
+    }
+    
+    btn.style.transform = 'scale(1.2)';
+    setTimeout(() => {
+      btn.style.transform = 'scale(1)';
+    }, 200);
+    
+  } catch (error) {
+    console.error("Erro ao favoritar:", error);
+    alert("Erro ao favoritar. Tente novamente.");
   }
-  
-  btn.style.transform = 'scale(1.2)';
-  setTimeout(() => {
-    btn.style.transform = 'scale(1)';
-  }, 200);
 }
 
 // ==================== SISTEMA DE CARREGAR MAIS ====================
 let todosImoveis = [];
 let imoveisExibidos = 0;
 let imoveisFiltrados = []; // Lista filtrada pela pesquisa
+let favoritosUsuario = []; // IDs dos imóveis favoritados
 const IMOVEIS_INICIAIS = 16;
 const IMOVEIS_POR_CARREGAMENTO = 8;
+
+// ==================== CARREGAR FAVORITOS DO USUÁRIO ====================
+async function carregarFavoritosUsuario() {
+  favoritosUsuario = [];
+  const user = auth.currentUser;
+  
+  if (!user) {
+    console.log("👤 Usuário não logado - sem favoritos");
+    return;
+  }
+  
+  try {
+    const favoritosDoc = await getDoc(doc(db, "favoritos", user.uid));
+    if (favoritosDoc.exists()) {
+      favoritosUsuario = favoritosDoc.data().imoveis || [];
+      console.log(`❤️ ${favoritosUsuario.length} favoritos carregados`);
+    }
+  } catch (err) {
+    console.log("Erro ao carregar favoritos:", err);
+  }
+}
 
 // ==================== FUNÇÃO DE PESQUISA POR NOME ====================
 window.pesquisarPorNome = function() {
@@ -318,6 +382,9 @@ async function carregarTodosImoveis() {
     
     console.log(`📊 Total de ${todosImoveis.length} imóveis carregados`);
     
+    // Carrega favoritos do usuário
+    await carregarFavoritosUsuario();
+    
     container.innerHTML = '';
     exibirMaisImoveis(IMOVEIS_INICIAIS);
     
@@ -340,6 +407,9 @@ function exibirMaisImoveis(quantidade) {
   
   for (let i = inicio; i < fim; i++) {
     const imovel = imoveisFiltrados[i];
+    const imovelId = imovel.id;
+    const isFavorited = favoritosUsuario.includes(imovelId);
+    
     const card = document.createElement('div');
     card.className = 'imovel-card-usuario';
     
@@ -361,11 +431,11 @@ function exibirMaisImoveis(quantidade) {
              onerror="this.src='./img/logo1.png'"
              style="width: 100%; height: 200px; object-fit: cover; display: block;">
         
-        <button onclick="toggleFavorito(event, '${imovel.id}')" 
+        <button onclick="toggleFavorito(event, '${imovelId}')" 
                 class="btn-favorito" 
-                id="fav-${imovel.id}"
-                style="position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.95); border: 2px solid #FE4F3F; border-radius: 50%; width: 42px; height: 42px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 22px; transition: all 0.3s ease; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
-          <span style="color: #FE4F3F;">♡</span>
+                id="fav-${imovelId}"
+                style="position: absolute; top: 10px; right: 10px; background: ${isFavorited ? '#FFE5E5' : 'rgba(255,255,255,0.95)'}; border: 2px solid ${isFavorited ? '#FF0000' : '#FE4F3F'}; border-radius: 50%; width: 42px; height: 42px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 22px; transition: all 0.3s ease; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
+          <span style="color: ${isFavorited ? '#FF0000' : '#FE4F3F'};">${isFavorited ? '♥' : '♡'}</span>
         </button>
       </div>
       
@@ -387,7 +457,7 @@ function exibirMaisImoveis(quantidade) {
           <span style="font-size: 0.9em; color: #666;">🚗 ${imovel.vagas || 0}</span>
           <span style="font-size: 0.9em; color: #666;">🚿 ${imovel.banheiros || 0}</span>
         </div>
-        <button onclick="window.location.href='detalhes.html?id=${imovel.id}'" 
+        <button onclick="window.location.href='detalhes.html?id=${imovelId}'" 
                 style="width: 100%; padding: 12px; margin-top: auto; background: #FE4F3F; color: white; border: none; border-radius: 8px; font-size: 1em; font-weight: 600; cursor: pointer; transition: background 0.3s ease;"
                 onmouseover="this.style.background='#e63e2e'"
                 onmouseout="this.style.background='#FE4F3F'">

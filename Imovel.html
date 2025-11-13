@@ -45,28 +45,33 @@
       </div>
 
       <div id="userArea" class="modal" style="display:none;">
-        <div class="modal-content">
-          <div class="modal-container">
-            <img src="./img/logo1.png" alt="Logo" class="logo-fundo">
-          </div>
-          <span id="closeUserArea" class="close">&times;</span>
-          <h2 id="welcomeMsg">Bem-vindo(a), Usuário</h2>
-          <p id="userEmail">Email do usuário</p>
+  <div class="modal-content">
+    <div class="modal-container">
+      <img src="./img/logo1.png" alt="Logo" class="logo-fundo">
+    </div>
+    <span id="closeUserArea" class="close">&times;</span>
+    <h2 id="welcomeMsg">Bem-vindo(a), Usuário</h2>
+    <p id="userEmail">Email do usuário</p>
 
-          <div class="logadores">
-            <a id="log" href="log-in.html">Acesse o Login</a>
-            <a id="register" href="sign-in.html">Se Registre</a>
-            <a href="User/user.html">Usuario</a>
-            <a href="./Administrator/produtos.html" id="adminButton" style="display:none;">
-              <p>ADM</p>
-            </a>
-          </div>
-          
-          <button id="btnLogoutModal">
-            <img src="./img/sair.png" alt="">
-          </button>
-        </div>
-      </div>
+    <div class="logadores">
+      <a id="log" href="log-in.html">Acesse o Login</a>
+      <a id="register" href="sign-in.html">Se Registre</a>
+      <a href="User/user.html">Usuario</a>
+      
+      <!-- 🔥 BOTÃO DE FAVORITOS (ADICIONAR ESTA LINHA) -->
+      <a href="favoritos.html" >Meus Favoritos
+      </a>
+      
+      <a href="./Administrator/produtos.html" id="adminButton" style="display:none;">
+        <p>ADM</p>
+      </a>
+    </div>
+    
+    <button id="btnLogoutModal">
+      <img src="./img/sair.png" alt="Sair">
+    </button>
+  </div>
+</div>
     </div>
   </header>
 
@@ -86,7 +91,7 @@
             <input 
               type="text" 
               id="input-pesquisa-nome" 
-              placeholder="Pesquisar por imóvel..."
+              placeholder="🔍 Pesquisar imóvel por nome..."
               style="width: 100%; padding: 15px 50px 15px 20px; border: 2px solid #ddd; border-radius: 12px; font-size: 16px; transition: all 0.3s;"
               onfocus="this.style.borderColor='#FE4F3F'"
               onblur="this.style.borderColor='#ddd'">

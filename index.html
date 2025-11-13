@@ -99,6 +99,10 @@
             <a id="register" href="sign-in.html">Se Registre</a>
 
             <a href="User/user.html">Usuario</a>
+            
+            <a href="favoritos.html" >Meus Favoritos
+      </a>
+            
             <a href="./Administrator/produtos.html" id="adminButton" style="display:none;">
               <p>ADM</p>
             </a>
@@ -149,28 +153,6 @@
       </div>
     </section>
 
-
-    <!-- script do carrossel  -->
-    <Script>
-      var radio = document.querySelector('.manual-btn')
-      var cont = 1
-
-      document.getElementById('radio1').checked = true
-
-      setInterval(() => {
-        proximaImg()
-      }, 5000)
-
-      function proximaImg() {
-        cont++
-
-        if (cont > 3) {
-          cont = 1
-        }
-
-        document.getElementById('radio' + cont).checked = true
-      }
-    </Script>
     <!--AQUI COMEÇA O ELEGANCIA E INOVAÇÃO-->
     <div class="conteud">
       <div class="conteud1">
@@ -265,25 +247,29 @@
 
       <!--aqui será a lista de produtos-->
       <!-- CONTAINER DOS IMÓVEIS -->
-      <div id="lista-imoveis-usuario"></div> <!-- TEM QUE TER ESSA LINHA! -->
+      <div id="lista-imoveis-usuario"></div>
     </div>
+    
     <!-- Botão Ver Mais -->
     <div style="text-align: center; padding: 30px;">
       <button id="btn-ver-mais" style="
-    padding: 15px 40px;
-    background: #FE4F3F;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 18px;
-    font-weight: 600;
-    cursor: pointer;
-    display: none;
-  " onclick="window.location.href='Imovel.html'">
+        padding: 15px 40px;
+        background: #FE4F3F;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+        display: none;
+        transition: all 0.3s;
+        box-shadow: 0 4px 12px rgba(254, 79, 63, 0.3);
+      " 
+      onclick="window.location.href='Imovel.html'"
+      onmouseover="this.style.background='#e63e2e'; this.style.transform='translateY(-2px)'" 
+      onmouseout="this.style.background='#FE4F3F'; this.style.transform='translateY(0)'">
         Ver Todos os Imóveis →
       </button>
-    </div>
-
     </div>
 
     <br>
@@ -510,7 +496,7 @@
     <!-- Fim do rodapé -->
   </footer>
 
-  <!-- Firebase Script -->
+  <!-- ✅ ÚNICO SCRIPT NECESSÁRIO -->
   <script type="module" src="js/index.js"></script>
 
 </body>
