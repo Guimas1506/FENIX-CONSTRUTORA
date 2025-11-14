@@ -1,0 +1,22 @@
+#data{
+       width: 25%;
+    height: 50px;
+    margin-left: 20px;
+    margin-top: 15px;
+    border: solid var(--Cor-Terciaria) 1px;
+    border-radius: 20px;
+    padding-left: 10px;
+    font-size: 16px;
+     font-family: "Inter", sans-serif;
+}
+#tipos{
+       width: 20%;
+    height: 50px;
+    margin-left: 20px;
+    margin-top: 15px;
+    border: solid var(--Cor-Terciaria) 1px;
+    border-radius: 20px;
+    padding-left: 10px;
+    font-size: 16px;
+     font-family: "Inter", sans-serif;
+}
