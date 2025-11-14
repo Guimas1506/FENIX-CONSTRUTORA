@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style/style.css" />
+  <link rel="stylesheet" href="style/footer.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="shortcut icon" type="imagex/png" href="img/logo1.png" />
+  <link rel="stylesheet" href="style/nav-menu.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"rel="stylesheet" />
+<link rel="stylesheet" href="style/categorias.css">
+  <link rel="stylesheet" href="style/sidebar.css">
+    <title>Categorias</title>
+</head>
+<body>
+    <nav>
+    <div class="navbar">
+      <div class="logo">
+        <div class="logotipo">
+          <img src="img/logo1.png" alt="Logo" />
+          <span>Administrator</span>
+        </div>
+      </div>
+      <div class="notification">
+        <img src="img/notification.png" alt="Notification" />
+        <span>
+          <img src="img/Nav.png" alt="" />
+        </span>
+      </div>
+    </div>
+  </nav>
+   <div class="conteud">
+    <aside>
+      <div class="sidebar">
+        <ul>
+          <li class="menu-item ">
+            <a href="../index.html" onclick="setActive(this.parentElement)">
+              <span class="icon"><img src="img/homening.png" alt=""></span> Início
+            </a>
+          </li>
+
+          <li class="menu-item">
+            <a href="dashboard.html" onclick="setActive(this.parentElement)">
+              <span class="icon"><img src="img/macs.png" alt=""></span> Dashboards
+            </a>
+          </li>
+
+          <li class="menu-item active" onclick="toggleSubMenu(this)">
+            <span class="icon"><img src="img/big-gear.png" alt=""></span> Gerenciar ▾
+          </li>
+
+          <ul class="submenu">
+            <li class="submenu-item">
+              <a href="produtos.html" onclick="setActive(this.parentElement)">Produtos</a>
+            </li>
+            <li class="submenu-item">
+              <a href="usuario.html" onclick="setActive(this.parentElement)">Usuários</a>
+            </li>
+            <li class="submenu-item">
+              <a href="categorias.html" onclick="setActive(this.parentElement)">Categorias</a>
+            </li>
+            <li class="submenu-item">
+              <a href="dashboard.html" onclick="setActive(this.parentElement)">Dashboard</a>
+            </li>
+          </ul>
+
+        </ul>
+      </div>
+
+      <script src="js/sidebar.js"></script>
+    </aside>
+ <main>
+      <div class="indicator">
+        <p id="home"> 🏠Home /</p>
+        <a href="#">
+          <p> Gerenciar /</p>
+        </a>
+        <a href="categorias.html">
+          <p>Categorias</p>
+        </a>
+      </div>
+
+      <div class="title-page">
+        <h2>Categorias</h2>
+      </div>
+
+      <!-- FILTROS -->
+      <div class="filtros">
+        <div class="title-filtros">
+          <h1>Filtros</h1>
+        </div>
+        <div class="true-filtros">
+          <div class="campos-filtros">
+
+
+            <form id="form-filtros">
+              <!-- Status - CORRIGIDO -->
+              <select name="tipos" id="tipos">
+                <option value="" selected>-Todos os tipos-</option>
+                <option value="Na Planta">Na Planta</option>
+                <option value="Pronto">Pronto</option>
+              </select>
+
+              <!-- UF - CORRIGIDO com todas as UFs -->
+              <select name="data" id="data">
+                <option value="" selected>Do mais novo ao mais antigo</option>
+                <option value="" selected>Do mais antigo ao mais novo</option>
+         
+             
+              </select>
+
+              
+              <!-- INPUTS NUMÉRICOS (substituindo os sliders) -->
+             
+
+              <div class="aplicador">
+                <button type="button" id="aplicar">Aplicar</button>
+                <button type="button" id="limpar">Limpar Filtros</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTÃO ADICIONAR -->
+      <div class="adcionar">
+        <button id="addi-produto" onclick="window.location.href='adicionarcategorias.html'">Adicionar categorias</button>
+      </div>
+
+      <!-- CONTAINER DOS IMÓVEIS -->
+      <div id="lista-imoveis-container"></div>
+    </main>
+  </div>
+    <footer>
+    <div class="rodape">
+      <div class="foot-logo">
+        <img src="img/logo1.png" alt="Logo" class="logo" />
+        <div class="titulos">
+          <div class="titulo">
+            <p>FÊNIX</p>
+          </div>
+          <div class="subtitle">
+            <p>CONSTRUTORA</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contatos">
+        <div class="cont1">
+          <div class="cont-title1">
+            <h3>REDES SOCIAIS</h3>
+          </div>
+          <a href="https://www.instagram.com/fenixconstroi/#" target="_blank">
+            <div class="conte">
+              <div class="icon">
+                <img src="img/instagram.png" alt="" />
+              </div>
+              <div class="rede">
+                <p>INSTAGRAM</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="cont2">
+          <div class="titulo2">
+            <h3>NOSSA EMPRESA</h3>
+          </div>
+          <div class="abins">
+            <p>SOBRE NÓS</p>
+            <p>CONTATO</p>
+            <p>SERVIÇOS</p>
+          </div>
+        </div>
+
+        <div class="cont3">
+          <div class="titulo3">
+            <h3>NOSSOS PRODUTOS</h3>
+          </div>
+          <div class="produts">
+            <p>PROJETOS</p>
+            <p>IMÓVEIS</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="direitos-reservados">
+        <p>&copy; 2025 Fênix Construtora. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
