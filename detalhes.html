@@ -45,45 +45,26 @@
       </div>
 
       <div id="userArea" class="modal" style="display:none;">
-
         <div class="modal-content">
-          <div class="info-container">
-            <div class="modal-container">
-              <img src="./img/user v3.png" alt="Logo" class="logo-fundo">
-            </div>
-            <h2 id="welcomeMsg">Bem-vindo(a), Usuário</h2>
+          <div class="modal-container">
+            <img src="./img/logo1.png" alt="Logo" class="logo-fundo">
           </div>
           <span id="closeUserArea" class="close">&times;</span>
-
+          <h2 id="welcomeMsg">Bem-vindo(a), Usuário</h2>
           <p id="userEmail">Email do usuário</p>
 
           <div class="logadores">
-
+            <a id="log" href="log-in.html">Acesse o Login</a>
+            <a id="register" href="sign-in.html">Se Registre</a>
+            <a href="User/user.html">Usuario</a>
             <a href="./Administrator/produtos.html" id="adminButton" style="display:none;">
               <p>ADM</p>
             </a>
-
-            <hr id="linha">
-
-            <a id="log" href="log-in.html">Acesse o Login</a>
-
-            <a id="register" href="sign-in.html">Se Registre</a>
-
-            <hr id="linha">
-
-            <a id="log" href="User/user.html">Usuario</a>
-
-            <a id="log" href="favoritos.html">
-
-              <p>Meus Favoritos</p>
-            </a>
-
-
           </div>
+          
           <button id="btnLogoutModal">
-            <img src="./img/sair.png" alt="">
+            <img src="./img/sair.png" alt="Sair">
           </button>
-
         </div>
       </div>
     </div>
@@ -106,9 +87,30 @@
         </button>
       </div>
 
-      <!-- Imagem principal -->
-      <div class="imagem-principal">
-        <img id="imagem-destaque" src="./img/logo1.png" alt="Imóvel">
+      <!-- Galeria de Imagens -->
+      <div class="galeria-principal">
+        <!-- Imagem Grande -->
+        <div class="imagem-destaque-container">
+          <img id="imagem-destaque" src="./img/logo1.png" alt="Imóvel">
+          
+          <!-- Botões de navegação -->
+          <button class="btn-nav btn-prev" id="btn-prev" style="display: none;">
+            ‹
+          </button>
+          <button class="btn-nav btn-next" id="btn-next" style="display: none;">
+            ›
+          </button>
+          
+          <!-- Indicador de imagem atual -->
+          <div class="indicador-imagens" id="indicador-imagens" style="display: none;">
+            <span id="imagem-atual">1</span> / <span id="total-imagens">1</span>
+          </div>
+        </div>
+        
+        <!-- Miniaturas -->
+        <div class="miniaturas-container" id="miniaturas-container" style="display: none;">
+          <!-- Serão preenchidas dinamicamente -->
+        </div>
       </div>
 
       <!-- Informações principais -->

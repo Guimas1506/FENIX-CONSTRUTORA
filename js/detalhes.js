@@ -180,6 +180,9 @@ async function configurarBotaoFavoritar(imovelId) {
 }
 
 // ==================== CARREGAR DETALHES DO IMÓVEL ====================
+let imagensImovel = [];
+let imagemAtualIndex = 0;
+
 async function carregarDetalhesImovel() {
   const urlParams = new URLSearchParams(window.location.search);
   const imovelId = urlParams.get('id');
@@ -209,12 +212,17 @@ async function carregarDetalhesImovel() {
     const imovel = docSnap.data();
     console.log("✅ Imóvel carregado:", imovel);
 
-    // Preenche os dados
-    document.getElementById("imagem-destaque").src = imovel.imagemURL || './img/logo1.png';
-    document.getElementById("imagem-destaque").onerror = function() {
-      this.src = './img/logo1.png';
-    };
+    // Carrega galeria de imagens
+    imagensImovel = imovel.imagens || [imovel.imagemURL] || ['./img/logo1.png'];
+    imagensImovel = imagensImovel.filter(url => url); // Remove vazios
     
+    if (imagensImovel.length === 0) {
+      imagensImovel = ['./img/logo1.png'];
+    }
+    
+    configurarGaleria();
+    
+    // Restante dos dados...
     document.getElementById("nome-imovel").textContent = imovel.nome || 'Sem nome';
     document.getElementById("localizacao-completa").textContent = `${imovel.cidade || 'N/A'} - ${imovel.uf || ''}`;
     document.getElementById("preco-imovel").textContent = `R$ ${Number(imovel.preco || 0).toLocaleString('pt-BR')}`;
@@ -246,7 +254,7 @@ async function carregarDetalhesImovel() {
     document.getElementById("endereco-rua").textContent = imovel.endereco || 'Endereço não informado';
     document.getElementById("endereco-cidade").textContent = `${imovel.cidade || 'N/A'} - ${imovel.uf || ''}`;
 
-    // Características extras (piscina, churrasqueira, fitness)
+    // Características extras
     const extrasLista = document.getElementById("extras-lista");
     const extrasSection = document.getElementById("extras-section");
     const extras = [];
@@ -282,6 +290,80 @@ async function carregarDetalhesImovel() {
       <a href="Imovel.html" style="color: #FE4F3F; text-decoration: underline;">Voltar para a lista de imóveis</a>
     `;
   }
+}
+
+// ==================== CONFIGURAR GALERIA DE IMAGENS ====================
+function configurarGaleria() {
+  const imgDestaque = document.getElementById("imagem-destaque");
+  const btnPrev = document.getElementById("btn-prev");
+  const btnNext = document.getElementById("btn-next");
+  const indicador = document.getElementById("indicador-imagens");
+  const imgAtual = document.getElementById("imagem-atual");
+  const totalImgs = document.getElementById("total-imagens");
+  const miniaturasContainer = document.getElementById("miniaturas-container");
+  
+  console.log(`📷 ${imagensImovel.length} imagens encontradas`);
+  
+  // Mostra primeira imagem
+  imgDestaque.src = imagensImovel[0];
+  imgDestaque.onerror = function() {
+    this.src = './img/logo1.png';
+  };
+  
+  // Se houver mais de 1 imagem, mostra controles
+  if (imagensImovel.length > 1) {
+    btnPrev.style.display = "flex";
+    btnNext.style.display = "flex";
+    indicador.style.display = "block";
+    miniaturasContainer.style.display = "flex";
+    
+    totalImgs.textContent = imagensImovel.length;
+    
+    // Cria miniaturas
+    imagensImovel.forEach((url, index) => {
+      const miniatura = document.createElement('div');
+      miniatura.className = 'miniatura' + (index === 0 ? ' ativa' : '');
+      miniatura.innerHTML = `<img src="${url}" alt="Imagem ${index + 1}" onerror="this.src='./img/logo1.png'">`;
+      miniatura.onclick = () => mudarImagem(index);
+      miniaturasContainer.appendChild(miniatura);
+    });
+    
+    // Eventos dos botões
+    btnPrev.onclick = () => mudarImagem(imagemAtualIndex - 1);
+    btnNext.onclick = () => mudarImagem(imagemAtualIndex + 1);
+    
+    // Navegação por teclado
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') mudarImagem(imagemAtualIndex - 1);
+      if (e.key === 'ArrowRight') mudarImagem(imagemAtualIndex + 1);
+    });
+  }
+}
+
+function mudarImagem(novoIndex) {
+  // Garante que o índice está no range válido
+  if (novoIndex < 0) novoIndex = imagensImovel.length - 1;
+  if (novoIndex >= imagensImovel.length) novoIndex = 0;
+  
+  imagemAtualIndex = novoIndex;
+  
+  // Atualiza imagem principal
+  const imgDestaque = document.getElementById("imagem-destaque");
+  imgDestaque.src = imagensImovel[novoIndex];
+  
+  // Atualiza indicador
+  document.getElementById("imagem-atual").textContent = novoIndex + 1;
+  
+  // Atualiza miniaturas
+  document.querySelectorAll('.miniatura').forEach((mini, index) => {
+    if (index === novoIndex) {
+      mini.classList.add('ativa');
+    } else {
+      mini.classList.remove('ativa');
+    }
+  });
+  
+  console.log(`📷 Imagem ${novoIndex + 1} de ${imagensImovel.length}`);
 }
 
 // ==================== CONFIGURAR BOTÃO WHATSAPP ====================
