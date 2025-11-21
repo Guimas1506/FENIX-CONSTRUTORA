@@ -1,4 +1,4 @@
-// adicionar-produto.js - Com suporte a múltiplas imagens
+// adicionar-produto.js - Com suporte a INFINITAS imagens (progressivo)
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 import { getFirestore, doc, setDoc, updateDoc, getDoc, collection } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
@@ -19,6 +19,30 @@ const db = getFirestore(app);
 const storage = getStorage(app);
 
 const form = document.getElementById("prods");
+let contadorImagens = 1; // Começa em 1 (imagem principal)
+
+// ==================== ADICIONAR NOVA IMAGEM ====================
+window.adicionarNovaImagem = function() {
+  contadorImagens++;
+  const container = document.getElementById("imagens-container");
+  
+  const novaBox = document.createElement('div');
+  novaBox.className = 'imagem-box';
+  novaBox.id = `box-${contadorImagens}`;
+  
+  novaBox.innerHTML = `
+    <button type="button" class="btn-remover" onclick="removerImagemPermanente(${contadorImagens})" style="display: none;">✕</button>
+    <p class="imagem-numero">📷 Imagem ${contadorImagens}</p>
+    <label for="imagem-${contadorImagens}">
+      <span id="label-${contadorImagens}">📁 Adicionar</span>
+    </label>
+    <input type="file" id="imagem-${contadorImagens}" accept="image/*" onchange="previewImagem(${contadorImagens})">
+    <img id="preview-${contadorImagens}">
+  `;
+  
+  container.appendChild(novaBox);
+  console.log(`➕ Slot ${contadorImagens} adicionado`);
+}
 
 // ==================== PREVIEW DAS IMAGENS ====================
 window.previewImagem = function(numero) {
@@ -27,31 +51,65 @@ window.previewImagem = function(numero) {
   const label = document.getElementById(`label-${numero}`);
   const btnRemover = document.querySelector(`#box-${numero} .btn-remover`);
   
+  if (!input || !input.files[0]) return;
+  
   const file = input.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      preview.src = e.target.result;
-      preview.style.display = "block";
-      label.textContent = "✓ Imagem adicionada";
-      btnRemover.style.display = "block";
-    };
-    reader.readAsDataURL(file);
-  }
+  const reader = new FileReader();
+  
+  reader.onload = function(e) {
+    preview.src = e.target.result;
+    preview.style.display = "block";
+    label.textContent = "✓ Adicionada";
+    if (btnRemover) btnRemover.style.display = "block";
+    
+    // ADICIONA AUTOMATICAMENTE O PRÓXIMO BOX
+    const todasAsBoxes = document.querySelectorAll('.imagem-box');
+    const ultimaBox = todasAsBoxes[todasAsBoxes.length - 1];
+    const ultimoNumero = parseInt(ultimaBox.id.replace('box-', ''));
+    
+    // Se esta é a última box e tem imagem, adiciona nova
+    if (numero === ultimoNumero) {
+      adicionarNovaImagem();
+    }
+  };
+  
+  reader.readAsDataURL(file);
+  console.log(`📷 Preview imagem ${numero}`);
 }
 
-// ==================== REMOVER IMAGEM ====================
+// ==================== REMOVER IMAGEM (LIMPAR) ====================
 window.removerImagem = function(numero) {
   const input = document.getElementById(`imagem-${numero}`);
   const preview = document.getElementById(`preview-${numero}`);
   const label = document.getElementById(`label-${numero}`);
   const btnRemover = document.querySelector(`#box-${numero} .btn-remover`);
   
+  if (!input) return;
+  
   input.value = "";
-  preview.src = "";
-  preview.style.display = "none";
-  label.textContent = "📁 Clique para adicionar";
-  btnRemover.style.display = "none";
+  if (preview) {
+    preview.src = "";
+    preview.style.display = "none";
+  }
+  if (label) label.textContent = "📁 Adicionar";
+  if (btnRemover) btnRemover.style.display = "none";
+  
+  console.log(`🗑️ Imagem ${numero} limpa`);
+}
+
+// ==================== REMOVER BOX COMPLETO ====================
+window.removerImagemPermanente = function(numero) {
+  if (numero === 1) {
+    // Não pode remover a imagem principal, apenas limpa
+    removerImagem(1);
+    return;
+  }
+  
+  const box = document.getElementById(`box-${numero}`);
+  if (box) {
+    box.remove();
+    console.log(`🗑️ Box ${numero} removido permanentemente`);
+  }
 }
 
 // ==================== ATUALIZAR RANGES ====================
@@ -101,9 +159,19 @@ if (idDoImovel) {
       if (data.fit) document.getElementById("fit").checked = true;
       
       // Carrega imagens existentes
-      const imagens = data.imagens || [];
-      imagens.forEach((url, index) => {
+      const imagens = data.imagens || [data.imagemURL] || [];
+      const imagensFiltradas = imagens.filter(url => url);
+      
+      console.log(`📷 Carregando ${imagensFiltradas.length} imagens existentes`);
+      
+      imagensFiltradas.forEach((url, index) => {
         const numero = index + 1;
+        
+        // Se não existir o box, cria
+        if (numero > 1 && !document.getElementById(`box-${numero}`)) {
+          adicionarNovaImagem();
+        }
+        
         const preview = document.getElementById(`preview-${numero}`);
         const label = document.getElementById(`label-${numero}`);
         const btnRemover = document.querySelector(`#box-${numero} .btn-remover`);
@@ -111,10 +179,14 @@ if (idDoImovel) {
         if (preview && url) {
           preview.src = url;
           preview.style.display = "block";
-          label.textContent = "✓ Imagem carregada";
-          btnRemover.style.display = "block";
+          preview.dataset.existente = "true"; // Marca como imagem existente
+          if (label) label.textContent = "✓ Adicionada";
+          if (btnRemover) btnRemover.style.display = "block";
         }
       });
+      
+      // Adiciona um box vazio no final para edição
+      adicionarNovaImagem();
       
       atualizarRanges();
     }
@@ -154,33 +226,38 @@ form.addEventListener("submit", async (e) => {
     const imagensURLs = [];
     const imagensPaths = [];
     
-    for (let i = 1; i <= 4; i++) {
-      const input = document.getElementById(`imagem-${i}`);
+    // Percorre TODOS os boxes de imagem existentes
+    const todasAsBoxes = document.querySelectorAll('.imagem-box');
+    console.log(`📊 Total de ${todasAsBoxes.length} slots de imagem`);
+    
+    for (let box of todasAsBoxes) {
+      const boxId = box.id;
+      const numero = parseInt(boxId.replace('box-', ''));
+      const input = document.getElementById(`imagem-${numero}`);
+      const preview = document.getElementById(`preview-${numero}`);
       
-      if (input.files[0]) {
+      if (input && input.files[0]) {
         // Nova imagem para upload
-        console.log(`📷 Fazendo upload da imagem ${i}...`);
+        console.log(`📷 Fazendo upload da imagem ${numero}...`);
         const file = input.files[0];
-        const imagemPath = `imoveis/${Date.now()}-${i}-${file.name}`;
+        const imagemPath = `imoveis/${Date.now()}-${numero}-${file.name}`;
         const storageRef = ref(storage, imagemPath);
         const snapshot = await uploadBytes(storageRef, file);
         const imagemURL = await getDownloadURL(snapshot.ref);
         
         imagensURLs.push(imagemURL);
         imagensPaths.push(imagemPath);
-        console.log(`✅ Imagem ${i} enviada`);
+        console.log(`✅ Imagem ${numero} enviada`);
         
-      } else {
-        // Verifica se há imagem existente (modo edição)
-        const preview = document.getElementById(`preview-${i}`);
-        if (preview.src && preview.style.display !== "none") {
-          imagensURLs.push(preview.src);
-          imagensPaths.push(""); // Path vazio para imagens já existentes
-        }
+      } else if (preview && preview.src && preview.style.display !== "none" && preview.dataset.existente === "true") {
+        // Imagem existente (modo edição)
+        imagensURLs.push(preview.src);
+        imagensPaths.push(""); // Path vazio para imagens já existentes
+        console.log(`♻️ Imagem ${numero} mantida (existente)`);
       }
     }
     
-    console.log(`📊 Total de ${imagensURLs.length} imagens`);
+    console.log(`📊 Total de ${imagensURLs.length} imagens processadas`);
     
     // Monta objeto de dados
     const dados = {
@@ -212,6 +289,7 @@ form.addEventListener("submit", async (e) => {
       await updateDoc(doc(db, "imoveis", idDoImovel), dados);
       alert("✅ Imóvel atualizado com sucesso!");
       console.log("✅ Atualização concluída");
+      window.location.href = "produtos.html";
     } else {
       // NOVO
       const novoDocRef = doc(collection(db, "imoveis"));
@@ -221,9 +299,16 @@ form.addEventListener("submit", async (e) => {
       
       // Limpa formulário
       form.reset();
-      for (let i = 1; i <= 4; i++) {
-        removerImagem(i);
-      }
+      
+      // Remove todos os boxes exceto o primeiro
+      const boxes = document.querySelectorAll('.imagem-box');
+      boxes.forEach((box, index) => {
+        if (index > 0) box.remove();
+      });
+      contadorImagens = 1;
+      
+      // Limpa primeira imagem
+      removerImagem(1);
       atualizarRanges();
     }
     
@@ -233,4 +318,4 @@ form.addEventListener("submit", async (e) => {
   }
 });
 
-console.log("🚀 Script de adicionar produto carregado");
+console.log("🚀 Script de adicionar produto carregado (imagens progressivas)");

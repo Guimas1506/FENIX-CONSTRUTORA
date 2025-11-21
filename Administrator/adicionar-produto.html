@@ -1,3 +1,4 @@
+<!-- adicionar-produto.html -->
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -20,21 +21,22 @@
   <link rel="stylesheet" href="style/sidebar.css">
   
   <style>
-    /* Estilos para múltiplas imagens */
+    /* Estilos para múltiplas imagens - 3 COLUNAS */
     .imagens-container {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
       margin-top: 15px;
     }
     
     .imagem-box {
       border: 2px dashed #ddd;
       border-radius: 8px;
-      padding: 15px;
+      padding: 12px;
       text-align: center;
       transition: all 0.3s;
       position: relative;
+      min-height: 180px;
     }
     
     .imagem-box:hover {
@@ -44,10 +46,11 @@
     .imagem-box label {
       display: block;
       cursor: pointer;
-      padding: 20px;
+      padding: 15px;
       background: #f9f9f9;
       border-radius: 8px;
       transition: all 0.3s;
+      font-size: 14px;
     }
     
     .imagem-box label:hover {
@@ -60,25 +63,26 @@
     
     .imagem-box img {
       max-width: 100%;
-      max-height: 200px;
+      max-height: 120px;
       border-radius: 8px;
-      margin-top: 10px;
+      margin-top: 8px;
       display: none;
     }
     
     .imagem-box .btn-remover {
       position: absolute;
-      top: 10px;
-      right: 10px;
+      top: 8px;
+      right: 8px;
       background: #f44336;
       color: white;
       border: none;
       border-radius: 50%;
-      width: 30px;
-      height: 30px;
+      width: 28px;
+      height: 28px;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 14px;
       display: none;
+      z-index: 10;
     }
     
     .imagem-box .btn-remover:hover {
@@ -88,7 +92,21 @@
     .imagem-numero {
       font-weight: 600;
       color: #666;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+
+    /* Responsividade */
+    @media (max-width: 1024px) {
+      .imagens-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .imagens-container {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -171,54 +189,21 @@
 
         <!-- MÚLTIPLAS IMAGENS -->
         <div class="fotos">
-          <h2>Imagens do Imóvel (até 4 fotos)</h2>
+          <h2>Imagens do Imóvel</h2>
           <p style="color: #666; font-size: 0.9em; margin-bottom: 15px;">
-            A primeira imagem será a principal. Adicione até 4 fotos do imóvel.
+            A primeira imagem será a principal. Adicione fotos uma por vez - novos campos aparecerão automaticamente.
           </p>
           
-          <div class="imagens-container">
-            <!-- Imagem 1 -->
+          <div class="imagens-container" id="imagens-container">
+            <!-- Imagem 1 (sempre presente) -->
             <div class="imagem-box" id="box-1">
-              <button type="button" class="btn-remover" onclick="removerImagem(1)">✕</button>
-              <p class="imagem-numero">📷 Imagem Principal</p>
+              <button type="button" class="btn-remover" onclick="removerImagem(1)" style="display: none;">✕</button>
+              <p class="imagem-numero">📷 Principal</p>
               <label for="imagem-1">
-                <span id="label-1">📁 Clique para adicionar</span>
+                <span id="label-1">📁 Adicionar</span>
               </label>
               <input type="file" id="imagem-1" accept="image/*" onchange="previewImagem(1)">
               <img id="preview-1">
-            </div>
-            
-            <!-- Imagem 2 -->
-            <div class="imagem-box" id="box-2">
-              <button type="button" class="btn-remover" onclick="removerImagem(2)">✕</button>
-              <p class="imagem-numero">📷 Imagem 2</p>
-              <label for="imagem-2">
-                <span id="label-2">📁 Clique para adicionar</span>
-              </label>
-              <input type="file" id="imagem-2" accept="image/*" onchange="previewImagem(2)">
-              <img id="preview-2">
-            </div>
-            
-            <!-- Imagem 3 -->
-            <div class="imagem-box" id="box-3">
-              <button type="button" class="btn-remover" onclick="removerImagem(3)">✕</button>
-              <p class="imagem-numero">📷 Imagem 3</p>
-              <label for="imagem-3">
-                <span id="label-3">📁 Clique para adicionar</span>
-              </label>
-              <input type="file" id="imagem-3" accept="image/*" onchange="previewImagem(3)">
-              <img id="preview-3">
-            </div>
-            
-            <!-- Imagem 4 -->
-            <div class="imagem-box" id="box-4">
-              <button type="button" class="btn-remover" onclick="removerImagem(4)">✕</button>
-              <p class="imagem-numero">📷 Imagem 4</p>
-              <label for="imagem-4">
-                <span id="label-4">📁 Clique para adicionar</span>
-              </label>
-              <input type="file" id="imagem-4" accept="image/*" onchange="previewImagem(4)">
-              <img id="preview-4">
             </div>
           </div>
         </div>
