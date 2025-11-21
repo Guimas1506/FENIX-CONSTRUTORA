@@ -209,13 +209,18 @@ body::-webkit-scrollbar{
 #aplicar{
     width: 50%;
     height: 80%;
-    background-color: var(--Cor-Secundaria);
+    background: linear-gradient(135deg, var(--Cor-Secundaria) 0%, #e63a28 100%);
     border: none;
     border-radius: 20px;
     color: white;
     font-size: 15px;
     font-weight: 600;
     font-family: "Inter", sans-serif;
+    transition: 0.2s all;
+}
+
+#aplicar:hover{
+    transform: scale(0.9);
 }
 
 #limpar{
@@ -229,6 +234,11 @@ body::-webkit-scrollbar{
     font-weight: 600;
     font-family: "Inter", sans-serif;
     margin-left: 10px;
+    transition: 0.2s all;
+}
+
+#limpar:hover{
+    transform: scale(0.9);
 }
 
 
@@ -249,7 +259,14 @@ body::-webkit-scrollbar{
     font-size: 15px;
     font-weight: 600;
     font-family: "Inter", sans-serif;
+    transition: 0.2s all;
 }
+
+#addi-produto:hover{
+    transform: scale(0.9);
+}
+
+
 /*AQUI TERMINA A AREA DE PRODUTOS*/
 
 

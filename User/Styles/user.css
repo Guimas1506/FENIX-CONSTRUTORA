@@ -261,6 +261,7 @@ body::-webkit-scrollbar{
     margin-left: 5px;
     font-size: 16px;
     outline: none;
+    background: none;
 }
 
 

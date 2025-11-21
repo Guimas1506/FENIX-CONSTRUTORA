@@ -119,9 +119,10 @@ aside{
 
 .back{
     width: 100%;
-    height: 100%;
+    height: 40px;
     display: flex;
     align-items: center;
+    color: #FE4F3F;
 }
 
 .btn-back{
@@ -132,8 +133,8 @@ aside{
     background-color: rgb(255, 255, 255);
     margin-left: 5px;
     border-radius: 10px;
-    border: solid white;
     transition: 0.3s all;
+
 }
 
 .btn-back:hover{
@@ -143,12 +144,18 @@ aside{
 .btn-back img{
     width: 18px;
     height: 18px;
-    margin-left: 5px;
+
+    margin-right: 10px;
 }
 
 .btn-back a{
-    color: rgb(0, 0, 0);
+    width: 100%;
+    height: 100%;
+    color: #FE4F3F;
     margin-left: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
