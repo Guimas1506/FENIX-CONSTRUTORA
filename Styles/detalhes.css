@@ -77,7 +77,7 @@ main {
 
 .imagem-destaque-container img {
   width: 100%;
-  height: 500px;
+  height: 600px;
   object-fit: cover;
   display: block;
 }
@@ -130,18 +130,18 @@ main {
   font-size: 14px;
 }
 
-/* Miniaturas */
+/* Miniaturas - 3 COLUNAS */
 .miniaturas-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 15px;
   margin-top: 15px;
-  overflow-x: auto;
   padding: 10px 0;
 }
 
 .miniatura {
-  min-width: 120px;
-  height: 90px;
+  width: 100%;
+  height: 130px;
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
@@ -167,7 +167,7 @@ main {
   display: block;
 }
 
-/* Container de Informações */
+/* Container de Informações - ALTURA AUTOMÁTICA */
 .info-container {
   max-width: 1400px;
   margin: 0 auto;
@@ -178,6 +178,7 @@ main {
   border-radius: 16px;
   padding: 40px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  width: 100%;
 }
 
 /* Cabeçalho do imóvel */
@@ -213,6 +214,8 @@ main {
   border-top: 2px solid #f0f0f0;
   border-bottom: 2px solid #f0f0f0;
   margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 .preco {
@@ -230,6 +233,7 @@ main {
   border-radius: 20px;
   color: #2E7D32;
   font-weight: 600;
+  flex-wrap: wrap;
 }
 
 /* Características */
@@ -238,6 +242,8 @@ main {
   gap: 30px;
   flex-wrap: wrap;
   margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 .carac-item {
@@ -265,11 +271,14 @@ main {
   display: flex;
   gap: 20px;
   margin-bottom: 40px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 .btn-primario,
 .btn-secundario {
   flex: 1;
+  max-width: 500px;
   padding: 16px 30px;
   font-size: 18px;
   font-weight: 600;
@@ -310,6 +319,8 @@ main {
 /* Descrição */
 .descricao-section {
   margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 .descricao-section h3 {
@@ -323,11 +334,15 @@ main {
   color: #666;
   font-size: 16px;
   line-height: 1.8;
+  min-height: 80px;
+  white-space: pre-wrap;
 }
 
 /* Localização */
 .localizacao-section {
   margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 .localizacao-section h3 {
@@ -447,6 +462,16 @@ main {
 }
 
 /* Responsividade */
+@media (max-width: 1024px) {
+  .miniaturas-container {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+  
+  .miniatura {
+    height: 100px;
+  }
+}
+
 @media (max-width: 768px) {
   .navegacao {
     flex-direction: column;
@@ -454,8 +479,8 @@ main {
     align-items: flex-start;
   }
 
-  .imagem-principal img {
-    height: 300px;
+  .imagem-destaque-container img {
+    height: 400px;
   }
 
   .info-principal {
@@ -485,6 +510,20 @@ main {
   }
 
   .lista-similares {
+    grid-template-columns: 1fr;
+  }
+
+  .miniaturas-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .imagem-destaque-container img {
+    height: 300px;
+  }
+  
+  .miniaturas-container {
     grid-template-columns: 1fr;
   }
 }
