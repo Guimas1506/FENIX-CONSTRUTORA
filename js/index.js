@@ -1,4 +1,4 @@
-// index.js - Arquivo unificado para a página inicial
+// index.js
 // ==================== FIREBASE SETUP ====================
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
@@ -44,14 +44,31 @@ const userEmail = document.getElementById("userEmail");
 const btnLogoutModal = document.getElementById("btnLogoutModal");
 const adminButton = document.getElementById("adminButton");
 
+// Pega os links pelo href já que tem IDs duplicados
+const linksModal = document.querySelectorAll(".logadores a");
+let userButton = null;
+let favoritosButton = null;
+
+linksModal.forEach(link => {
+  if (link.href && link.href.includes("User/user.html")) {
+    userButton = link;
+  }
+  if (link.href && link.href.includes("favoritos.html")) {
+    favoritosButton = link;
+  }
+});
+
 // ==================== CONTROLE DE USUÁRIO ====================
 onAuthStateChanged(auth, async (user) => {
   if (user) {
     console.log("✅ Usuário logado:", user.uid);
     
+    // Mostra/esconde elementos quando LOGADO
     if (btnLogoutModal) btnLogoutModal.style.display = "flex";
     if (logBtn) logBtn.style.display = "none";
     if (registerBtn) registerBtn.style.display = "none";
+    if (userButton) userButton.style.display = "flex";
+    if (favoritosButton) favoritosButton.style.display = "flex";
     if (userEmail) userEmail.textContent = user.email;
 
     // Busca nome e status de admin do usuário
@@ -87,10 +104,13 @@ onAuthStateChanged(auth, async (user) => {
   } else {
     console.log("❌ Usuário não logado");
     
+    // Mostra/esconde elementos quando NÃO LOGADO
     if (btnLogoutModal) btnLogoutModal.style.display = "none";
     if (logBtn) logBtn.style.display = "flex";
     if (registerBtn) registerBtn.style.display = "flex";
     if (adminButton) adminButton.style.display = "none";
+    if (userButton) userButton.style.display = "none";
+    if (favoritosButton) favoritosButton.style.display = "none";
     if (welcomeMsg) welcomeMsg.textContent = "Bem-vindo(a), Usuário";
     if (userEmail) userEmail.textContent = "Email do usuário";
   }

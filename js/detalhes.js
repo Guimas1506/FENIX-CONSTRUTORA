@@ -18,9 +18,7 @@ const auth = getAuth(app);
 
 console.log("🔥 Firebase inicializado - Página de Detalhes");
 
-// ==================== CONTROLE DE USUÁRIO ====================
-const logBtn = document.getElementById("log");
-const registerBtn = document.getElementById("register");
+// ==================== ELEMENTOS DO DOM ====================
 const iconPerson = document.querySelector(".icon-person");
 const userArea = document.getElementById("userArea");
 const closeUserArea = document.getElementById("closeUserArea");
@@ -29,32 +27,87 @@ const userEmail = document.getElementById("userEmail");
 const btnLogoutModal = document.getElementById("btnLogoutModal");
 const adminButton = document.getElementById("adminButton");
 
-onAuthStateChanged(auth, async (user) => {
-  if (user) {
-    if (btnLogoutModal) btnLogoutModal.style.display = "flex";
-    if (logBtn) logBtn.style.display = "none";
-    if (registerBtn) registerBtn.style.display = "none";
-    if (welcomeMsg) welcomeMsg.textContent = `Bem-vindo(a), ${user.displayName || "Usuário"}`;
-    if (userEmail) userEmail.textContent = user.email;
+// Pega os links pelo href já que tem IDs duplicados
+const linksModal = document.querySelectorAll(".logadores a");
+let loginButton = null;
+let registerButton = null;
+let userButton = null;
+let favoritosButton = null;
 
-    const docRef = doc(db, "users", user.uid);
-    try {
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-        const isAdmin = docSnap.data().admin || false;
-        if (adminButton) adminButton.style.display = isAdmin ? "inline-block" : "none";
-      }
-    } catch (err) {
-      console.error("Erro ao verificar admin:", err);
-    }
-  } else {
-    if (btnLogoutModal) btnLogoutModal.style.display = "none";
-    if (logBtn) logBtn.style.display = "flex";
-    if (registerBtn) registerBtn.style.display = "flex";
-    if (adminButton) adminButton.style.display = "none";
+linksModal.forEach(link => {
+  if (link.href && link.href.includes("log-in.html")) {
+    loginButton = link;
+  }
+  if (link.href && link.href.includes("sign-in.html")) {
+    registerButton = link;
+  }
+  if (link.href && link.href.includes("User/user.html")) {
+    userButton = link;
+  }
+  if (link.href && link.href.includes("favoritos.html")) {
+    favoritosButton = link;
   }
 });
 
+// ==================== CONTROLE DE USUÁRIO ====================
+onAuthStateChanged(auth, async (user) => {
+  if (user) {
+    console.log("✅ Usuário logado:", user.uid);
+    
+    // Mostra/esconde elementos quando LOGADO
+    if (btnLogoutModal) btnLogoutModal.style.display = "flex";
+    if (loginButton) loginButton.style.display = "none";
+    if (registerButton) registerButton.style.display = "none";
+    if (userButton) userButton.style.display = "flex";
+    if (favoritosButton) favoritosButton.style.display = "flex";
+    if (userEmail) userEmail.textContent = user.email;
+
+    // Busca nome e status de admin do usuário
+    let nome = user.displayName || "Usuário";
+    let isAdmin = false;
+
+    try {
+      // Tenta primeiro na coleção "users"
+      let docRef = doc(db, "users", user.uid);
+      let docSnap = await getDoc(docRef);
+      
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        nome = data.nome || nome;
+        isAdmin = data.admin || false;
+      } else {
+        // Se não existir, tenta na coleção "usuarios"
+        docRef = doc(db, "usuarios", user.uid);
+        docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          nome = data.nome || nome;
+          isAdmin = data.admin || false;
+        }
+      }
+    } catch (err) {
+      console.error("Erro ao buscar dados do usuário:", err);
+    }
+
+    if (welcomeMsg) welcomeMsg.textContent = `Bem-vindo(a), ${nome}`;
+    if (adminButton) adminButton.style.display = isAdmin ? "inline-block" : "none";
+
+  } else {
+    console.log("❌ Usuário não logado");
+    
+    // Mostra/esconde elementos quando NÃO LOGADO
+    if (btnLogoutModal) btnLogoutModal.style.display = "none";
+    if (loginButton) loginButton.style.display = "flex";
+    if (registerButton) registerButton.style.display = "flex";
+    if (adminButton) adminButton.style.display = "none";
+    if (userButton) userButton.style.display = "none";
+    if (favoritosButton) favoritosButton.style.display = "none";
+    if (welcomeMsg) welcomeMsg.textContent = "Bem-vindo(a), Usuário";
+    if (userEmail) userEmail.textContent = "Email do usuário";
+  }
+});
+
+// ==================== MODAL DO USUÁRIO ====================
 if (iconPerson) {
   iconPerson.addEventListener("click", () => {
     if (userArea) userArea.style.display = "flex";
@@ -85,14 +138,13 @@ if (btnLogoutModal) {
 // ==================== FUNÇÃO DE FAVORITAR ====================
 const btnFavorito = document.getElementById("btn-favorito");
 const iconeFav = document.getElementById("icone-fav");
-let imovelAtualId = null; // Guarda o ID do imóvel atual
+let imovelAtualId = null;
 
 async function configurarBotaoFavoritar(imovelId) {
   imovelAtualId = imovelId;
   
   if (!btnFavorito || !iconeFav) return;
   
-  // Carrega estado inicial do favorito
   const user = auth.currentUser;
   if (user) {
     try {
@@ -113,11 +165,9 @@ async function configurarBotaoFavoritar(imovelId) {
     }
   }
   
-  // Adiciona evento de clique
   btnFavorito.addEventListener("click", async () => {
     const user = auth.currentUser;
     
-    // Verifica se está logado
     if (!user) {
       alert("Por favor, faça login para favoritar imóveis!");
       if (userArea) userArea.style.display = "flex";
@@ -133,7 +183,6 @@ async function configurarBotaoFavoritar(imovelId) {
       const favoritosSnap = await getDoc(favoritosRef);
       
       if (isFavorited) {
-        // DESFAVORITAR
         if (favoritosSnap.exists()) {
           await updateDoc(favoritosRef, {
             imoveis: arrayRemove(imovelAtualId)
@@ -147,7 +196,6 @@ async function configurarBotaoFavoritar(imovelId) {
         console.log("💔 DESFAVORITADO!");
         
       } else {
-        // FAVORITAR
         if (favoritosSnap.exists()) {
           await updateDoc(favoritosRef, {
             imoveis: arrayUnion(imovelAtualId)
@@ -166,7 +214,6 @@ async function configurarBotaoFavoritar(imovelId) {
         console.log("❤️ FAVORITADO!");
       }
       
-      // Animação
       btnFavorito.style.transform = 'scale(1.1)';
       setTimeout(() => {
         btnFavorito.style.transform = 'scale(1)';
@@ -212,9 +259,8 @@ async function carregarDetalhesImovel() {
     const imovel = docSnap.data();
     console.log("✅ Imóvel carregado:", imovel);
 
-    // Carrega galeria de imagens
     imagensImovel = imovel.imagens || [imovel.imagemURL] || ['./img/logo1.png'];
-    imagensImovel = imagensImovel.filter(url => url); // Remove vazios
+    imagensImovel = imagensImovel.filter(url => url);
     
     if (imagensImovel.length === 0) {
       imagensImovel = ['./img/logo1.png'];
@@ -222,12 +268,10 @@ async function carregarDetalhesImovel() {
     
     configurarGaleria();
     
-    // Restante dos dados...
     document.getElementById("nome-imovel").textContent = imovel.nome || 'Sem nome';
     document.getElementById("localizacao-completa").textContent = `${imovel.cidade || 'N/A'} - ${imovel.uf || ''}`;
     document.getElementById("preco-imovel").textContent = `R$ ${Number(imovel.preco || 0).toLocaleString('pt-BR')}`;
     
-    // Status
     const statusTexto = document.getElementById("status-texto");
     const prazoTexto = document.getElementById("prazo-texto");
     statusTexto.textContent = imovel.stats || 'N/A';
@@ -240,21 +284,17 @@ async function carregarDetalhesImovel() {
       prazoTexto.style.display = 'none';
     }
 
-    // Características
     document.getElementById("plantas-num").textContent = imovel.plantas || 0;
     document.getElementById("area-num").textContent = imovel.areas || 0;
     document.getElementById("quartos-num").textContent = imovel.quartos || 0;
     document.getElementById("vagas-num").textContent = imovel.vagas || 0;
     document.getElementById("banheiros-num").textContent = imovel.banheiros || 0;
 
-    // Descrição
     document.getElementById("descricao-texto").textContent = imovel.descricao || 'Sem descrição disponível.';
 
-    // Endereço
     document.getElementById("endereco-rua").textContent = imovel.endereco || 'Endereço não informado';
     document.getElementById("endereco-cidade").textContent = `${imovel.cidade || 'N/A'} - ${imovel.uf || ''}`;
 
-    // Características extras
     const extrasLista = document.getElementById("extras-lista");
     const extrasSection = document.getElementById("extras-section");
     const extras = [];
@@ -270,17 +310,11 @@ async function carregarDetalhesImovel() {
       extrasSection.style.display = 'none';
     }
 
-    // Esconde loading e mostra conteúdo
     document.getElementById("loading").style.display = "none";
     document.getElementById("conteudo-imovel").style.display = "block";
 
-    // Configura botão de favoritar
     configurarBotaoFavoritar(imovelId);
-
-    // Configura botão do WhatsApp
     configurarBotaoWhatsApp(imovel.nome, imovelId);
-
-    // Carrega imóveis similares
     carregarImoveisSimilares(imovel.cidade, imovel.uf, imovelId);
 
   } catch (error) {
@@ -292,7 +326,6 @@ async function carregarDetalhesImovel() {
   }
 }
 
-// ==================== CONFIGURAR GALERIA DE IMAGENS ====================
 function configurarGaleria() {
   const imgDestaque = document.getElementById("imagem-destaque");
   const btnPrev = document.getElementById("btn-prev");
@@ -304,22 +337,19 @@ function configurarGaleria() {
   
   console.log(`📷 ${imagensImovel.length} imagens encontradas`);
   
-  // Mostra primeira imagem
   imgDestaque.src = imagensImovel[0];
   imgDestaque.onerror = function() {
     this.src = './img/logo1.png';
   };
   
-  // Se houver mais de 1 imagem, mostra controles
   if (imagensImovel.length > 1) {
     btnPrev.style.display = "flex";
     btnNext.style.display = "flex";
     indicador.style.display = "block";
-    miniaturasContainer.style.display = "flex";
+    miniaturasContainer.style.display = "grid";
     
     totalImgs.textContent = imagensImovel.length;
     
-    // Cria miniaturas
     imagensImovel.forEach((url, index) => {
       const miniatura = document.createElement('div');
       miniatura.className = 'miniatura' + (index === 0 ? ' ativa' : '');
@@ -328,11 +358,9 @@ function configurarGaleria() {
       miniaturasContainer.appendChild(miniatura);
     });
     
-    // Eventos dos botões
     btnPrev.onclick = () => mudarImagem(imagemAtualIndex - 1);
     btnNext.onclick = () => mudarImagem(imagemAtualIndex + 1);
     
-    // Navegação por teclado
     document.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowLeft') mudarImagem(imagemAtualIndex - 1);
       if (e.key === 'ArrowRight') mudarImagem(imagemAtualIndex + 1);
@@ -341,20 +369,16 @@ function configurarGaleria() {
 }
 
 function mudarImagem(novoIndex) {
-  // Garante que o índice está no range válido
   if (novoIndex < 0) novoIndex = imagensImovel.length - 1;
   if (novoIndex >= imagensImovel.length) novoIndex = 0;
   
   imagemAtualIndex = novoIndex;
   
-  // Atualiza imagem principal
   const imgDestaque = document.getElementById("imagem-destaque");
   imgDestaque.src = imagensImovel[novoIndex];
   
-  // Atualiza indicador
   document.getElementById("imagem-atual").textContent = novoIndex + 1;
   
-  // Atualiza miniaturas
   document.querySelectorAll('.miniatura').forEach((mini, index) => {
     if (index === novoIndex) {
       mini.classList.add('ativa');
@@ -366,53 +390,39 @@ function mudarImagem(novoIndex) {
   console.log(`📷 Imagem ${novoIndex + 1} de ${imagensImovel.length}`);
 }
 
-// ==================== CONFIGURAR BOTÃO WHATSAPP ====================
 function configurarBotaoWhatsApp(nomeImovel, imovelId) {
   const btnWhatsApp = document.getElementById("btn-whatsapp");
-  const numeroWhatsApp = "5511992788458"; // Número do WhatsApp (sem espaços, hífens ou +)
+  const numeroWhatsApp = "5511992788458";
   
   if (!btnWhatsApp) return;
   
   btnWhatsApp.addEventListener("click", () => {
     const user = auth.currentUser;
     
-    // Verifica se o usuário está logado
     if (!user) {
       alert("Por favor, faça login para entrar em contato via WhatsApp.");
-      // Abre o modal de login
       if (userArea) userArea.style.display = "flex";
       return;
     }
     
-    // Pega informações do usuário
     const nomeUsuario = user.displayName || "Usuário";
     const emailUsuario = user.email;
-    
-    // Link do imóvel (URL atual)
     const linkImovel = window.location.href;
     
-    // Monta a mensagem
     const mensagem = `Olá, sou ${nomeUsuario} e estou interessado(a) no ${nomeImovel}. Link: ${linkImovel}. Meu email de contato é ${emailUsuario}`;
-    
-    // Codifica a mensagem para URL
     const mensagemCodificada = encodeURIComponent(mensagem);
-    
-    // Monta o link do WhatsApp
     const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
     
-    // Abre o WhatsApp em nova aba
     window.open(linkWhatsApp, '_blank');
     
     console.log("📱 Redirecionando para WhatsApp:", linkWhatsApp);
   });
 }
 
-// ==================== CARREGAR IMÓVEIS SIMILARES ====================
 async function carregarImoveisSimilares(cidade, uf, imovelAtualId) {
   const listaSimilares = document.getElementById("lista-similares");
   
   try {
-    // Busca imóveis da mesma cidade/estado
     const querySnapshot = await getDocs(collection(db, "imoveis"));
     const similares = [];
 
@@ -429,7 +439,6 @@ async function carregarImoveisSimilares(cidade, uf, imovelAtualId) {
       return;
     }
 
-    // Limita a 4 imóveis similares
     const imoveisExibir = similares.slice(0, 4);
 
     listaSimilares.innerHTML = imoveisExibir.map(imovel => `
@@ -451,7 +460,6 @@ async function carregarImoveisSimilares(cidade, uf, imovelAtualId) {
   }
 }
 
-// ==================== INICIALIZAÇÃO ====================
 window.addEventListener('DOMContentLoaded', () => {
   console.log("📄 DOM pronto! Carregando detalhes...");
   carregarDetalhesImovel();

@@ -19,8 +19,6 @@ const auth = getAuth(app);
 console.log("🔥 Firebase inicializado - Página Imóveis");
 
 // ==================== CONTROLE DE USUÁRIO ====================
-const logBtn = document.getElementById("log");
-const registerBtn = document.getElementById("register");
 const iconPerson = document.querySelector(".icon-person");
 const userArea = document.getElementById("userArea");
 const closeUserArea = document.getElementById("closeUserArea");
@@ -29,29 +27,100 @@ const userEmail = document.getElementById("userEmail");
 const btnLogoutModal = document.getElementById("btnLogoutModal");
 const adminButton = document.getElementById("adminButton");
 
+// Pega os links pelo href já que tem IDs duplicados
+const linksModal = document.querySelectorAll(".logadores a");
+let userButton = null;
+let favoritosButton = null;
+
+linksModal.forEach(link => {
+  if (link.href && link.href.includes("User/user.html")) {
+    userButton = link;
+  }
+  if (link.href && link.href.includes("favoritos.html")) {
+    favoritosButton = link;
+  }
+});
+
 onAuthStateChanged(auth, async (user) => {
   if (user) {
+    console.log("✅ Usuário logado:", user.uid);
+    
+    // Mostra/esconde elementos quando LOGADO
     if (btnLogoutModal) btnLogoutModal.style.display = "flex";
-    if (logBtn) logBtn.style.display = "none";
-    if (registerBtn) registerBtn.style.display = "none";
-    if (welcomeMsg) welcomeMsg.textContent = `Bem-vindo(a), ${user.displayName || "Usuário"}`;
+    if (userButton) userButton.style.display = "flex";
+    if (favoritosButton) favoritosButton.style.display = "flex";
     if (userEmail) userEmail.textContent = user.email;
+    
+    // Esconde login e registro quando logado
+    linksModal.forEach(link => {
+      if (link.href && link.href.includes("log-in.html")) {
+        link.style.display = "none";
+      }
+      if (link.href && link.href.includes("sign-in.html")) {
+        link.style.display = "none";
+      }
+    });
 
-    const docRef = doc(db, "users", user.uid);
+    // Busca nome e status de admin do usuário
+    let nome = user.displayName || "Usuário";
+    let isAdmin = false;
+
     try {
-      const docSnap = await getDoc(docRef);
+      // Tenta primeiro na coleção "users"
+      let docRef = doc(db, "users", user.uid);
+      let docSnap = await getDoc(docRef);
+      
       if (docSnap.exists()) {
-        const isAdmin = docSnap.data().admin || false;
-        if (adminButton) adminButton.style.display = isAdmin ? "inline-block" : "none";
+        const data = docSnap.data();
+        nome = data.nome || nome;
+        isAdmin = data.admin || false;
+        console.log("📊 Dados do usuário:", data);
+        console.log("👑 Admin?", isAdmin);
+      } else {
+        // Se não existir, tenta na coleção "usuarios"
+        docRef = doc(db, "usuarios", user.uid);
+        docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          nome = data.nome || nome;
+          isAdmin = data.admin || false;
+          console.log("📊 Dados do usuário (usuarios):", data);
+          console.log("👑 Admin?", isAdmin);
+        }
       }
     } catch (err) {
-      console.error("Erro ao verificar admin:", err);
+      console.error("Erro ao buscar dados do usuário:", err);
     }
+
+    if (welcomeMsg) {
+      welcomeMsg.textContent = `Bem-vindo(a), ${nome}`;
+      console.log("✅ welcomeMsg atualizado para:", nome);
+    }
+    if (adminButton) {
+      adminButton.style.display = isAdmin ? "inline-block" : "none";
+      console.log("✅ adminButton display:", adminButton.style.display);
+    }
+
   } else {
+    console.log("❌ Usuário não logado");
+    
+    // Mostra/esconde elementos quando NÃO LOGADO
     if (btnLogoutModal) btnLogoutModal.style.display = "none";
-    if (logBtn) logBtn.style.display = "flex";
-    if (registerBtn) registerBtn.style.display = "flex";
     if (adminButton) adminButton.style.display = "none";
+    if (userButton) userButton.style.display = "none";
+    if (favoritosButton) favoritosButton.style.display = "none";
+    if (welcomeMsg) welcomeMsg.textContent = "Bem-vindo(a), Usuário";
+    if (userEmail) userEmail.textContent = "Email do usuário";
+    
+    // Mostra login e registro quando não logado
+    linksModal.forEach(link => {
+      if (link.href && link.href.includes("log-in.html")) {
+        link.style.display = "flex";
+      }
+      if (link.href && link.href.includes("sign-in.html")) {
+        link.style.display = "flex";
+      }
+    });
   }
 });
 
@@ -82,14 +151,17 @@ if (btnLogoutModal) {
   });
 }
 
-// ==================== FUNÇÃO DE FAVORITAR ====================
+// ==================== RESTO DO CÓDIGO (CONTINUA NO PRÓXIMO ARTIFACT) ==================== 
+// Todo o código de favoritar, filtros, carregar imóveis, etc permanece IGUAL ao arquivo original
+// Copie e cole todo o restante do seu arquivo imovel.js original a partir daqui:
+
+// FUNÇÃO DE FAVORITAR
 window.toggleFavorito = async function(event, id) {
   event.stopPropagation();
   event.preventDefault();
   
   const user = auth.currentUser;
   
-  // Verifica se está logado
   if (!user) {
     alert("Por favor, faça login para favoritar imóveis!");
     if (userArea) userArea.style.display = "flex";
@@ -103,14 +175,12 @@ window.toggleFavorito = async function(event, id) {
   const isFavorited = span.textContent === '♥';
   
   try {
-    // Importa funções do Firestore
     const { doc: docRef, getDoc, setDoc, updateDoc, arrayUnion, arrayRemove } = await import("https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js");
     
     const favoritosRef = docRef(db, "favoritos", user.uid);
     const favoritosSnap = await getDoc(favoritosRef);
     
     if (isFavorited) {
-      // DESFAVORITAR
       if (favoritosSnap.exists()) {
         await updateDoc(favoritosRef, {
           imoveis: arrayRemove(id)
@@ -124,7 +194,6 @@ window.toggleFavorito = async function(event, id) {
       console.log("💔 DESFAVORITADO!");
       
     } else {
-      // FAVORITAR
       if (favoritosSnap.exists()) {
         await updateDoc(favoritosRef, {
           imoveis: arrayUnion(id)
@@ -154,15 +223,13 @@ window.toggleFavorito = async function(event, id) {
   }
 }
 
-// ==================== SISTEMA DE CARREGAR MAIS ====================
 let todosImoveis = [];
 let imoveisExibidos = 0;
-let imoveisFiltrados = []; // Lista filtrada pela pesquisa
-let favoritosUsuario = []; // IDs dos imóveis favoritados
+let imoveisFiltrados = [];
+let favoritosUsuario = [];
 const IMOVEIS_INICIAIS = 16;
 const IMOVEIS_POR_CARREGAMENTO = 8;
 
-// ==================== CARREGAR FAVORITOS DO USUÁRIO ====================
 async function carregarFavoritosUsuario() {
   favoritosUsuario = [];
   const user = auth.currentUser;
@@ -183,7 +250,6 @@ async function carregarFavoritosUsuario() {
   }
 }
 
-// ==================== FUNÇÃO DE PESQUISA POR NOME ====================
 window.pesquisarPorNome = function() {
   const input = document.getElementById("input-pesquisa-nome");
   const btnLimpar = document.getElementById("btn-limpar-pesquisa");
@@ -191,26 +257,21 @@ window.pesquisarPorNome = function() {
   
   console.log("🔍 Pesquisando por:", termoPesquisa);
   
-  // Mostra/esconde botão de limpar
   btnLimpar.style.display = termoPesquisa ? "block" : "none";
   
-  // Aplica todos os filtros
   aplicarTodosFiltros();
 }
 
-// Event listener para pesquisa em tempo real
 const inputPesquisa = document.getElementById("input-pesquisa-nome");
 if (inputPesquisa) {
   inputPesquisa.addEventListener("input", window.pesquisarPorNome);
 }
 
-// ==================== APLICAR TODOS OS FILTROS ====================
 function aplicarTodosFiltros() {
   console.log("🔍 Aplicando TODOS os filtros...");
   
   const container = document.getElementById("lista-imoveis-pagina");
   
-  // Pega valores de todos os filtros
   const termoPesquisa = document.getElementById("input-pesquisa-nome")?.value.toLowerCase().trim() || "";
   const statusSelecionado = document.getElementById("filtro-status")?.value || "";
   const ufSelecionado = document.getElementById("filtro-uf")?.value || "";
@@ -230,9 +291,7 @@ function aplicarTodosFiltros() {
     precoMax: precoMax ? `até R$ ${precoMax.toLocaleString('pt-BR')}` : "Todos"
   });
   
-  // Filtra imóveis
   imoveisFiltrados = todosImoveis.filter(imovel => {
-    // Filtro NOME
     if (termoPesquisa !== "") {
       const nomeImovel = (imovel.nome || "").toLowerCase();
       if (!nomeImovel.includes(termoPesquisa)) {
@@ -240,28 +299,24 @@ function aplicarTodosFiltros() {
       }
     }
     
-    // Filtro STATUS
     if (statusSelecionado !== "") {
       if (imovel.stats !== statusSelecionado) {
         return false;
       }
     }
     
-    // Filtro UF
     if (ufSelecionado !== "") {
       if (imovel.uf !== ufSelecionado) {
         return false;
       }
     }
     
-    // Filtro CIDADE
     if (cidadeSelecionada !== "") {
       if (imovel.cidade !== cidadeSelecionada) {
         return false;
       }
     }
     
-    // Filtro ÁREA
     if (areaMax !== null) {
       const areaImovel = parseFloat(imovel.areas) || 0;
       if (areaImovel > areaMax) {
@@ -269,7 +324,6 @@ function aplicarTodosFiltros() {
       }
     }
     
-    // Filtro PREÇO
     if (precoMax !== null) {
       const precoImovel = parseFloat(imovel.preco) || 0;
       if (precoImovel > precoMax) {
@@ -282,7 +336,6 @@ function aplicarTodosFiltros() {
   
   console.log(`✅ Resultado: ${imoveisFiltrados.length} de ${todosImoveis.length} imóveis`);
   
-  // Reseta a exibição
   container.innerHTML = '';
   imoveisExibidos = 0;
   
@@ -294,17 +347,14 @@ function aplicarTodosFiltros() {
   }
 }
 
-// ==================== LIMPAR TODOS OS FILTROS ====================
 function limparTodosFiltros() {
   console.log("🧹 Limpando TODOS os filtros...");
   
-  // Limpa pesquisa
   const inputPesquisa = document.getElementById("input-pesquisa-nome");
   const btnLimparPesquisa = document.getElementById("btn-limpar-pesquisa");
   if (inputPesquisa) inputPesquisa.value = "";
   if (btnLimparPesquisa) btnLimparPesquisa.style.display = "none";
   
-  // Limpa selects
   const filtroStatus = document.getElementById("filtro-status");
   const filtroUf = document.getElementById("filtro-uf");
   const filtroCidade = document.getElementById("filtro-cidade");
@@ -312,23 +362,19 @@ function limparTodosFiltros() {
   if (filtroUf) filtroUf.value = "";
   if (filtroCidade) filtroCidade.value = "";
   
-  // Limpa inputs numéricos
   const filtroArea = document.getElementById("filtro-area");
   const filtroPreco = document.getElementById("filtro-preco");
   if (filtroArea) filtroArea.value = "";
   if (filtroPreco) filtroPreco.value = "";
   
-  // Reseta lista
   imoveisFiltrados = [...todosImoveis];
   
-  // Reseta exibição
   const container = document.getElementById("lista-imoveis-pagina");
   container.innerHTML = '';
   imoveisExibidos = 0;
   exibirMaisImoveis(IMOVEIS_INICIAIS);
 }
 
-// ==================== EVENT LISTENERS DOS BOTÕES ====================
 const btnAplicarFiltros = document.getElementById("btn-aplicar-filtros");
 if (btnAplicarFiltros) {
   btnAplicarFiltros.addEventListener("click", aplicarTodosFiltros);
@@ -350,7 +396,6 @@ async function carregarTodosImoveis() {
     return;
   }
   
-  // FORÇA O ESTILO DO CONTAINER
   container.style.cssText = `
     display: grid !important;
     grid-template-columns: repeat(4, 1fr) !important;
@@ -378,11 +423,10 @@ async function carregarTodosImoveis() {
       todosImoveis.push(data);
     });
     
-    imoveisFiltrados = [...todosImoveis]; // Inicializa lista filtrada
+    imoveisFiltrados = [...todosImoveis];
     
     console.log(`📊 Total de ${todosImoveis.length} imóveis carregados`);
     
-    // Carrega favoritos do usuário
     await carregarFavoritosUsuario();
     
     container.innerHTML = '';
@@ -466,7 +510,6 @@ function exibirMaisImoveis(quantidade) {
       </div>
     `;
     
-    // Hover effect no card
     card.addEventListener('mouseenter', () => {
       card.style.transform = 'translateY(-5px)';
       card.style.boxShadow = '0 8px 20px rgba(0,0,0,0.15)';
@@ -482,7 +525,6 @@ function exibirMaisImoveis(quantidade) {
   
   imoveisExibidos = fim;
   
-  // Controla botão "Carregar Mais"
   if (btnCarregarMais) {
     if (imoveisExibidos >= imoveisFiltrados.length) {
       btnCarregarMais.style.display = "none";
@@ -494,7 +536,6 @@ function exibirMaisImoveis(quantidade) {
   }
 }
 
-// Event listener do botão "Carregar Mais"
 const btnCarregarMais = document.getElementById("btn-carregar-mais");
 if (btnCarregarMais) {
   btnCarregarMais.addEventListener("click", () => {
@@ -503,7 +544,6 @@ if (btnCarregarMais) {
   });
 }
 
-// ==================== INICIALIZAÇÃO ====================
 window.addEventListener('DOMContentLoaded', () => {
   console.log("📄 DOM pronto!");
   carregarTodosImoveis();

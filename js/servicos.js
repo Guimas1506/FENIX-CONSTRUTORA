@@ -21,8 +21,6 @@ const db = getFirestore(app);
 console.log("🔥 Firebase inicializado - Página Serviços");
 
 // ==================== REFERÊNCIAS DOS ELEMENTOS ====================
-const logBtn = document.getElementById("log");
-const registerBtn = document.getElementById("register");
 const iconPerson = document.querySelector(".icon-person");
 const userArea = document.getElementById("userArea");
 const closeUserArea = document.getElementById("closeUserArea");
@@ -31,55 +29,107 @@ const userEmail = document.getElementById("userEmail");
 const btnLogoutModal = document.getElementById("btnLogoutModal");
 const adminButton = document.getElementById("adminButton");
 
+// Pega os links pelo href já que tem IDs duplicados
+const linksModal = document.querySelectorAll(".logadores a");
+let userButton = null;
+let favoritosButton = null;
+
+console.log("📋 Total de links encontrados:", linksModal.length);
+
+linksModal.forEach(link => {
+  console.log("🔗 Link encontrado:", link.href);
+  if (link.href && link.href.includes("User/user.html")) {
+    userButton = link;
+    console.log("✅ userButton encontrado");
+  }
+  if (link.href && link.href.includes("favoritos.html")) {
+    favoritosButton = link;
+    console.log("✅ favoritosButton encontrado");
+  }
+});
+
 // ==================== CONTROLE DE AUTENTICAÇÃO ====================
 onAuthStateChanged(auth, async (user) => {
   if (user) {
     console.log("✅ Usuário logado:", user.email);
     console.log("🆔 UID:", user.uid);
     
-    // Usuário logado - Atualiza interface
+    // Mostra/esconde elementos quando LOGADO
     if (btnLogoutModal) btnLogoutModal.style.display = "flex";
-    if (logBtn) logBtn.style.display = "none";
-    if (registerBtn) registerBtn.style.display = "none";
-    if (welcomeMsg) welcomeMsg.textContent = `Bem-vindo(a), ${user.displayName || "Usuário"}`;
+    if (userButton) userButton.style.display = "flex";
+    if (favoritosButton) favoritosButton.style.display = "flex";
     if (userEmail) userEmail.textContent = user.email;
+    
+    // Esconde login e registro quando logado
+    linksModal.forEach(link => {
+      if (link.href && link.href.includes("log-in.html")) {
+        link.style.display = "none";
+      }
+      if (link.href && link.href.includes("sign-in.html")) {
+        link.style.display = "none";
+      }
+    });
 
-    // Verifica se é administrador
-    const docRef = doc(db, "users", user.uid);
+    // Busca nome e status de admin do usuário
+    let nome = user.displayName || "Usuário";
+    let isAdmin = false;
+
     try {
-      const docSnap = await getDoc(docRef);
-      console.log("📄 Documento existe?", docSnap.exists());
+      // Tenta primeiro na coleção "users"
+      let docRef = doc(db, "users", user.uid);
+      let docSnap = await getDoc(docRef);
       
       if (docSnap.exists()) {
-        const userData = docSnap.data();
-        console.log("📊 Dados do usuário:", userData);
-        console.log("👑 Campo admin:", userData.admin);
-        console.log("👑 Tipo do campo:", typeof userData.admin);
-        
-        const isAdmin = userData.admin || false;
-        console.log("✨ É admin?", isAdmin);
-        console.log("🎯 Botão ADM encontrado?", adminButton);
-        
-        if (adminButton) {
-          adminButton.style.display = isAdmin ? "inline-block" : "none";
-          console.log("🔧 Display do botão ADM:", adminButton.style.display);
-        } else {
-          console.error("❌ Botão adminButton não encontrado no DOM!");
-        }
+        const data = docSnap.data();
+        nome = data.nome || nome;
+        isAdmin = data.admin || false;
+        console.log("📊 Dados do usuário:", data);
+        console.log("👑 Admin?", isAdmin);
       } else {
-        console.warn("⚠️ Documento do usuário não existe no Firestore!");
+        // Se não existir, tenta na coleção "usuarios"
+        docRef = doc(db, "usuarios", user.uid);
+        docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          nome = data.nome || nome;
+          isAdmin = data.admin || false;
+          console.log("📊 Dados do usuário (usuarios):", data);
+          console.log("👑 Admin?", isAdmin);
+        }
       }
     } catch (err) {
-      console.error("❌ Erro ao verificar admin:", err);
+      console.error("Erro ao buscar dados do usuário:", err);
     }
+
+    if (welcomeMsg) {
+      welcomeMsg.textContent = `Bem-vindo(a), ${nome}`;
+      console.log("✅ welcomeMsg atualizado para:", nome);
+    }
+    if (adminButton) {
+      adminButton.style.display = isAdmin ? "inline-block" : "none";
+      console.log("✅ adminButton display:", adminButton.style.display);
+    }
+
   } else {
     console.log("❌ Nenhum usuário logado");
     
-    // Usuário não logado - Oculta elementos autenticados
+    // Mostra/esconde elementos quando NÃO LOGADO
     if (btnLogoutModal) btnLogoutModal.style.display = "none";
-    if (logBtn) logBtn.style.display = "flex";
-    if (registerBtn) registerBtn.style.display = "flex";
     if (adminButton) adminButton.style.display = "none";
+    if (userButton) userButton.style.display = "none";
+    if (favoritosButton) favoritosButton.style.display = "none";
+    if (welcomeMsg) welcomeMsg.textContent = "Bem-vindo(a), Usuário";
+    if (userEmail) userEmail.textContent = "Email do usuário";
+    
+    // Mostra login e registro quando não logado
+    linksModal.forEach(link => {
+      if (link.href && link.href.includes("log-in.html")) {
+        link.style.display = "flex";
+      }
+      if (link.href && link.href.includes("sign-in.html")) {
+        link.style.display = "flex";
+      }
+    });
   }
 });
 
