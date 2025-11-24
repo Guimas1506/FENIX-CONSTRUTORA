@@ -74,7 +74,8 @@ section.slider{
     width: 100%;
     height: 75vh;
     display: flex;
-    margin: auto;object-fit: cover;
+    margin: auto;
+    object-fit: cover;
 }
 
 
@@ -231,7 +232,7 @@ box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30p
 .tit{
     color: white;
     width: 90%;
-    height: 20%;
+    height: 15%;
     display: flex;
     margin-left: 15px;
 }
@@ -244,16 +245,17 @@ box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30p
 
 .subtit{
     color: white;
-    width: 80%;
+    width: 70%;
     height: 75%;
     display: flex;
     margin-left: 15px;
-    margin-top: 10px;
+    
+    
 
 }
 
 .subtit p{
-    font-size: 2.5vb;
+    font-size: 2.2vb;
 }
 
 /*Aqui termina o conteudo*/
@@ -296,7 +298,7 @@ video::-moz-media-controls {
 /*Aqui termina o video*/
 
 .complem{
-    width: 80%;
+    width: 100%;
     height: 650px;
     display: flex;
     margin: auto;
@@ -306,14 +308,17 @@ video::-moz-media-controls {
 }
 
 .complem-iage{
-    width: 70vw;
-    height: 65vh;
+    width: 70%;
+    height: 70vh;
     background-color:  #FE4F3F;
     background-image: url(../img/Mask\ group.png);
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 440px;
+    background-size: 600px;
+    object-fit: cover;
+    margin: auto;
     display: flex;
+    border-radius: 0px 30px 30px 0px;
 }
 
 .complem-teste{
