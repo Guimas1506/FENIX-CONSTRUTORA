@@ -170,7 +170,7 @@
 #log:hover{
     background-color: var(--Cor-Primaria);
     color: white;
-    transform: translateY(-6px);
+    transform: scale(0.9);
 }
 
 

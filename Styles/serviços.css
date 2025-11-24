@@ -31,6 +31,7 @@ body::-webkit-scrollbar{
 
 
 
+
 /*area modal*/
 /* Modal da área do usuário */
 
@@ -119,7 +120,7 @@ body::-webkit-scrollbar{
     height: 70%;
     display: flex;
     align-items: center;
-    font-size: 110%;
+    font-size: 2.7vb;
     margin-left: 10%;
     font-weight: 300;
     justify-content: center;
@@ -198,7 +199,7 @@ body::-webkit-scrollbar{
     display: flex;
     align-items: center;
     justify-content: end;
-    font-size: 110%;
+    font-size: 2.7vb;
     margin-left: 10%;
     font-weight: 300;
     text-align: justify;  

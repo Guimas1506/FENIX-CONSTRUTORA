@@ -20,6 +20,7 @@
 </head>
 
 
+
 <body>
 
   <header>
@@ -33,17 +34,65 @@
 
         </div>
       </div>
-      <div class="menu">
-        <a href="./menu.html" class="menu-btn"
-          style="display: flex; align-items: center; cursor: pointer; margin-left: 20px;">
-          <div
-            style="width: 30px; height: 24px; display: flex; flex-direction: column; justify-content: space-between;">
-            <span style="display: block; height: 4px; background: #ffffff; border-radius: 2px;"></span>
-            <span style="display: block; height: 4px; background: #ffffff; border-radius: 2px;"></span>
-            <span style="display: block; height: 4px; background: #ffffff; border-radius: 2px;"></span>
-          </div>
+
+
+
+
+
+
+
+
+      <div class="menuzera">
+
+      <button id="openMenu" class="menu-icon">
+        ☰
+      </button>
+
       </div>
-      </a>
+
+      <!-- Menu lateral -->
+      <div id="sideMenu" class="side-menu">
+
+        <div class="menu-header">
+          <h2>Menu</h2>
+          <button id="closeMenu" class="close-btn">×</button>
+        </div>
+
+        <nav class="menu-section">
+          <h3>Site</h3>
+          <ul>
+            <li><a href="#">Início</a></li>
+            <li><a href="#">Serviços</a></li>
+            <li><a href="#">Contato</a></li>
+          </ul>
+        </nav>
+
+        <nav class="menu-section">
+          <h3>Displau-Subs</h3>
+          <ul>
+            <li><a href="#">Configurações</a></li>
+            <li><a href="#">Preferências</a></li>
+            <li><a href="#">Minha Conta</a></li>
+            <li><a href="#">Aparência</a></li>
+          </ul>
+        </nav>
+
+        <script src="js/menuzinho.js">
+        </script>
+
+
+      </div>
+
+      <!-- Fundo escuro ao abrir o menu -->
+      <div id="overlay" class="overlay"></div>
+
+
+
+
+
+
+
+
       <div class="abas">
         <a href="./index.html">
           <p>Inicio</p>
@@ -459,7 +508,7 @@
           <a href="https://www.instagram.com/fenixconstroi/#" target="_blank">
 
             <div class="conte">
-          
+
               <!-- Nome da rede social -->
               <div class="rede">
                 <p>INSTAGRAM</p>
