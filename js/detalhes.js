@@ -403,7 +403,9 @@ function configurarBotaoWhatsApp(nomeImovel, imovelId) {
     const emailUsuario = user.email;
     const linkImovel = window.location.href;
     
-    const mensagem = `Olá, sou ${nomeUsuario} e estou interessado(a) no ${nomeImovel}. Link: ${linkImovel}. Meu email de contato é ${emailUsuario}`;
+    const mensagem = `Olá, sou ${nomeUsuario} e estou interessado(a) no ${nomeImovel}. 
+    Link: ${linkImovel}. 
+    Meu email de contato é ${emailUsuario}`;
     const mensagemCodificada = encodeURIComponent(mensagem);
     const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
     
