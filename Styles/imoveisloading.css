@@ -45,6 +45,8 @@
   font-weight: 700;
 }
 
+
+
 .card-content p {
   margin: 8px 0;
   color: #333;
@@ -103,6 +105,9 @@
   #lista-imoveis-usuario {
     grid-template-columns: 1fr; /* 1 coluna em telas pequenas */
   }
+
+
+
 }
 /* ==================== IMÓVEIS USUÁRIO ==================== */
 #lista-imoveis-usuario {

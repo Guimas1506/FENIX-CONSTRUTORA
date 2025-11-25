@@ -1,25 +1,28 @@
-html{
+html {
     overflow-x: hidden;
     box-shadow: none;
-    
+
 }
+
 body {
     margin: 0;
     padding: 0;
-    font-family: "Inter", sans-serif;    
+    font-family: "Inter", sans-serif;
 
 }
-body::-webkit-scrollbar{
+
+body::-webkit-scrollbar {
     display: none;
 }
-*{
+
+* {
     box-sizing: border-box;
 }
 
 /*ESSE ROOT AÍ É PRA FACILITAR NA ESCOLHA DO DAS CORES DO SITE. PARA ATIVALA VC COLO A PROPRIEDADE QUE VC
 QE COLOAR O SITE  EM SEGUIDA VOCE COLOCA 'VAR()'*/
 
-:root{
+:root {
     --Cor-Primaria: #FE4F3F;
     --Cor-Secundaria: #000000;
     --Cor-Terciaria: #7C7C7C;
@@ -27,24 +30,26 @@ QE COLOAR O SITE  EM SEGUIDA VOCE COLOCA 'VAR()'*/
 }
 
 /* AQUI é o header*/
-a{
+a {
     text-decoration: none;
     list-style-type: none;
 }
 
 
 
-.barra hr{
+.barra hr {
     height: 20px;
-    
-}/*AQUI É A BARRINHA BRANCA DO NAVBAR QUE SEPARA AS ABAS DO LOGIN*/
+
+}
+
+/*AQUI É A BARRINHA BRANCA DO NAVBAR QUE SEPARA AS ABAS DO LOGIN*/
 
 /*AQUI É O FOOTER*/
 
 
 
 
-.nav-list{
+.nav-list {
     width: 90%;
     height: 60px;
     display: flex;
@@ -54,7 +59,7 @@ a{
     margin-left: 75px;
 }
 
-.pesq-bar{
+.pesq-bar {
     width: 50%;
     height: 100%;
     display: flex;
@@ -62,45 +67,45 @@ a{
     justify-content: center;
 }
 
-#pesq-imovel{
+#pesq-imovel {
     width: 600px;
     height: 45px;
     display: flex;
     border-radius: 10px;
     border: solid 1px;
-    font-family:  "Montserrat", sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 
-.filtro{
+.filtro {
     width: 50%;
     height: 100%;
     display: flex;
-    
 
 
-    
+
+
 }
 
-.icon-filtro{
+.icon-filtro {
     width: 140px;
     height: 100%;
     display: flex;
- 
+
     font-size: 13px;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    
+
 }
 
-#filtr{
+#filtr {
     width: 35px;
     height: 35px;
     margin-left: 10px;
 }
 
-.filtrosas{
+.filtrosas {
     height: 100%;
 
     display: flex;
@@ -108,7 +113,7 @@ a{
     justify-content: center;
 }
 
-.filtrosas2{
+.filtrosas2 {
     height: 100%;
     width: 110px;
     display: flex;
@@ -116,13 +121,13 @@ a{
     justify-content: center;
 }
 
-#preço{
+#preço {
     color: var(--Cor-Terciaria);
     display: flex;
     font-size: 20px;
 }
 
-#all-preço{
+#all-preço {
     color: var(--Cor-Terciaria);
     display: flex;
     font-size: 18px;
@@ -131,29 +136,29 @@ a{
     font-weight: 400;
 }
 
-#tipo-imovel{
+#tipo-imovel {
     width: 110px;
     height: 50px;
     display: flex;
     border-radius: 12px;
     border: none;
-    font-family:  "Montserrat", sans-serif;
+    font-family: "Montserrat", sans-serif;
     align-items: center;
     justify-content: center;
 }
 
-#tipo-imovel2{
+#tipo-imovel2 {
     width: 80px;
     height: 50px;
     display: flex;
     border-radius: 12px;
     border: none;
-    font-family:  "Montserrat", sans-serif;
+    font-family: "Montserrat", sans-serif;
     align-items: center;
     justify-content: center;
 }
 
-.filtrosas3{
+.filtrosas3 {
     width: 60%;
     height: 80%;
 
@@ -170,45 +175,48 @@ a{
 
 
 
-main{
-display: flex;
-flex-direction: column; 
+main {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-height: 300vh;
+    height: 300vh;
 
     background-color: #EDEDED;
 }
-.favoritos{
+
+.favoritos {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-self: flex-end;
     margin-right: 30px;
 }
-.favoritos img{
+
+.favoritos img {
     width: 3vh;
     height: 3vh;
     margin-left: 10px;
     cursor: pointer;
 }
-.fav1{
- width: 100%;
+
+.fav1 {
+    width: 100%;
 
     display: flex;
     justify-content: flex-end;
-    
+
 }
 
-.pesquisa{
+.pesquisa {
     background-color: var(--Branco);
     display: flex;
     flex-direction: row;
-justify-content: center;
-align-items: center;
-text-align: center;
-    border:solid,gainsboro,2.0px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: solid, gainsboro, 2.0px;
     font-size: 15px;
     border-radius: 12px;
     padding: 10px;
@@ -217,17 +225,18 @@ text-align: center;
     margin-right: 20px;
 }
 
-.pesquisa img{
+.pesquisa img {
     width: 20px;
     height: 20px;
     margin-left: 10px;
     cursor: pointer;
 
 }
-.pesq{
- display: flex;
- flex-direction: row;
- width: 80%;
+
+.pesq {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -236,8 +245,8 @@ text-align: center;
 }
 
 
-.imoveis{
-        margin-top: 100px;
+.imoveis {
+    margin-top: 100px;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -245,275 +254,620 @@ text-align: center;
 
 
 }
+
 /* imoveis */
-.imovel1{
+.imovel1 {
 
-display: flex;
-
-    flex-direction: row;
-margin-left: 30px;
-    width: 90%;
-height: 240px;
-border-radius: 12px;
-border: solid;
-margin-bottom: 30px;
-}
-.imovel1 img{ 
-width: 250px;    
-height: 234px;    
-}
-
-.imovel2{
-
-display: flex;
-margin-bottom: 30px;
-    flex-direction: row;
-margin-left: 30px;
-    width: 90%;
-height: 240px;
-border-radius: 12px;
-border: solid;
-}
-.imovel2 img{ 
-width: 250px;    
-height: 234px;    
-}
-
-.imovel3{
-
-display: flex;
-margin-bottom: 30px;
-    flex-direction: row;
-margin-left: 30px;
-    width: 90%;
-height: 240px;
-border-radius: 12px;
-border: solid;
-}
-.imovel3 img{ 
-width: 250px;    
-height: 234px;    
-}
-.imovel4{
-margin-bottom: 30px;
-display: flex;
+    display: flex;
 
     flex-direction: row;
-margin-left: 30px;
+    margin-left: 30px;
     width: 90%;
-height: 240px;
-border-radius: 12px;
-border: solid;
+    height: 240px;
+    border-radius: 12px;
+    border: solid;
+    margin-bottom: 30px;
 }
-.imovel4 img{ 
-width: 250px;    
-height: 234px;    
+
+.imovel1 img {
+    width: 250px;
+    height: 234px;
 }
-.imovel5{
-margin-bottom: 30px;
-display: flex;
+
+.imovel2 {
+
+    display: flex;
+    margin-bottom: 30px;
+    flex-direction: row;
+    margin-left: 30px;
+    width: 90%;
+    height: 240px;
+    border-radius: 12px;
+    border: solid;
+}
+
+.imovel2 img {
+    width: 250px;
+    height: 234px;
+}
+
+.imovel3 {
+
+    display: flex;
+    margin-bottom: 30px;
+    flex-direction: row;
+    margin-left: 30px;
+    width: 90%;
+    height: 240px;
+    border-radius: 12px;
+    border: solid;
+}
+
+.imovel3 img {
+    width: 250px;
+    height: 234px;
+}
+
+.imovel4 {
+    margin-bottom: 30px;
+    display: flex;
 
     flex-direction: row;
-margin-left: 30px;
+    margin-left: 30px;
     width: 90%;
-height: 240px;
-border-radius: 12px;
-border: solid;
+    height: 240px;
+    border-radius: 12px;
+    border: solid;
 }
-.imovel5 img{ 
-width: 250px;    
-height: 234px;    
+
+.imovel4 img {
+    width: 250px;
+    height: 234px;
 }
-.imovel6{
-margin-bottom: 30px;
-display: flex;
+
+.imovel5 {
+    margin-bottom: 30px;
+    display: flex;
 
     flex-direction: row;
-margin-left: 30px;
+    margin-left: 30px;
     width: 90%;
-height: 240px;
-border-radius: 12px;
-border: solid;
+    height: 240px;
+    border-radius: 12px;
+    border: solid;
 }
-.imovel6 img{ 
-width: 250px;    
-height: 234px;    
+
+.imovel5 img {
+    width: 250px;
+    height: 234px;
 }
-.imovel7{
-margin-bottom: 30px;
-display: flex;
+
+.imovel6 {
+    margin-bottom: 30px;
+    display: flex;
 
     flex-direction: row;
-margin-left: 30px;
+    margin-left: 30px;
     width: 90%;
-height: 240px;
-border-radius: 12px;
-border: solid;
+    height: 240px;
+    border-radius: 12px;
+    border: solid;
 }
-.imovel7 img{ 
-width: 250px;    
-height: 234px;    
+
+.imovel6 img {
+    width: 250px;
+    height: 234px;
 }
-.imovel8{
-margin-bottom: 30px;
-display: flex;
+
+.imovel7 {
+    margin-bottom: 30px;
+    display: flex;
 
     flex-direction: row;
-margin-left: 30px;
+    margin-left: 30px;
     width: 90%;
-height: 240px;
-border-radius: 12px;
-border: solid;
+    height: 240px;
+    border-radius: 12px;
+    border: solid;
 }
-.imovel8 img{ 
-width: 250px;    
-height: 234px;    
+
+.imovel7 img {
+    width: 250px;
+    height: 234px;
 }
+
+.imovel8 {
+    margin-bottom: 30px;
+    display: flex;
+
+    flex-direction: row;
+    margin-left: 30px;
+    width: 90%;
+    height: 240px;
+    border-radius: 12px;
+    border: solid;
+}
+
+.imovel8 img {
+    width: 250px;
+    height: 234px;
+}
+
 /* //////// */
-.imoveldesc{
+.imoveldesc {
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: start;
-   width: 100%;
-text-align: center;
+    width: 100%;
+    text-align: center;
 }
 
-.infolocal{
-   display:flex;
-   flex-direction:row;
-   align-items: center ;
-    
+.infolocal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
 }
 
- .situacaoatual{
+.situacaoatual {
     display: flex;
     flex-direction: row;
     justify-content: center;
- align-items: center;
- margin-bottom: 15px;
- }
- .situacaoatual img{
-position: relative;
-right: -12px;
-margin-right: 15px;
-margin-bottom: 29px;
- }
+    align-items: center;
+    margin-bottom: 15px;
+}
 
- .nomeimovel{
- display: flex;
- flex-direction: row;
- align-items: center;   
- margin-bottom: 5px;
- justify-content: center;
+.situacaoatual img {
+    position: relative;
+    right: -12px;
+    margin-right: 15px;
+    margin-bottom: 29px;
 }
-.nomeimovel img{
+
+.nomeimovel {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 5px;
+    justify-content: center;
+}
+
+.nomeimovel img {
     width: 30px;
-    height:30px;
+    height: 30px;
 }
+
+
 
 @media screen and (max-width: 480px) {
 
-    .fav1{
+    .fav1 {
         display: none;
     }
-    h1{display: none;}
 
-.correcaomobile{
+
+    h1 {
+        display: none;
+    }
+
+    .correcaomobile {
+        display: none;
+    }
+
+    .imovel1 p {
+        font-size: 12px;
+        width: 180px;
+    }
+
+    .imovel1 img {
+        width: 50%;
+        height: 100%;
+
+
+    }
+
+    .situacaoatual {
+        position: relative;
+        top: -30px;
+    }
+
+    .imovel2 p {
+        font-size: 12px;
+        width: 180px;
+    }
+
+    .imovel2 img {
+        width: 50%;
+        height: 100%;
+
+
+    }
+
+    .imovel3 p {
+        font-size: 12px;
+        width: 180px;
+    }
+
+    .imovel3 img {
+        width: 50%;
+        height: 100%;
+
+
+    }
+
+    .imovel4 p {
+        font-size: 12px;
+        width: 180px;
+    }
+
+    .imovel4 img {
+        width: 50%;
+        height: 100%;
+
+
+    }
+
+    .imovel5 p {
+        font-size: 12px;
+        width: 180px;
+    }
+
+    .imovel5 img {
+        width: 50%;
+        height: 100%;
+
+
+    }
+
+    .imovel6 p {
+        font-size: 12px;
+        width: 180px;
+    }
+
+    .imovel6 img {
+        width: 50%;
+        height: 100%;
+
+
+    }
+
+    .imovel7 p {
+        font-size: 12px;
+        width: 180px;
+    }
+
+    .imovel7 img {
+        width: 50%;
+        height: 100%;
+
+
+    }
+
+    .imovel8 p {
+        font-size: 12px;
+        width: 180px;
+    }
+
+    .imovel8 img {
+        width: 50%;
+        height: 100%;
+
+
+    }
+
+    .imovel8 {
+        margin-bottom: 301px;
+    }
+
+    .navegacao {
+        display: none;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+a {
+    text-decoration: none;
+    list-style-type: none;
+}
+
+header {
+    width: 100%;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+    background-color: #F70D1A;
+    z-index: 1;
+
+
+}
+
+/*AQUI TERMINA A PARTE CENTRAL DO PROJETO*/
+
+.logo {
+    width: 30rem;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.logo img {
+    width: 70px;
+    height: 70px;
+    transition: 0.5s;
+}
+
+.logo img:hover {
+    transform: scale(1.1);
+}
+
+/*AQUI TERMINA AS CONFIGURAÇOES DO LOGO*/
+
+.abas {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    text-align: center;
+
+}
+
+.abas a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 300;
+    width: 100px;
+    height: 60px;
+    color: white;
+    margin-right: 30px;
+    transition: 0.5s;
+}
+
+.abas a:hover {
+    font-size: 18px;
+    font-weight: 600;
+    height: 40px;
+    border-bottom: solid white 0.5px;
+
+}
+
+
+
+/*AQUI TERMINA AS CONFIGURAÇOES DO ABA*/
+
+.login {
+    width: 460px;
+    height: 70px;
+
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+.displau-subs {
+    display: flex;
+
+    width: 14%;
+    height: 100%;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-person {
+    width: 5vw;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    transition: 0.2s ease;
+}
+
+.icon-person:hover {
+    transform: scale(0.9);
+
+}
+
+.icon-person img {
+
+    width: auto;
+    height: 3rem;
+
+}
+
+.title-fenix {
+    width: 50%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 0;
+}
+
+.title-fenix h3 {
+    color: white;
+    font-size: 2rem;
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+}
+
+.title-fenix span {
+    font-size: 1.2rem;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Ícone do menu */
+
+
+
+.menu-icon {
+    top: 20px;
+    right: 20px;
+    border: none;
+    font-size: 24px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+/* Menu lateral */
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -500px;
+    /* escondido inicialmente */
+    width: 300px;
+    height: 100%;
+    background: #F5F5F5;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    transition: right 0.3s ease;
+    z-index: 1100;
+}
+
+.side-menu.open {
+    right: 0;
+}
+
+/* Header do menu */
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-btn {
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* Seções do menu */
+.menu-section {
+    margin-top: 20px;
+}
+
+.menu-section h3 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.menu-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-section ul li {
+    margin: 10px 0;
+}
+
+.menu-section ul li a {
+    text-decoration: none;
+    color: #555;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+.menu-section ul li a:hover {
+    color: #60A5FA;
+}
+
+/* Fundo escuro quando o menu está aberto */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    z-index: 1050;
+}
+
+.overlay.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.menu-icon {
     display: none;
 }
-.navbar{
-margin-bottom: 100px;
 
-}
-.imovel1 p{
-    font-size: 12px;
-    width: 180px;
-}
-.imovel1 img{
-width: 50%;
-    height: 100%;
+/* Mostra o ícone apenas em telas pequenas */
+@media screen and (max-width: 480px) {
 
 
-}
-.situacaoatual{
-position: relative;
-top: -30px;
-}
-.imovel2 p{
-    font-size: 12px;
-    width: 180px;
-}
-.imovel2 img{
-width: 50%;
-    height: 100%;
+
+    .menu-icon {
+        display: block;
+    }
+
+    .menuzera {
+        width: 20%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        margin-left: 60px;
+    }
 
 
 }
-.imovel3 p{
-    font-size: 12px;
-    width: 180px;
-}
-.imovel3 img{
-width: 50%;
-    height: 100%;
 
-
-}
-.imovel4 p{
-    font-size: 12px;
-    width: 180px;
-}
-.imovel4 img{
-width: 50%;
-    height: 100%;
-
-
-}
-.imovel5 p{
-    font-size: 12px;
-    width: 180px;
-}
-.imovel5 img{
-width: 50%;
-    height: 100%;
-
-
-}
-.imovel6 p{
-    font-size: 12px;
-    width: 180px;
-}
-.imovel6 img{
-width: 50%;
-    height: 100%;
-
-
-}
-.imovel7 p{
-    font-size: 12px;
-    width: 180px;
-}
-.imovel7 img{
-width: 50%;
-    height: 100%;
-
-
-}
-.imovel8 p{
-    font-size: 12px;
-    width: 180px;
-}
-.imovel8 img{
-width: 50%;
-    height: 100%;
-
-
-}
-.imovel8{
-margin-bottom: 301px;
-}
-.navegacao{
- display: none  ;   
-}
+/* Responsivo */
+@media (max-width: 480px) {
+    .side-menu {
+        width: 80%;
+    }
 }

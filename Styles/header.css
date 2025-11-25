@@ -289,6 +289,9 @@ header{
 
 /* Mostra o ícone apenas em telas pequenas */
 @media screen and (max-width: 480px) {
+
+
+
   .menu-icon {
     display: block;
   }

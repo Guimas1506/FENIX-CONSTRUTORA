@@ -252,45 +252,10 @@ a{
 }
 
 @media screen and (max-width: 480px) {
-  
-    /* footer */
-.titulos{
-    margin-left:70px 
-}
-
-.foot-logo{
-    margin-left: -180px;
-}
-.footer h3{
-
-    font-size: 12px;
-}
-.cont1{
-font-size: 8px;
-    position: relative;
-    left: 33px;}
-.cont2{position: relative;
-    left: -60px;
-    margin-left: 6px;
-    margin-right: -70px;
-font-size: 8px;}
-
-.cont3{
-    position: relative;
-    left: -65px;
-font-size: 8px;
-margin-right: -50px;}
-.foot-logo img{
-    position: relative;
-    left: 100px;
-}
-.rede p{
-    font-size: 8px;
-}
-.icon img{
-    width: 12px;
-    height: 12px;
-}
-body{overflow-x: hidden;}
+ 
+    .rodape{
+        display: flex;
+    }
+    
 }
 

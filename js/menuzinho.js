@@ -16,7 +16,7 @@ closeMenu.addEventListener("click", () => {
 });
 
 overlay.addEventListener("click", () => {
-            sideMenu.style.display = "none"
+  sideMenu.style.display = "none"
   sideMenu.classList.remove("open");
   overlay.classList.remove("show");
 });
