@@ -1,22 +1,25 @@
-html{
+html {
     overflow-x: hidden;
     box-shadow: none;
-    
+
 }
 
 body {
     margin: 0;
     padding: 0;
-    font-family: "Inter", sans-serif;  
-      
+    font-family: "Inter", sans-serif;
+
 }
-body::-webkit-scrollbar{
+
+body::-webkit-scrollbar {
     display: none;
 }
-*{
+
+* {
     box-sizing: border-box;
 }
-:root{
+
+:root {
     --Cor-Primaria: #FE4F3F;
     --Cor-Secundaria: #000000;
     --Cor-Terciaria: #7C7C7C;
@@ -31,17 +34,19 @@ body::-webkit-scrollbar{
 
 /*AQUI TERMINA AS CONFIGURAÇOES DO LOGIN*/
 
-.barra hr{
+.barra hr {
     height: 20px;
-    
-}/*AQUI É A BARRINHA BRANCA DO NAVBAR QUE SEPARA AS ABAS DO LOGIN*/
+
+}
+
+/*AQUI É A BARRINHA BRANCA DO NAVBAR QUE SEPARA AS ABAS DO LOGIN*/
 
 /*AQUI TERMINA O HEADER*/
 
 
 /*CONTEUDO DO MAIN*/
 
-.content{
+.content {
     width: 100%;
     height: 100%;
     display: flex;
@@ -51,7 +56,7 @@ body::-webkit-scrollbar{
 
 /*AQUI É A LOGO GRANDE DO SOBRE*/
 
-.conteud1{
+.conteud1 {
     width: 100%;
     height: 350px;
     display: flex;
@@ -61,7 +66,7 @@ body::-webkit-scrollbar{
     margin-top: 0;
 }
 
-.logo-conteud1{
+.logo-conteud1 {
     width: 20%;
     height: 60%;
     display: flex;
@@ -69,53 +74,53 @@ body::-webkit-scrollbar{
     justify-content: center;
 }
 
-.logo-conteud1 img{
+.logo-conteud1 img {
     width: 250px;
     height: 250px;
     display: flex;
-    justify-content: center;    
+    justify-content: center;
     margin-top: 0;
 }
 
-.texto-conteud1{
+.texto-conteud1 {
     width: 20%;
     height: 50px;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    text-align: center;   
+    text-align: center;
 }
 
-.texto-conteud1 h2{
+.texto-conteud1 h2 {
     font-size: 55px;
     font-weight: 300;
     color: var(--Cor-Primaria);
 
     letter-spacing: 14px;
 
-    display: flex;  
+    display: flex;
     text-align: center;
     justify-content: center;
     align-items: center;
 }
 
-.subtext-conteud1{
+.subtext-conteud1 {
     width: 40;
     height: 25px;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    text-align: center;   
+    text-align: center;
 }
 
-.subtext-conteud1 p{
+.subtext-conteud1 p {
     font-size: 20px;
     color: var(--Cor-Primaria);
     display: flex;
     align-items: center;
-    display: flex;  
+    display: flex;
     text-align: center;
     justify-content: center;
 }
@@ -130,7 +135,7 @@ body::-webkit-scrollbar{
 
 /* AQUI É O CONTEUDO PRINCIPAL 1 */
 
-.conteud2{
+.conteud2 {
     width: 100%;
     height: 500px;
     display: flex;
@@ -138,10 +143,10 @@ body::-webkit-scrollbar{
     justify-content: center;
     align-items: center;
     flex-direction: column;
- 
+
 }
 
-.title-conteud2{
+.title-conteud2 {
     width: 53%;
     height: 70px;
     align-items: center;
@@ -149,18 +154,18 @@ body::-webkit-scrollbar{
 
 }
 
-.title-conteud2 h2{
+.title-conteud2 h2 {
     font-size: 40px;
     font-weight: 800;
     color: var(--Cor-Primaria);
     margin-left: 15px;
-    display: flex;  
+    display: flex;
     text-align: center;
     justify-content: center;
     align-items: center;
 }
 
-.text-conteud2{
+.text-conteud2 {
     width: 100%;
     height: 100%;
     background-color: var(--Cor-Primaria);
@@ -169,7 +174,7 @@ body::-webkit-scrollbar{
     justify-content: center;
 }
 
-.text2{
+.text2 {
     width: 50%;
     height: 100%;
     display: flex;
@@ -180,7 +185,7 @@ body::-webkit-scrollbar{
     font-weight: 500;
 }
 
-.text-conteud3{
+.text-conteud3 {
     width: 100%;
     height: 100%;
 
@@ -189,7 +194,7 @@ body::-webkit-scrollbar{
     justify-content: center;
 }
 
-.text3{
+.text3 {
     width: 50%;
     height: 100%;
     display: flex;
@@ -202,7 +207,7 @@ body::-webkit-scrollbar{
 
 /*AQUI COMEÇA A PARTE DO FUNDADOR DA EMPRESA*/
 
-.container{
+.container {
     width: 100%;
     height: 100vh;
     background-color: var(--Cor-Secundaria);
@@ -210,9 +215,9 @@ body::-webkit-scrollbar{
     display: flex;
     flex-direction: row;
 
-}   
+}
 
-.fundad{
+.fundad {
     height: 100%;
     width: 30%;
     display: flex;
@@ -223,7 +228,7 @@ body::-webkit-scrollbar{
     text-align: end;
 }
 
-#parte1{
+#parte1 {
     font-size: 25px;
     font-weight: 200;
     display: flex;
@@ -231,7 +236,7 @@ body::-webkit-scrollbar{
 
 /*Tracinho do Fundador*/
 
-#tracinho{
+#tracinho {
     width: 30%;
     height: 1%;
     background-color: var(--Cor-Primaria);
@@ -244,28 +249,28 @@ body::-webkit-scrollbar{
 
 /*Fim do Tracinho*/
 
-#parte2{
+#parte2 {
     font-size: 30px;
     display: flex;
     font-weight: 700;
     margin-top: -5px;
 }
 
-#parte3{
+#parte3 {
     font-size: 26px;
     font-weight: 500;
     display: flex;
     margin-top: -5px;
 }
 
-#fim{
+#fim {
     display: flex;
     font-size: 16px;
     font-weight: 400;
     margin-top: -30px;
 }
 
-.bitian{
+.bitian {
     width: 100%;
     height: 10vh;
     display: flex;
@@ -274,7 +279,7 @@ body::-webkit-scrollbar{
     justify-content: end;
 }
 
-#btn-bittian{
+#btn-bittian {
     width: 150px;
     height: 40px;
     background-color: var(--Cor-Primaria);
@@ -287,11 +292,11 @@ body::-webkit-scrollbar{
     transition: 0.2s all;
 }
 
-#btn-bittian:hover{
+#btn-bittian:hover {
     transform: scale(0.9);
 }
 
-.fot-fundad{
+.fot-fundad {
     width: 60%;
     height: 100%;
     margin-left: 30px;
@@ -301,20 +306,20 @@ body::-webkit-scrollbar{
 }
 
 
-.fot-fundad img{
+.fot-fundad img {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 85%;
     height: 100%;
     clip-path: polygon(13% 0, 100% 0%, 87% 100%, 0% 100%);
-    
+
 }
 
 
 /*Aqui é a parte laranja*/
 
-.complem{
+.complem {
     width: 100%;
     height: 650px;
     display: flex;
@@ -324,10 +329,10 @@ body::-webkit-scrollbar{
     margin-bottom: 40px;
 }
 
-.complem-iage{
+.complem-iage {
     width: 70%;
     height: 70vh;
-    background-color:  #FE4F3F;
+    background-color: #FE4F3F;
     background-image: url(../img/Mask\ group.png);
     background-position: center;
     background-repeat: no-repeat;
@@ -338,14 +343,15 @@ body::-webkit-scrollbar{
     border-radius: 0px 30px 30px 0px;
 }
 
-.complem-teste{
+.complem-teste {
     width: 75vw;
     height: 65vh;
     display: flex;
     flex-direction: column;
 
 }
-.title-complem{
+
+.title-complem {
     width: 100%;
     height: 15%;
     display: flex;
@@ -354,7 +360,7 @@ body::-webkit-scrollbar{
     flex-direction: column;
 }
 
-.ttt1{
+.ttt1 {
     width: 100%;
     height: 50px;
     display: flex;
@@ -364,7 +370,7 @@ body::-webkit-scrollbar{
     font-size: 20px;
 }
 
-.sub-complem{
+.sub-complem {
     width: 100%;
     height: 19px;
     display: flex;
@@ -372,14 +378,14 @@ body::-webkit-scrollbar{
     justify-content: center;
 }
 
-.icone-complem{
+.icone-complem {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.icone-comp1{
+.icone-comp1 {
     width: 70%;
     height: 100%;
     display: flex;
@@ -389,7 +395,7 @@ body::-webkit-scrollbar{
     flex-direction: row;
 }
 
-.icon1{
+.icon1 {
     width: 60px;
     height: 60px;
     display: flex;
@@ -398,7 +404,7 @@ body::-webkit-scrollbar{
     background-size: cover;
 }
 
-.icon-com{
+.icon-com {
     width: 40%;
     height: 60px;
     display: flex;
@@ -409,7 +415,7 @@ body::-webkit-scrollbar{
     margin-left: 10px;
 }
 
-.icone-comp2{
+.icone-comp2 {
     width: 70%;
     height: 100%;
     display: flex;
@@ -419,7 +425,7 @@ body::-webkit-scrollbar{
     flex-direction: row;
 }
 
-.icon2{
+.icon2 {
     width: 60px;
     height: 60px;
     display: flex;
@@ -428,7 +434,7 @@ body::-webkit-scrollbar{
     background-size: cover;
 }
 
-.icon-com2{
+.icon-com2 {
     width: 40%;
     height: 60px;
     display: flex;
@@ -436,10 +442,10 @@ body::-webkit-scrollbar{
     color: #FE4F3F;
     font-weight: 900;
     font-size: 20px;
-     margin-left: 10px;
+    margin-left: 10px;
 }
 
-.icone-comp3{
+.icone-comp3 {
     width: 70%;
     height: 100%;
     display: flex;
@@ -449,7 +455,7 @@ body::-webkit-scrollbar{
     flex-direction: row;
 }
 
-.icon3{
+.icon3 {
     width: 60px;
     height: 60px;
     display: flex;
@@ -458,7 +464,7 @@ body::-webkit-scrollbar{
     background-size: cover;
 }
 
-.icon-com3{
+.icon-com3 {
     width: 40%;
     height: 60px;
     display: flex;
@@ -466,11 +472,11 @@ body::-webkit-scrollbar{
     color: #FE4F3F;
     font-weight: 900;
     font-size: 20px;
-     margin-left: 10px;
+    margin-left: 10px;
 
 }
 
-.icone-comp4{
+.icone-comp4 {
     width: 70%;
     height: 100%;
     display: flex;
@@ -480,7 +486,7 @@ body::-webkit-scrollbar{
     flex-direction: row;
 }
 
-.icon4{
+.icon4 {
     width: 60px;
     height: 60px;
     display: flex;
@@ -489,7 +495,7 @@ body::-webkit-scrollbar{
     background-size: cover;
 }
 
-.icon-com4{
+.icon-com4 {
     width: 40%;
     height: 60px;
     display: flex;
@@ -497,12 +503,12 @@ body::-webkit-scrollbar{
     color: #FE4F3F;
     font-weight: 900;
     font-size: 20px;
-     margin-left: 10px;
+    margin-left: 10px;
 }
 
 
 
-.complem-co{
+.complem-co {
 
     display: flex;
     align-items: center;
@@ -513,7 +519,7 @@ body::-webkit-scrollbar{
     color: white;
 }
 
-.complem-title{
+.complem-title {
     height: 90%;
     width: 90%;
     border: solid white;
@@ -527,14 +533,14 @@ body::-webkit-scrollbar{
 
 
 
-.dec{
+.dec {
     width: 300px;
     height: 500px;
     display: flex;
     flex-direction: column;
 }
 
-.dec1{
+.dec1 {
     display: flex;
     width: 100%;
     height: 300px;
@@ -544,7 +550,7 @@ body::-webkit-scrollbar{
 
 }
 
-.dec2{
+.dec2 {
     display: flex;
     width: 100%;
     height: 300px;
@@ -552,7 +558,7 @@ body::-webkit-scrollbar{
     flex-direction: column;
 }
 
-.complement{
+.complement {
     width: 100%;
     height: 700px;
     color: white;
@@ -561,7 +567,7 @@ body::-webkit-scrollbar{
     display: flex;
 }
 
-.complement1{
+.complement1 {
     width: 50vw;
     height: 50vh;
     background-color: #FE4F3F;
@@ -570,7 +576,7 @@ body::-webkit-scrollbar{
 }
 
 
-#img1{
+#img1 {
     width: 40%;
     height: 80%;
     display: flex;
@@ -579,22 +585,23 @@ body::-webkit-scrollbar{
     margin-left: -90px;
 }
 
-.sub-log{
+.sub-log {
     display: flex;
 }
 
-.complement1 img{
+.complement1 img {
     display: flex;
 
     width: 400px;
     height: 350px;
     margin-top: 1px;
-    margin-right: -60px; ;
+    margin-right: -60px;
+    ;
     z-index: 2;
 
 }
 
-.sutiti1{
+.sutiti1 {
     display: flex;
     width: 500px;
     height: 200px;
@@ -602,7 +609,7 @@ body::-webkit-scrollbar{
 
 }
 
-.list{
+.list {
     width: 80%;
     height: 780px;
     display: flex;
@@ -619,7 +626,7 @@ body::-webkit-scrollbar{
 
 /*AQUI É O FOOTER*/
 
-.rodape{
+.rodape {
     width: 100%;
     height: 500px;
     display: flex;
@@ -629,23 +636,24 @@ body::-webkit-scrollbar{
     flex-direction: column;
 
 }
+
 /* AQUI TERMINA A PARTE CENTRAL DO RODAPÉ*/
 
 
-.foot-logo{
+.foot-logo {
     width: 90%;
     height: 80px;
     display: flex;
-  
+
     align-items: center;
 }
 
-.foot-logo img{
+.foot-logo img {
     width: 70px;
     height: 70px;
 }
 
-.contatos{
+.contatos {
     width: 80%;
     height: 350px;
     display: flex;
@@ -653,7 +661,7 @@ body::-webkit-scrollbar{
 
 }
 
-.titulos{
+.titulos {
     width: 200px;
     height: 100%;
     display: flex;
@@ -662,7 +670,7 @@ body::-webkit-scrollbar{
     flex-direction: column;
 }
 
-.titulo{
+.titulo {
     width: 160px;
     height: 30px;
 
@@ -674,7 +682,7 @@ body::-webkit-scrollbar{
     font-weight: 700;
 }
 
-.subtitle{
+.subtitle {
     width: 160px;
     height: 25px;
 
@@ -688,33 +696,33 @@ body::-webkit-scrollbar{
 
 
 
-.cont1{
+.cont1 {
     width: 100%;
     height: 270px;
-  
+
     display: flex;
     align-items: center;
     margin: auto;
     flex-direction: column;
 }
 
-.cont-title1{
+.cont-title1 {
     width: 200px;
     height: 30px;
 
     color: var(--Branco);
-    display:  flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
 }
 
-.conte{
+.conte {
     display: flex;
     flex-direction: row;
 }
 
-.icon{
+.icon {
     width: 40px;
     height: 40px;
 
@@ -723,7 +731,7 @@ body::-webkit-scrollbar{
     align-items: center;
 }
 
-.icon img{
+.icon img {
     width: 30px;
     height: 30px;
     filter: grayscale(100%);
@@ -735,7 +743,7 @@ body::-webkit-scrollbar{
     transform: rotateZ(360deg);
 }
 
-.rede{
+.rede {
     width: 140px;
     height: 40px;
 
@@ -744,48 +752,14 @@ body::-webkit-scrollbar{
     align-items: center;
 }
 
-.rede p{
+.rede p {
     font-size: 15px;
     font-weight: 500;
 }
 
 /* AQUI TERMINA O CONTATO 1 */
 
-.cont2{
-    width: 100%;
-    height: 270px;
- 
-    display: flex;
-    align-items: center;
-    margin: auto;
-    flex-direction: column;
-}
-
-.titulo2{
-    width: 200px;
-    height: 30px;
- 
-    color: var(--Branco);
-    display:  flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-}
-
-.abins{
-    display: flex;
-    flex-direction: column;
-    color: var(--Branco);
-    align-items: center;
-}
-
-.abins p{
-
-    font-weight: 500;
-
-}
-
-.cont3{
+.cont2 {
     width: 100%;
     height: 270px;
 
@@ -795,31 +769,65 @@ body::-webkit-scrollbar{
     flex-direction: column;
 }
 
-.titulo3{
+.titulo2 {
     width: 200px;
     height: 30px;
 
     color: var(--Branco);
-    display:  flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
 }
 
-.produts{
+.abins {
     display: flex;
     flex-direction: column;
     color: var(--Branco);
     align-items: center;
 }
 
-.produts p{
+.abins p {
 
     font-weight: 500;
 
 }
 
-.direitos-reservados{
+.cont3 {
+    width: 100%;
+    height: 270px;
+
+    display: flex;
+    align-items: center;
+    margin: auto;
+    flex-direction: column;
+}
+
+.titulo3 {
+    width: 200px;
+    height: 30px;
+
+    color: var(--Branco);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.produts {
+    display: flex;
+    flex-direction: column;
+    color: var(--Branco);
+    align-items: center;
+}
+
+.produts p {
+
+    font-weight: 500;
+
+}
+
+.direitos-reservados {
     color: var(--Branco);
 }
 
@@ -828,59 +836,61 @@ body::-webkit-scrollbar{
 
 @media screen and (max-width: 858px) {
 
-    body{
+    body {
         margin: 0;
         padding: 0;
         display: flex;
         flex-direction: column;
         font-family: "Inter", sans-serif;
     }
+
     /*navbar*/
-    .abas{
+    .abas {
         display: none;
     }
 
-    .barra{
+    .barra {
         display: none;
     }
 
-    .login{
+    .login {
         display: none;
     }
-    
+
     /*Conteudo principal*/
 
-    .logo-conteud1{
+    .logo-conteud1 {
         width: 100%;
         height: 60%;
     }
 
-    .logo-conteud1 img{
+    .logo-conteud1 img {
         width: 200px;
         height: 200px;
     }
 
-    .conteud2{
+    .conteud2 {
         width: 100%;
         height: 30%;
         display: block;
     }
-    .title-conteud2 h2{
+
+    .title-conteud2 h2 {
         font-size: 26px;
     }
 
-    .text-conteud2{
+    .text-conteud2 {
         height: 60%;
     }
 
-    .text2{
+    .text2 {
         width: 100%;
         height: 90%;
         font-size: 12px;
         text-align: center;
     }
 
-    
+
 }
 
 /*botoes de sair e favoritos*/
@@ -908,154 +918,200 @@ body::-webkit-scrollbar{
 }
 
 @media screen and (max-width: 480px) {
-.text3{
-   width: 70%;
-   font-size: 15px;
-}
-
-.container{
-    width: 100%;
-    height: 170vh;
-    background-color: var(--Cor-Secundaria);
-    display: flex;
-    flex-direction: row;
-
-}   
-
-.fundad{
-    height: 100%;
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    color: var(--Branco);
-    align-items: end;
-    justify-content: center;
-    text-align: end;
-}
-#parte1 p{
- margin-top: -60px;
-}
-#parte1{
-    margin-top:14vh;
-    font-size: 25px;
-    font-weight: 200;
-    display: flex;
-}
-
-/*Tracinho do Fundador*/
-
-#tracinho{
-    width: 30%;
-    height: 1%;
-    background-color: var(--Cor-Primaria);
-    border: none;
-    display: flex;
-    margin-right: 0;
-    margin-top: -10px;
-    border-radius: 5px;
-}
-
-/*Fim do Tracinho*/
-
-#parte2{
-    font-size: 30px;
-    display: flex;
-    font-weight: 700;
-    margin-top: -5px;
-}
-
-#parte3{
-    font-size: 26px;
-    font-weight: 500;
-    display: flex;
-    margin-top: -5px;
-}
-
-#fim{
-    display: flex;
-    font-size: 16px;
-    font-weight: 400;
-    margin-top: -30px;
-}
-
-.fot-fundad{
-    width: 80%;
-    height: 100%;
-    margin-left: 30px;
-    display: flex;
-    justify-content: center;
-  
-}
 
 
-.fot-fundad img{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-      
-}
+    .title-conteud2 {
+        width: 100%;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-.complem-iage{
-    width: 100%;
-    height: 100%;
-    background-color:  #FE4F3F;
-    background-image: url(img/Mask\ group.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 440px;
-    display: flex;
-    margin-right: 10px;
-    margin-top: 100px;
-        margin-bottom:50px;
+    .title-conteud2 h2{
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+    }
 
-   
-}
-.complem{
-    width: 120%;
-    height: 650px;
-    display: flex;
-    margin: auto;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-     margin-bottom: 150px;
-}
-.sub-complem{
-    width: 100%;
-    height: 19px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-}
+
+    .text3 {
+        width: 90%;
+        font-size: 15px;
+    }
+
+    .text-conteud2 {
+        height: 70vh;
+    }
+
+    .text2 {
+        width: 90%;
+        height: 90%;
+        font-size: 15px;
+        text-align: justify;
+    }
+
+    .container {
+        flex-direction: column;
+        height: 200vh;
+        margin-left: : 0;
+
+    }
+
+    .fundad {
+        height: 100%;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        color: var(--Branco);
+        align-items: end;
+        justify-content: center;
+        text-align: end;
+        
+    }
+
+    .fot-fundad{
+            clip-path: none;
+            justify-content: center;
+    }
+
+    #parte1 p {
+        margin-top: -60px;
+    }
+
+    #parte1 {
+        margin-top: 14vh;
+        font-size: 25px;
+        font-weight: 200;
+        display: flex;
+    }
+
+    /*Tracinho do Fundador*/
+
+    #tracinho {
+        width: 30%;
+        height: 1%;
+        background-color: var(--Cor-Primaria);
+        border: none;
+        display: flex;
+        margin-right: 0;
+        margin-top: -10px;
+        border-radius: 5px;
+    }
+
+    /*Fim do Tracinho*/
+
+    #parte2 {
+        font-size: 30px;
+        display: flex;
+        font-weight: 700;
+        margin-top: -5px;
+    }
+
+    #parte3 {
+        font-size: 26px;
+        font-weight: 500;
+        display: flex;
+        margin-top: -5px;
+    }
+
+    #fim {
+        display: flex;
+        font-size: 16px;
+        font-weight: 400;
+        margin-top: -30px;
+    }
+
+    .fot-fundad {
+        width: 100%;
+        height: 100%;
+        margin-left: 30px;
+        display: flex;
+        justify-content: center;
+
+
+    }
+
+    
+
+    .fot-fundad img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        clip-path: none;
+        margin: 0;
+
+    }
+
+    .complem-iage {
+        width: 100%;
+        height: 100%;
+        background-color: #FE4F3F;
+        background-image: url(img/Mask\ group.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 440px;
+        display: flex;
+        margin-right: 10px;
+        margin-top: 100px;
+        margin-bottom: 50px;
+
+
+    }
+
+    .complem {
+        width: 120%;
+        height: 650px;
+        display: flex;
+        margin: auto;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 150px;
+    }
+
+    .sub-complem {
+        width: 100%;
+        height: 19px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
     /* footer */
-.titulos{
-    margin-left:-280px 
-}
+    .titulos {
+        margin-left: -280px
+    }
 
-.foot-logo{
-    margin-left: 280px;
-}
-.footer h3{
+    .foot-logo {
+        margin-left: 280px;
+    }
 
-    font-size: 12px;
-}
-.cont1{
-font-size: 12px;
-    position: relative;
-    left: 33px;}
-.cont2{
-    margin-left: -50px;
-    margin-right: -50px;
-font-size: 12px;}
+    .footer h3 {
 
-.cont3{
-    position: relative;
-    left: -33px;
-font-size: 12px;
-margin-right: -50px;}
-}
+        font-size: 12px;
+    }
 
+    .cont1 {
+        font-size: 12px;
+        position: relative;
+        left: 33px;
+    }
+
+    .cont2 {
+        margin-left: -50px;
+        margin-right: -50px;
+        font-size: 12px;
+    }
+
+    .cont3 {
+        position: relative;
+        left: -33px;
+        font-size: 12px;
+        margin-right: -50px;
+    }
+}
