@@ -44,70 +44,47 @@
 
     <div class="barra"><hr></div>
 
-
-
-
-
-
-
-          <div class="menuzera">
-
+    <div class="menuzera">
       <button id="openMenu" class="menu-icon">
         <img src="img/barra-de-menu.png" alt="">
       </button>
+    </div>
 
+    <!-- Menu lateral -->
+    <div id="sideMenu" class="side-menu">
+      <div class="menu-header">
+        <h2>Menu</h2>
+        <button id="closeMenu" class="close-btn">×</button>
       </div>
 
-      <!-- Menu lateral -->
-      <div id="sideMenu" class="side-menu">
+      <nav class="menu-section">
+        <h3>Site</h3>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre Nós</a></li>
+          <li><a href="Imovel.html">Imoveis</a></li>            
+          <li><a href="serviços.html">Serviços</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
 
-        <div class="menu-header">
-          <h2>Menu</h2>
-          <button id="closeMenu" class="close-btn">×
-          </button>
-        </div>
+      <nav class="menu-section">
+        <h3>Configurações</h3>
+        <ul>
+          <li><a href="User/user.html">Usuario</a></li>
+          <li><a href="favoritos.html">Favoritos</a></li>
+          <li><a href="log-in.html">Login</a></li>
+          <li><a href="sign-in.html">Sign-in</a></li>
+        </ul>
+      </nav>
 
-        <nav class="menu-section">
-          <h3>Site</h3>
-          <ul>
-            <li><a href="index.html">Início</a></li>
-            <li><a href="sobre.html">Sobre Nós</a></li>
-            <li><a href="Imovel.html">Imoveis</a></li>            
-            <li><a href="serviços.html">Serviços</a></li>
-            <li><a href="contato.html">Contato</a></li>
-          </ul>
-        </nav>
+      <script src="js/menuzinho.js"></script>
+    </div>
 
-        <nav class="menu-section">
-          <h3>Configurações</h3>
-          <ul>
-            <li><a href="User/user.html">Usuario</a></li>
-            <li><a href="favoritos.html">Favoritos</a></li>
-            <li><a href="log-in.html">Login</a></li>
-            <li><a href="sign-in.html">Sign-in</a></li>
-          </ul>
-        </nav>
+    <!-- Fundo escuro ao abrir o menu -->
+    <div id="overlay" class="overlay"></div>
 
-        <script src="js/menuzinho.js">
-        </script>
-
-
-      </div>
-
-      <!-- Fundo escuro ao abrir o menu -->
-      <div id="overlay" class="overlay"></div>
-
-
-
-
-
-
-
-
-
-
-
-    <!-- Menu do usuário logado (vai substituir o login/sign-in) -->
+    <!-- Menu do usuário logado -->
     <div class="displau-subs">
         <div class="icon-person">
             <img src="./img/icon-usuario.png" alt="">
@@ -211,75 +188,57 @@
   </form>
 </main>
 
-  <footer>
-    <!-- Início do rodapé -->
-    <div class="rodape">
-      <!-- Seção do logotipo e título -->
-      <div class="foot-logo">
-        <!-- Logotipo da empresa -->
-        <img src="./img/fenix51.png" alt="Logo" class="logo" />
-        <div class="titulos">
-          <!-- Título principal -->
-          <div class="titulo">
-            <p>FÊNIX</p>
-          </div>
-          <!-- Subtítulo -->
-          <div class="subtitle">
-            <p>CONSTRUTORA</p>
-          </div>
+<footer>
+  <div class="rodape">
+    <div class="foot-logo">
+      <img src="./img/fenix51.png" alt="Logo" class="logo" />
+      <div class="titulos">
+        <div class="titulo">
+          <p>FÊNIX</p>
         </div>
-      </div>
-      <!-- Seção de contatos -->
-      <div class="contatos">
-        <!-- Primeira coluna: Redes sociais -->
-        <div class="cont1">
-          <div class="cont-title1">
-            <!-- Título da seção -->
-            <h3>REDES SOCIAIS</h3>
-          </div>
-          <a href="https://www.instagram.com/fenixconstroi/#" target="_blank">
-            <div class="conte">
-              <!-- Nome da rede social -->
-              <div class="rede">
-                <p>INSTAGRAM</p>
-              </div>
-            </div>
-          </a>
+        <div class="subtitle">
+          <p>CONSTRUTORA</p>
         </div>
-        <!-- Segunda coluna: Informações sobre a empresa -->
-        <div class="cont2">
-          <div class="titulo2">
-            <!-- Título da seção -->
-            <h3>NOSSA EMPRESA</h3>
-          </div>
-          <div class="abins">
-            <!-- Links ou informações sobre a empresa -->
-            <p>SOBRE NÓS</p>
-            <p>CONTATO</p>
-            <p>SERVIÇOS</p>
-          </div>
-        </div>
-        <!-- Terceira coluna: Produtos da empresa -->
-        <div class="cont3">
-          <div class="titulo3">
-            <!-- Título da seção -->
-            <h3>NOSSOS PRODUTOS</h3>
-          </div>
-          <div class="produts">
-            <!-- Lista de produtos -->
-            <p>PROJETOS</p>
-            <p>IMÓVEIS</p>
-          </div>
-        </div>
-      </div>
-      <!-- Seção de direitos reservados -->
-
-      <div class="direitos-reservados">
-        <p>&copy; 2025 Fênix Construtora. Todos os direitos reservados.</p>
       </div>
     </div>
-    <!-- Fim do rodapé -->
-  </footer>
+    <div class="contatos">
+      <div class="cont1">
+        <div class="cont-title1">
+          <h3>REDES SOCIAIS</h3>
+        </div>
+        <a href="https://www.instagram.com/fenixconstroi/#" target="_blank">
+          <div class="conte">
+            <div class="rede">
+              <p>INSTAGRAM</p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="cont2">
+        <div class="titulo2">
+          <h3>NOSSA EMPRESA</h3>
+        </div>
+        <div class="abins">
+          <p>SOBRE NÓS</p>
+          <p>CONTATO</p>
+          <p>SERVIÇOS</p>
+        </div>
+      </div>
+      <div class="cont3">
+        <div class="titulo3">
+          <h3>NOSSOS PRODUTOS</h3>
+        </div>
+        <div class="produts">
+          <p>PROJETOS</p>
+          <p>IMÓVEIS</p>
+        </div>
+      </div>
+    </div>
+    <div class="direitos-reservados">
+      <p>&copy; 2025 Fênix Construtora. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
