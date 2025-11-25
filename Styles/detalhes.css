@@ -16,11 +16,6 @@ main {
   padding: 20px;
 }
 
-.barra hr{
-    height: 20px;
-    
-}
-
 /* Navegação */
 .navegacao {
   max-width: 1400px;
@@ -68,26 +63,27 @@ main {
 
 /* Galeria de Imagens */
 .galeria-principal {
-  width: 1400px;
+  max-width: 1400px;
   margin: 0 auto 30px;
 }
 
 .imagem-destaque-container {
   position: relative;
-  border-radius: 10px;
+  border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0,0,0,0.15);
   background: #000;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .imagem-destaque-container img {
-    width: 100%;
-    height: 90vh;
-    display: flex;
-    margin: auto;
-    object-fit: cover;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 /* Botões de Navegação */
@@ -138,17 +134,43 @@ main {
   font-size: 14px;
 }
 
-/* Miniaturas - 3 COLUNAS */
+/* Miniaturas - CARROSSEL HORIZONTAL EM LINHA */
 .miniaturas-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  display: flex !important;
+  flex-direction: row !important;
   gap: 15px;
   margin-top: 15px;
   padding: 10px 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #FE4F3F #f0f0f0;
+  flex-wrap: nowrap !important;
+}
+
+.miniaturas-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.miniaturas-container::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 10px;
+}
+
+.miniaturas-container::-webkit-scrollbar-thumb {
+  background: #FE4F3F;
+  border-radius: 10px;
+}
+
+.miniaturas-container::-webkit-scrollbar-thumb:hover {
+  background: #e63e2e;
 }
 
 .miniatura {
-  width: 100%;
+  min-width: 180px !important;
+  max-width: 180px !important;
+  width: 180px !important;
   height: 130px;
   border-radius: 8px;
   overflow: hidden;
@@ -156,6 +178,8 @@ main {
   border: 3px solid transparent;
   transition: all 0.3s;
   opacity: 0.7;
+  flex-shrink: 0 !important;
+  flex-grow: 0 !important;
 }
 
 .miniatura:hover {
@@ -175,7 +199,7 @@ main {
   display: block;
 }
 
-/* Container de Informações - ALTURA AUTOMÁTICA */
+/* Container de Informações */
 .info-container {
   max-width: 1400px;
   margin: 0 auto;
@@ -403,11 +427,12 @@ main {
   border: 2px solid #FE4F3F;
 }
 
-/* Imóveis Similares */
+/* Imóveis Similares - CARROSSEL HORIZONTAL COM BOTÕES */
 .similares-section {
   max-width: 1400px;
   margin: 50px auto;
   padding: 0 20px;
+  position: relative;
 }
 
 .similares-section h2 {
@@ -418,19 +443,55 @@ main {
   text-align: center;
 }
 
+/* Container do carrossel com botões */
+.carrossel-wrapper {
+  position: relative;
+  width: 100%;
+}
+
 .lista-similares {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  display: flex !important;
+  flex-direction: row !important;
   gap: 25px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  padding: 10px 0 20px 0;
+  scrollbar-width: thin;
+  scrollbar-color: #FE4F3F #f0f0f0;
+  flex-wrap: nowrap !important;
+}
+
+.lista-similares::-webkit-scrollbar {
+  height: 10px;
+}
+
+.lista-similares::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 10px;
+}
+
+.lista-similares::-webkit-scrollbar-thumb {
+  background: #FE4F3F;
+  border-radius: 10px;
+}
+
+.lista-similares::-webkit-scrollbar-thumb:hover {
+  background: #e63e2e;
 }
 
 .card-similar {
+  min-width: 280px !important;
+  max-width: 280px !important;
+  width: 280px !important;
   background: white;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 3px 10px rgba(0,0,0,0.1);
   cursor: pointer;
   transition: all 0.3s ease;
+  flex-shrink: 0 !important;
+  flex-grow: 0 !important;
 }
 
 .card-similar:hover {
@@ -469,13 +530,51 @@ main {
   margin-top: 10px !important;
 }
 
+/* Botões de navegação do carrossel */
+.btn-carrossel {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(254, 79, 63, 0.9);
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.btn-carrossel:hover {
+  background: #e63e2e;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+.btn-carrossel-prev {
+  left: -20px;
+}
+
+.btn-carrossel-next {
+  right: -20px;
+}
+
 /* Responsividade */
 @media (max-width: 1024px) {
-  .miniaturas-container {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  .imagem-destaque-container {
+    height: 450px;
   }
   
   .miniatura {
+    min-width: 140px !important;
+    max-width: 140px !important;
+    width: 140px !important;
     height: 100px;
   }
 }
@@ -487,7 +586,7 @@ main {
     align-items: flex-start;
   }
 
-  .imagem-destaque-container img {
+  .imagem-destaque-container {
     height: 400px;
   }
 
@@ -517,21 +616,43 @@ main {
     flex-direction: column;
   }
 
-  .lista-similares {
-    grid-template-columns: 1fr;
+  .miniatura {
+    min-width: 120px !important;
+    max-width: 120px !important;
+    width: 120px !important;
+    height: 90px;
   }
-
-  .miniaturas-container {
-    grid-template-columns: repeat(2, 1fr);
+  
+  .card-similar {
+    min-width: 250px !important;
+    max-width: 250px !important;
+    width: 250px !important;
+  }
+  
+  .btn-carrossel-prev {
+    left: 5px;
+  }
+  
+  .btn-carrossel-next {
+    right: 5px;
   }
 }
 
 @media (max-width: 480px) {
-  .imagem-destaque-container img {
+  .imagem-destaque-container {
     height: 300px;
   }
   
-  .miniaturas-container {
-    grid-template-columns: 1fr;
+  .miniatura {
+    min-width: 100px !important;
+    max-width: 100px !important;
+    width: 100px !important;
+    height: 75px;
+  }
+  
+  .card-similar {
+    min-width: 220px !important;
+    max-width: 220px !important;
+    width: 220px !important;
   }
 }

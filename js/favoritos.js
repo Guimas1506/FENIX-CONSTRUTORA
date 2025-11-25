@@ -35,10 +35,18 @@ const adminButton = document.getElementById("adminButton");
 
 // Pega os links pelo href já que tem IDs duplicados
 const linksModal = document.querySelectorAll(".logadores a");
+let loginButton = null;
+let registerButton = null;
 let userButton = null;
 let favoritosButton = null;
 
 linksModal.forEach(link => {
+  if (link.href && link.href.includes("log-in.html")) {
+    loginButton = link;
+  }
+  if (link.href && link.href.includes("sign-in.html")) {
+    registerButton = link;
+  }
   if (link.href && link.href.includes("User/user.html")) {
     userButton = link;
   }
@@ -54,24 +62,11 @@ onAuthStateChanged(auth, async (user) => {
     
     // Mostra/esconde elementos quando LOGADO
     if (btnLogoutModal) btnLogoutModal.style.display = "flex";
+    if (loginButton) loginButton.style.display = "none";
+    if (registerButton) registerButton.style.display = "none";
     if (userButton) userButton.style.display = "flex";
     if (favoritosButton) favoritosButton.style.display = "flex";
     if (userEmail) userEmail.textContent = user.email;
-    
-    // Esconde login e registro quando logado
-    linksModal.forEach(link => {
-      if (link.href && link.href.includes("log-in.html")) {
-        link.style.display = "none";
-      }
-      if (link.href && link.href.includes("sign-in.html")) {
-        link.style.display = "none";
-      }
-    });
-    
-    // Esconde as linhas HR entre login/registro
-    linhasHR.forEach(linha => {
-      linha.style.display = "none";
-    });
 
     // Busca nome e status de admin do usuário
     let nome = user.displayName || "Usuário";
@@ -101,7 +96,7 @@ onAuthStateChanged(auth, async (user) => {
     }
 
     if (welcomeMsg) welcomeMsg.textContent = `Bem-vindo(a), ${nome}`;
-    if (adminButton) adminButton.style.display = isAdmin ? "flex" : "none";
+    if (adminButton) adminButton.style.display = isAdmin ? "inline-block" : "none";
     
     // Carrega favoritos
     carregarFavoritos(user);
@@ -111,33 +106,20 @@ onAuthStateChanged(auth, async (user) => {
     
     // Mostra/esconde elementos quando NÃO LOGADO
     if (btnLogoutModal) btnLogoutModal.style.display = "none";
+    if (loginButton) loginButton.style.display = "flex";
+    if (registerButton) registerButton.style.display = "flex";
     if (adminButton) adminButton.style.display = "none";
     if (userButton) userButton.style.display = "none";
     if (favoritosButton) favoritosButton.style.display = "none";
     if (welcomeMsg) welcomeMsg.textContent = "Bem-vindo(a), Usuário";
     if (userEmail) userEmail.textContent = "Email do usuário";
     
-    // Mostra login e registro quando não logado
-    linksModal.forEach(link => {
-      if (link.href && link.href.includes("log-in.html")) {
-        link.style.display = "flex";
-      }
-      if (link.href && link.href.includes("sign-in.html")) {
-        link.style.display = "flex";
-      }
-    });
-    
-    // Mostra as linhas HR entre login/registro
-    linhasHR.forEach(linha => {
-      linha.style.display = "block";
-    });
-    
     // Mostra mensagem de não logado
     mostrarNaoLogado();
   }
 });
 
-// Modal de usuário
+// ==================== MODAL DO USUÁRIO ====================
 if (iconPerson) {
   iconPerson.addEventListener("click", () => {
     if (userArea) userArea.style.display = "flex";

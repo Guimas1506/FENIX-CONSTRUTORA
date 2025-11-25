@@ -1,3 +1,4 @@
+<!-- favoritos.html -->
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -56,7 +57,6 @@
 
           <p id="userEmail">Email do usuário</p>
 
-
           <div class="logadores">
 
             <a href="./Administrator/dashboard.html" id="adminButton" style="display:none;">
@@ -74,16 +74,15 @@
             <a id="log" href="User/user.html">Usuario</a>
 
             <a id="log" href="favoritos.html">
-
               <p>Meus Favoritos</p>
             </a>
 
-            <button id="btnLogoutModal">
+            <button id="btnLogoutModal" style="display:none;">
               <img src="./img/sair.png" alt="">
               <p>Fazer Logout</p>
             </button>
             <hr id="linha">
-
+          </div>
         </div>
       </div>
     </div>
@@ -96,7 +95,7 @@
       <div class="favoritos-header">
         <a href="index.html" class="btn-voltar">← Voltar</a>
         <h1>
-          <span style="font-size: 1.2em;"></span> Meus Imóveis Favoritos
+          <span style="font-size: 1.2em;">♥</span> Meus Imóveis Favoritos
         </h1>
         <p class="subtitulo">Aqui estão todos os imóveis que você salvou</p>
       </div>
@@ -119,7 +118,7 @@
       <!-- MENSAGEM DE VAZIO -->
       <div id="vazio-favoritos" style="display: none;">
         <div class="empty-state">
-          <div class="empty-icon"></div>
+          <div class="empty-icon">💔</div>
           <h2>Nenhum favorito ainda</h2>
           <p>Você ainda não favoritou nenhum imóvel. Que tal começar agora?</p>
           <a href="Imovel.html" class="btn-explorar">Explorar Imóveis</a>
@@ -133,78 +132,55 @@
   </main>
 
   <footer>
-    <!-- Início do rodapé -->
     <div class="rodape">
-      <!-- Seção do logotipo e título -->
       <div class="foot-logo">
-        <!-- Logotipo da empresa -->
         <img src="./img/fenix51.png" alt="Logo" class="logo" />
         <div class="titulos">
-          <!-- Título principal -->
           <div class="titulo">
             <p>FÊNIX</p>
           </div>
-          <!-- Subtítulo -->
           <div class="subtitle">
             <p>CONSTRUTORA</p>
           </div>
         </div>
       </div>
-      <!-- Seção de contatos -->
       <div class="contatos">
-        <!-- Primeira coluna: Redes sociais -->
         <div class="cont1">
           <div class="cont-title1">
-            <!-- Título da seção -->
             <h3>REDES SOCIAIS</h3>
           </div>
           <a href="https://www.instagram.com/fenixconstroi/#" target="_blank">
-
             <div class="conte">
-          
-              <!-- Nome da rede social -->
               <div class="rede">
                 <p>INSTAGRAM</p>
               </div>
-
-
-
             </div>
           </a>
         </div>
-        <!-- Segunda coluna: Informações sobre a empresa -->
         <div class="cont2">
           <div class="titulo2">
-            <!-- Título da seção -->
             <h3>NOSSA EMPRESA</h3>
           </div>
           <div class="abins">
-            <!-- Links ou informações sobre a empresa -->
             <p>SOBRE NÓS</p>
             <p>CONTATO</p>
             <p>SERVIÇOS</p>
           </div>
         </div>
-        <!-- Terceira coluna: Produtos da empresa -->
         <div class="cont3">
           <div class="titulo3">
-            <!-- Título da seção -->
             <h3>NOSSOS PRODUTOS</h3>
           </div>
           <div class="produts">
-            <!-- Lista de produtos -->
             <p>PROJETOS</p>
             <p>IMÓVEIS</p>
           </div>
         </div>
       </div>
-      <!-- Seção de direitos reservados -->
-
       <div class="direitos-reservados">
         <p>&copy; 2025 Fênix Construtora. Todos os direitos reservados.</p>
       </div>
     </div>
-    <!-- Fim do rodapé -->
   </footer>
 
   <script type="module" src="js/favoritos.js"></script>

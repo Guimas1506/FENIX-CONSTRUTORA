@@ -27,7 +27,6 @@ const userEmail = document.getElementById("userEmail");
 const btnLogoutModal = document.getElementById("btnLogoutModal");
 const adminButton = document.getElementById("adminButton");
 
-// Pega os links pelo href já que tem IDs duplicados
 const linksModal = document.querySelectorAll(".logadores a");
 let loginButton = null;
 let registerButton = null;
@@ -54,7 +53,6 @@ onAuthStateChanged(auth, async (user) => {
   if (user) {
     console.log("✅ Usuário logado:", user.uid);
     
-    // Mostra/esconde elementos quando LOGADO
     if (btnLogoutModal) btnLogoutModal.style.display = "flex";
     if (loginButton) loginButton.style.display = "none";
     if (registerButton) registerButton.style.display = "none";
@@ -62,12 +60,10 @@ onAuthStateChanged(auth, async (user) => {
     if (favoritosButton) favoritosButton.style.display = "flex";
     if (userEmail) userEmail.textContent = user.email;
 
-    // Busca nome e status de admin do usuário
     let nome = user.displayName || "Usuário";
     let isAdmin = false;
 
     try {
-      // Tenta primeiro na coleção "users"
       let docRef = doc(db, "users", user.uid);
       let docSnap = await getDoc(docRef);
       
@@ -76,7 +72,6 @@ onAuthStateChanged(auth, async (user) => {
         nome = data.nome || nome;
         isAdmin = data.admin || false;
       } else {
-        // Se não existir, tenta na coleção "usuarios"
         docRef = doc(db, "usuarios", user.uid);
         docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
@@ -95,7 +90,6 @@ onAuthStateChanged(auth, async (user) => {
   } else {
     console.log("❌ Usuário não logado");
     
-    // Mostra/esconde elementos quando NÃO LOGADO
     if (btnLogoutModal) btnLogoutModal.style.display = "none";
     if (loginButton) loginButton.style.display = "flex";
     if (registerButton) registerButton.style.display = "flex";
@@ -346,7 +340,7 @@ function configurarGaleria() {
     btnPrev.style.display = "flex";
     btnNext.style.display = "flex";
     indicador.style.display = "block";
-    miniaturasContainer.style.display = "grid";
+    miniaturasContainer.style.display = "flex";
     
     totalImgs.textContent = imagensImovel.length;
     
@@ -420,7 +414,7 @@ function configurarBotaoWhatsApp(nomeImovel, imovelId) {
 }
 
 async function carregarImoveisSimilares(cidade, uf, imovelAtualId) {
-  const listaSimilares = document.getElementById("lista-similares");
+  const similaresSectionEl = document.querySelector(".similares-section");
   
   try {
     const querySnapshot = await getDocs(collection(db, "imoveis"));
@@ -435,28 +429,57 @@ async function carregarImoveisSimilares(cidade, uf, imovelAtualId) {
     });
 
     if (similares.length === 0) {
-      listaSimilares.innerHTML = '<p style="text-align: center; color: #999; grid-column: 1 / -1;">Nenhum imóvel similar encontrado.</p>';
+      similaresSectionEl.innerHTML = '<h2 style="text-align: center; color: #333; font-size: 2em; font-weight: 700; margin-bottom: 30px;">Imóveis similares</h2><p style="text-align: center; color: #999;">Nenhum imóvel similar encontrado.</p>';
       return;
     }
 
-    const imoveisExibir = similares.slice(0, 4);
-
-    listaSimilares.innerHTML = imoveisExibir.map(imovel => `
-      <div class="card-similar" onclick="window.location.href='detalhes.html?id=${imovel.id}'">
-        <img src="${imovel.imagemURL || './img/logo1.png'}" 
-             alt="${imovel.nome}"
-             onerror="this.src='./img/logo1.png'">
-        <div class="info-similar">
-          <h4>${imovel.nome}</h4>
-          <p>📍 ${imovel.cidade} - ${imovel.uf}</p>
-          <p class="preco-similar">R$ ${Number(imovel.preco || 0).toLocaleString('pt-BR')}</p>
+    // Criar estrutura do carrossel com botões
+    const carrosselHTML = `
+      <h2>Imóveis similares</h2>
+      <div class="carrossel-wrapper" style="position: relative;">
+        <button class="btn-carrossel btn-carrossel-prev" id="btn-prev-similares">‹</button>
+        <div id="lista-similares" class="lista-similares">
+          ${similares.map(imovel => `
+            <div class="card-similar" onclick="window.location.href='detalhes.html?id=${imovel.id}'">
+              <img src="${imovel.imagemURL || './img/logo1.png'}" 
+                   alt="${imovel.nome}"
+                   onerror="this.src='./img/logo1.png'">
+              <div class="info-similar">
+                <h4>${imovel.nome}</h4>
+                <p>📍 ${imovel.cidade} - ${imovel.uf}</p>
+                <p class="preco-similar">R$ ${Number(imovel.preco || 0).toLocaleString('pt-BR')}</p>
+              </div>
+            </div>
+          `).join('')}
         </div>
+        <button class="btn-carrossel btn-carrossel-next" id="btn-next-similares">›</button>
       </div>
-    `).join('');
+    `;
+
+    similaresSectionEl.innerHTML = carrosselHTML;
+
+    // Adicionar funcionalidade aos botões
+    const listaSimilares = document.getElementById("lista-similares");
+    const btnPrevSimilares = document.getElementById("btn-prev-similares");
+    const btnNextSimilares = document.getElementById("btn-next-similares");
+
+    btnPrevSimilares.addEventListener("click", () => {
+      listaSimilares.scrollBy({
+        left: -305, // largura do card (280) + gap (25)
+        behavior: 'smooth'
+      });
+    });
+
+    btnNextSimilares.addEventListener("click", () => {
+      listaSimilares.scrollBy({
+        left: 305,
+        behavior: 'smooth'
+      });
+    });
 
   } catch (error) {
     console.error("❌ Erro ao carregar similares:", error);
-    listaSimilares.innerHTML = '<p style="text-align: center; color: #999; grid-column: 1 / -1;">Erro ao carregar imóveis similares.</p>';
+    similaresSectionEl.innerHTML = '<h2>Imóveis similares</h2><p style="text-align: center; color: #999;">Erro ao carregar imóveis similares.</p>';
   }
 }
 
