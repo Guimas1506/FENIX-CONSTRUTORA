@@ -43,7 +43,7 @@ header{
     align-items: center;
     width: 100%;
     height: 70px;
-    background-color: #F70D1A;
+    background-color: #FE4F3F;
     z-index: 1;
 
     
@@ -190,15 +190,31 @@ header{
 
 
 
+
 .menu-icon {
   top: 20px;
   right: 20px;
-  border: none;
   font-size: 24px;
   padding: 10px 14px;
   border-radius: 8px;
   cursor: pointer;
   z-index: 1000;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin: auto;
+  border: none;
+  transition: 0.3s all;
+  
+}
+
+
+
+.menu-icon img{
+  display: flex;
+  width: 30px;
+  height: 30px;
 }
 
 /* Menu lateral */
@@ -304,6 +320,17 @@ header{
     justify-content: end;
     margin-left: 60px;
   }
+
+  .barra{
+    display: none;
+  }
+
+
+  .displau-subs{
+    display: none;
+  }
+
+
 
 
 }
