@@ -63,7 +63,7 @@ a{
 
 .contatos{
     width: 80%;
-    height: 350px;
+    height: 100%;
     display: flex;
     justify-content: center;
 
@@ -255,7 +255,18 @@ a{
  
     .rodape{
         display: flex;
+        height: 110vh;
     }
+
+    .contatos{
+        flex-direction: column;
+        height: 60%;
+    }
+
+    .direitos-reservados{
+        text-align: center;
+    }
+
     
 }
 

@@ -1,6 +1,4 @@
-
-
-:root{
+:root {
     --Cor-Primaria: #FE4F3F;
     --Cor-Secundaria: #000000;
     --Cor-Terciaria: #7C7C7C;
@@ -11,7 +9,7 @@ body {
     margin: 0;
     font-family: "Inter", sans-serif;
     background: #ffffff;
-background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 45%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 45%);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -24,10 +22,12 @@ background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 
 
 /*AQUI TERMINA AS CONFIGURAÇOES DO LOGIN*/
 
- .barrinha hr{
+.barrinha hr {
     height: 20px;
-}/*AQUI É A BARRINHA BRANCA DO NAVBAR QUE SEPARA AS ABAS DO LOGIN*/
-main{
+}
+
+/*AQUI É A BARRINHA BRANCA DO NAVBAR QUE SEPARA AS ABAS DO LOGIN*/
+main {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,94 +35,102 @@ main{
     width: 100%;
     margin-bottom: 150px;
 }
+
 /* registro */
 
-.titulos1{
-  margin-top: 10px;
-  
+.titulos1 {
+    margin-top: 10px;
+
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     text-align: center;
-   color: #F65B38; 
-   font-family: inter;
-margin-bottom: 10px;
+    color: #F65B38;
+    font-family: inter;
+    margin-bottom: 10px;
 
 }
 
-.titulos1 h3{
-width: 100%;   
-}
-.titulos1 h1{
-font-size: 60px;    
-}
-.titulos1 img{
-width: 60px; 
-height: 60px;   
-margin-bottom:15px;
-}
-form{
-display: flex;
-flex-direction: column;    
-width: 25%;
-color: white;
+.titulos1 h3 {
+    width: 100%;
 }
 
-form a{
+.titulos1 h1 {
+    font-size: 60px;
+}
+
+.titulos1 img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    color: white;
+}
+
+form a {
     color: #F65B38;
 }
-label{
-margin-bottom: 15px;    
+
+label {
+    margin-bottom: 15px;
 }
-input{
-margin-bottom: 30px;    
-border-radius: 5px;
-height: 30px;
-border:solid,#6A6161,2px ;
+
+input {
+    margin-bottom: 30px;
+    border-radius: 5px;
+    height: 30px;
+    border: solid, #6A6161, 2px;
 
 }
-.esqueceuasenha{
+
+.esqueceuasenha {
     margin-left: 5px;
 }
-.barras{
-width: 100%;    
-display: flex;
-flex-direction: row;
 
-align-items: center;
-justify-content: center;
-flex-direction: row;
+.barras {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
 
 }
 
-.barra hr{
+.barra hr {
     height: 20px;
 }
 
 
-.barrinha{
-    height:5px;
-width: 25%;
-background-color: white;    
-margin-right:5px;
-margin-left: 5px;
+.barrinha {
+    height: 5px;
+    width: 25%;
+    background-color: white;
+    margin-right: 5px;
+    margin-left: 5px;
 }
 
-.opcoes-login{
+.opcoes-login {
     width: 100%;
     height: 55px;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;   
+    align-items: center;
 
     position: relative;
-    
+
 
 }
 
-.btn-google{
+.btn-google {
     width: 75%;
     height: 70%;
     display: flex;
@@ -133,7 +141,8 @@ margin-left: 5px;
     border-radius: 15px;
     background-color: white;
 }
-.btn-google p{
+
+.btn-google p {
     margin-left: 10px;
     font-size: 2vb;
     color: black;
@@ -141,10 +150,10 @@ margin-left: 5px;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    
+
 }
 
-#not-cont{
+#not-cont {
     width: 100%;
     height: 5vh;
     align-items: center;
@@ -152,7 +161,7 @@ margin-left: 5px;
     display: flex;
 }
 
-.opcoes-login img{
+.opcoes-login img {
     width: 25px;
     height: 25px;
     cursor: pointer;
@@ -162,18 +171,19 @@ margin-left: 5px;
     margin-right: 0;
     margin-left: 0;
 }
-.opcoes-login img:hover{
+
+.opcoes-login img:hover {
     transform: scale(1.1);
 }
 
 
-.termos{
+.termos {
     height: 50px;
-display: flex;
-flex-direction: row;    
-justify-content: center;
-align-items: center;
-text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 
 }
 
@@ -195,18 +205,21 @@ text-align: center;
 .btn-entrar:hover {
     background-color: #d94e32;
 }
-.registrar{
- text-align: center;   
+
+.registrar {
+    text-align: center;
 
 }
+
 /* pop up de login */
- 
+
 /* footer */
 
-footer{
-width: 100%;    
+footer {
+    width: 100%;
 }
-.rodape{
+
+.rodape {
     width: 100%;
     height: 500px;
     display: flex;
@@ -214,26 +227,27 @@ width: 100%;
     align-items: center;
     background-color: black;
     flex-direction: column;
- 
+
 
 }
+
 /* AQUI TERMINA A PARTE CENTRAL DO RODAPÉ*/
 
 
-.foot-logo{
+.foot-logo {
     width: 90%;
     height: 80px;
     display: flex;
-  
+
     align-items: center;
 }
 
-.foot-logo img{
+.foot-logo img {
     width: 70px;
     height: 70px;
 }
 
-.contatos{
+.contatos {
     width: 80%;
     height: 350px;
     display: flex;
@@ -241,7 +255,7 @@ width: 100%;
 
 }
 
-.titulos{
+.titulos {
     width: 100%;
     height: 100%;
     display: flex;
@@ -250,7 +264,7 @@ width: 100%;
     flex-direction: column;
 }
 
-.titulo{
+.titulo {
     width: 160px;
     height: 30px;
 
@@ -262,7 +276,7 @@ width: 100%;
     font-weight: 700;
 }
 
-.subtitle{
+.subtitle {
     width: 160px;
     height: 25px;
 
@@ -276,33 +290,33 @@ width: 100%;
 
 
 
-.cont1{
+.cont1 {
     width: 300px;
     height: 270px;
-  
+
     display: flex;
     align-items: center;
     margin: auto;
     flex-direction: column;
 }
 
-.cont-title1{
+.cont-title1 {
     width: 200px;
     height: 30px;
 
     color: white;
-    display:  flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
 }
 
-.conte{
+.conte {
     display: flex;
     flex-direction: row;
 }
 
-.icon{
+.icon {
     width: 40px;
     height: 40px;
 
@@ -311,7 +325,7 @@ width: 100%;
     align-items: center;
 }
 
-.icon img{
+.icon img {
     width: 30px;
     height: 30px;
     filter: grayscale(100%);
@@ -323,7 +337,7 @@ width: 100%;
     transform: rotateZ(360deg);
 }
 
-.rede{
+.rede {
     width: 140px;
     height: 40px;
 
@@ -332,48 +346,14 @@ width: 100%;
     align-items: center;
 }
 
-.rede p{
+.rede p {
     font-size: 15px;
     font-weight: 500;
 }
 
 /* AQUI TERMINA O CONTATO 1 */
 
-.cont2{
-    width: 300px;
-    height: 270px;
- 
-    display: flex;
-    align-items: center;
-    margin: auto;
-    flex-direction: column;
-}
-
-.titulo2{
-    width: 200px;
-    height: 30px;
- 
-    color: white;
-    display:  flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-}
-
-.abins{
-    display: flex;
-    flex-direction: column;
-    color: white;
-    align-items: center;
-}
-
-.abins p{
-
-    font-weight: 500;
-
-}
-
-.cont3{
+.cont2 {
     width: 300px;
     height: 270px;
 
@@ -383,77 +363,118 @@ width: 100%;
     flex-direction: column;
 }
 
-.titulo3{
+.titulo2 {
     width: 200px;
     height: 30px;
 
     color: white;
-    display:  flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
 }
 
-.produts{
+.abins {
     display: flex;
     flex-direction: column;
     color: white;
     align-items: center;
 }
 
-.produts p{
+.abins p {
 
     font-weight: 500;
 
 }
 
-    /* ====== POPUP ====== */
-    .popup {
-      display: none;
-      position: fixed;
-      z-index: 9999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.6);
-      justify-content: center;
-      align-items: center;
+.cont3 {
+    width: 300px;
+    height: 270px;
+
+    display: flex;
+    align-items: center;
+    margin: auto;
+    flex-direction: column;
+}
+
+.titulo3 {
+    width: 200px;
+    height: 30px;
+
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.produts {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-items: center;
+}
+
+.produts p {
+
+    font-weight: 500;
+
+}
+
+/* ====== POPUP ====== */
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    font-family: 'inter', sans-serif;
+    max-width: 400px;
+    width: 80%;
+    position: relative;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.popup-content p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
     }
 
-    .popup-content {
-      background: #fff;
-      padding: 20px 30px;
-      border-radius: 12px;
-      box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
-      text-align: center;
-      font-family: 'inter', sans-serif;
-      max-width: 400px;
-      width: 80%;
-      position: relative;
-      animation: fadeIn 0.3s ease-in-out;
+    to {
+        opacity: 1;
+        transform: scale(1);
     }
-
-    .popup-content p {
-      margin: 0;
-      font-size: 16px;
-      color: #333;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 22px;
-      font-weight: bold;
-      color: #333;
-      cursor: pointer;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
-    }
+}
 
 /* Responsividade geral */
 @media (max-width: 1200px) {
@@ -462,7 +483,10 @@ width: 100%;
         height: auto;
         align-items: center;
     }
-    .cont1, .cont2, .cont3 {
+
+    .cont1,
+    .cont2,
+    .cont3 {
         width: 90%;
         margin-bottom: 30px;
         height: auto;
@@ -475,6 +499,7 @@ width: 100%;
         height: auto;
         padding: 30px 0;
     }
+
     .foot-logo {
         flex-direction: column;
         height: auto;
@@ -486,9 +511,11 @@ width: 100%;
     .titulos1 h1 {
         font-size: 36px;
     }
+
     form {
         width: 90%;
     }
+
     .opcoes-login img {
         margin-right: 15px;
         width: 24px;
@@ -498,11 +525,9 @@ width: 100%;
     .rodape {
         padding: 20px 0;
     }
+
     .contatos {
         width: 100%;
         padding: 0 10px;
     }
 }
-
-
-
