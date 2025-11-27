@@ -350,3 +350,103 @@ main{
     width: 140px;
     height: auto;
 }
+
+
+
+@media screen and (max-width: 480px) {
+
+    #config-button1 {
+        border-radius: 30px;
+        align-items: center;
+        justify-content: center;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    #config-button1 img {
+        margin: 0;
+    }
+
+
+    #config-button1 p {
+        display: none;
+    }
+
+
+    #config-button2 {
+        border-radius: 30px;
+        align-items: center;
+        justify-content: center;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    #config-button2 img {
+        margin: 0;
+    }
+
+    #config-button2 p {
+        display: none;
+    }
+
+
+
+    #config-button4 {
+        border-radius: 30px;
+        align-items: center;
+        justify-content: center;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    #config-button4 img {
+        margin: 0;
+    }
+
+    #config-button4 p {
+        display: none;
+    }
+
+
+    .title-dads{
+      height: 50px;
+    }
+
+    .info-container{
+      width: 90%;
+    }
+
+
+    .info-item{
+      width: 95%;
+    }
+
+
+
+    .info-header{
+      width: 85%;
+    }
+
+
+    .excluir{
+      width: 90%;
+      height: 40vh;
+
+    }
+
+    .det-sub{
+      width: 80%;
+      height: 45%;
+      margin-top: 10px;
+    }
+
+    .image-excluir{
+      display: none;
+    }
+
+    .btn-exc{
+      height: 20%;
+      margin-top: 10px;
+    }
+}
+

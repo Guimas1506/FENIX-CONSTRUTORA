@@ -325,3 +325,32 @@ main{
     color: var(--Cor-Secundaria);
     font-size: 35px;
 }
+
+
+@media screen and (max-width: 480px){
+    .conteud{
+        display: flex;
+        margin-top: 20px;
+        flex-direction: column;
+    }
+
+    aside{
+        width: 100%;
+        flex-direction: row;
+        height: 20%;
+
+    }
+
+    .menu{
+        flex-direction: row;
+        
+    }
+
+        .back{
+            width: 30%;
+    }
+
+    
+}
+
+

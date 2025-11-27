@@ -3,11 +3,14 @@
 
 /* body .bg-eagle {
   /* caminho relativo ao seu projeto */
-  /* background-image: url("../img/Mask\ group.png"); */
-  /* background-repeat: no-repeat; */
-  /* background-position: right bottom; */ /* canto inferior direito */
-  /* background-size: 40% auto; */ /* ajusta o tamanho; use 'cover' se preferir cobrir tudo */
-  /* background-attachment: fixed; */ /* fica fixo ao rolar a página */
+/* background-image: url("../img/Mask\ group.png"); */
+/* background-repeat: no-repeat; */
+/* background-position: right bottom; */
+/* canto inferior direito */
+/* background-size: 40% auto; */
+/* ajusta o tamanho; use 'cover' se preferir cobrir tudo */
+/* background-attachment: fixed; */
+/* fica fixo ao rolar a página */
 /* } */
 
 /* responsividade: reduz a imagem em telas pequenas */
@@ -16,28 +19,28 @@
 } */
 
 
-html{
+html {
     overflow-x: hidden;
     box-shadow: none;
-    
+
 }
 
 body {
     margin: 0;
     padding: 0;
     font-family: "Inter", sans-serif;
-    
+
 }
 
-body::-webkit-scrollbar{
+body::-webkit-scrollbar {
     display: none;
 }
 
-*{
+* {
     box-sizing: border-box;
 }
 
-:root{
+:root {
     --Cor-Primaria: #FE4F3F;
     --Cor-Secundaria: #000000;
     --Cor-Terciaria: #7C7C7C;
@@ -47,7 +50,7 @@ body::-webkit-scrollbar{
 
 
 
-#config-button1{
+#config-button1 {
     width: 100%;
     height: 22%;
     display: flex;
@@ -62,13 +65,13 @@ body::-webkit-scrollbar{
 }
 
 
-#config-button1 p{
+#config-button1 p {
     font-size: 16px;
     font-weight: 700;
     margin-left: 10px;
 }
 
-#config-button1 img{
+#config-button1 img {
     width: auto;
     height: 65%;
     display: flex;
@@ -79,7 +82,7 @@ body::-webkit-scrollbar{
 
 
 
-#config-button2{
+#config-button2 {
     width: 100%;
     height: 22%;
     display: flex;
@@ -91,10 +94,10 @@ body::-webkit-scrollbar{
     border-color: white;
     transition: 0.5s;
     margin-bottom: 10px;
-    
+
 }
 
-#config-button2:hover{
+#config-button2:hover {
     border: solid 1px rgb(192, 192, 192);
     transition: 0.5s;
     border-left: none;
@@ -102,13 +105,13 @@ body::-webkit-scrollbar{
 }
 
 
-#config-button2 p{
+#config-button2 p {
     font-size: 14px;
     font-weight: 700;
     margin-left: 8px;
-}   
+}
 
-#config-button2 img{
+#config-button2 img {
     width: auto;
     height: 60%;
     display: flex;
@@ -119,7 +122,7 @@ body::-webkit-scrollbar{
 }
 
 
-#config-button3{
+#config-button3 {
     width: 100%;
     height: 22%;
     display: flex;
@@ -132,7 +135,7 @@ body::-webkit-scrollbar{
     transition: 0.5s;
 }
 
-#config-button3:hover{
+#config-button3:hover {
     border: solid 1px var(--Cor-Terciaria);
     transition: 0.5s;
     border-left: none;
@@ -140,13 +143,13 @@ body::-webkit-scrollbar{
 }
 
 
-#config-button3 p{
+#config-button3 p {
     font-size: 16px;
     font-weight: 700;
     margin-left: 10px;
 }
 
-#config-button3 img{
+#config-button3 img {
     width: auto;
     height: 60%;
     display: flex;
@@ -155,7 +158,7 @@ body::-webkit-scrollbar{
     margin-left: 5px;
 }
 
-#config-button4{
+#config-button4 {
     width: 100%;
     height: 22%;
     display: flex;
@@ -168,7 +171,7 @@ body::-webkit-scrollbar{
     transition: 0.5s;
 }
 
-#config-button4:hover{
+#config-button4:hover {
     border: solid 1px var(--Cor-Terciaria);
     transition: 0.5s;
     border-left: none;
@@ -176,13 +179,13 @@ body::-webkit-scrollbar{
 
 }
 
-#config-button4 p{
+#config-button4 p {
     font-size: 14px;
     font-weight: 700;
     margin-left: 8px;
 }
 
-#config-button4 img{
+#config-button4 img {
     width: auto;
     height: 60%;
     display: flex;
@@ -194,7 +197,7 @@ body::-webkit-scrollbar{
 
 /*AQUI COMEÇA A PARTE PRINCIPAL DO SITE*/
 
-.conteud1{
+.conteud1 {
     width: 100%;
     height: 57vh;
     display: flex;
@@ -203,7 +206,7 @@ body::-webkit-scrollbar{
     justify-content: center;
 }
 
-.conteud-user{
+.conteud-user {
     width: 100%;
     height: 40vh;
     display: flex;
@@ -212,13 +215,13 @@ body::-webkit-scrollbar{
     justify-content: center;
 }
 
-.conteud-user h2{
+.conteud-user h2 {
     color: var(--Cor-Secundaria);
     margin-top: 0;
     margin-bottom: 0;
 }
 
-.conteud-user img{
+.conteud-user img {
     width: 200px;
     height: 200px;
     display: flex;
@@ -226,19 +229,19 @@ body::-webkit-scrollbar{
     margin-bottom: 0;
 }
 
-.conteud-search{
+.conteud-search {
     width: 100%;
     height: 9vh;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center ;
+    justify-content: center;
     margin-top: 10px;
 }
 
 
 
-.search{
+.search {
     width: 35%;
     height: 100%;
     border: solid 1px var(--Cor-Terciaria);
@@ -246,15 +249,15 @@ body::-webkit-scrollbar{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center ;
+    justify-content: center;
 }
 
-.search img{
+.search img {
     width: 30px;
     height: 30px;
 }
 
-#sabadou{
+#sabadou {
     width: 80%;
     height: 100%;
     border: none;
@@ -265,7 +268,7 @@ body::-webkit-scrollbar{
 }
 
 
-.conteud-atalho{
+.conteud-atalho {
     width: 100%;
     height: 30%;
     display: flex;
@@ -277,7 +280,7 @@ body::-webkit-scrollbar{
 }
 
 
-.icon1{
+.icon1 {
     width: 10%;
     height: 100%;
     border-radius: 20px;
@@ -288,18 +291,18 @@ body::-webkit-scrollbar{
     margin-top: 0;
 }
 
-.icon1 img{
+.icon1 img {
     width: 40px;
     height: 40px;
     transition: 0.3s;
 }
 
-.icon1 img:hover{
+.icon1 img:hover {
     cursor: pointer;
     scale: 1.1;
 }
 
-.icon1 p{
+.icon1 p {
     font-size: 14px;
     color: var(--Cor-Secundaria);
     margin-top: 5px;
@@ -327,7 +330,7 @@ body::-webkit-scrollbar{
     transition: 0.3s;
 }
 
-.icon2 img:hover{
+.icon2 img:hover {
     cursor: pointer;
     scale: 1.1;
 }
@@ -351,16 +354,16 @@ body::-webkit-scrollbar{
     justify-content: center;
     margin-top: 0;
     margin-left: 20px;
-   
+
 }
 
 .icon3 img {
     width: 40px;
     height: 40px;
-     transition: 0.3s;
+    transition: 0.3s;
 }
 
-.icon3 img:hover{
+.icon3 img:hover {
     cursor: pointer;
     scale: 1.1;
 }
@@ -375,7 +378,7 @@ body::-webkit-scrollbar{
 }
 
 
-.big-btn{
+.big-btn {
     width: 90%;
     height: 60vh;
     display: flex;
@@ -388,7 +391,7 @@ body::-webkit-scrollbar{
     gap: 2rem;
 }
 
-.card-info1{
+.card-info1 {
     width: 40%;
     height: 90%;
     display: flex;
@@ -400,12 +403,13 @@ body::-webkit-scrollbar{
     transition: 0.3s;
 }
 
-.card-info1:hover{
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;    transition: 0.5s;
+.card-info1:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    transition: 0.5s;
     border: none;
 }
 
-.title-info1{
+.title-info1 {
     width: 90%;
     height: 30%;
     display: flex;
@@ -416,7 +420,7 @@ body::-webkit-scrollbar{
     color: var(--Cor-Secundaria);
 }
 
-.sub-info1{
+.sub-info1 {
     width: 100%;
     height: 70%;
     display: flex;
@@ -425,7 +429,7 @@ body::-webkit-scrollbar{
     justify-content: center;
 }
 
-.sub-info1 p{
+.sub-info1 p {
     width: 45%;
     height: 70%;
     display: flex;
@@ -433,7 +437,7 @@ body::-webkit-scrollbar{
     margin-right: 10px;
 }
 
-.sub-info1 img{
+.sub-info1 img {
     width: 40%;
     height: auto;
     display: flex;
@@ -441,12 +445,12 @@ body::-webkit-scrollbar{
 
 }
 
-#linha-info1{
+#linha-info1 {
     width: 100%;
 }
 
 
-.btn-info1{
+.btn-info1 {
     width: 100%;
     height: 15%;
     display: flex;
@@ -457,7 +461,7 @@ body::-webkit-scrollbar{
     margin-top: 0;
 }
 
-.btn-info1 a{
+.btn-info1 a {
     font-size: 15px;
     color: var(--Cor-Secundaria);
     font-weight: 400;
@@ -484,7 +488,7 @@ body::-webkit-scrollbar{
 }
 
 .card-info2:hover {
-   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     transition: 0.5s;
     border: none;
 }
@@ -568,7 +572,7 @@ body::-webkit-scrollbar{
 }
 
 .card-info3:hover {
-   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     transition: 0.5s;
     border: none;
 }
@@ -638,22 +642,23 @@ body::-webkit-scrollbar{
 #user-photo,
 .conteud-user img,
 .user-photo {
-  width: 120px !important;
-  height: 120px !important;
-  display: block !important;
-  border-radius: 50% !important;
-  object-fit: cover !important;   /* corta e centraliza */
-  overflow: hidden !important;
-  border: 2px solid #fff !important;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.12) !important;
+    width: 120px !important;
+    height: 120px !important;
+    display: block !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    /* corta e centraliza */
+    overflow: hidden !important;
+    border: 2px solid #fff !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12) !important;
 }
 
 /* versão menor (ex.: ícones) */
 .avatar-sm {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 /* força avatar redondo e sobrescreve regras conflitantes */
@@ -661,46 +666,140 @@ body::-webkit-scrollbar{
 .conteud-user img#user-photo,
 .conteud-user .image-user,
 .image-user#user-photo {
-  width: 200px !important;
-  height: 200px !important;
-  display: block !important;
-  border-radius: 50% !important;
-  object-fit: cover !important;
-  overflow: hidden !important;
-  border: 2px solid #fff !important;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.12) !important;
+    width: 200px !important;
+    height: 200px !important;
+    display: block !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    overflow: hidden !important;
+    border: 2px solid #fff !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12) !important;
 }
 
 /* Se a foto estiver em um wrapper (div com background-image) */
 .photo-wrapper,
 .user-photo-wrapper {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  overflow: hidden;
-  display: inline-block;
-  background-size: cover;
-  background-position: center;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: inline-block;
+    background-size: cover;
+    background-position: center;
 }
 
 /* versão menor */
 .avatar-sm {
-  width: 40px !important;
-  height: 40px !important;
-  border-radius: 50% !important;
-  object-fit: cover !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
 }
 
 #remove-photo-btn {
-  margin-top: 8px;
-  padding: 6px 10px;
-  background: transparent;
-  border: 1px solid #e74c3c;
-  color: #e74c3c;
-  border-radius: 6px;
-  cursor: pointer;
+    margin-top: 8px;
+    padding: 6px 10px;
+    background: transparent;
+    border: 1px solid #e74c3c;
+    color: #e74c3c;
+    border-radius: 6px;
+    cursor: pointer;
 }
+
 #remove-photo-btn:disabled {
-  opacity: 0.6;
-  cursor: default;
+    opacity: 0.6;
+    cursor: default;
+}
+
+
+@media screen and (max-width: 480px) {
+
+    #config-button1 {
+        border-radius: 30px;
+        align-items: center;
+        justify-content: center;
+        margin-left: 10px;
+        margin-right: 10px;
+        height: 100%;
+    }
+
+    #config-button1 img {
+        margin: 0;
+    }
+
+
+    #config-button1 p {
+        display: none;
+    }
+
+
+    #config-button2 {
+        border-radius: 30px;
+        align-items: center;
+        justify-content: center;
+        margin-left: 10px;
+        margin-right: 10px;
+                height: 100%;
+    }
+
+    #config-button2 img {
+        margin: 0;
+    }
+
+    #config-button2 p {
+        display: none;
+    }
+
+
+
+    #config-button4 {
+        border-radius: 30px;
+        align-items: center;
+        justify-content: center;
+        margin-left: 10px;
+        margin-right: 10px;
+                height: 100%;
+    }
+
+    #config-button4 img {
+        margin: 0;
+    }
+
+    #config-button4 p {
+        display: none;
+    }
+
+
+    .conteud1{
+        margin-top: 30px;
+    }
+
+    .search{
+        width: 80%;
+    }
+
+
+
+    .icon1{
+        margin-right: 50px;
+    }
+
+    .big-btn{
+        height: 120vh;
+        flex-direction: column;
+    }
+
+    .card-info1{
+        width: 95%;
+        margin: 0;
+        height: 40%;
+        margin-top: 20px;
+    }
+
+    .card-info2{
+        width: 95%;
+        margin: 0;
+        height: 40%;
+        margin-top: 20px;        
+    }
 }

@@ -172,3 +172,65 @@ body::-webkit-scrollbar{
     justify-content: center;
     margin-left: 5px;
 }
+
+
+
+@media screen and (max-width: 480px) {
+
+    #config-button1 {
+        border-radius: 30px;
+        align-items: center;
+        justify-content: center;
+        margin-left: 10px;
+        margin-right: 10px;
+        height: 100%;
+    }
+
+    #config-button1 img {
+        margin: 0;
+    }
+
+
+    #config-button1 p {
+        display: none;
+    }
+
+
+    #config-button2 {
+        border-radius: 30px;
+        align-items: center;
+        justify-content: center;
+        margin-left: 10px;
+        margin-right: 10px;
+                height: 100%;
+    }
+
+    #config-button2 img {
+        margin: 0;
+    }
+
+    #config-button2 p {
+        display: none;
+    }
+
+
+
+    #config-button4 {
+        border-radius: 30px;
+        align-items: center;
+        justify-content: center;
+        margin-left: 10px;
+        margin-right: 10px;
+                height: 100%;
+    }
+
+    #config-button4 img {
+        margin: 0;
+    }
+
+    #config-button4 p {
+        display: none;
+    }
+
+
+}
