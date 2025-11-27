@@ -182,6 +182,113 @@ window.validarSenha = function() {
   else if (nivel === 3) barraImg.src = "./img/senha-forte.png";
 };
 
+// ==================== FUNÇÃO PARA MOSTRAR SETA ====================
+function mostrarSetaRequisitos() {
+  // Remove seta existente se houver
+  const setaExistente = document.querySelector('.seta-requisitos');
+  if (setaExistente) {
+    setaExistente.remove();
+  }
+  
+  const infoIcon = document.getElementById("infoIcon");
+  if (!infoIcon) return;
+  
+  // Cria a seta
+  const seta = document.createElement('div');
+  seta.className = 'seta-requisitos';
+  seta.innerHTML = `
+    <div class="seta-animada">
+      <span class="texto-seta">Veja os requisitos aqui!</span>
+      <span class="seta-simbolo">→</span>
+    </div>
+  `;
+  
+  // Adiciona CSS inline para a seta
+  const style = document.createElement('style');
+  style.textContent = `
+    .seta-requisitos {
+      position: absolute;
+      bottom: -30px;
+      right: 45px;
+      z-index: 150;
+      pointer-events: none;
+    }
+    
+    .seta-animada {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .texto-seta {
+      background: #FF0000;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      white-space: nowrap;
+      box-shadow: 0 4px 15px rgba(255, 0, 0, 0.5);
+      animation: pulseBg 1.5s ease-in-out infinite;
+    }
+    
+    .seta-simbolo {
+      color: #FF0000;
+      font-size: 35px;
+      font-weight: bold;
+      animation: pulseArrow 1s ease-in-out infinite;
+      text-shadow: 0 2px 8px rgba(255, 0, 0, 0.5);
+    }
+    
+    @keyframes pulseArrow {
+      0%, 100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      50% {
+        transform: translateX(8px);
+        opacity: 0.7;
+      }
+    }
+    
+    @keyframes pulseBg {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+  `;
+  
+  document.head.appendChild(style);
+  
+  // Adiciona a seta ao container da senha
+  const senhaContainer = document.querySelector('.senha-container');
+  if (senhaContainer) {
+    senhaContainer.appendChild(seta);
+    
+    // Força o tooltip a aparecer
+    const tooltip = document.querySelector('.tooltip');
+    if (tooltip) {
+      tooltip.style.display = 'block';
+    }
+    
+    // Remove a seta após 6 segundos
+    setTimeout(() => {
+      seta.style.transition = 'opacity 0.5s ease';
+      seta.style.opacity = '0';
+      setTimeout(() => {
+        seta.remove();
+        style.remove();
+        if (tooltip) {
+          tooltip.style.display = '';
+        }
+      }, 500);
+    }, 6000);
+  }
+}
+
 // ==================== REGISTRO DE USUÁRIO ====================
 window.registerUser = async function(event) {
   event.preventDefault();
@@ -200,8 +307,15 @@ window.registerUser = async function(event) {
     return;
   }
 
+  // Verifica se a senha atende aos requisitos
   if (!(letrasCount >= 6 && temEspecial && semEspacos)) {
-    alert("A senha deve ter no mínimo 6 letras, pelo menos 1 caractere especial e não pode conter espaços!");
+    // Mostra a seta apontando para os requisitos
+    mostrarSetaRequisitos();
+    
+    alert("A senha não atende aos requisitos mínimos!\n\n✓ Mínimo de 6 letras\n✓ Pelo menos 1 caractere especial\n✓ Não pode conter espaços\n\nVeja os detalhes no botão 'i' vermelho abaixo do campo de senha.");
+    
+    // Foca no campo de senha
+    document.getElementById("password").focus();
     return;
   }
 
