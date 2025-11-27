@@ -416,22 +416,61 @@ footer {
 
 
 @media screen and (max-width: 480px) {
-    .faleconosco {
-        display: none;
+
+
+    .titulopesquisa{
+        justify-content: center;
+        width: 100%;
+        align-items: center;
+        justify-content: start;
     }
 
-    .titulopesquisa {
-        display: none;
+    .titulopesquisa h1{
+        justify-content: center;
+        margin: 0;
     }
 
     .imagemprincipal {
+        display: none;
+    }
+
+    .imagemprincipal2{
+                width: 100%;
+        height: 40vh;
+        
         margin-top: 30px;
         margin-bottom: 30px;
         object-fit: cover;
     }
 
-    .artigos {
-        display: none;
+    .texto1{
+        width: 90%;
+        font-size: 14px;
+        font-weight: 150;
+    }
+
+    .conteud{
+        width: 100%;
+        display: flex;
+        margin: auto;
+        margin: 0;
+    }
+
+    .atendimentos{
+        width: 100%;
+        align-items: center;
+        margin: 0;
+        margin: 30px;
+        
+    }
+
+    .atendimentos h1{
+        width: 100%;
+    }
+
+    #subtext1{
+        width: 100%;
+        font-size: 15px;
     }
 
     .contatos1 {
