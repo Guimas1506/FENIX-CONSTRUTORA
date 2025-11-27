@@ -1476,6 +1476,9 @@ video::-moz-media-controls {
     .aplic-video {
         width: 100%;
         margin: 0;
+        margin-bottom: 0;
+        height: 30%;
+        border: solid;
    
     }
 
@@ -1485,6 +1488,7 @@ video::-moz-media-controls {
 
         margin: 0;
         align-items: center;
+        border: solid;
     }
 
     .text-number-one {
