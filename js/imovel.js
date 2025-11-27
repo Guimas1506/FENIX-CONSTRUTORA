@@ -151,11 +151,7 @@ if (btnLogoutModal) {
   });
 }
 
-// ==================== RESTO DO CÓDIGO (CONTINUA NO PRÓXIMO ARTIFACT) ==================== 
-// Todo o código de favoritar, filtros, carregar imóveis, etc permanece IGUAL ao arquivo original
-// Copie e cole todo o restante do seu arquivo imovel.js original a partir daqui:
-
-// FUNÇÃO DE FAVORITAR
+// ==================== FUNÇÃO DE FAVORITAR ====================
 window.toggleFavorito = async function(event, id) {
   event.stopPropagation();
   event.preventDefault();
@@ -396,14 +392,7 @@ async function carregarTodosImoveis() {
     return;
   }
   
-  container.style.cssText = `
-    display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important;
-    gap: 25px !important;
-    padding: 30px !important;
-    width: 95% !important;
-    margin: 0 auto !important;
-  `;
+  // REMOVIDO: Não aplicar estilos inline aqui - deixar o CSS controlar
   
   try {
     container.innerHTML = '<p style="text-align: center; padding: 20px; font-size: 18px; grid-column: 1 / -1; color: #666;">⏳ Carregando imóveis...</p>';
@@ -457,68 +446,37 @@ function exibirMaisImoveis(quantidade) {
     const card = document.createElement('div');
     card.className = 'imovel-card-usuario';
     
-    card.style.cssText = `
-      background: white !important;
-      border-radius: 12px !important;
-      overflow: hidden !important;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1) !important;
-      transition: all 0.3s ease !important;
-      display: flex !important;
-      flex-direction: column !important;
-      cursor: pointer !important;
-    `;
+    // REMOVIDO: Estilos inline - deixar o CSS controlar completamente
     
     card.innerHTML = `
       <div style="position: relative;">
         <img src="${imovel.imagemURL || './img/logo1.png'}" 
              alt="${imovel.nome}"
-             onerror="this.src='./img/logo1.png'"
-             style="width: 100%; height: 200px; object-fit: cover; display: block;">
+             onerror="this.src='./img/logo1.png'">
         
         <button onclick="toggleFavorito(event, '${imovelId}')" 
                 class="btn-favorito" 
                 id="fav-${imovelId}"
-                style="position: absolute; top: 10px; right: 10px; background: ${isFavorited ? '#FFE5E5' : 'rgba(255,255,255,0.95)'}; border: 2px solid ${isFavorited ? '#FF0000' : '#FE4F3F'}; border-radius: 50%; width: 42px; height: 42px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 22px; transition: all 0.3s ease; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
+                style="background: ${isFavorited ? '#FFE5E5' : 'rgba(255,255,255,0.95)'}; border-color: ${isFavorited ? '#FF0000' : '#FE4F3F'};">
           <span style="color: ${isFavorited ? '#FF0000' : '#FE4F3F'};">${isFavorited ? '♥' : '♡'}</span>
         </button>
       </div>
       
-      <div style="padding: 15px; flex: 1; display: flex; flex-direction: column;">
-        <h3 style="margin: 0 0 10px 0; color: #FE4F3F; font-size: 1.2em; font-weight: 700;">
-          ${imovel.nome || 'Sem nome'}
-        </h3>
-        <p style="margin: 5px 0; color: #333; font-size: 0.95em;">
-          📍 ${imovel.cidade || 'N/A'} - ${imovel.uf || ''}
-        </p>
-        <p style="margin: 5px 0; color: #333; font-size: 0.95em;">
-          💰 R$ ${Number(imovel.preco || 0).toLocaleString('pt-BR')}
-        </p>
-        <p style="margin: 5px 0; color: #333; font-size: 0.95em;">
-          📏 ${imovel.areas || 0}m²
-        </p>
-        <div style="display: flex; gap: 12px; margin: 10px 0; padding: 10px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee;">
-          <span style="font-size: 0.9em; color: #666;">🛏️ ${imovel.quartos || 0}</span>
-          <span style="font-size: 0.9em; color: #666;">🚗 ${imovel.vagas || 0}</span>
-          <span style="font-size: 0.9em; color: #666;">🚿 ${imovel.banheiros || 0}</span>
+      <div class="card-content">
+        <h3>${imovel.nome || 'Sem nome'}</h3>
+        <p>📍 ${imovel.cidade || 'N/A'} - ${imovel.uf || ''}</p>
+        <p>💰 R$ ${Number(imovel.preco || 0).toLocaleString('pt-BR')}</p>
+        <p>📏 ${imovel.areas || 0}m²</p>
+        <div class="card-detalhes">
+          <span>🛏️ ${imovel.quartos || 0}</span>
+          <span>🚗 ${imovel.vagas || 0}</span>
+          <span>🚿 ${imovel.banheiros || 0}</span>
         </div>
-        <button onclick="window.location.href='detalhes.html?id=${imovelId}'" 
-                style="width: 100%; padding: 12px; margin-top: auto; background: #FE4F3F; color: white; border: none; border-radius: 8px; font-size: 1em; font-weight: 600; cursor: pointer; transition: background 0.3s ease;"
-                onmouseover="this.style.background='#e63e2e'"
-                onmouseout="this.style.background='#FE4F3F'">
+        <button onclick="window.location.href='detalhes.html?id=${imovelId}'">
           Ver Detalhes
         </button>
       </div>
     `;
-    
-    card.addEventListener('mouseenter', () => {
-      card.style.transform = 'translateY(-5px)';
-      card.style.boxShadow = '0 8px 20px rgba(0,0,0,0.15)';
-    });
-    
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'translateY(0)';
-      card.style.boxShadow = '0 3px 10px rgba(0,0,0,0.1)';
-    });
     
     container.appendChild(card);
   }

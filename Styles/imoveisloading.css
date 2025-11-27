@@ -1,30 +1,38 @@
-/* ========== CARDS DE IMÓVEIS PARA USUÁRIO ========== */
+/* imoveisloading.css - CÓDIGO COMPLETO CORRIGIDO */
+
+/* ==================== RESET E BASE ==================== */
+* {
+  box-sizing: border-box;
+}
+
+/* ==================== GRID DE IMÓVEIS ==================== */
+#lista-imoveis-pagina,
 #lista-imoveis-usuario {
-  display: block;
-  grid-template-columns: repeat(4, 1fr); /* 4 colunas fixas */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 25px;
   padding: 30px;
-  width: 100%;
-  max-width: 1400px; /* Limita a largura máxima */
-  margin: 0 auto; /* Centraliza */
+  width: 95%;
+  max-width: 1400px;
+  margin: 0 auto;
+  background: transparent;
 }
 
-/* Limita a 8 cards apenas */
-.imovel-card-usuario:nth-child(n+9) {
-  display: none; /* Esconde do 9º card em diante */
-}
-
+/* ==================== CARDS DE IMÓVEIS ==================== */
 .imovel-card-usuario {
   background: white;
-  border-radius: 15px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
   cursor: pointer;
+  position: relative;
 }
 
 .imovel-card-usuario:hover {
-  transform: translateY(-8px);
+  transform: translateY(-5px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
@@ -32,31 +40,33 @@
   width: 100%;
   height: 200px;
   object-fit: cover;
+  display: block;
 }
 
 .card-content {
-  padding: 20px;
+  padding: 15px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-content h3 {
-  margin: 0 0 15px 0;
+  margin: 0 0 10px 0;
   color: #FE4F3F;
   font-size: 1.2em;
   font-weight: 700;
 }
 
-
-
 .card-content p {
-  margin: 8px 0;
+  margin: 5px 0;
   color: #333;
   font-size: 0.95em;
 }
 
 .card-detalhes {
   display: flex;
-  gap: 15px;
-  margin: 15px 0;
+  gap: 12px;
+  margin: 10px 0;
   padding: 10px 0;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
@@ -70,7 +80,7 @@
 .card-content button {
   width: 100%;
   padding: 12px;
-  margin-top: 15px;
+  margin-top: auto;
   background: #FE4F3F;
   color: white;
   border: none;
@@ -85,216 +95,307 @@
   background: #e63e2f;
 }
 
-/* Responsivo para tablets */
-@media (max-width: 1024px) {
-  #lista-imoveis-usuario {
-    grid-template-columns: repeat(3, 1fr); /* 3 colunas em tablets */
-  }
-}
-
-/* Responsivo para celulares */
-@media (max-width: 768px) {
-  #lista-imoveis-usuario {
-    grid-template-columns: repeat(2, 1fr); /* 2 colunas em celulares */
-    padding: 15px;
-    gap: 15px;
-  }
-}
-
-@media (max-width: 480px) {
-  #lista-imoveis-usuario {
-    grid-template-columns: 1fr; /* 1 coluna em telas pequenas */
-  }
-
-
-
-}
-/* ==================== IMÓVEIS USUÁRIO ==================== */
-#lista-imoveis-usuario {
-  display: grid !important;
-  grid-template-columns: repeat(4, 1fr) !important;
-  grid-template-rows: repeat(2, auto) !important;
-  gap: 20px !important;
-  padding: 30px !important;
-  width: 90% !important;
-  margin: 0 auto !important;
-}
-
-.imovel-card-usuario {
-  background: white !important;
-  border-radius: 12px !important;
-  overflow: hidden !important;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.15) !important;
-  transition: all 0.3s ease !important;
-}
-
-.imovel-card-usuario:hover {
-  transform: translateY(-5px) !important;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.2) !important;
-}
-
-.imovel-card-usuario img {
-  width: 100% !important;
-  height: 180px !important;
-  object-fit: cover !important;
-}
-
-.card-content {
-  padding: 15px !important;
-}
-
-.card-content h3 {
-  margin: 0 0 10px 0 !important;
-  color: #FE4F3F !important;
-  font-size: 1.1em !important;
-  font-weight: 700 !important;
-}
-
-.card-content p {
-  margin: 5px 0 !important;
-  color: #333 !important;
-  font-size: 0.9em !important;
-}
-
-.card-detalhes {
-  display: flex !important;
-  gap: 10px !important;
-  margin: 10px 0 !important;
-  padding: 8px 0 !important;
-  border-top: 1px solid #eee !important;
-}
-
-.card-detalhes span {
-  font-size: 0.85em !important;
-  color: #666 !important;
-}
-
-.card-content button {
-  width: 100% !important;
-  padding: 10px !important;
-  margin-top: 10px !important;
-  background: #FE4F3F !important;
-  color: white !important;
-  border: none !important;
-  border-radius: 8px !important;
-  font-size: 0.95em !important;
-  font-weight: 600 !important;
-  cursor: pointer !important;
-}
-
-.card-content button:hover {
-  background: #d63d2d !important;
-}
-/* ==================== GRID DE IMÓVEIS ==================== */
-#lista-imoveis-usuario {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 25px;
-  padding: 30px;
-  width: 95%;
-  margin: 0 auto;
-  background: transparent;
-}
-
-.imovel-card-usuario {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-}
-
-.imovel-card-usuario:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-}
-
-.imovel-card-usuario img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  display: block;
-}
-
-.imovel-card-usuario .card-content {
-  padding: 15px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.imovel-card-usuario .card-content h3 {
-  margin: 0 0 10px 0;
-  color: #FE4F3F;
-  font-size: 1.2em;
-  font-weight: 700;
-}
-
-.imovel-card-usuario .card-content p {
-  margin: 5px 0;
-  color: #333;
-  font-size: 0.95em;
-}
-
-.imovel-card-usuario .card-detalhes {
-  display: flex;
-  gap: 12px;
-  margin: 10px 0;
-  padding: 10px 0;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-}
-
-.imovel-card-usuario .card-detalhes span {
-  font-size: 0.9em;
-  color: #666;
-}
-
-.imovel-card-usuario .card-content button {
-  width: 100%;
-  padding: 12px;
-  margin-top: auto;
-  background: #FE4F3F;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 1em;
-  font-weight: 600;
+/* ==================== BOTÃO DE FAVORITO ==================== */
+.btn-favorito {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid #FE4F3F;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 10;
 }
 
-.imovel-card-usuario .card-content button:hover {
-  background: #d63d2d;
-}
-
-/* Responsivo */
-@media (max-width: 1200px) {
-  #lista-imoveis-usuario {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 900px) {
-  #lista-imoveis-usuario {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  #lista-imoveis-usuario {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Efeito hover no botão de favorito */
 .btn-favorito:hover {
-  transform: scale(1.15) !important;
-  background: rgba(254, 79, 63, 0.1) !important;
+  transform: scale(1.15);
+  background: rgba(254, 79, 63, 0.1);
 }
 
 .btn-favorito:active {
-  transform: scale(0.95) !important;
+  transform: scale(0.95);
+}
+
+/* ==================== BOTÃO CARREGAR MAIS ==================== */
+#btn-carregar-mais {
+  padding: 15px 50px;
+  background: #FE4F3F;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 12px rgba(254, 79, 63, 0.3);
+}
+
+#btn-carregar-mais:hover {
+  background: #e63e2e;
+  transform: translateY(-2px);
+}
+
+/* ==================== RESPONSIVIDADE ==================== */
+
+/* Telas grandes - 1400px a 1200px (3 colunas) */
+@media screen and (max-width: 1400px) {
+  #lista-imoveis-pagina,
+  #lista-imoveis-usuario {
+    grid-template-columns: repeat(3, 1fr);
+    width: 92%;
+  }
+}
+
+/* Tablets - 1200px a 900px (3 colunas compactas) */
+@media screen and (max-width: 1200px) {
+  #lista-imoveis-pagina,
+  #lista-imoveis-usuario {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 25px;
+    width: 90%;
+  }
+
+  .imovel-card-usuario img {
+    height: 180px;
+  }
+
+  .card-content h3 {
+    font-size: 1.1em;
+  }
+
+  .card-content p {
+    font-size: 0.9em;
+  }
+}
+
+/* Tablets pequenos - 900px a 768px (2 colunas) */
+@media screen and (max-width: 900px) {
+  #lista-imoveis-pagina,
+  #lista-imoveis-usuario {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    padding: 20px;
+    width: 95%;
+  }
+
+  .imovel-card-usuario img {
+    height: 160px;
+  }
+
+  .card-content {
+    padding: 12px;
+  }
+
+  .card-content h3 {
+    font-size: 1em;
+    margin-bottom: 8px;
+  }
+
+  .card-content p {
+    font-size: 0.85em;
+    margin: 4px 0;
+  }
+
+  .card-detalhes {
+    gap: 8px;
+    padding: 8px 0;
+  }
+
+  .card-detalhes span {
+    font-size: 0.8em;
+  }
+
+  .card-content button {
+    padding: 10px;
+    font-size: 0.9em;
+  }
+
+  .btn-favorito {
+    width: 38px;
+    height: 38px;
+    font-size: 20px;
+  }
+}
+
+/* Celulares médios - 768px a 600px (2 colunas compactas) */
+@media screen and (max-width: 768px) {
+  #lista-imoveis-pagina,
+  #lista-imoveis-usuario {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 15px;
+    width: 96%;
+  }
+
+  .imovel-card-usuario {
+    border-radius: 10px;
+  }
+
+  .imovel-card-usuario img {
+    height: 140px;
+  }
+
+  .card-content {
+    padding: 10px;
+  }
+
+  .card-content h3 {
+    font-size: 0.95em;
+    margin-bottom: 6px;
+  }
+
+  .card-content p {
+    font-size: 0.8em;
+    margin: 3px 0;
+  }
+
+  .card-detalhes {
+    gap: 6px;
+    padding: 6px 0;
+    margin: 8px 0;
+  }
+
+  .card-detalhes span {
+    font-size: 0.75em;
+  }
+
+  .card-content button {
+    padding: 8px;
+    font-size: 0.85em;
+    border-radius: 6px;
+  }
+
+  .btn-favorito {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+    top: 8px;
+    right: 8px;
+  }
+
+  #btn-carregar-mais {
+    padding: 12px 40px;
+    font-size: 16px;
+  }
+}
+
+/* Celulares - 600px a 480px (2 colunas) */
+@media screen and (max-width: 600px) {
+  #lista-imoveis-pagina,
+  #lista-imoveis-usuario {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 12px 8px;
+    width: 98%;
+  }
+
+  .imovel-card-usuario img {
+    height: 150px;
+  }
+
+  .card-content {
+    padding: 10px;
+  }
+
+  .card-content h3 {
+    font-size: 0.9em;
+    margin-bottom: 6px;
+  }
+
+  .card-content p {
+    font-size: 0.75em;
+    margin: 3px 0;
+  }
+
+  .card-detalhes {
+    gap: 6px;
+    padding: 6px 0;
+    margin: 6px 0;
+  }
+
+  .card-detalhes span {
+    font-size: 0.7em;
+  }
+
+  .card-content button {
+    padding: 8px;
+    font-size: 0.8em;
+  }
+
+  .btn-favorito {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+}
+
+/* Celulares pequenos - abaixo de 480px (2 colunas compactas) */
+@media screen and (max-width: 480px) {
+  #lista-imoveis-pagina,
+  #lista-imoveis-usuario {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 10px 5px;
+    width: 100%;
+  }
+
+  .imovel-card-usuario {
+    border-radius: 8px;
+  }
+
+  .imovel-card-usuario img {
+    height: 130px;
+  }
+
+  .card-content {
+    padding: 8px;
+  }
+
+  .card-content h3 {
+    font-size: 0.85em;
+    margin-bottom: 4px;
+  }
+
+  .card-content p {
+    font-size: 0.7em;
+    margin: 2px 0;
+  }
+
+  .card-detalhes {
+    gap: 4px;
+    padding: 4px 0;
+    margin: 4px 0;
+  }
+
+  .card-detalhes span {
+    font-size: 0.65em;
+  }
+
+  .card-content button {
+    padding: 6px;
+    font-size: 0.75em;
+  }
+
+  .btn-favorito {
+    width: 32px;
+    height: 32px;
+    font-size: 15px;
+    top: 6px;
+    right: 6px;
+  }
+
+  #btn-carregar-mais {
+    width: 90%;
+    padding: 10px 15px;
+    font-size: 14px;
+  }
 }
