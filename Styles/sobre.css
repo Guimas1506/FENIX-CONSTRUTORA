@@ -849,7 +849,8 @@ body::-webkit-scrollbar {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 190vh;
+        height: 160vh;
+        
 
     }
 
