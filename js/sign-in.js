@@ -36,6 +36,7 @@ const closeUserArea = document.getElementById("closeUserArea");
 const welcomeMsg = document.getElementById("welcomeMsg");
 const userEmail = document.getElementById("userEmail");
 const btnLogoutModal = document.getElementById("btnLogoutModal");
+const btnLogoutMobile = document.getElementById("btnLogoutMobile");
 const adminButton = document.getElementById("adminButton");
 
 const linksModal = document.querySelectorAll(".logadores a");
@@ -82,6 +83,7 @@ onAuthStateChanged(auth, async (user) => {
     console.log("✅ Usuário logado:", user.uid);
     
     if (btnLogoutModal) btnLogoutModal.style.display = "flex";
+    if (btnLogoutMobile) btnLogoutMobile.style.display = "flex";
     if (loginButton) loginButton.style.display = "none";
     if (registerButton) registerButton.style.display = "none";
     if (userButton) userButton.style.display = "flex";
@@ -119,6 +121,7 @@ onAuthStateChanged(auth, async (user) => {
     console.log("❌ Usuário não logado");
     
     if (btnLogoutModal) btnLogoutModal.style.display = "none";
+    if (btnLogoutMobile) btnLogoutMobile.style.display = "none";
     if (loginButton) loginButton.style.display = "flex";
     if (registerButton) registerButton.style.display = "flex";
     if (adminButton) adminButton.style.display = "none";
@@ -150,6 +153,15 @@ window.addEventListener("click", (e) => {
 
 if (btnLogoutModal) {
   btnLogoutModal.addEventListener("click", () => {
+    signOut(auth).then(() => {
+      alert("Logout realizado!");
+      window.location.reload();
+    }).catch((err) => alert(err.message));
+  });
+}
+
+if (btnLogoutMobile) {
+  btnLogoutMobile.addEventListener("click", () => {
     signOut(auth).then(() => {
       alert("Logout realizado!");
       window.location.reload();

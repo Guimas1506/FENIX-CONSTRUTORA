@@ -25,6 +25,7 @@ const closeUserArea = document.getElementById("closeUserArea");
 const welcomeMsg = document.getElementById("welcomeMsg");
 const userEmail = document.getElementById("userEmail");
 const btnLogoutModal = document.getElementById("btnLogoutModal");
+const btnLogoutMobile = document.getElementById("btnLogoutMobile");
 const adminButton = document.getElementById("adminButton");
 
 const linksModal = document.querySelectorAll(".logadores a");
@@ -48,16 +49,43 @@ linksModal.forEach(link => {
   }
 });
 
+// Seleciona os links do menu mobile
+const linksMenuMobile = document.querySelectorAll(".menu-section a");
+let usuarioLinkMobile = null;
+let favoritosLinkMobile = null;
+let loginLinkMobile = null;
+let signinLinkMobile = null;
+
+linksMenuMobile.forEach(link => {
+  if (link.href && link.href.includes("User/user.html")) {
+    usuarioLinkMobile = link;
+  }
+  if (link.href && link.href.includes("favoritos.html")) {
+    favoritosLinkMobile = link;
+  }
+  if (link.href && link.href.includes("log-in.html")) {
+    loginLinkMobile = link;
+  }
+  if (link.href && link.href.includes("sign-in.html")) {
+    signinLinkMobile = link;
+  }
+});
+
 // ==================== CONTROLE DE USUÁRIO ====================
 onAuthStateChanged(auth, async (user) => {
   if (user) {
     console.log("✅ Usuário logado:", user.uid);
     
     if (btnLogoutModal) btnLogoutModal.style.display = "flex";
+    if (btnLogoutMobile) btnLogoutMobile.style.display = "flex";
     if (loginButton) loginButton.style.display = "none";
     if (registerButton) registerButton.style.display = "none";
     if (userButton) userButton.style.display = "flex";
     if (favoritosButton) favoritosButton.style.display = "flex";
+    if (usuarioLinkMobile) usuarioLinkMobile.style.display = "flex";
+    if (favoritosLinkMobile) favoritosLinkMobile.style.display = "flex";
+    if (loginLinkMobile) loginLinkMobile.style.display = "none";
+    if (signinLinkMobile) signinLinkMobile.style.display = "none";
     if (userEmail) userEmail.textContent = user.email;
 
     let nome = user.displayName || "Usuário";
@@ -91,11 +119,16 @@ onAuthStateChanged(auth, async (user) => {
     console.log("❌ Usuário não logado");
     
     if (btnLogoutModal) btnLogoutModal.style.display = "none";
+    if (btnLogoutMobile) btnLogoutMobile.style.display = "none";
     if (loginButton) loginButton.style.display = "flex";
     if (registerButton) registerButton.style.display = "flex";
     if (adminButton) adminButton.style.display = "none";
     if (userButton) userButton.style.display = "none";
     if (favoritosButton) favoritosButton.style.display = "none";
+    if (usuarioLinkMobile) usuarioLinkMobile.style.display = "none";
+    if (favoritosLinkMobile) favoritosLinkMobile.style.display = "none";
+    if (loginLinkMobile) loginLinkMobile.style.display = "flex";
+    if (signinLinkMobile) signinLinkMobile.style.display = "flex";
     if (welcomeMsg) welcomeMsg.textContent = "Bem-vindo(a), Usuário";
     if (userEmail) userEmail.textContent = "Email do usuário";
   }
@@ -122,6 +155,16 @@ window.addEventListener("click", (e) => {
 
 if (btnLogoutModal) {
   btnLogoutModal.addEventListener("click", () => {
+    signOut(auth).then(() => {
+      alert("Logout realizado!");
+      window.location.reload();
+    }).catch((err) => alert(err.message));
+  });
+}
+
+// Logout Mobile
+if (btnLogoutMobile) {
+  btnLogoutMobile.addEventListener("click", () => {
     signOut(auth).then(() => {
       alert("Logout realizado!");
       window.location.reload();

@@ -52,6 +52,7 @@ const closeUserArea = document.getElementById("closeUserArea");
 const welcomeMsg = document.getElementById("welcomeMsg");
 const userEmail = document.getElementById("userEmail");
 const btnLogoutModal = document.getElementById("btnLogoutModal");
+const btnLogoutMobile = document.getElementById("btnLogoutMobile");
 
 const linksModal = document.querySelectorAll(".logadores a");
 let loginButton = null;
@@ -78,6 +79,7 @@ linksModal.forEach(link => {
 onAuthStateChanged(auth, async (user) => {
   if (user) {
     if (btnLogoutModal) btnLogoutModal.style.display = "flex";
+    if (btnLogoutMobile) btnLogoutMobile.style.display = "flex";
     if (loginButton) loginButton.style.display = "none";
     if (registerButton) registerButton.style.display = "none";
     if (userButton) userButton.style.display = "flex";
@@ -92,6 +94,7 @@ onAuthStateChanged(auth, async (user) => {
     if (userEmail) userEmail.textContent = user.email;
   } else {
     if (btnLogoutModal) btnLogoutModal.style.display = "none";
+    if (btnLogoutMobile) btnLogoutMobile.style.display = "none";
     if (loginButton) loginButton.style.display = "flex";
     if (registerButton) registerButton.style.display = "flex";
     if (userButton) userButton.style.display = "none";
@@ -179,3 +182,13 @@ btnLogoutModal.addEventListener("click", () => {
     setTimeout(() => window.location.reload(), 1500);
   }).catch((err) => showPopup("Erro ao sair: " + err.message));
 });
+
+// Logout Mobile
+if (btnLogoutMobile) {
+  btnLogoutMobile.addEventListener("click", () => {
+    signOut(auth).then(() => {
+      alert("Logout realizado!");
+      window.location.reload();
+    }).catch((err) => alert(err.message));
+  });
+}

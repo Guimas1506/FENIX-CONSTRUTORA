@@ -42,6 +42,7 @@ const closeUserArea = document.getElementById("closeUserArea");
 const welcomeMsg = document.getElementById("welcomeMsg");
 const userEmail = document.getElementById("userEmail");
 const btnLogoutModal = document.getElementById("btnLogoutModal");
+const btnLogoutMobile = document.getElementById("btnLogoutMobile");
 const adminButton = document.getElementById("adminButton");
 
 // Pega os links pelo href já que tem IDs duplicados
@@ -58,6 +59,28 @@ linksModal.forEach(link => {
   }
 });
 
+// Seleciona os links do menu mobile
+const linksMenuMobile = document.querySelectorAll(".menu-section a");
+let usuarioLinkMobile = null;
+let favoritosLinkMobile = null;
+let loginLinkMobile = null;
+let signinLinkMobile = null;
+
+linksMenuMobile.forEach(link => {
+  if (link.href && link.href.includes("User/user.html")) {
+    usuarioLinkMobile = link;
+  }
+  if (link.href && link.href.includes("favoritos.html")) {
+    favoritosLinkMobile = link;
+  }
+  if (link.href && link.href.includes("log-in.html")) {
+    loginLinkMobile = link;
+  }
+  if (link.href && link.href.includes("sign-in.html")) {
+    signinLinkMobile = link;
+  }
+});
+
 // ==================== CONTROLE DE USUÁRIO ====================
 onAuthStateChanged(auth, async (user) => {
   if (user) {
@@ -65,11 +88,18 @@ onAuthStateChanged(auth, async (user) => {
     
     // Mostra/esconde elementos quando LOGADO
     if (btnLogoutModal) btnLogoutModal.style.display = "flex";
+    if (btnLogoutMobile) btnLogoutMobile.style.display = "flex";
     if (logBtn) logBtn.style.display = "none";
     if (registerBtn) registerBtn.style.display = "none";
     if (userButton) userButton.style.display = "flex";
     if (favoritosButton) favoritosButton.style.display = "flex";
     if (userEmail) userEmail.textContent = user.email;
+    
+    // Mostra Usuario e Favoritos no menu mobile quando logado
+    if (usuarioLinkMobile) usuarioLinkMobile.style.display = "flex";
+    if (favoritosLinkMobile) favoritosLinkMobile.style.display = "flex";
+    if (loginLinkMobile) loginLinkMobile.style.display = "none";
+    if (signinLinkMobile) signinLinkMobile.style.display = "none";
 
     // Busca nome e status de admin do usuário
     let nome = user.displayName || "Usuário";
@@ -106,6 +136,7 @@ onAuthStateChanged(auth, async (user) => {
     
     // Mostra/esconde elementos quando NÃO LOGADO
     if (btnLogoutModal) btnLogoutModal.style.display = "none";
+    if (btnLogoutMobile) btnLogoutMobile.style.display = "none";
     if (logBtn) logBtn.style.display = "flex";
     if (registerBtn) registerBtn.style.display = "flex";
     if (adminButton) adminButton.style.display = "none";
@@ -113,6 +144,12 @@ onAuthStateChanged(auth, async (user) => {
     if (favoritosButton) favoritosButton.style.display = "none";
     if (welcomeMsg) welcomeMsg.textContent = "Bem-vindo(a), Usuário";
     if (userEmail) userEmail.textContent = "Email do usuário";
+    
+    // Esconde Usuario e Favoritos no menu mobile quando não logado
+    if (usuarioLinkMobile) usuarioLinkMobile.style.display = "none";
+    if (favoritosLinkMobile) favoritosLinkMobile.style.display = "none";
+    if (loginLinkMobile) loginLinkMobile.style.display = "flex";
+    if (signinLinkMobile) signinLinkMobile.style.display = "flex";
   }
 });
 
@@ -137,6 +174,15 @@ window.addEventListener("click", (e) => {
 
 if (btnLogoutModal) {
   btnLogoutModal.addEventListener("click", () => {
+    signOut(auth).then(() => {
+      alert("Logout realizado!");
+      window.location.reload();
+    }).catch((err) => alert(err.message));
+  });
+}
+
+if (btnLogoutMobile) {
+  btnLogoutMobile.addEventListener("click", () => {
     signOut(auth).then(() => {
       alert("Logout realizado!");
       window.location.reload();
@@ -272,44 +318,32 @@ async function carregarImoveisUsuario() {
       
       const card = document.createElement('div');
       card.className = 'imovel-card-usuario';
-      
+
       card.innerHTML = `
         <div style="position: relative;">
           <img src="${imovel.imagemURL || './img/logo1.png'}" 
                alt="${imovel.nome}"
-               onerror="this.src='./img/logo1.png'"
-               style="width: 100%; height: 200px; object-fit: cover; display: block;">
-          
+               onerror="this.src='./img/logo1.png'">
+
           <button onclick="toggleFavorito(event, '${imovelId}')" 
                   class="btn-favorito" 
                   id="fav-${imovelId}"
-                  style="position: absolute; top: 10px; right: 10px; background: ${isFavorited ? '#FFE5E5' : 'rgba(255,255,255,0.95)'}; border: 2px solid ${isFavorited ? '#FF0000' : '#FE4F3F'}; border-radius: 50%; width: 42px; height: 42px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 22px; transition: all 0.3s ease; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
+                  style="background: ${isFavorited ? '#FFE5E5' : 'rgba(255,255,255,0.95)'}; border-color: ${isFavorited ? '#FF0000' : '#FE4F3F'};">
             <span style="color: ${isFavorited ? '#FF0000' : '#FE4F3F'};">${isFavorited ? '♥' : '♡'}</span>
           </button>
         </div>
-        
-        <div style="padding: 15px; flex: 1; display: flex; flex-direction: column;">
-          <h3 style="margin: 0 0 10px 0; color: #FE4F3F; font-size: 1.2em; font-weight: 700;">
-            ${imovel.nome || 'Sem nome'}
-          </h3>
-          <p style="margin: 5px 0; color: #333; font-size: 0.95em;">
-            📍 ${imovel.cidade || 'N/A'} - ${imovel.uf || ''}
-          </p>
-          <p style="margin: 5px 0; color: #333; font-size: 0.95em;">
-            💰 R$ ${Number(imovel.preco || 0).toLocaleString('pt-BR')}
-          </p>
-          <p style="margin: 5px 0; color: #333; font-size: 0.95em;">
-            📏 ${imovel.areas || 0}m²
-          </p>
-          <div style="display: flex; gap: 12px; margin: 10px 0; padding: 10px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee;">
-            <span style="font-size: 0.9em; color: #666;">🛏️ ${imovel.quartos || 0}</span>
-            <span style="font-size: 0.9em; color: #666;">🚗 ${imovel.vagas || 0}</span>
-            <span style="font-size: 0.9em; color: #666;">🚿 ${imovel.banheiros || 0}</span>
+
+        <div class="card-content">
+          <h3>${imovel.nome || 'Sem nome'}</h3>
+          <p>📍 ${imovel.cidade || 'N/A'} - ${imovel.uf || ''}</p>
+          <p>💰 R$ ${Number(imovel.preco || 0).toLocaleString('pt-BR')}</p>
+          <p>📏 ${imovel.areas || 0}m²</p>
+          <div class="card-detalhes">
+            <span>🛏️ ${imovel.quartos || 0}</span>
+            <span>🚗 ${imovel.vagas || 0}</span>
+            <span>🚿 ${imovel.banheiros || 0}</span>
           </div>
-          <button onclick="window.location.href='detalhes.html?id=${imovelId}'" 
-                  style="width: 100%; padding: 12px; margin-top: auto; background: #FE4F3F; color: white; border: none; border-radius: 8px; font-size: 1em; font-weight: 600; cursor: pointer; transition: background 0.3s ease;"
-                  onmouseover="this.style.background='#e63e2e'"
-                  onmouseout="this.style.background='#FE4F3F'">
+          <button onclick="window.location.href='detalhes.html?id=${imovelId}'">
             Ver Detalhes
           </button>
         </div>
