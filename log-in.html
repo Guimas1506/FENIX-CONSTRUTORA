@@ -1,3 +1,4 @@
+<!-- log-in.html -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -98,16 +99,6 @@
       <div id="overlay" class="overlay"></div>
 
 
-
-
-
-
-
-
-
-
-
-
     <!-- Menu do usuário logado (vai substituir o login/sign-in) -->
 
     <div class="displau-subs" >
@@ -172,7 +163,10 @@
     <input type="email" placeholder="Email" id="email" required>
 
     <label for="password">Digite sua senha</label>
-    <input type="password" placeholder="Senha" id="password" required>
+    <div class="senha-container">
+      <input type="password" placeholder="Senha" id="password" required />
+      <button type="button" class="toggle-password" id="toggle-pass" onclick="togglePassword('password', 'toggle-pass')"><img src="./img/visible.png" alt="Mostrar senha" class="toggle-icon" /></button>
+    </div>
 
     <p class="esqueceuasenha">
       Esqueceu a senha? <span><a href="#" onclick="resetPassword()">Clique aqui</a></span>

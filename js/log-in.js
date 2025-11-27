@@ -26,6 +26,23 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 const provider = new GoogleAuthProvider();
 
+// ==================== MOSTRAR/ESCONDER SENHA ====================
+window.togglePassword = function(inputId, buttonId) {
+  const input = document.getElementById(inputId);
+  const button = document.getElementById(buttonId);
+  const img = button.querySelector('img');
+  
+  if (input.type === "password") {
+    input.type = "text";
+    img.src = "./img/hide.png";
+    img.alt = "Esconder senha";
+  } else {
+    input.type = "password";
+    img.src = "./img/visible.png";
+    img.alt = "Mostrar senha";
+  }
+}
+
 // Elementos do header/modal
 const logBtn = document.getElementById("log");
 const registerBtn = document.getElementById("register");
@@ -36,24 +53,51 @@ const welcomeMsg = document.getElementById("welcomeMsg");
 const userEmail = document.getElementById("userEmail");
 const btnLogoutModal = document.getElementById("btnLogoutModal");
 
-// Atualiza header conforme login
+const linksModal = document.querySelectorAll(".logadores a");
+let loginButton = null;
+let registerButton = null;
+let userButton = null;
+let favoritosButton = null;
+
+linksModal.forEach(link => {
+  if (link.href && link.href.includes("log-in.html")) {
+    loginButton = link;
+  }
+  if (link.href && link.href.includes("sign-in.html")) {
+    registerButton = link;
+  }
+  if (link.href && link.href.includes("User/user.html")) {
+    userButton = link;
+  }
+  if (link.href && link.href.includes("favoritos.html")) {
+    favoritosButton = link;
+  }
+});
+
+// ==================== CONTROLE DE USUÁRIO ====================
 onAuthStateChanged(auth, async (user) => {
   if (user) {
-    btnLogoutModal.style.display = "flex";
-    logBtn.style.display = "none";
-    registerBtn.style.display = "none";
+    if (btnLogoutModal) btnLogoutModal.style.display = "flex";
+    if (loginButton) loginButton.style.display = "none";
+    if (registerButton) registerButton.style.display = "none";
+    if (userButton) userButton.style.display = "flex";
+    if (favoritosButton) favoritosButton.style.display = "flex";
 
     // Pega dados do Firestore
     const docRef = doc(db, "users", user.uid);
     const docSnap = await getDoc(docRef);
     const nome = docSnap.exists() ? docSnap.data().nome : user.displayName || "Usuário";
 
-    welcomeMsg.textContent = `Bem-vindo(a), ${nome}`;
-    userEmail.textContent = user.email;
+    if (welcomeMsg) welcomeMsg.textContent = `Bem-vindo(a), ${nome}`;
+    if (userEmail) userEmail.textContent = user.email;
   } else {
-    btnLogoutModal.style.display = "none";
-    logBtn.style.display = "flex";
-    registerBtn.style.display = "flex";
+    if (btnLogoutModal) btnLogoutModal.style.display = "none";
+    if (loginButton) loginButton.style.display = "flex";
+    if (registerButton) registerButton.style.display = "flex";
+    if (userButton) userButton.style.display = "none";
+    if (favoritosButton) favoritosButton.style.display = "none";
+    if (welcomeMsg) welcomeMsg.textContent = "Bem-vindo(a), Usuário";
+    if (userEmail) userEmail.textContent = "Email do usuário";
   }
 });
 

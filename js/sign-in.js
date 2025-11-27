@@ -1,4 +1,4 @@
-// sign-in.js
+// sign-in.js - COM FUNCIONALIDADE DE MOSTRAR/ESCONDER SENHA
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 import { 
   getAuth, 
@@ -11,7 +11,6 @@ import {
   signOut
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
-
 
 const firebaseConfig = {
   apiKey: "AIzaSyCYDGROxguHYX-YA-J-HqRRGSF3uN-ZEAs",
@@ -39,7 +38,6 @@ const userEmail = document.getElementById("userEmail");
 const btnLogoutModal = document.getElementById("btnLogoutModal");
 const adminButton = document.getElementById("adminButton");
 
-// Pega os links pelo href já que tem IDs duplicados
 const linksModal = document.querySelectorAll(".logadores a");
 let loginButton = null;
 let registerButton = null;
@@ -61,12 +59,28 @@ linksModal.forEach(link => {
   }
 });
 
+// ==================== MOSTRAR/ESCONDER SENHA ====================
+window.togglePassword = function(inputId, buttonId) {
+  const input = document.getElementById(inputId);
+  const button = document.getElementById(buttonId);
+  const img = button.querySelector('img');
+  
+  if (input.type === "password") {
+    input.type = "text";
+    img.src = "./img/hide.png";
+    img.alt = "Esconder senha";
+  } else {
+    input.type = "password";
+    img.src = "./img/visible.png";
+    img.alt = "Mostrar senha";
+  }
+}
+
 // ==================== CONTROLE DE USUÁRIO ====================
 onAuthStateChanged(auth, async (user) => {
   if (user) {
     console.log("✅ Usuário logado:", user.uid);
     
-    // Mostra/esconde elementos quando LOGADO
     if (btnLogoutModal) btnLogoutModal.style.display = "flex";
     if (loginButton) loginButton.style.display = "none";
     if (registerButton) registerButton.style.display = "none";
@@ -74,12 +88,10 @@ onAuthStateChanged(auth, async (user) => {
     if (favoritosButton) favoritosButton.style.display = "flex";
     if (userEmail) userEmail.textContent = user.email;
 
-    // Busca nome e status de admin do usuário
     let nome = user.displayName || "Usuário";
     let isAdmin = false;
 
     try {
-      // Tenta primeiro na coleção "users"
       let docRef = doc(db, "users", user.uid);
       let docSnap = await getDoc(docRef);
       
@@ -88,7 +100,6 @@ onAuthStateChanged(auth, async (user) => {
         nome = data.nome || nome;
         isAdmin = data.admin || false;
       } else {
-        // Se não existir, tenta na coleção "usuarios"
         docRef = doc(db, "usuarios", user.uid);
         docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
@@ -107,7 +118,6 @@ onAuthStateChanged(auth, async (user) => {
   } else {
     console.log("❌ Usuário não logado");
     
-    // Mostra/esconde elementos quando NÃO LOGADO
     if (btnLogoutModal) btnLogoutModal.style.display = "none";
     if (loginButton) loginButton.style.display = "flex";
     if (registerButton) registerButton.style.display = "flex";
@@ -184,7 +194,6 @@ window.validarSenha = function() {
 
 // ==================== FUNÇÃO PARA MOSTRAR SETA ====================
 function mostrarSetaRequisitos() {
-  // Remove seta existente se houver
   const setaExistente = document.querySelector('.seta-requisitos');
   if (setaExistente) {
     setaExistente.remove();
@@ -193,7 +202,6 @@ function mostrarSetaRequisitos() {
   const infoIcon = document.getElementById("infoIcon");
   if (!infoIcon) return;
   
-  // Cria a seta
   const seta = document.createElement('div');
   seta.className = 'seta-requisitos';
   seta.innerHTML = `
@@ -203,7 +211,6 @@ function mostrarSetaRequisitos() {
     </div>
   `;
   
-  // Adiciona CSS inline para a seta
   const style = document.createElement('style');
   style.textContent = `
     .seta-requisitos {
@@ -263,18 +270,15 @@ function mostrarSetaRequisitos() {
   
   document.head.appendChild(style);
   
-  // Adiciona a seta ao container da senha
   const senhaContainer = document.querySelector('.senha-container');
   if (senhaContainer) {
     senhaContainer.appendChild(seta);
     
-    // Força o tooltip a aparecer
     const tooltip = document.querySelector('.tooltip');
     if (tooltip) {
       tooltip.style.display = 'block';
     }
     
-    // Remove a seta após 6 segundos
     setTimeout(() => {
       seta.style.transition = 'opacity 0.5s ease';
       seta.style.opacity = '0';
@@ -307,14 +311,9 @@ window.registerUser = async function(event) {
     return;
   }
 
-  // Verifica se a senha atende aos requisitos
   if (!(letrasCount >= 6 && temEspecial && semEspacos)) {
-    // Mostra a seta apontando para os requisitos
     mostrarSetaRequisitos();
-    
     alert("A senha não atende aos requisitos mínimos!\n\n✓ Mínimo de 6 letras\n✓ Pelo menos 1 caractere especial\n✓ Não pode conter espaços\n\nVeja os detalhes no botão 'i' vermelho abaixo do campo de senha.");
-    
-    // Foca no campo de senha
     document.getElementById("password").focus();
     return;
   }
@@ -325,7 +324,6 @@ window.registerUser = async function(event) {
 
     await updateProfile(user, { displayName: nome });
 
-    // Adiciona usuário ao Firestore com admin = false
     await setDoc(doc(db, "users", user.uid), {
       nome: nome,
       email: email,

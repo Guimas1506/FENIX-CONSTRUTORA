@@ -1,3 +1,4 @@
+/* log-in.css */
 :root {
     --Cor-Primaria: #FE4F3F;
     --Cor-Secundaria: #000000;
@@ -530,4 +531,41 @@ footer {
         width: 100%;
         padding: 0 10px;
     }
+}
+
+/* Estilos para o campo de senha com ícone de mostrar/esconder */
+.senha-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.senha-container input {
+    width: 100%;
+    padding-right: 45px;
+    margin-bottom: 0 !important;
+}
+
+/* Botão de mostrar/esconder senha */
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+
+.toggle-password img {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+.toggle-password:hover {
+    opacity: 0.7;
 }

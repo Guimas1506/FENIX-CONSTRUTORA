@@ -1,4 +1,4 @@
-/* sign-in.css - CÓDIGO COMPLETO */
+/* sign-in.css - CÓDIGO COMPLETO COM BOTÃO MOSTRAR SENHA */
 
 :root{
     --Cor-Primaria: #FE4F3F;
@@ -163,8 +163,32 @@ input{
 
 .senha-container input {
     width: 100%;
-    padding-right: 15px;
+    padding-right: 45px;
     margin-bottom: 0 !important;
+}
+
+/* Botão de mostrar/esconder senha */
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+
+.toggle-password img {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+.toggle-password:hover {
+    opacity: 0.7;
 }
 
 /* Botão "i" reposicionado - CANTO INFERIOR DIREITO */
@@ -242,6 +266,19 @@ input{
     color: red;
     margin: 3px 0;
     transition: color 0.3s ease;
+}
+
+/* Container para confirmar senha */
+.confirm-password-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.confirm-password-container input {
+    width: 100%;
+    padding-right: 45px;
+    margin-bottom: 0 !important;
 }
 
 /* footer */
@@ -476,5 +513,10 @@ p{
     .tooltip {
         width: 220px;
         right: -230px;
+    }
+    
+    .toggle-password {
+        right: 40px;
+        font-size: 16px;
     }
 }

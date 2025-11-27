@@ -228,15 +228,10 @@ async function carregarImoveisUsuario() {
     return;
   }
   
-  // Força o estilo do container
-  container.style.cssText = `
-    display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important;
-    gap: 25px !important;
-    padding: 30px !important;
-    width: 95% !important;
-    margin: 0 auto !important;
-  `;
+  // Limpa estilos inline para permitir que o CSS responsivo funcione
+  if (container.style.cssText) {
+    container.style.cssText = '';
+  }
   
   try {
     container.innerHTML = '<p style="text-align: center; padding: 20px; font-size: 18px; grid-column: 1 / -1; color: #666;">⏳ Carregando imóveis...</p>';
@@ -277,17 +272,6 @@ async function carregarImoveisUsuario() {
       
       const card = document.createElement('div');
       card.className = 'imovel-card-usuario';
-      
-      card.style.cssText = `
-        background: white !important;
-        border-radius: 12px !important;
-        overflow: hidden !important;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.1) !important;
-        transition: all 0.3s ease !important;
-        display: flex !important;
-        flex-direction: column !important;
-        cursor: pointer !important;
-      `;
       
       card.innerHTML = `
         <div style="position: relative;">
