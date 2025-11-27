@@ -1468,14 +1468,15 @@ video::-moz-media-controls {
 
 
     .video {
-        margin-top: 550px;
+        margin-top: 570px;
         flex-direction: column;
-        height: 123vh;
+        height: 135vh;
     }
 
     .aplic-video {
         width: 100%;
         margin: 0;
+   
     }
 
     .desc-video {
