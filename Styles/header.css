@@ -1,103 +1,104 @@
+html {
+  overflow-x: hidden;
+  box-shadow: none;
 
-html{
-    overflow-x: hidden;
-    box-shadow: none;
-    
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: "Inter", sans-serif;
-    
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+
 }
 
-body::-webkit-scrollbar{
-    display: none;
+body::-webkit-scrollbar {
+  display: none;
 }
 
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
 
-:root{
-    --Cor-Primaria: #FE4F3F;
-    --Cor-Secundaria: #000000;
-    --Cor-Terciaria: #7C7C7C;
-    --Branco: #fff;
+:root {
+  --Cor-Primaria: #FE4F3F;
+  --Cor-Secundaria: #000000;
+  --Cor-Terciaria: #7C7C7C;
+  --Branco: #fff;
 }
 
 
 /* AQUI é o header*/
-a{
-    text-decoration: none;
-    list-style-type: none;
+a {
+  text-decoration: none;
+  list-style-type: none;
 }
 
-header{
-    width: 100%;
+header {
+  width: 100%;
 }
 
-.navbar{
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 70px;
-    background-color: #FE4F3F;
-    z-index: 1;
+.navbar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  background-color: #FE4F3F;
+  z-index: 1;
 
-    
-}/*AQUI TERMINA A PARTE CENTRAL DO PROJETO*/
-
-.logo{
-    width: 30rem;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
 }
 
+/*AQUI TERMINA A PARTE CENTRAL DO PROJETO*/
 
-.logo img{
-    width: 70px;
-    height: 70px;
-    transition: 0.5s;
+.logo {
+  width: 30rem;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 
-.logo img:hover{
-    transform: scale(1.1);
+
+.logo img {
+  width: 70px;
+  height: 70px;
+  transition: 0.5s;
+}
+
+.logo img:hover {
+  transform: scale(1.1);
 }
 
 /*AQUI TERMINA AS CONFIGURAÇOES DO LOGO*/
 
-.abas{
-    width: 100%;
-    height: 70px;
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    text-align: center;
+.abas {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  text-align: center;
 
 }
 
-.abas a{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 300;
-    width: 100px;
-    height: 60px;
-    color: white;
-    margin-right: 30px;
-    transition: 0.5s;
+.abas a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 300;
+  width: 100px;
+  height: 60px;
+  color: white;
+  margin-right: 30px;
+  transition: 0.5s;
 }
 
-.abas a:hover{
-    font-size: 18px;
-    font-weight: 600;
-    height: 40px;
-    border-bottom: solid white 0.5px;
+.abas a:hover {
+  font-size: 18px;
+  font-weight: 600;
+  height: 40px;
+  border-bottom: solid white 0.5px;
 
 }
 
@@ -105,73 +106,74 @@ header{
 
 /*AQUI TERMINA AS CONFIGURAÇOES DO ABA*/
 
-.login{
-    width: 460px;
-    height: 70px;
+.login {
+  width: 460px;
+  height: 70px;
 
-    justify-content: center;
-    align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
 
 
 
-.displau-subs{
-    display: flex;
+.displau-subs {
+  display: flex;
 
-    width: 14%;
-    height: 100%;
+  width: 14%;
+  height: 100%;
 
-    align-items: center;
-    justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
 
-.icon-person{
-    width: 5vw;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    transition: 0.2s ease;
+.icon-person {
+  width: 5vw;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  transition: 0.2s ease;
 }
 
-.icon-person:hover{
-    transform: scale(0.9);
-
-}
-
-.icon-person img{
-
-    width: auto;
-    height: 3rem;
+.icon-person:hover {
+  transform: scale(0.9);
 
 }
 
-.title-fenix{
-    width: 50%;
-    height: 100%;
+.icon-person img {
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    gap: 0;
-}
-.title-fenix h3{
-    color: white;
-    font-size: 2rem;
-    margin: 0;
-    padding: 0;
-    font-weight: 700;
+  width: auto;
+  height: 3rem;
+
 }
 
-.title-fenix span{
-    font-size: 1.2rem;
-    font-weight: 400;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
+.title-fenix {
+  width: 50%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 0;
+}
+
+.title-fenix h3 {
+  color: white;
+  font-size: 2rem;
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+}
+
+.title-fenix span {
+  font-size: 1.2rem;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 }
 
 
@@ -210,7 +212,7 @@ header{
 
 
 
-.menu-icon img{
+.menu-icon img {
   display: flex;
   width: 30px;
   height: 30px;
@@ -220,11 +222,12 @@ header{
 .side-menu {
   position: fixed;
   top: 0;
-  right: -500px; /* escondido inicialmente */
+  right: -320px;
+  /* escondido inicialmente */
   width: 300px;
   height: 100%;
   background: #F5F5F5;
-  box-shadow: -2px 0 10px rgba(0,0,0,0.15);
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.15);
   padding: 20px;
   transition: right 0.3s ease;
   z-index: 1100;
@@ -286,7 +289,7 @@ header{
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.35);
+  background: rgba(0, 0, 0, 0.35);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s;
@@ -306,12 +309,15 @@ header{
 @media screen and (max-width: 480px) {
 
 
+  body{
+      overflow-x: hidden;
+  }
 
   .menu-icon {
     display: block;
   }
 
-  .menuzera{
+  .menuzera {
     width: 20%;
     height: 100%;
     display: flex;
@@ -320,12 +326,12 @@ header{
     margin-left: 60px;
   }
 
-  .barra{
+  .barra {
     display: none;
   }
 
 
-  .displau-subs{
+  .displau-subs {
     display: none;
   }
 
@@ -368,37 +374,38 @@ header{
 /*aqui termina a area modal*/
 
 
-@media screen and ( max-width: 480px) {
+@media screen and (max-width: 480px) {
 
-.navbar{
+  .navbar {
     width: 100%;
-}
+  }
 
-.icon-person{
+  .icon-person {
     display: none;
-}
-.abas{
-    display: none;
-}
+  }
 
-hr{
+  .abas {
     display: none;
-}
+  }
 
-.logo{
+  hr {
+    display: none;
+  }
+
+  .logo {
     width: 17rem;
     justify-content: space-between;
-}
+  }
 
-.logo img{
+  .logo img {
     width: 100%;
     margin-left: 0;
-}
+  }
 
-.title-fenix{
+  .title-fenix {
     display: flex;
     width: 70%;
-}
+  }
 
 
 

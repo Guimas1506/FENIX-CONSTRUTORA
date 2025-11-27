@@ -297,11 +297,12 @@ body::-webkit-scrollbar {
 }
 
 .fot-fundad {
-    width: 60%;
+    width: 47%;
     height: 100%;
-    margin-left: 30px;
+    margin-left: 150px;
     display: flex;
     justify-content: center;
+
 
 }
 
@@ -310,7 +311,7 @@ body::-webkit-scrollbar {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 85%;
+    width: 70%;
     height: 100%;
     clip-path: polygon(13% 0, 100% 0%, 87% 100%, 0% 100%);
 
@@ -838,45 +839,61 @@ body::-webkit-scrollbar {
         height: 100%;
         object-fit: cover;
         clip-path: none;
-        margin: 0;
+        margin-left: 0;
 
     }
 
+
+
+    .complem{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 190vh;
+
+    }
+
+
+
     .complem-iage {
         width: 100%;
-        height: 100%;
+        height: 50%;
         background-color: #FE4F3F;
         background-image: url(img/Mask\ group.png);
         background-position: center;
         background-repeat: no-repeat;
         background-size: 440px;
         display: flex;
-        margin-right: 10px;
-        margin-top: 100px;
-        margin-bottom: 50px;
-
-
-    }
-
-    .complem {
-        width: 120%;
-        height: 650px;
-        display: flex;
-        margin: auto;
-        flex-direction: column;
         align-items: center;
         justify-content: center;
-        margin-bottom: 150px;
+        margin-top: 40px;
+ 
+
+
     }
 
-    .sub-complem {
+    .complem-teste{
+        margin-top: 40px;
+        height: 100vh;
+    }
+
+    .title-complem{
         width: 100%;
-        height: 19px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 20px;
+        height: 25vh;
+        align-items: start;
     }
+
+    .ttt1{
+        width: 100%;
+        height: 60%;
+        display: flex;
+
+    }
+
+    .sub-complem{
+        width: 75%;
+    }
+
 
     /* footer */
 
