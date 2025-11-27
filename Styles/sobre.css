@@ -876,7 +876,6 @@ body::-webkit-scrollbar {
         display: flex;
         align-items: center;
         justify-content: center;
-        border: solid;
         width: 40%;
         height: 100%;
     }
