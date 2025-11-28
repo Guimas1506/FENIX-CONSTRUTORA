@@ -69,13 +69,16 @@ h1 {
 .imagemprincipal {
     width: 80%;
     height: auto;
-    aspect-ratio: 3/1;
+    aspect-ratio: 3;
     object-fit: cover;
     margin: 0 auto;
     display: block;
 
 }
 
+.imagemprincipal2{
+    display: none;
+}
 
 /* Texto principal */
 .texto1 {
@@ -455,6 +458,7 @@ footer {
         margin: auto;
         margin: 0;
     }
+
 
     .atendimentos{
         width: 100%;
