@@ -1,4 +1,4 @@
-<!-- sign-in.html -->
+<!-- sign-in.html - CÓDIGO COMPLETO -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -160,23 +160,30 @@
 
     <label for="password">Digite sua senha</label>
 
-    <!-- CAMPO DE SENHA + ÍCONE -->
-   <div class="senha-container">
+    <!-- CAMPO DE SENHA + BOTÃO DE MOSTRAR + ÍCONE -->
+    <div class="senha-container">
       <input type="password" placeholder="Senha" id="password" required oninput="validarSenha()" />
-      <button type="button" class="toggle-password" id="toggle-pass" onclick="togglePassword('password', 'toggle-pass')"><img src="./img/visible.png" alt="Mostrar senha" class="toggle-icon" /></button>
+      <button type="button" class="toggle-password" id="toggle-pass" onclick="togglePassword('password', 'toggle-pass')">
+        <img src="./img/visible.png" alt="Mostrar senha" class="toggle-icon" />
+      </button>
       <div class="info-icon" id="infoIcon">i</div>
+    </div>
 
-      <div class="senha-row">
-        <div class="password-strength">
-          <img id="senha-forca-img" src="./img/senha-fraca.png" alt="Força da senha" />
-        </div>
-
-        <div class="tooltip tooltip-inline" id="tooltipRequisitos">
-          <p id="req-caracteres">Mínimo de 6 letras (a-z ou A-Z)</p>
-          <p id="req-especial">Pelo menos 1 caractere especial (!@#$%^&*...)</p>
-          <p id="req-espacos">Não pode conter espaços</p>
-        </div>
+    <!-- BARRA DE FORÇA VISUAL -->
+    <div class="password-strength">
+      <div class="strength-bars">
+        <div class="strength-bar" id="strength-bar-1"></div>
+        <div class="strength-bar" id="strength-bar-2"></div>
+        <div class="strength-bar" id="strength-bar-3"></div>
       </div>
+      <span class="strength-text weak" id="strength-text">Fraca</span>
+    </div>
+
+    <!-- TOOLTIP COM REQUISITOS (aparece no hover do "i") -->
+    <div class="tooltip" id="tooltipRequisitos">
+      <p id="req-caracteres">Mínimo de 6 letras (a-z ou A-Z)</p>
+      <p id="req-especial">Pelo menos 1 caractere especial (!@#$%^&*...)</p>
+      <p id="req-espacos">Não pode conter espaços</p>
     </div>
 
     <label for="confirm-password">Confirme sua senha</label>

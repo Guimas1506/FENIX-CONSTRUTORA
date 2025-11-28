@@ -1,4 +1,4 @@
-// sign-in.js - COM FUNCIONALIDADE DE MOSTRAR/ESCONDER SENHA
+// sign-in.js - COM BARRA DE FORÇA VISUAL
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 import { 
   getAuth, 
@@ -60,7 +60,6 @@ linksModal.forEach(link => {
   }
 });
 
-// Seleciona os links do menu mobile (lado) para controle de visibilidade
 const linksMenuMobile = document.querySelectorAll('.menu-section a');
 let usuarioLinkMobile = null;
 let favoritosLinkMobile = null;
@@ -131,7 +130,6 @@ onAuthStateChanged(auth, async (user) => {
     if (welcomeMsg) welcomeMsg.textContent = `Bem-vindo(a), ${nome}`;
     if (adminButton) adminButton.style.display = isAdmin ? "inline-block" : "none";
 
-    // Ajusta visibilidade dos links do menu mobile quando logado
     if (usuarioLinkMobile) usuarioLinkMobile.style.display = 'flex';
     if (favoritosLinkMobile) favoritosLinkMobile.style.display = 'flex';
     if (loginLinkMobile) loginLinkMobile.style.display = 'none';
@@ -150,7 +148,6 @@ onAuthStateChanged(auth, async (user) => {
     if (welcomeMsg) welcomeMsg.textContent = "Bem-vindo(a), Usuário";
     if (userEmail) userEmail.textContent = "Email do usuário";
 
-    // Ajusta visibilidade dos links do menu mobile quando NÃO logado
     if (usuarioLinkMobile) usuarioLinkMobile.style.display = 'none';
     if (favoritosLinkMobile) favoritosLinkMobile.style.display = 'none';
     if (loginLinkMobile) loginLinkMobile.style.display = 'flex';
@@ -195,11 +192,46 @@ if (btnLogoutMobile) {
   });
 }
 
-// ==================== VALIDAÇÃO DE SENHA ====================
+// ==================== VALIDAÇÃO DE SENHA COM BARRA VISUAL ====================
 function atualizarRequisito(id, ok) {
   const el = document.getElementById(id);
   if (!el) return;
   el.style.color = ok ? "green" : "red";
+}
+
+function atualizarBarraForca(nivel) {
+  const bar1 = document.getElementById("strength-bar-1");
+  const bar2 = document.getElementById("strength-bar-2");
+  const bar3 = document.getElementById("strength-bar-3");
+  const strengthText = document.getElementById("strength-text");
+  
+  if (!bar1 || !bar2 || !bar3 || !strengthText) return;
+  
+  // Remove todas as classes
+  bar1.className = "strength-bar";
+  bar2.className = "strength-bar";
+  bar3.className = "strength-bar";
+  strengthText.className = "strength-text";
+  
+  if (nivel === 1) {
+    // Fraca - apenas primeira barra vermelha
+    bar1.classList.add("active-weak");
+    strengthText.classList.add("weak");
+    strengthText.textContent = "Fraca";
+  } else if (nivel === 2) {
+    // Média - duas primeiras barras amarelas
+    bar1.classList.add("active-medium");
+    bar2.classList.add("active-medium");
+    strengthText.classList.add("medium");
+    strengthText.textContent = "Média";
+  } else if (nivel === 3) {
+    // Forte - todas as barras verdes
+    bar1.classList.add("active-strong");
+    bar2.classList.add("active-strong");
+    bar3.classList.add("active-strong");
+    strengthText.classList.add("strong");
+    strengthText.textContent = "Forte";
+  }
 }
 
 window.validarSenha = function() {
@@ -220,14 +252,12 @@ window.validarSenha = function() {
     infoIcon.style.backgroundColor = "red";
   }
 
-  const barraImg = document.getElementById("senha-forca-img");
+  // Atualiza barra de força visual
   let nivel = 1;
   if (letrasCount >= 6 && temEspecial && semEspacos) nivel = 2;
   if (nivel === 2 && letrasCount >= 8 && numerosCount >= 2) nivel = 3;
 
-  if (nivel === 1) barraImg.src = "./img/senha-fraca.png";
-  else if (nivel === 2) barraImg.src = "./img/senha-media.png";
-  else if (nivel === 3) barraImg.src = "./img/senha-forte.png";
+  atualizarBarraForca(nivel);
 };
 
 // ==================== FUNÇÃO PARA MOSTRAR SETA ====================
@@ -237,8 +267,8 @@ function mostrarSetaRequisitos() {
     setaExistente.remove();
   }
   
-  const infoIcon = document.getElementById("infoIcon");
-  if (!infoIcon) return;
+  const tooltipRequisitos = document.getElementById("tooltipRequisitos");
+  if (!tooltipRequisitos) return;
   
   const seta = document.createElement('div');
   seta.className = 'seta-requisitos';
@@ -253,14 +283,16 @@ function mostrarSetaRequisitos() {
   style.textContent = `
     .seta-requisitos {
       position: absolute;
-      bottom: -30px;
-      right: 45px;
+      bottom: -80px;
+      left: 50%;
+      transform: translateX(-50%);
       z-index: 150;
       pointer-events: none;
     }
     
     .seta-animada {
       display: flex;
+      flex-direction: column;
       align-items: center;
       gap: 8px;
     }
@@ -283,15 +315,16 @@ function mostrarSetaRequisitos() {
       font-weight: bold;
       animation: pulseArrow 1s ease-in-out infinite;
       text-shadow: 0 2px 8px rgba(255, 0, 0, 0.5);
+      transform: rotate(90deg);
     }
     
     @keyframes pulseArrow {
       0%, 100% {
-        transform: translateX(0);
+        transform: rotate(90deg) translateY(0);
         opacity: 1;
       }
       50% {
-        transform: translateX(8px);
+        transform: rotate(90deg) translateY(8px);
         opacity: 0.7;
       }
     }
@@ -312,20 +345,12 @@ function mostrarSetaRequisitos() {
   if (senhaContainer) {
     senhaContainer.appendChild(seta);
     
-    const tooltip = document.querySelector('.tooltip');
-    if (tooltip) {
-      tooltip.style.display = 'block';
-    }
-    
     setTimeout(() => {
       seta.style.transition = 'opacity 0.5s ease';
       seta.style.opacity = '0';
       setTimeout(() => {
         seta.remove();
         style.remove();
-        if (tooltip) {
-          tooltip.style.display = '';
-        }
       }, 500);
     }, 6000);
   }
@@ -351,7 +376,6 @@ window.registerUser = async function(event) {
 
   if (!(letrasCount >= 6 && temEspecial && semEspacos)) {
     mostrarSetaRequisitos();
-    
     document.getElementById("password").focus();
     return;
   }
@@ -391,115 +415,82 @@ async function socialLogin(provider) {
 window.registerGoogle = () => socialLogin(googleProvider);
 window.registerFacebook = () => socialLogin(facebookProvider);
 
-// ==================== TOOLTIP / INFO ICON BEHAVIOR ====================
+// ==================== TOOLTIP HOVER/TOUCH BEHAVIOR ====================
 window.addEventListener('DOMContentLoaded', () => {
-  const infoIconEl = document.getElementById('infoIcon');
-  const tooltipEl = document.getElementById('tooltipRequisitos');
-  if (!infoIconEl || !tooltipEl) return;
-  // Robust show/hide: show when hovering icon or tooltip; hide shortly after leaving both.
+  const infoIcon = document.getElementById('infoIcon');
+  const tooltip = document.getElementById('tooltipRequisitos');
+  
+  if (!infoIcon || !tooltip) return;
+  
   let hideTimeout = null;
+  let touchTimeout = null;
+  
+  function positionTooltip() {
+    const iconRect = infoIcon.getBoundingClientRect();
+    const tooltipRect = tooltip.getBoundingClientRect();
+    
+    // Posiciona ao lado direito do ícone
+    let left = iconRect.right + 10;
+    let top = iconRect.top + (iconRect.height / 2) - (tooltipRect.height / 2);
+    
+    // Se passar da tela à direita, coloca à esquerda
+    if (left + tooltipRect.width > window.innerWidth - 10) {
+      left = iconRect.left - tooltipRect.width - 10;
+    }
+    
+    // Ajusta se passar do topo ou fundo
+    if (top < 10) top = 10;
+    if (top + tooltipRect.height > window.innerHeight - 10) {
+      top = window.innerHeight - tooltipRect.height - 10;
+    }
+    
+    tooltip.style.left = left + 'px';
+    tooltip.style.top = top + 'px';
+  }
+  
   function showTooltip() {
     if (hideTimeout) {
       clearTimeout(hideTimeout);
       hideTimeout = null;
     }
-
-    // Temporarily display to measure size, position will be computed to keep tooltip in viewport
-    tooltipEl.style.display = 'block';
-    tooltipEl.style.position = 'fixed';
-    tooltipEl.style.opacity = '0';
-
-    // Allow browser to render and compute dimensions
-    const ttRect = tooltipEl.getBoundingClientRect();
-    const iconRect = infoIconEl.getBoundingClientRect();
-
-    // Prefer to place to the right of the icon
-    let left = iconRect.right + 8;
-    // center vertically relative to the icon
-    let top = iconRect.top + (iconRect.height - ttRect.height) / 2;
-
-    // If overflowing right, place to the left
-    if (left + ttRect.width > window.innerWidth - 8) {
-      left = iconRect.left - ttRect.width - 8;
-    }
-    // If still overflowing left, clamp to viewport
-    if (left < 8) left = 8;
-
-    // If tooltip goes above the viewport, place below the icon
-    if (top < 8) top = iconRect.bottom + 8;
-    // If still overflowing bottom, clamp
-    if (top + ttRect.height > window.innerHeight - 8) {
-      top = Math.max(8, window.innerHeight - ttRect.height - 8);
-    }
-
-    tooltipEl.style.left = left + 'px';
-    tooltipEl.style.top = top + 'px';
-    tooltipEl.style.opacity = '1';
+    
+    tooltip.classList.add('show');
+    positionTooltip();
   }
-  function scheduleHideTooltip() {
+  
+  function hideTooltip() {
     if (hideTimeout) clearTimeout(hideTimeout);
     hideTimeout = setTimeout(() => {
-      tooltipEl.style.display = 'none';
-      hideTimeout = null;
-    }, 150);
+      tooltip.classList.remove('show');
+    }, 200);
   }
-
-  // Hover behavior (desktop)
-  infoIconEl.addEventListener('mouseenter', showTooltip);
-  tooltipEl.addEventListener('mouseenter', showTooltip);
-  infoIconEl.addEventListener('mouseleave', scheduleHideTooltip);
-  tooltipEl.addEventListener('mouseleave', scheduleHideTooltip);
-
-  // Click / touch toggles (mobile)
-  infoIconEl.addEventListener('click', (e) => {
-    e.stopPropagation();
-    if (tooltipEl.style.display === 'block') tooltipEl.style.display = 'none';
-    else showTooltip();
+  
+  // Hover (desktop)
+  infoIcon.addEventListener('mouseenter', showTooltip);
+  infoIcon.addEventListener('mouseleave', hideTooltip);
+  
+  // Touch (mobile)
+  infoIcon.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    
+    if (tooltip.classList.contains('show')) {
+      tooltip.classList.remove('show');
+      if (touchTimeout) clearTimeout(touchTimeout);
+    } else {
+      showTooltip();
+      
+      // Auto-esconde após 5 segundos
+      if (touchTimeout) clearTimeout(touchTimeout);
+      touchTimeout = setTimeout(() => {
+        tooltip.classList.remove('show');
+      }, 5000);
+    }
   });
-  infoIconEl.addEventListener('touchstart', (e) => {
-    e.stopPropagation();
-    if (tooltipEl.style.display === 'block') tooltipEl.style.display = 'none';
-    else showTooltip();
-  }, {passive: true});
-
-  // Click outside closes tooltip
+  
+  // Fecha ao clicar fora
   document.addEventListener('click', (e) => {
-    if (!infoIconEl.contains(e.target) && !tooltipEl.contains(e.target)) {
-      tooltipEl.style.display = 'none';
+    if (!infoIcon.contains(e.target) && !tooltip.contains(e.target)) {
+      tooltip.classList.remove('show');
     }
   });
 });
-
-// ==================== POSITION TOGGLE INSIDE INPUT ====================
-function positionToggleInsideInput() {
-  const input = document.getElementById('password');
-  const toggle = document.getElementById('toggle-pass');
-  if (!input || !toggle) return;
-
-  // ensure toggle is positioned absolute within .senha-container
-  toggle.style.position = 'absolute';
-  // remove translateY transform so we can set exact top
-  toggle.style.transform = 'none';
-
-  const container = input.closest('.senha-container');
-  if (!container) return;
-
-  // compute position relative to container
-  const inputOffsetTop = input.offsetTop;
-  const inputHeight = input.offsetHeight;
-  const toggleHeight = toggle.offsetHeight || 24;
-
-  const top = inputOffsetTop + Math.max(0, Math.round((inputHeight - toggleHeight) / 2));
-  toggle.style.top = top + 'px';
-}
-
-window.addEventListener('load', positionToggleInsideInput);
-window.addEventListener('resize', () => {
-  // slight debounce
-  clearTimeout(window._posTO);
-  window._posTO = setTimeout(positionToggleInsideInput, 50);
-});
-
-// Recompute when DOM content changes (e.g., tooltip insertion)
-const observer = new MutationObserver(() => positionToggleInsideInput());
-observer.observe(document.body, { childList: true, subtree: true });

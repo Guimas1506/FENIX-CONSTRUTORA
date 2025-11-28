@@ -1,4 +1,4 @@
-/* sign-in.css - CÓDIGO COMPLETO COM BOTÃO DENTRO DO CAMPO */
+/* sign-in.css - CÓDIGO COMPLETO COM BARRA DE FORÇA VISUAL */
 
 :root{
     --Cor-Primaria: #FE4F3F;
@@ -222,55 +222,99 @@ input{
     box-shadow: 0 4px 12px rgba(255, 0, 0, 0.6);
 }
 
-/* Tooltip */
+/* Tooltip - Aparece no hover */
 .tooltip {
     display: none;
+    position: fixed;
     background: white;
     border: 2px solid #FF0000;
     border-radius: 8px;
-    padding: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+    padding: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     z-index: 1100;
-    width: 220px;
-    position: fixed;
+    width: 260px;
+    pointer-events: none;
+}
+
+.tooltip.show {
+    display: block;
 }
 
 .tooltip p {
-    margin: 4px 0;
-    font-size: 12px;
+    margin: 5px 0;
+    font-size: 13px;
     color: #c22;
     font-weight: 700;
+    text-align: left;
 }
 
+/* Remove a classe inline */
 .tooltip-inline {
-    width: 200px;
-    padding: 8px;
+    display: none;
 }
 
-/* Linha que agrupa a imagem de força e a caixa de requisitos */
+/* Linha que agrupa a barra de força e a caixa de requisitos */
 .senha-row {
     display: flex;
     align-items: flex-start;
-    gap: 12px;
+    gap: 15px;
     margin-top: 8px;
+    margin-bottom: 20px;
 }
 
-/* Barrinha de força */
+/* ==================== BARRA DE FORÇA VISUAL ==================== */
 .password-strength {
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin: 10px 0 20px 0;
-    overflow: visible;
+    gap: 10px;
+    flex-shrink: 0;
 }
 
-.password-strength img {
-    width: 24vw;
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto;
+.strength-bars {
+    display: flex;
+    gap: 5px;
+    flex: 1;
+    max-width: 200px;
+}
+
+.strength-bar {
+    height: 8px;
+    flex: 1;
+    background-color: #ddd;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.strength-bar.active-weak {
+    background-color: #ff4444;
+}
+
+.strength-bar.active-medium {
+    background-color: #ffaa00;
+}
+
+.strength-bar.active-strong {
+    background-color: #00cc66;
+}
+
+.strength-text {
+    font-size: 14px;
+    font-weight: 700;
+    min-width: 60px;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.strength-text.weak {
+    color: #ff4444;
+}
+
+.strength-text.medium {
+    color: #ffaa00;
+}
+
+.strength-text.strong {
+    color: #00cc66;
 }
 
 /* Requisitos da senha */
@@ -521,10 +565,6 @@ p{
         padding: 0 10px;
     }
     
-    .tooltip {
-        width: 220px;
-    }
-    
     .toggle-password {
         right: 10px;
     }
@@ -534,13 +574,24 @@ p{
         height: 18px;
     }
 
-    .password-strength img {
-        width: 36vw;
+    .strength-bars {
+        max-width: 120px;
+    }
+
+    .strength-text {
+        font-size: 12px;
+        min-width: 45px;
+    }
+
+    /* Mobile: coloca tudo em coluna */
+    .senha-row {
+        flex-direction: column;
+        gap: 10px;
     }
 
     .tooltip-inline {
-        width: 170px;
+        width: 100%;
         font-size: 12px;
-        padding: 6px;
+        padding: 10px;
     }
 }

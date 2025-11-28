@@ -1,0 +1,8 @@
+<svg width="150" height="30" xmlns="http://www.w3.org/2000/svg">
+  <!-- Primeira divisão (verde) -->
+  <rect x="0" y="0" width="48" height="30" fill="#00AA00" rx="4"/>
+  <!-- Segunda divisão (verde) -->
+  <rect x="51" y="0" width="48" height="30" fill="#00AA00" rx="4"/>
+  <!-- Terceira divisão (verde) -->
+  <rect x="102" y="0" width="48" height="30" fill="#00AA00" rx="4"/>
+</svg>
