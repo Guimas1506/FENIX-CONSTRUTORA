@@ -692,6 +692,7 @@ video::-moz-media-controls {
     margin-top: 5px;
     margin-bottom: 0;
     justify-content: center;
+    text-align: center;
     font-size: 5vb;
     font-weight: 800;
     color: white;
