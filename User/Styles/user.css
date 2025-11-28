@@ -720,11 +720,14 @@ body::-webkit-scrollbar {
         justify-content: center;
         margin-left: 10px;
         margin-right: 10px;
+        margin-bottom: 0;
         height: 100%;
     }
 
     #config-button1 img {
         margin: 0;
+        width: 30px;
+        height: 30px;
     }
 
 
@@ -740,10 +743,13 @@ body::-webkit-scrollbar {
         margin-left: 10px;
         margin-right: 10px;
                 height: 100%;
+                margin-bottom: 0;
     }
 
     #config-button2 img {
         margin: 0;
+                width: 30px;
+        height: 30px;
     }
 
     #config-button2 p {
@@ -755,14 +761,19 @@ body::-webkit-scrollbar {
     #config-button4 {
         border-radius: 30px;
         align-items: center;
+
         justify-content: center;
         margin-left: 10px;
         margin-right: 10px;
                 height: 100%;
+                margin-bottom: 0;
+                margin-top: 0;
     }
 
     #config-button4 img {
         margin: 0;
+                width: 30px;
+        height: 30px;
     }
 
     #config-button4 p {

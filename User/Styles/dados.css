@@ -361,10 +361,13 @@ main{
         justify-content: center;
         margin-left: 10px;
         margin-right: 10px;
+        margin-bottom: 0;
     }
 
     #config-button1 img {
         margin: 0;
+                width: 30px;
+        height: 30px;
     }
 
 
@@ -379,10 +382,13 @@ main{
         justify-content: center;
         margin-left: 10px;
         margin-right: 10px;
+        margin-bottom: 0;
     }
 
     #config-button2 img {
         margin: 0;
+                width: 30px;
+        height: 30px;
     }
 
     #config-button2 p {
@@ -397,10 +403,15 @@ main{
         justify-content: center;
         margin-left: 10px;
         margin-right: 10px;
+        margin-top: 0;
+        margin-bottom: 0;
+        height: 100%;
     }
 
     #config-button4 img {
         margin: 0;
+                width: 30px;
+        height: 30px;
     }
 
     #config-button4 p {

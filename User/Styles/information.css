@@ -371,10 +371,13 @@ body::-webkit-scrollbar {
     margin-left: 10px;
     margin-right: 10px;
     height: 100%;
+    margin-bottom: 0;
   }
 
   #config-button1 img {
     margin: 0;
+            width: 30px;
+        height: 30px;
   }
 
 
@@ -390,6 +393,7 @@ body::-webkit-scrollbar {
     margin-left: 10px;
     margin-right: 10px;
     height: 100%;
+    margin-bottom: 0;
   }
 
   #config-button2 img {
@@ -409,6 +413,7 @@ body::-webkit-scrollbar {
     margin-left: 10px;
     margin-right: 10px;
     height: 100%;
+    margin-bottom: 0;
   }
 
   #config-button4 img {
