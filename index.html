@@ -45,9 +45,9 @@
 
       <div class="menuzera">
 
-      <button id="openMenu" class="menu-icon">
-        <img src="img/barra-de-menu.png" alt="">
-      </button>
+        <button id="openMenu" class="menu-icon">
+          <img src="img/barra-de-menu.png" alt="">
+        </button>
 
       </div>
 
@@ -65,7 +65,7 @@
           <ul>
             <li><a href="index.html">Início</a></li>
             <li><a href="sobre.html">Sobre Nós</a></li>
-            <li><a href="Imovel.html">Imoveis</a></li>            
+            <li><a href="Imovel.html">Imoveis</a></li>
             <li><a href="serviços.html">Serviços</a></li>
             <li><a href="contato.html">Contato</a></li>
           </ul>
@@ -83,10 +83,9 @@
 
         <!-- Botão de Logout Mobile -->
         <div style="padding: 20px; border-top: 1px solid #ddd;">
-          <button id="btnLogoutMobile" 
-                  style="width: 100%; padding: 12px 20px; background: #FE4F3F; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; display: none; align-items: center; justify-content: center; gap: 10px; transition: all 0.3s;"
-                  onmouseover="this.style.background='#e63e2e'"
-                  onmouseout="this.style.background='#FE4F3F'">
+          <button id="btnLogoutMobile"
+            style="width: 100%; padding: 12px 20px; background: #FE4F3F; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; display: none; align-items: center; justify-content: center; gap: 10px; transition: all 0.3s;"
+            onmouseover="this.style.background='#e63e2e'" onmouseout="this.style.background='#FE4F3F'">
             <img src="./img/sair.png" alt="Logout" style="width: 20px; height: 20px;">
             <span>Fazer Logout</span>
           </button>
@@ -171,7 +170,7 @@
 
             <a id="register" href="sign-in.html">Registre</a>
 
-            
+
 
             <a id="log" href="User/user.html">Minha Conta</a>
 
@@ -185,7 +184,7 @@
             <button id="btnLogoutModal">
               <img src="./img/sair.png" alt="">
               <p>Fazer Logout</p>
-            </button>            
+            </button>
           </div>
 
 
@@ -235,51 +234,53 @@
 
 
     <section class="slider-mobile">
-  <div class="slider-content-mobile">
+      <div class="slider-content-mobile">
 
-    <input type="radio" name="btn-radio-mobile" id="m-radio1">
-    <input type="radio" name="btn-radio-mobile" id="m-radio2">
-    <input type="radio" name="btn-radio-mobile" id="m-radio3">
+        <input type="radio" name="btn-radio-mobile" id="m-radio1">
+        <input type="radio" name="btn-radio-mobile" id="m-radio2">
+        <input type="radio" name="btn-radio-mobile" id="m-radio3">
 
-    <div class="slide-box-mobile primeiro-mobile">
-      <img class="img-mobile" src="img/casa-de-luxo.jpg" alt="slide 1 mobile">
-    </div>
+        <div class="slide-box-mobile primeiro-mobile">
+          <img class="img-mobile" src="img/casa-de-luxo.jpg" alt="slide 1 mobile">
+        </div>
 
-    <div class="slide-box-mobile">
-      <img class="img-mobile" src="img/casa-de-praia-p3urv6wgepmsz8y9.jpg" alt="slide 2 mobile">
-    </div>
+        <div class="slide-box-mobile">
+          <img class="img-mobile" src="img/casa-de-praia-p3urv6wgepmsz8y9.jpg" alt="slide 2 mobile">
+        </div>
 
-    <div class="slide-box-mobile">
-      <img class="img-mobile" src="./img/photo-1544984243-ec57ea16fe25.jfif" alt="slide 3 mobile">
-    </div>
+        <div class="slide-box-mobile">
+          <img class="img-mobile" src="./img/photo-1544984243-ec57ea16fe25.jfif" alt="slide 3 mobile">
+        </div>
 
-    <div class="nav-auto-mobile">
-      <div class="auto-btn-m1"></div>
-      <div class="auto-btn-m2"></div>
-      <div class="auto-btn-m3"></div>
-    </div>
+        <div class="nav-auto-mobile">
+          <div class="auto-btn-m1"></div>
+          <div class="auto-btn-m2"></div>
+          <div class="auto-btn-m3"></div>
+        </div>
 
-    <div class="nav-manual-mobile">
-      <label for="m-radio1" class="manual-btn-mobile"></label>
-      <label for="m-radio2" class="manual-btn-mobile"></label>
-      <label for="m-radio3" class="manual-btn-mobile"></label>
-    </div>
+        <div class="nav-manual-mobile">
+          <label for="m-radio1" class="manual-btn-mobile"></label>
+          <label for="m-radio2" class="manual-btn-mobile"></label>
+          <label for="m-radio3" class="manual-btn-mobile"></label>
+        </div>
 
-  </div>
+      </div>
 
-  <script>
-    let countMobile = 1;
+      <script>
+        let contadorM = 1;
 
-setInterval(() => {
-    document.getElementById(`m-radio${countMobile}`).checked = true;
-    countMobile++;
+        document.getElementById("m-radio1").checked = true;
 
-    if (countMobile > 3) {
-        countMobile = 1;
-    }
-}, 3500);
-  </script>
-</section>
+        setInterval(() => {
+          contadorM++;
+          if (contadorM > 3) contadorM = 1;
+          document.getElementById("m-radio" + contadorM).checked = true;
+        }, 5000);
+
+      </script>
+
+      
+    </section>
 
 
 
@@ -326,7 +327,7 @@ setInterval(() => {
 
         <div class="subimg-conteud2">
         </div>
-        
+
       </div>
     </div>
 
@@ -364,13 +365,17 @@ setInterval(() => {
 
         </div>
 
-        <p id="chorumi">
-          ÁREA CONST. 218,49m²
-        </p>
+        <div class="master-chorumi">
 
-        <p id="sub-chorumi">
-          ÁREA DO LOTE 1.000m²
-        </p>
+          <p id="chorumi">
+            ÁREA CONST. 218,49m²
+          </p>
+
+          <p id="sub-chorumi">
+            ÁREA DO LOTE 1.000m²
+          </p>
+
+        </div>
 
         <div class="mais">
           <a href="Imovel.html" id="plus">Mais Sobre</a>
@@ -574,7 +579,7 @@ setInterval(() => {
         </div>
       </div>
 
-      
+
       <!-- Seção de contatos -->
       <div class="contatos">
         <!-- Primeira coluna: Redes sociais -->
