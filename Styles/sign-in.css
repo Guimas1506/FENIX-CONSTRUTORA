@@ -537,6 +537,11 @@ p{
 }
 
 @media (max-width: 700px) {
+
+    .titulos1{
+        margin-top: 90px;
+    }
+
     .titulos1 h1 {
         font-size: 36px;
     }

@@ -717,6 +717,10 @@ body::-webkit-scrollbar {
 @media screen and (max-width: 480px) {
 
 
+    .content{
+        margin-top: 70px;
+    }
+
     .title-conteud2 {
         width: 100%;
         justify-content: center;

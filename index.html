@@ -61,7 +61,7 @@
         </div>
 
         <nav class="menu-section">
-          <h3>Site</h3>
+          <h3>Navegar</h3>
           <ul>
             <li><a href="index.html">Início</a></li>
             <li><a href="sobre.html">Sobre Nós</a></li>
@@ -230,6 +230,66 @@
 
       </div>
     </section>
+
+
+
+
+    <section class="slider-mobile">
+  <div class="slider-content-mobile">
+
+    <input type="radio" name="btn-radio-mobile" id="m-radio1">
+    <input type="radio" name="btn-radio-mobile" id="m-radio2">
+    <input type="radio" name="btn-radio-mobile" id="m-radio3">
+
+    <div class="slide-box-mobile primeiro-mobile">
+      <img class="img-mobile" src="img/casa-de-luxo.jpg" alt="slide 1 mobile">
+    </div>
+
+    <div class="slide-box-mobile">
+      <img class="img-mobile" src="img/casa-de-praia-p3urv6wgepmsz8y9.jpg" alt="slide 2 mobile">
+    </div>
+
+    <div class="slide-box-mobile">
+      <img class="img-mobile" src="./img/photo-1544984243-ec57ea16fe25.jfif" alt="slide 3 mobile">
+    </div>
+
+    <div class="nav-auto-mobile">
+      <div class="auto-btn-m1"></div>
+      <div class="auto-btn-m2"></div>
+      <div class="auto-btn-m3"></div>
+    </div>
+
+    <div class="nav-manual-mobile">
+      <label for="m-radio1" class="manual-btn-mobile"></label>
+      <label for="m-radio2" class="manual-btn-mobile"></label>
+      <label for="m-radio3" class="manual-btn-mobile"></label>
+    </div>
+
+  </div>
+
+  <script>
+    let countMobile = 1;
+
+setInterval(() => {
+    document.getElementById(`m-radio${countMobile}`).checked = true;
+    countMobile++;
+
+    if (countMobile > 3) {
+        countMobile = 1;
+    }
+}, 3500);
+  </script>
+</section>
+
+
+
+
+
+    </section>
+
+
+
+
 
     <!--AQUI COMEÇA O ELEGANCIA E INOVAÇÃO-->
     <div class="conteud">

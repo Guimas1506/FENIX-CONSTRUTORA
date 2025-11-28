@@ -222,11 +222,11 @@ header {
 .side-menu {
   position: fixed;
   top: 0;
-  right: -320px;
+  right: -380px;
   /* escondido inicialmente */
   width: 300px;
-  height: 100%;
-  background: #F5F5F5;
+  height: 80%;
+  background: #353535;
   box-shadow: -2px 0 10px rgba(0, 0, 0, 0.15);
   padding: 20px;
   transition: right 0.3s ease;
@@ -242,6 +242,8 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: var(--Cor-Primaria);
+  font-size: 25px;
 }
 
 .close-btn {
@@ -249,6 +251,7 @@ header {
   border: none;
   font-size: 28px;
   cursor: pointer;
+  color: white;
 }
 
 /* Seções do menu */
@@ -258,12 +261,13 @@ header {
 
 .menu-section h3 {
   margin: 0 0 10px 0;
-  font-size: 18px;
-  color: #333;
+  font-size: 30px;
+  color: var(--Cor-Primaria);
 }
 
 .menu-section ul {
   list-style: none;
+  color: #FE4F3F;
   padding: 0;
 }
 
@@ -273,9 +277,10 @@ header {
 
 .menu-section ul li a {
   text-decoration: none;
-  color: #555;
+  color: #ffffff;
   font-size: 16px;
   transition: 0.2s;
+  font-size: 17px;
 }
 
 .menu-section ul li a:hover {
@@ -378,9 +383,12 @@ header {
 
 @media screen and (max-width: 480px) {
 
-  .navbar {
-    width: 100%;
-  }
+    .navbar{
+        position: fixed;
+        border-radius: 20px;
+        margin-top: 10px;
+        z-index: 10000000000000;
+    }
 
   .icon-person {
     display: none;
