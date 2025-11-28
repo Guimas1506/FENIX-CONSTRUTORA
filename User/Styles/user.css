@@ -796,15 +796,16 @@ body::-webkit-scrollbar {
     }
 
     .big-btn{
-        height: 120vh;
+        height: 110vh;
         flex-direction: column;
+        border: solid;
     }
 
     .card-info1{
         width: 95%;
         margin: 0;
-        height: 40%;
-        margin-top: 20px;
+        height: 47%;
+
     }
 
     .card-info2{
@@ -813,4 +814,17 @@ body::-webkit-scrollbar {
         height: 40%;
         margin-top: 20px;        
     }
+
+    .conteud-user h2{
+        margin-top: 10px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .conteud-user{
+        height: 90vh;
+    }
+
+
 }
