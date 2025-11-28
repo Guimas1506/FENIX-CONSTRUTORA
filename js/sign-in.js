@@ -267,8 +267,8 @@ function mostrarSetaRequisitos() {
     setaExistente.remove();
   }
   
-  const tooltipRequisitos = document.getElementById("tooltipRequisitos");
-  if (!tooltipRequisitos) return;
+  const infoIcon = document.getElementById("infoIcon");
+  if (!infoIcon) return;
   
   const seta = document.createElement('div');
   seta.className = 'seta-requisitos';
@@ -283,16 +283,14 @@ function mostrarSetaRequisitos() {
   style.textContent = `
     .seta-requisitos {
       position: absolute;
-      bottom: -80px;
-      left: 50%;
-      transform: translateX(-50%);
+      bottom: -30px;
+      right: 50px;
       z-index: 150;
       pointer-events: none;
     }
     
     .seta-animada {
       display: flex;
-      flex-direction: column;
       align-items: center;
       gap: 8px;
     }
@@ -315,16 +313,15 @@ function mostrarSetaRequisitos() {
       font-weight: bold;
       animation: pulseArrow 1s ease-in-out infinite;
       text-shadow: 0 2px 8px rgba(255, 0, 0, 0.5);
-      transform: rotate(90deg);
     }
     
     @keyframes pulseArrow {
       0%, 100% {
-        transform: rotate(90deg) translateY(0);
+        transform: translateX(0);
         opacity: 1;
       }
       50% {
-        transform: rotate(90deg) translateY(8px);
+        transform: translateX(8px);
         opacity: 0.7;
       }
     }
