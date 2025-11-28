@@ -798,7 +798,7 @@ body::-webkit-scrollbar {
     .big-btn{
         height: 110vh;
         flex-direction: column;
-        border: solid;
+
     }
 
     .card-info1{
