@@ -60,6 +60,20 @@ linksModal.forEach(link => {
   }
 });
 
+// Seleciona os links do menu mobile (lado) para controle de visibilidade
+const linksMenuMobile = document.querySelectorAll('.menu-section a');
+let usuarioLinkMobile = null;
+let favoritosLinkMobile = null;
+let loginLinkMobile = null;
+let signinLinkMobile = null;
+
+linksMenuMobile.forEach(link => {
+  if (link.href && link.href.includes('User/user.html')) usuarioLinkMobile = link;
+  if (link.href && link.href.includes('favoritos.html')) favoritosLinkMobile = link;
+  if (link.href && link.href.includes('log-in.html')) loginLinkMobile = link;
+  if (link.href && link.href.includes('sign-in.html')) signinLinkMobile = link;
+});
+
 // ==================== MOSTRAR/ESCONDER SENHA ====================
 window.togglePassword = function(inputId, buttonId) {
   const input = document.getElementById(inputId);
@@ -117,6 +131,12 @@ onAuthStateChanged(auth, async (user) => {
     if (welcomeMsg) welcomeMsg.textContent = `Bem-vindo(a), ${nome}`;
     if (adminButton) adminButton.style.display = isAdmin ? "inline-block" : "none";
 
+    // Ajusta visibilidade dos links do menu mobile quando logado
+    if (usuarioLinkMobile) usuarioLinkMobile.style.display = 'flex';
+    if (favoritosLinkMobile) favoritosLinkMobile.style.display = 'flex';
+    if (loginLinkMobile) loginLinkMobile.style.display = 'none';
+    if (signinLinkMobile) signinLinkMobile.style.display = 'none';
+
   } else {
     console.log("❌ Usuário não logado");
     
@@ -129,6 +149,12 @@ onAuthStateChanged(auth, async (user) => {
     if (favoritosButton) favoritosButton.style.display = "none";
     if (welcomeMsg) welcomeMsg.textContent = "Bem-vindo(a), Usuário";
     if (userEmail) userEmail.textContent = "Email do usuário";
+
+    // Ajusta visibilidade dos links do menu mobile quando NÃO logado
+    if (usuarioLinkMobile) usuarioLinkMobile.style.display = 'none';
+    if (favoritosLinkMobile) favoritosLinkMobile.style.display = 'none';
+    if (loginLinkMobile) loginLinkMobile.style.display = 'flex';
+    if (signinLinkMobile) signinLinkMobile.style.display = 'flex';
   }
 });
 
@@ -325,7 +351,7 @@ window.registerUser = async function(event) {
 
   if (!(letrasCount >= 6 && temEspecial && semEspacos)) {
     mostrarSetaRequisitos();
-    alert("A senha não atende aos requisitos mínimos!\n\n✓ Mínimo de 6 letras\n✓ Pelo menos 1 caractere especial\n✓ Não pode conter espaços\n\nVeja os detalhes no botão 'i' vermelho abaixo do campo de senha.");
+    
     document.getElementById("password").focus();
     return;
   }
@@ -364,3 +390,116 @@ async function socialLogin(provider) {
 
 window.registerGoogle = () => socialLogin(googleProvider);
 window.registerFacebook = () => socialLogin(facebookProvider);
+
+// ==================== TOOLTIP / INFO ICON BEHAVIOR ====================
+window.addEventListener('DOMContentLoaded', () => {
+  const infoIconEl = document.getElementById('infoIcon');
+  const tooltipEl = document.getElementById('tooltipRequisitos');
+  if (!infoIconEl || !tooltipEl) return;
+  // Robust show/hide: show when hovering icon or tooltip; hide shortly after leaving both.
+  let hideTimeout = null;
+  function showTooltip() {
+    if (hideTimeout) {
+      clearTimeout(hideTimeout);
+      hideTimeout = null;
+    }
+
+    // Temporarily display to measure size, position will be computed to keep tooltip in viewport
+    tooltipEl.style.display = 'block';
+    tooltipEl.style.position = 'fixed';
+    tooltipEl.style.opacity = '0';
+
+    // Allow browser to render and compute dimensions
+    const ttRect = tooltipEl.getBoundingClientRect();
+    const iconRect = infoIconEl.getBoundingClientRect();
+
+    // Prefer to place to the right of the icon
+    let left = iconRect.right + 8;
+    // center vertically relative to the icon
+    let top = iconRect.top + (iconRect.height - ttRect.height) / 2;
+
+    // If overflowing right, place to the left
+    if (left + ttRect.width > window.innerWidth - 8) {
+      left = iconRect.left - ttRect.width - 8;
+    }
+    // If still overflowing left, clamp to viewport
+    if (left < 8) left = 8;
+
+    // If tooltip goes above the viewport, place below the icon
+    if (top < 8) top = iconRect.bottom + 8;
+    // If still overflowing bottom, clamp
+    if (top + ttRect.height > window.innerHeight - 8) {
+      top = Math.max(8, window.innerHeight - ttRect.height - 8);
+    }
+
+    tooltipEl.style.left = left + 'px';
+    tooltipEl.style.top = top + 'px';
+    tooltipEl.style.opacity = '1';
+  }
+  function scheduleHideTooltip() {
+    if (hideTimeout) clearTimeout(hideTimeout);
+    hideTimeout = setTimeout(() => {
+      tooltipEl.style.display = 'none';
+      hideTimeout = null;
+    }, 150);
+  }
+
+  // Hover behavior (desktop)
+  infoIconEl.addEventListener('mouseenter', showTooltip);
+  tooltipEl.addEventListener('mouseenter', showTooltip);
+  infoIconEl.addEventListener('mouseleave', scheduleHideTooltip);
+  tooltipEl.addEventListener('mouseleave', scheduleHideTooltip);
+
+  // Click / touch toggles (mobile)
+  infoIconEl.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (tooltipEl.style.display === 'block') tooltipEl.style.display = 'none';
+    else showTooltip();
+  });
+  infoIconEl.addEventListener('touchstart', (e) => {
+    e.stopPropagation();
+    if (tooltipEl.style.display === 'block') tooltipEl.style.display = 'none';
+    else showTooltip();
+  }, {passive: true});
+
+  // Click outside closes tooltip
+  document.addEventListener('click', (e) => {
+    if (!infoIconEl.contains(e.target) && !tooltipEl.contains(e.target)) {
+      tooltipEl.style.display = 'none';
+    }
+  });
+});
+
+// ==================== POSITION TOGGLE INSIDE INPUT ====================
+function positionToggleInsideInput() {
+  const input = document.getElementById('password');
+  const toggle = document.getElementById('toggle-pass');
+  if (!input || !toggle) return;
+
+  // ensure toggle is positioned absolute within .senha-container
+  toggle.style.position = 'absolute';
+  // remove translateY transform so we can set exact top
+  toggle.style.transform = 'none';
+
+  const container = input.closest('.senha-container');
+  if (!container) return;
+
+  // compute position relative to container
+  const inputOffsetTop = input.offsetTop;
+  const inputHeight = input.offsetHeight;
+  const toggleHeight = toggle.offsetHeight || 24;
+
+  const top = inputOffsetTop + Math.max(0, Math.round((inputHeight - toggleHeight) / 2));
+  toggle.style.top = top + 'px';
+}
+
+window.addEventListener('load', positionToggleInsideInput);
+window.addEventListener('resize', () => {
+  // slight debounce
+  clearTimeout(window._posTO);
+  window._posTO = setTimeout(positionToggleInsideInput, 50);
+});
+
+// Recompute when DOM content changes (e.g., tooltip insertion)
+const observer = new MutationObserver(() => positionToggleInsideInput());
+observer.observe(document.body, { childList: true, subtree: true });

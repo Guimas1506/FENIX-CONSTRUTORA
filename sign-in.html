@@ -162,19 +162,22 @@
 
     <!-- CAMPO DE SENHA + ÍCONE -->
    <div class="senha-container">
-  <input type="password" placeholder="Senha" id="password" required oninput="validarSenha()" />
-  <button type="button" class="toggle-password" id="toggle-pass" onclick="togglePassword('password', 'toggle-pass')"><img src="./img/visible.png" alt="Mostrar senha" class="toggle-icon" /></button>
-  <div class="info-icon" id="infoIcon">i</div>
-  <div class="tooltip">
-    <p id="req-caracteres">Mínimo de 6 letras (a-z ou A-Z)</p>
-    <p id="req-especial">Pelo menos 1 caractere especial (!@#$%^&*...)</p>
-    <p id="req-espacos">Não pode conter espaços</p>
-  </div>
-</div>
+      <input type="password" placeholder="Senha" id="password" required oninput="validarSenha()" />
+      <button type="button" class="toggle-password" id="toggle-pass" onclick="togglePassword('password', 'toggle-pass')"><img src="./img/visible.png" alt="Mostrar senha" class="toggle-icon" /></button>
+      <div class="info-icon" id="infoIcon">i</div>
 
-    <div class="password-strength">
-  <img id="senha-forca-img" src="./img/senha-fraca.png" alt="Força da senha" />
-</div>
+      <div class="senha-row">
+        <div class="password-strength">
+          <img id="senha-forca-img" src="./img/senha-fraca.png" alt="Força da senha" />
+        </div>
+
+        <div class="tooltip tooltip-inline" id="tooltipRequisitos">
+          <p id="req-caracteres">Mínimo de 6 letras (a-z ou A-Z)</p>
+          <p id="req-especial">Pelo menos 1 caractere especial (!@#$%^&*...)</p>
+          <p id="req-espacos">Não pode conter espaços</p>
+        </div>
+      </div>
+    </div>
 
     <label for="confirm-password">Confirme sua senha</label>
     <input type="password" placeholder="Confirmar a senha" id="confirm-password" required />

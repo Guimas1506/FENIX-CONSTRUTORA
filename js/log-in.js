@@ -75,6 +75,20 @@ linksModal.forEach(link => {
   }
 });
 
+// Seleciona os links do menu mobile para controle de visibilidade
+const linksMenuMobile = document.querySelectorAll('.menu-section a');
+let usuarioLinkMobile = null;
+let favoritosLinkMobile = null;
+let loginLinkMobile = null;
+let signinLinkMobile = null;
+
+linksMenuMobile.forEach(link => {
+  if (link.href && link.href.includes('User/user.html')) usuarioLinkMobile = link;
+  if (link.href && link.href.includes('favoritos.html')) favoritosLinkMobile = link;
+  if (link.href && link.href.includes('log-in.html')) loginLinkMobile = link;
+  if (link.href && link.href.includes('sign-in.html')) signinLinkMobile = link;
+});
+
 // ==================== CONTROLE DE USUÁRIO ====================
 onAuthStateChanged(auth, async (user) => {
   if (user) {
@@ -84,6 +98,12 @@ onAuthStateChanged(auth, async (user) => {
     if (registerButton) registerButton.style.display = "none";
     if (userButton) userButton.style.display = "flex";
     if (favoritosButton) favoritosButton.style.display = "flex";
+
+    // Ajusta visibilidade dos links do menu mobile quando logado
+    if (usuarioLinkMobile) usuarioLinkMobile.style.display = 'flex';
+    if (favoritosLinkMobile) favoritosLinkMobile.style.display = 'flex';
+    if (loginLinkMobile) loginLinkMobile.style.display = 'none';
+    if (signinLinkMobile) signinLinkMobile.style.display = 'none';
 
     // Pega dados do Firestore
     const docRef = doc(db, "users", user.uid);
@@ -99,6 +119,12 @@ onAuthStateChanged(auth, async (user) => {
     if (registerButton) registerButton.style.display = "flex";
     if (userButton) userButton.style.display = "none";
     if (favoritosButton) favoritosButton.style.display = "none";
+    
+    // Ajusta visibilidade dos links do menu mobile quando NÃO logado
+    if (usuarioLinkMobile) usuarioLinkMobile.style.display = 'none';
+    if (favoritosLinkMobile) favoritosLinkMobile.style.display = 'none';
+    if (loginLinkMobile) loginLinkMobile.style.display = 'flex';
+    if (signinLinkMobile) signinLinkMobile.style.display = 'flex';
     if (welcomeMsg) welcomeMsg.textContent = "Bem-vindo(a), Usuário";
     if (userEmail) userEmail.textContent = "Email do usuário";
   }
