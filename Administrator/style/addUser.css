@@ -355,3 +355,29 @@ body::-webkit-scrollbar{
 .date-enter{
     margin-right: 10px;
 }
+
+.btn-upload-foto{
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--Cor-Secundaria);
+    transition: 0.3s ease;
+}
+
+.btn-upload-foto:hover{
+    background-color: var(--Cor-Primaria);
+    transform: scale(1.1);
+}
+
+.btn-upload-foto img{
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1);
+}

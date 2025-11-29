@@ -154,18 +154,15 @@
 
                 <div class="user-dads">
                     <div class="user-foto">
-                        <img src="img/do-utilizador.png" alt="Foto Usuario">
+                        <img id="preview-foto" src="img/do-utilizador.png" alt="Foto Usuario">
                     </div>
 
                     <div class="entrada">
                         <div class="date-enter">
-                            <div class="iconen">
-                                <img src="img/enter.png" alt="">
-                            </div>
-
-                            
-
-
+                            <input type="file" id="foto-perfil" accept="image/*" style="display: none;">
+                            <button type="button" class="btn-upload-foto" onclick="document.getElementById('foto-perfil').click()">
+                                <img src="img/enter.png" alt="Upload">
+                            </button>
                         </div>
                         <div class="acessou">
                             <div class="tempo-acess">

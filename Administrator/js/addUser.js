@@ -1,10 +1,30 @@
 // Administrator/js/addUser.js
 // Create a user document in Firestore (no Cloud Function). This does NOT create an Auth user.
-import { db } from '../../firebase.js';
+import { db, storage } from '../../firebase.js';
 import { doc, setDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js';
+import { ref, uploadBytes, getDownloadURL } from 'https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js';
 
 // try to find some inputs from page
 const saveBtn = document.querySelector('.btn-salvar');
+const fotoInput = document.getElementById('foto-perfil');
+const previewFoto = document.getElementById('preview-foto');
+let selectedFile = null;
+
+// Preview da imagem quando selecionada
+if(fotoInput){
+  fotoInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if(file){
+      selectedFile = file;
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        previewFoto.src = event.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+}
+
 if(saveBtn){
   saveBtn.addEventListener('click', async (e)=>{
     e.preventDefault();
@@ -52,6 +72,20 @@ if(saveBtn){
         });
       }catch(e){ console.warn('Could not set displayName via REST:', e); }
 
+      // 2.5) Upload da imagem para Firebase Storage
+      let photoURL = 'img/do-utilizador.png'; // default
+      if(selectedFile){
+        try{
+          const storageRef = ref(storage, `usuarios/${uid}/perfil.jpg`);
+          await uploadBytes(storageRef, selectedFile);
+          photoURL = await getDownloadURL(storageRef);
+          console.log('Imagem enviada com sucesso:', photoURL);
+        }catch(uploadErr){
+          console.warn('Erro ao fazer upload da imagem:', uploadErr);
+          alert('Aviso: Imagem não foi enviada, usando imagem padrão');
+        }
+      }
+
       // 3) write Firestore documents with the returned uid
       const newRef = doc(db, 'usuarios', uid);
       const payload = {
@@ -63,7 +97,7 @@ if(saveBtn){
         status: 'Ativo',
         role: role,
         admin: role === 'admin',
-        photoURL: 'img/do-utilizador.png',
+        photoURL: photoURL,
         createdAt: serverTimestamp()
       };
       await setDoc(newRef, payload, { merge: true });
