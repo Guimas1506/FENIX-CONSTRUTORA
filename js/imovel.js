@@ -210,9 +210,24 @@ window.toggleFavorito = async function(event, id) {
     if (userArea) userArea.style.display = "flex";
     return;
   }
-    else{
-       alert("Produto adicionado!");
+  //alert de produto adicionado
+  try {
+    const btnCheck = document.getElementById(`fav-${id}`);
+    if (btnCheck) {
+      const spanCheck = btnCheck.querySelector('span');
+      if (spanCheck) {
+        const computed = getComputedStyle(spanCheck).color || '';
+        const normalized = computed.replace(/\s+/g, '').toLowerCase();
+        const isFE4F3F = normalized === 'rgb(254,79,63)' || normalized === 'rgba(254,79,63,1)' || normalized === '#fe4f3f';
+        if (isFE4F3F) {
+          alert('Produto adicionado!');
+        }
+      }
+    }
+  } catch (e) {
+    console.error('Erro ao verificar cor do span:', e);
   }
+  //aqui acaba o alert
   const btn = document.getElementById(`fav-${id}`);
   if (!btn) return;
   
