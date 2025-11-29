@@ -142,9 +142,10 @@ header {
 }
 
 .icon-person img {
-
-  width: auto;
-  height: 3rem;
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
+  border-radius: 50%;
 
 }
 

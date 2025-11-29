@@ -1,647 +1,424 @@
-<!-- index.html -->
-<!DOCTYPE html>
-<html lang="pt-br">
+html {
+  overflow-x: hidden;
+  box-shadow: none;
+
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FÊNIX CONSTRUTORA - Inicio</title>
-  <link rel="stylesheet" href="./Styles/index.css" />
-  <link rel="stylesheet" href="./Styles/imoveisloading.css" />
-  <link rel="shortcut icon" type="imagex/png" href="./img/logo1.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="./Styles/header.css">
-  <link rel="stylesheet" href="./Styles/footer.css">
-  <link rel="stylesheet" href="Styles/UserArea.css">
-</head>
+}
 
+body::-webkit-scrollbar {
+  display: none;
+}
 
+* {
+  box-sizing: border-box;
+}
 
+:root {
+  --Cor-Primaria: #FE4F3F;
+  --Cor-Secundaria: #000000;
+  --Cor-Terciaria: #7C7C7C;
+  --Branco: #fff;
+}
 
-<body>
 
-  <header>
-    <div class="navbar">
-      <div class="logo">
-        <a href="./index.html">
-          <img src="./img/fenix51.png" alt="" />
-        </a>
-        <div class="title-fenix">
-          <h3>FÊNIX <span>CONSTRUTORA</span></h3>
+/* AQUI é o header*/
+a {
+  text-decoration: none;
+  list-style-type: none;
+}
 
-        </div>
-      </div>
+header {
+  width: 100%;
+}
 
+.navbar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  background-color: #FE4F3F;
+  z-index: 1;
 
 
+}
 
+/*AQUI TERMINA A PARTE CENTRAL DO PROJETO*/
 
+.logo {
+  width: 30rem;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+}
 
 
-      <div class="menuzera">
+.logo img {
+  width: 70px;
+  height: 70px;
+  transition: 0.5s;
+}
 
-        <button id="openMenu" class="menu-icon">
-          <img src="img/barra-de-menu.png" alt="">
-        </button>
+.logo img:hover {
+  transform: scale(1.1);
+}
 
-      </div>
+/*AQUI TERMINA AS CONFIGURAÇOES DO LOGO*/
 
-      <!-- Menu lateral -->
-      <div id="sideMenu" class="side-menu">
+.abas {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  text-align: center;
 
-        <div class="menu-header">
-          <h2>Menu</h2>
-          <button id="closeMenu" class="close-btn">×
-          </button>
-        </div>
+}
 
-        <nav class="menu-section">
-          <h3>Navegar</h3>
-          <ul>
-            <li><a href="index.html">Início</a></li>
-            <li><a href="sobre.html">Sobre Nós</a></li>
-            <li><a href="Imovel.html">Imoveis</a></li>
-            <li><a href="serviços.html">Serviços</a></li>
-            <li><a href="contato.html">Contato</a></li>
-          </ul>
-        </nav>
+.abas a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 300;
+  width: 100px;
+  height: 60px;
+  color: white;
+  margin-right: 30px;
+  transition: 0.5s;
+}
 
-        <nav class="menu-section">
-          <h3>Configurações</h3>
-          <ul>
-            <li><a href="User/user.html">Usuario</a></li>
-            <li><a href="favoritos.html">Favoritos</a></li>
-            <li><a href="log-in.html">Login</a></li>
-            <li><a href="sign-in.html">Sign-in</a></li>
-          </ul>
-        </nav>
+.abas a:hover {
+  font-size: 18px;
+  font-weight: 600;
+  height: 40px;
+  border-bottom: solid white 0.5px;
 
-        <!-- Botão de Logout Mobile -->
-        <div style="padding: 20px; border-top: 1px solid #ddd;">
-          <button id="btnLogoutMobile"
-            style="width: 100%; padding: 12px 20px; background: #FE4F3F; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; display: none; align-items: center; justify-content: center; gap: 10px; transition: all 0.3s;"
-            onmouseover="this.style.background='#e63e2e'" onmouseout="this.style.background='#FE4F3F'">
-            <img src="./img/sair.png" alt="Logout" style="width: 20px; height: 20px;">
-            <span>Fazer Logout</span>
-          </button>
-        </div>
+}
 
-        <script src="js/menuzinho.js">
-        </script>
 
 
-      </div>
+/*AQUI TERMINA AS CONFIGURAÇOES DO ABA*/
 
-      <!-- Fundo escuro ao abrir o menu -->
-      <div id="overlay" class="overlay"></div>
+.login {
+  width: 460px;
+  height: 70px;
 
+  justify-content: center;
+  align-items: center;
+}
 
 
 
 
+.displau-subs {
+  display: flex;
 
+  width: 14%;
+  height: 100%;
 
+  align-items: center;
+  justify-content: center;
+}
 
-      <div class="abas">
-        <a href="./index.html">
-          <p>Inicio</p>
-        </a>
-        <a href="./sobre.html">
-          <p>Sobre Nós</p>
-        </a>
-        <a href="Imovel.html">
-          <p>Imóveis</p>
-        </a>
-        <a href="./serviços.html">
-          <p>Serviços</p>
-        </a>
-        <a href="./contato.html">
-          <p>Contato</p>
-        </a>
+.icon-person {
+  width: 5vw;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  transition: 0.2s ease;
+}
 
+.icon-person:hover {
+  transform: scale(0.9);
 
-      </div>
+}
 
+.icon-person img {
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
+  border-radius: 50%;
 
-      <div class="barra">
-        <hr>
-      </div>
+}
 
+.title-fenix {
+  width: 50%;
+  height: 100%;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 0;
+}
 
-      <!-- Menu do usuário logado (vai substituir o login/sign-in) -->
+.title-fenix h3 {
+  color: white;
+  font-size: 2rem;
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+}
 
-      <div class="displau-subs">
-        <div class="icon-person">
-          <img src="./img/icon-usuario.png" alt="Usuário">
-        </div>
-      </div>
+.title-fenix span {
+  font-size: 1.2rem;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-      <div id="userArea" class="modal" style="display:none;">
+}
 
-        <div class="modal-content">
-          <div class="info-container">
-            <div class="modal-container">
-              <img src="./img/user v3.png" alt="Logo" class="logo-fundo">
-            </div>
-            <h2 id="welcomeMsg">Bem-vindo(a), Usuário</h2>
-          </div>
-          <span id="closeUserArea" class="close">&times;</span>
 
-          <p id="userEmail">Email do usuário</p>
 
-          <div class="logadores">
 
-            <a href="./Administrator/dashboard.html" id="adminButton" style="display:none;">
-              <p>Administrador</p>
-            </a>
 
 
-            <h3 style="color: black;">Acessar Abas</h3>
 
-            <hr id="linha">
 
-            <a id="log" href="log-in.html">Entrar</a>
 
-            <a id="register" href="sign-in.html">Registre</a>
 
 
 
-            <a id="log" href="User/user.html">Minha Conta</a>
 
-            <a id="log" href="favoritos.html">
+/* Ícone do menu */
 
-              <p>Meus Favoritos</p>
-            </a>
 
-            <hr id="linha">
 
-            <button id="btnLogoutModal">
-              <img src="./img/sair.png" alt="">
-              <p>Fazer Logout</p>
-            </button>
-          </div>
 
+.menu-icon {
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 1000;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin: auto;
+  border: none;
+  transition: 0.3s all;
+}
 
-        </div>
-      </div>
 
-    </div>
-  </header>
 
+.menu-icon img {
+  display: flex;
+  width: 30px;
+  height: 30px;
+}
 
-  <main>
-    <section class="slider">
-      <div class="slider-content">
+/* Menu lateral */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -380px;
+  /* escondido inicialmente */
+  width: 300px;
+  height: 80%;
+  background: #353535;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  transition: right 0.3s ease;
+  z-index: 1100;
+}
 
-        <input type="radio" name="btn-radio" id="radio1">
-        <input type="radio" name="btn-radio" id="radio2">
-        <input type="radio" name="btn-radio" id="radio3">
+.side-menu.open {
+  right: 0;
+}
 
-        <div class="slide-box primeiro">
-          <img class="img-desktop" src="./img/esmeralda.jpg" alt="slide 1">
-        </div>
+/* Header do menu */
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--Cor-Primaria);
+  font-size: 25px;
+}
 
-        <div class="slide-box">
-          <img class="img-desktop" src="./img/house1.jpg" alt="slide 3">
-        </div>
+.close-btn {
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: white;
+}
 
-        <div class="slide-box">
-          <img class="img-desktop" src="./img/house2.jpg" alt="slide 3">
-        </div>
+/* Seções do menu */
+.menu-section {
+  margin-top: 20px;
+}
 
-        <div class="nav-auto">
-          <div class="auto-btn1"></div>
-          <div class="auto-btn2"></div>
-          <div class="auto-btn3"></div>
-        </div>
+.menu-section h3 {
+  margin: 0 0 10px 0;
+  font-size: 30px;
+  color: var(--Cor-Primaria);
+}
 
-        <div class="nav-manual">
-          <label for="radio1" class="manual-btn"></label>
-          <label for="radio2" class="manual-btn"></label>
-          <label for="radio3" class="manual-btn"></label>
-        </div>
+.menu-section ul {
+  list-style: none;
+  color: #FE4F3F;
+  padding: 0;
+}
 
-      </div>
-    </section>
-    
+.menu-section ul li {
+  margin: 10px 0;
+}
 
+.menu-section ul li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 16px;
+  transition: 0.2s;
+  font-size: 17px;
+}
 
+.menu-section ul li a:hover {
+  color: #60A5FA;
+}
 
+/* Fundo escuro quando o menu está aberto */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  z-index: 1050;
+}
 
-    <section class="slider-mobile">
-      <div class="slider-content-mobile">
+.overlay.show {
+  opacity: 1;
+  pointer-events: all;
+}
 
-        <input type="radio" name="btn-radio-mobile" id="m-radio1">
-        <input type="radio" name="btn-radio-mobile" id="m-radio2">
-        <input type="radio" name="btn-radio-mobile" id="m-radio3">
+.menu-icon {
+  display: none;
+}
 
-        <div class="slide-box-mobile primeiro-mobile">
-          <img class="img-mobile" src="img/casa-de-luxo.jpg" alt="slide 1 mobile">
-        </div>
+/* Mostra o ícone apenas em telas pequenas */
+@media screen and (max-width: 480px) {
 
-        <div class="slide-box-mobile">
-          <img class="img-mobile" src="img/casa-de-praia-p3urv6wgepmsz8y9.jpg" alt="slide 2 mobile">
-        </div>
 
-        <div class="slide-box-mobile">
-          <img class="img-mobile" src="./img/photo-1544984243-ec57ea16fe25.jfif" alt="slide 3 mobile">
-        </div>
+  body {
+    overflow-x: hidden;
+  }
 
-        <div class="nav-auto-mobile">
-          <div class="auto-btn-m1"></div>
-          <div class="auto-btn-m2"></div>
-          <div class="auto-btn-m3"></div>
-        </div>
+  .menu-icon {
+    display: block;
+  }
 
-        <div class="nav-manual-mobile">
-          <label for="m-radio1" class="manual-btn-mobile"></label>
-          <label for="m-radio2" class="manual-btn-mobile"></label>
-          <label for="m-radio3" class="manual-btn-mobile"></label>
-        </div>
+  .menuzera {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-left: 60px;
+  }
 
-      </div>
+  .barra {
+    display: none;
+  }
 
-      <script>
-        let contadorM = 1;
 
-        document.getElementById("m-radio1").checked = true;
+  .displau-subs {
+    display: none;
+  }
 
-        setInterval(() => {
-          contadorM++;
-          if (contadorM > 3) contadorM = 1;
-          document.getElementById("m-radio" + contadorM).checked = true;
-        }, 5000);
 
-      </script>
 
-      
-    </section>
 
 
 
+}
 
+/* Responsivo */
+@media (max-width: 480px) {
+  .side-menu {
+    width: 80%;
+  }
+}
 
-    </section>
 
 
 
 
 
-    <!--AQUI COMEÇA O ELEGANCIA E INOVAÇÃO-->
-    <div class="conteud">
-      <div class="conteud1">
-        <div class="tit">
-          <h2>Elegancia e inovação para cada projeto</h2>
-        </div>
-        <div class="subtit">
-          <p>Na FENIX CONSTRUTORA, acreditamos que um imóvel vai muito além de paredes e estruturas ele representa
-            sonhos, conquistas e o início de novas histórias. Por isso, cada projeto é desenvolvido com um olhar voltado
-            à elegância, inovação e excelência, unindo estética refinada, conforto e funcionalidade em perfeita
-            harmonia.
 
-            Nossa equipe trabalha com um padrão de qualidade elevado, prezando pela modernidade dos conceitos
-            arquitetônicos, uso inteligente dos espaços e integração com o meio ambiente. Buscamos sempre unir design
-            contemporâneo e tecnologia de ponta para oferecer soluções que se destacam pela beleza e eficiência.</p>
-        </div>
-      </div>
 
-      <div class="conteud2">
-        <div class="toronto-conteud">
 
-          <div class="title-conteud2">
-            <h1>FENIX CONSTRUTORA</h1>
-          </div>
-          <div class="text-conteud2">
-            <p>Construtora e Incorporadora</p>
-          </div>
 
-        </div>
-        <div class="img-conteud2">
 
-        </div>
 
-        <div class="subimg-conteud2">
-        </div>
 
-      </div>
-    </div>
 
 
-    <br>
 
-    <div class="video">
-      <div class="aplic-video">
-        <video controls width="250" loop autoplay="autoplay" muted>
-          <source src="./img/CHÁCARA.mp4" type="video/webm" />
-      </div>
 
 
-      <div class="desc-video">
-        <div class="text-number-one">
 
-          <h2 id="text-number-title">
-            Chácara Encanto Verde
-          </h2>
 
-          <p id="text-number-sub">
-            Um refúgio perfeito para quem busca tranquilidade, contato com a natureza e qualidade de vida. A Chácara
-            Encanto Verde combina design elegante com o charme do campo, oferecendo o equilíbrio ideal entre conforto e
-            liberdade.
 
-            Cada espaço foi planejado para proporcionar momentos inesquecíveis em família, com áreas amplas, paisagismo
-            natural, estrutura para lazer e um ambiente que convida ao descanso. Seja para morar ou investir, é o lugar
-            certo para quem valoriza paz, segurança e bem-estar.
+/*area modal*/
+/* Modal da área do usuário */
 
-            Com fácil acesso à cidade, esta chácara entrega privacidade e praticidade, ideal para fins de semana,
-            moradia permanente ou eventos.
 
-          </p>
+/*aqui termina a area modal*/
 
 
-        </div>
+@media screen and (max-width: 480px) {
 
-        <div class="master-chorumi">
+  .navbar {
+    position: fixed;
+    border-radius: 20px;
+    margin-top: 10px;
+    z-index: 10000000000000;
+box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;  }
 
-          <p id="chorumi">
-            ÁREA CONST. 218,49m²
-          </p>
+  .icon-person {
+    display: none;
+  }
 
-          <p id="sub-chorumi">
-            ÁREA DO LOTE 1.000m²
-          </p>
+  .abas {
+    display: none;
+  }
 
-        </div>
+  hr {
+    display: none;
+  }
 
-        <div class="mais">
-          <a href="Imovel.html" id="plus">Mais Sobre</a>
-        </div>
+  .logo {
+    width: 17rem;
+    justify-content: space-between;
+  }
 
-      </div>
-    </div>
-    <hr style="width: 90%; height: 4px; border: none; background-color: #FE4F3F; display: flex; margin-top: 70px;">
-    <div class="produts-list">
-      <div class="title-produts-list">
-        <h3>Conheça nossos Imoveis</h3>
-      </div>
+  .logo img {
+    width: 100%;
+    margin-left: 0;
+  }
 
-      <!--aqui será a lista de produtos-->
-      <!-- CONTAINER DOS IMÓVEIS -->
-      <div id="lista-imoveis-usuario"></div>
-    </div>
+  .title-fenix {
+    display: flex;
+    width: 70%;
+  }
 
-    <!-- Botão Ver Mais -->
-    <div style="text-align: center; padding: 30px;">
-      <button id="btn-ver-mais" style="
-        padding: 15px 40px;
-        background: #FE4F3F;
-        color: white;
-        border: none;
-        border-radius: 10px;
-        font-size: 18px;
-        font-weight: 600;
-        cursor: pointer;
-        display: none;
-        transition: all 0.3s;
-        box-shadow: 0 4px 12px rgba(254, 79, 63, 0.3);
-      " onclick="window.location.href='Imovel.html'"
-        onmouseover="this.style.background='#e63e2e'; this.style.transform='translateY(-2px)'"
-        onmouseout="this.style.background='#FE4F3F'; this.style.transform='translateY(0)'">
-        Ver Todos os Imóveis →
-      </button>
-    </div>
 
-    <br>
 
-    <div class="complement">
-      <div class="complementando1">
 
-        <div class="comp1">
-
-          <div class="title-comp1">
-            <h2>Encontre o Projeto ideal para seu estilo de vida</h2>
-          </div>
-
-          <div class="tect-comp1">
-            <div class="tect-text">
-              <p>Acreditamos que cada pessoa tem um jeito único de viver e por isso, cada projeto é pensado para
-                refletir a sua essência, seus sonhos e sua forma de aproveitar cada momento. Seja uma chácara tranquila
-                para relaxar nos fins de semana, um sítio espaçoso para reunir a família ou um imóvel moderno para viver
-                com conforto, temos a opção perfeita para o seu estilo de vida.
-
-                Trabalhamos com imóveis que unem beleza, funcionalidade e qualidade, em localizações privilegiadas e com
-                infraestrutura completa. Nosso compromisso é oferecer espaços que inspiram, acolhem e valorizam o seu
-                bem-estar, garantindo que cada detalhe contribua para uma experiência de viver única e especial.</p>
-            </div>
-
-            <div class="img-tect"></div>
-          </div>
-
-
-        </div>
-
-        <div class="comp1-image">
-        </div>
-
-      </div>
-
-      <div class="complementando2">
-
-        <div class="comp2-image"></div>
-
-        <div class="comp2">
-
-          <div class="title22">
-            <h2>Construção com qualidade e segurança</h2>
-          </div>
-
-          <div class="tect-comp2">
-            <div class="img-tect2"></div>
-
-            <div class="yect-text">
-              <p>
-                Na FENIX CONSTRUTORA, cada obra é conduzida com comprometimento, técnica e responsabilidade, garantindo
-                resultados que unem excelência estrutural, durabilidade e confiança. Nosso foco é construir não apenas
-                imóveis, mas lares sólidos e seguros, capazes de oferecer tranquilidade a quem vive e investe neles.
-
-                Utilizamos materiais de alto padrão, seguimos rigorosos processos de controle de qualidade e contamos
-                com uma equipe especializada em cada etapa do projeto — do planejamento à entrega. Assim, asseguramos
-                que cada detalhe seja executado com precisão, respeitando normas técnicas e priorizando a segurança de
-                todos os envolvidos.
-
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <br>
-
-
-    <br>
-    <br>
-    <br>
-    <div class="complem">
-
-      <div class="complem-iage">
-        <div class="complem-title">
-
-          <div class="complem-co">
-            <h1>Construindo sonhos com elegância, segurança e inovação.
-            </h1>
-          </div>
-        </div>
-      </div>
-
-      <div class="complem-teste">
-
-        <div class="title-complem">
-          <div class="ttt1">
-            <h2>FÊNIX CONSTRUTORA</h2>
-          </div>
-
-          <div class="sub-complem">
-            <p>Construtora e Incorporadora</p>
-          </div>
-
-        </div>
-
-
-        <div class="icone-complem">
-
-          <div class="icone-comp1">
-            <div class="icon1"></div>
-
-            <div class="icon-com">
-              <p>Chácaras Prontas</p>
-            </div>
-          </div>
-
-          <div class="icone-comp2">
-            <div class="icon2"></div>
-
-            <div class="icon-com2">
-              <p>Chácaras na Planta</p>
-            </div>
-          </div>
-
-          <div class="icone-comp3">
-            <div class="icon3"></div>
-
-            <div class="icon-com3">
-              <p>Reformas Resiêdencial e Comercial</p>
-            </div>
-          </div>
-
-          <div class="icone-comp4">
-            <div class="icon4"></div>
-
-            <div class="icon-com4">
-              <p>São Paulo / Marinque - SP</p>
-            </div>
-          </div>
-
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <br>
-
-  </main>
-
-
-
-  <footer>
-    <!-- Início do rodapé -->
-    <div class="rodape">
-      <!-- Seção do logotipo e título -->
-      <div class="foot-logo">
-        <!-- Logotipo da empresa -->
-        <img src="./img/fenix51.png" alt="Logo" class="logo" />
-        <div class="titulos">
-          <!-- Título principal -->
-          <div class="titulo">
-            <p>FÊNIX</p>
-          </div>
-          <!-- Subtítulo -->
-          <div class="subtitle">
-            <p>CONSTRUTORA</p>
-          </div>
-        </div>
-      </div>
-
-
-      <!-- Seção de contatos -->
-      <div class="contatos">
-        <!-- Primeira coluna: Redes sociais -->
-        <div class="cont1">
-          <div class="cont-title1">
-            <!-- Título da seção -->
-            <h3>REDES SOCIAIS</h3>
-          </div>
-          <a href="https://www.instagram.com/fenixconstroi/#" target="_blank">
-
-            <div class="conte">
-
-              <!-- Nome da rede social -->
-              <div class="rede">
-                <p>INSTAGRAM</p>
-              </div>
-
-
-
-            </div>
-          </a>
-        </div>
-        <!-- Segunda coluna: Informações sobre a empresa -->
-        <div class="cont2">
-          <div class="titulo2">
-            <!-- Título da seção -->
-            <h3>NOSSA EMPRESA</h3>
-          </div>
-          <div class="abins">
-            <!-- Links ou informações sobre a empresa -->
-            <p>SOBRE NÓS</p>
-            <p>CONTATO</p>
-            <p>SERVIÇOS</p>
-          </div>
-        </div>
-        <!-- Terceira coluna: Produtos da empresa -->
-        <div class="cont3">
-          <div class="titulo3">
-            <!-- Título da seção -->
-            <h3>NOSSOS PRODUTOS</h3>
-          </div>
-          <div class="produts">
-            <!-- Lista de produtos -->
-            <p>PROJETOS</p>
-            <p>IMÓVEIS</p>
-          </div>
-        </div>
-      </div>
-      <!-- Seção de direitos reservados -->
-
-      <div class="direitos-reservados">
-        <p>&copy; 2025 Fênix Construtora. Todos os direitos reservados.</p>
-      </div>
-    </div>
-    <!-- Fim do rodapé -->
-  </footer>
-
-  <!-- ✅ ÚNICO SCRIPT NECESSÁRIO -->
-  <script type="module" src="js/index.js"></script>
-
-</body>
-
-
-</html>
+}

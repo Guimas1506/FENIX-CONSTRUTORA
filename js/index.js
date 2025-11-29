@@ -101,31 +101,75 @@ onAuthStateChanged(auth, async (user) => {
     if (loginLinkMobile) loginLinkMobile.style.display = "none";
     if (signinLinkMobile) signinLinkMobile.style.display = "none";
 
-    // Busca nome e status de admin do usuário
+    // Busca nome, foto e status de admin do usuário
     let nome = user.displayName || "Usuário";
+    let photoURL = user.photoURL || null;
     let isAdmin = false;
+    const DEFAULT_PHOTO = 'img/do-utilizador.png';
 
     try {
-      // Tenta primeiro na coleção "users"
-      let docRef = doc(db, "users", user.uid);
-      let docSnap = await getDoc(docRef);
-      
-      if (docSnap.exists()) {
-        const data = docSnap.data();
-        nome = data.nome || nome;
+      // 1) Tenta primeiro na coleção "usuarios" (onde a foto é salva)
+      const usuariosRef = doc(db, "usuarios", user.uid);
+      const usuariosSnap = await getDoc(usuariosRef);
+      if (usuariosSnap.exists()) {
+        const data = usuariosSnap.data();
+        if (data.nome) nome = data.nome;
         isAdmin = data.admin || false;
-      } else {
-        // Se não existir, tenta na coleção "usuarios"
-        docRef = doc(db, "usuarios", user.uid);
-        docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          const data = docSnap.data();
-          nome = data.nome || nome;
+        // Busca photoURL - se for null, usa a imagem padrão
+        if (data.photoURL && data.photoURL !== null) {
+          photoURL = data.photoURL;
+        } else {
+          photoURL = DEFAULT_PHOTO;
+        }
+      }
+      
+      // 2) Fallback para "users" se não encontrar em "usuarios"
+      if (!usuariosSnap.exists()) {
+        const usersRef = doc(db, "users", user.uid);
+        const usersSnap = await getDoc(usersRef);
+        if (usersSnap.exists()) {
+          const data = usersSnap.data();
+          if (data.nome) nome = data.nome;
           isAdmin = data.admin || false;
+          if (data.photoURL && data.photoURL !== null) {
+            photoURL = data.photoURL;
+          } else {
+            photoURL = DEFAULT_PHOTO;
+          }
         }
       }
     } catch (err) {
       console.error("Erro ao buscar dados do usuário:", err);
+      photoURL = DEFAULT_PHOTO;
+    }
+
+    // Se ainda não tem foto, usa a padrão
+    if (!photoURL) {
+      photoURL = DEFAULT_PHOTO;
+    }
+
+    // Atualiza foto de perfil no header e no modal
+    const profilePhotoHeader = document.getElementById("profilePhotoHeader");
+    const profilePhotoModal = document.getElementById("profilePhotoModal");
+    
+    if (profilePhotoHeader) {
+      profilePhotoHeader.src = photoURL;
+      // Se não for a foto padrão, aplica o estilo circular
+      if (photoURL !== DEFAULT_PHOTO) {
+        profilePhotoHeader.style.borderRadius = "50%";
+        profilePhotoHeader.style.objectFit = "cover";
+      }
+    }
+    
+    if (profilePhotoModal) {
+      profilePhotoModal.src = photoURL;
+      // Se não for a foto padrão, aplica o estilo circular
+      if (photoURL !== DEFAULT_PHOTO) {
+        profilePhotoModal.style.borderRadius = "50%";
+        profilePhotoModal.style.objectFit = "cover";
+        profilePhotoModal.style.width = "170px";
+        profilePhotoModal.style.height = "170px";
+      }
     }
 
     if (welcomeMsg) welcomeMsg.textContent = `Bem-vindo(a), ${nome}`;
@@ -144,6 +188,24 @@ onAuthStateChanged(auth, async (user) => {
     if (favoritosButton) favoritosButton.style.display = "none";
     if (welcomeMsg) welcomeMsg.textContent = "Bem-vindo(a), Usuário";
     if (userEmail) userEmail.textContent = "Email do usuário";
+    
+    // Reseta fotos de perfil quando não logado
+    const profilePhotoHeader = document.getElementById("profilePhotoHeader");
+    const profilePhotoModal = document.getElementById("profilePhotoModal");
+    
+    if (profilePhotoHeader) {
+      profilePhotoHeader.src = './img/icon-usuario.png';
+      profilePhotoHeader.style.borderRadius = "0";
+      profilePhotoHeader.style.objectFit = "contain";
+      profilePhotoHeader.style.width = "5rem";
+      profilePhotoHeader.style.height = "5rem";
+    }
+    
+    if (profilePhotoModal) {
+      profilePhotoModal.src = './img/user v3.png';
+      profilePhotoModal.style.borderRadius = "0";
+      profilePhotoModal.style.objectFit = "contain";
+    }
     
     // Esconde Usuario e Favoritos no menu mobile quando não logado
     if (usuarioLinkMobile) usuarioLinkMobile.style.display = "none";
