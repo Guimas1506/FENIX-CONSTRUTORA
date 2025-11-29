@@ -105,16 +105,22 @@ onAuthStateChanged(auth, async (user) => {
     let nome = user.displayName || "Usuário";
     let photoURL = user.photoURL || null;
     let isAdmin = false;
-    const DEFAULT_PHOTO = 'img/do-utilizador.png';
+    const DEFAULT_PHOTO = 'img/icon-usuario.png';
 
     try {
+      // Verifica os Custom Claims para admin
+      const tokenResult = await user.getIdTokenResult();
+      isAdmin = tokenResult.claims.admin === true;
+      console.log("🔐 Custom Claims:", tokenResult.claims);
+
       // 1) Tenta primeiro na coleção "usuarios" (onde a foto é salva)
       const usuariosRef = doc(db, "usuarios", user.uid);
       const usuariosSnap = await getDoc(usuariosRef);
       if (usuariosSnap.exists()) {
         const data = usuariosSnap.data();
         if (data.nome) nome = data.nome;
-        isAdmin = data.admin || false;
+        // Se não tiver admin nos custom claims, verifica no Firestore
+        if (!isAdmin && data.admin) isAdmin = data.admin;
         // Busca photoURL - se for null, usa a imagem padrão
         if (data.photoURL && data.photoURL !== null) {
           photoURL = data.photoURL;
@@ -130,7 +136,7 @@ onAuthStateChanged(auth, async (user) => {
         if (usersSnap.exists()) {
           const data = usersSnap.data();
           if (data.nome) nome = data.nome;
-          isAdmin = data.admin || false;
+          if (!isAdmin && data.admin) isAdmin = data.admin;
           if (data.photoURL && data.photoURL !== null) {
             photoURL = data.photoURL;
           } else {
@@ -163,17 +169,17 @@ onAuthStateChanged(auth, async (user) => {
     
     if (profilePhotoModal) {
       profilePhotoModal.src = photoURL;
-      // Se não for a foto padrão, aplica o estilo circular
-      if (photoURL !== DEFAULT_PHOTO) {
-        profilePhotoModal.style.borderRadius = "50%";
-        profilePhotoModal.style.objectFit = "cover";
-        profilePhotoModal.style.width = "170px";
-        profilePhotoModal.style.height = "170px";
-      }
+      profilePhotoModal.style.borderRadius = "50%";
+      profilePhotoModal.style.objectFit = "cover";
+      profilePhotoModal.style.width = "100px";
+      profilePhotoModal.style.height = "100px";
+      profilePhotoModal.style.marginBottom = "15px";
     }
 
     if (welcomeMsg) welcomeMsg.textContent = `Bem-vindo(a), ${nome}`;
-    if (adminButton) adminButton.style.display = isAdmin ? "inline-block" : "none";
+    console.log("🔐 Status de admin:", isAdmin);
+    console.log("🔐 adminButton elemento:", adminButton);
+    if (adminButton) adminButton.style.display = isAdmin ? "flex" : "none";
 
   } else {
     console.log("❌ Usuário não logado");
@@ -194,7 +200,7 @@ onAuthStateChanged(auth, async (user) => {
     const profilePhotoModal = document.getElementById("profilePhotoModal");
     
     if (profilePhotoHeader) {
-      profilePhotoHeader.src = './img/icon-usuario.png';
+      profilePhotoHeader.src = 'img/icon-usuario.png';
       profilePhotoHeader.style.borderRadius = "0";
       profilePhotoHeader.style.objectFit = "contain";
       profilePhotoHeader.style.width = "5rem";

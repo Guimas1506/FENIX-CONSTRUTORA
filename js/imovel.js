@@ -93,33 +93,80 @@ onAuthStateChanged(auth, async (user) => {
 
     // Busca nome e status de admin do usuário
     let nome = user.displayName || "Usuário";
+    let photoURL = user.photoURL || null;
     let isAdmin = false;
+    const DEFAULT_PHOTO = 'img/icon-usuario.png';
 
     try {
-      // Tenta primeiro na coleção "users"
-      let docRef = doc(db, "users", user.uid);
+      // Verifica os Custom Claims para admin
+      const tokenResult = await user.getIdTokenResult();
+      isAdmin = tokenResult.claims.admin === true;
+      console.log("🔐 Custom Claims:", tokenResult.claims);
+
+      // Tenta primeiro na coleção "usuarios" (onde a foto é salva)
+      let docRef = doc(db, "usuarios", user.uid);
       let docSnap = await getDoc(docRef);
       
       if (docSnap.exists()) {
         const data = docSnap.data();
         nome = data.nome || nome;
-        isAdmin = data.admin || false;
+        // Se não tiver admin nos custom claims, verifica no Firestore
+        if (!isAdmin && data.admin) isAdmin = data.admin;
+        // Busca photoURL - se for null, usa a imagem padrão
+        if (data.photoURL && data.photoURL !== null) {
+          photoURL = data.photoURL;
+        } else {
+          photoURL = DEFAULT_PHOTO;
+        }
         console.log("📊 Dados do usuário:", data);
         console.log("👑 Admin?", isAdmin);
       } else {
-        // Se não existir, tenta na coleção "usuarios"
-        docRef = doc(db, "usuarios", user.uid);
+        // Se não existir, tenta na coleção "users"
+        docRef = doc(db, "users", user.uid);
         docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           const data = docSnap.data();
           nome = data.nome || nome;
-          isAdmin = data.admin || false;
-          console.log("📊 Dados do usuário (usuarios):", data);
+          if (!isAdmin && data.admin) isAdmin = data.admin;
+          if (data.photoURL && data.photoURL !== null) {
+            photoURL = data.photoURL;
+          } else {
+            photoURL = DEFAULT_PHOTO;
+          }
+          console.log("📊 Dados do usuário (users):", data);
           console.log("👑 Admin?", isAdmin);
         }
       }
     } catch (err) {
       console.error("Erro ao buscar dados do usuário:", err);
+      photoURL = DEFAULT_PHOTO;
+    }
+
+    // Se ainda não tem foto, usa a padrão
+    if (!photoURL) {
+      photoURL = DEFAULT_PHOTO;
+    }
+
+    // Atualiza foto de perfil no header e no modal
+    const profilePhotoHeader = document.getElementById("profilePhotoHeader");
+    const profilePhotoModal = document.getElementById("profilePhotoModal");
+    
+    if (profilePhotoHeader) {
+      profilePhotoHeader.src = photoURL;
+      // Se não for a foto padrão, aplica o estilo circular
+      if (photoURL !== DEFAULT_PHOTO) {
+        profilePhotoHeader.style.borderRadius = "50%";
+        profilePhotoHeader.style.objectFit = "cover";
+      }
+    }
+    
+    if (profilePhotoModal) {
+      profilePhotoModal.src = photoURL;
+      profilePhotoModal.style.borderRadius = "50%";
+      profilePhotoModal.style.objectFit = "cover";
+      profilePhotoModal.style.width = "100px";
+      profilePhotoModal.style.height = "100px";
+      profilePhotoModal.style.marginBottom = "15px";
     }
 
     if (welcomeMsg) {
@@ -144,6 +191,24 @@ onAuthStateChanged(auth, async (user) => {
     if (favoritosLinkMobile) favoritosLinkMobile.style.display = "none";
     if (welcomeMsg) welcomeMsg.textContent = "Bem-vindo(a), Usuário";
     if (userEmail) userEmail.textContent = "Email do usuário";
+    
+    // Reseta fotos de perfil quando não logado
+    const profilePhotoHeader = document.getElementById("profilePhotoHeader");
+    const profilePhotoModal = document.getElementById("profilePhotoModal");
+    
+    if (profilePhotoHeader) {
+      profilePhotoHeader.src = 'img/icon-usuario.png';
+      profilePhotoHeader.style.borderRadius = "0";
+      profilePhotoHeader.style.objectFit = "contain";
+      profilePhotoHeader.style.width = "5rem";
+      profilePhotoHeader.style.height = "5rem";
+    }
+    
+    if (profilePhotoModal) {
+      profilePhotoModal.src = 'img/icon-usuario.png';
+      profilePhotoModal.style.borderRadius = "0";
+      profilePhotoModal.style.objectFit = "contain";
+    }
     
     // Mostra login e registro quando não logado
     linksModal.forEach(link => {
@@ -210,9 +275,24 @@ window.toggleFavorito = async function(event, id) {
     if (userArea) userArea.style.display = "flex";
     return;
   }
-    else{
-       alert("Produto adicionado!");
+  //alert de produto adicionado
+  try {
+    const btnCheck = document.getElementById(`fav-${id}`);
+    if (btnCheck) {
+      const spanCheck = btnCheck.querySelector('span');
+      if (spanCheck) {
+        const computed = getComputedStyle(spanCheck).color || '';
+        const normalized = computed.replace(/\s+/g, '').toLowerCase();
+        const isFE4F3F = normalized === 'rgb(254,79,63)' || normalized === 'rgba(254,79,63,1)' || normalized === '#fe4f3f';
+        if (isFE4F3F) {
+          alert('Produto adicionado!');
+        }
+      }
+    }
+  } catch (e) {
+    console.error('Erro ao verificar cor do span:', e);
   }
+  //aqui acaba o alert
   const btn = document.getElementById(`fav-${id}`);
   if (!btn) return;
   
