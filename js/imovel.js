@@ -210,7 +210,9 @@ window.toggleFavorito = async function(event, id) {
     if (userArea) userArea.style.display = "flex";
     return;
   }
-  
+    else{
+       alert("Produto adicionado!");
+  }
   const btn = document.getElementById(`fav-${id}`);
   if (!btn) return;
   
