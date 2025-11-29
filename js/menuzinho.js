@@ -1,3 +1,4 @@
+// menuzinho.js
 const openMenu = document.getElementById("openMenu");
 const closeMenu = document.getElementById("closeMenu");
 const sideMenu = document.getElementById("sideMenu");
