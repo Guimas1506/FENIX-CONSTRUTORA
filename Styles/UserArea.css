@@ -98,8 +98,9 @@
 }
 
 .modal-container img {
-    width: 60%;
-    height: auto;
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
 
 }
 
