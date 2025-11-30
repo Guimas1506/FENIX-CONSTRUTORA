@@ -54,6 +54,10 @@ const userEmail = document.getElementById("userEmail");
 const btnLogoutModal = document.getElementById("btnLogoutModal");
 const btnLogoutMobile = document.getElementById("btnLogoutMobile");
 
+// NOVOS ELEMENTOS DO MENU MOBILE
+const userEmailMobile = document.getElementById("userEmailMobile");
+const emailTextMobile = document.getElementById("emailTextMobile");
+
 const linksModal = document.querySelectorAll(".logadores a");
 let loginButton = null;
 let registerButton = null;
@@ -112,6 +116,10 @@ onAuthStateChanged(auth, async (user) => {
 
     if (welcomeMsg) welcomeMsg.textContent = `Bem-vindo(a), ${nome}`;
     if (userEmail) userEmail.textContent = user.email;
+    
+    // MOSTRA EMAIL NO MENU MOBILE
+    if (userEmailMobile) userEmailMobile.style.display = "block";
+    if (emailTextMobile) emailTextMobile.textContent = user.email;
   } else {
     if (btnLogoutModal) btnLogoutModal.style.display = "none";
     if (btnLogoutMobile) btnLogoutMobile.style.display = "none";
@@ -119,6 +127,12 @@ onAuthStateChanged(auth, async (user) => {
     if (registerButton) registerButton.style.display = "flex";
     if (userButton) userButton.style.display = "none";
     if (favoritosButton) favoritosButton.style.display = "none";
+    if (welcomeMsg) welcomeMsg.textContent = "Bem-vindo(a), Usuário";
+    if (userEmail) userEmail.textContent = "Email do usuário";
+    
+    // ESCONDE EMAIL NO MENU MOBILE
+    if (userEmailMobile) userEmailMobile.style.display = "none";
+    if (emailTextMobile) emailTextMobile.textContent = "";
     
     // Ajusta visibilidade dos links do menu mobile quando NÃO logado
     if (usuarioLinkMobile) usuarioLinkMobile.style.display = 'none';

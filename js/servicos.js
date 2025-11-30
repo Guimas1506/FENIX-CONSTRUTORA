@@ -30,6 +30,10 @@ const btnLogoutModal = document.getElementById("btnLogoutModal");
 const btnLogoutMobile = document.getElementById("btnLogoutMobile");
 const adminButton = document.getElementById("adminButton");
 
+// NOVOS ELEMENTOS DO MENU MOBILE
+const userEmailMobile = document.getElementById("userEmailMobile");
+const emailTextMobile = document.getElementById("emailTextMobile");
+
 // Pega os links pelo href já que tem IDs duplicados
 const linksModal = document.querySelectorAll(".logadores a");
 let userButton = null;
@@ -85,6 +89,10 @@ onAuthStateChanged(auth, async (user) => {
     if (usuarioLinkMobile) usuarioLinkMobile.style.display = "flex";
     if (favoritosLinkMobile) favoritosLinkMobile.style.display = "flex";
     if (userEmail) userEmail.textContent = user.email;
+    
+    // MOSTRA EMAIL NO MENU MOBILE
+    if (userEmailMobile) userEmailMobile.style.display = "block";
+    if (emailTextMobile) emailTextMobile.textContent = user.email;
     
     // Esconde login e registro quando logado
     linksModal.forEach(link => {

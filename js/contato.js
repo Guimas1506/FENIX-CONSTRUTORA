@@ -30,6 +30,10 @@ const btnLogoutModal = document.getElementById("btnLogoutModal");
 const btnLogoutMobile = document.getElementById("btnLogoutMobile");
 const adminButton = document.getElementById("adminButton");
 
+// NOVOS ELEMENTOS DO MENU MOBILE
+const userEmailMobile = document.getElementById("userEmailMobile");
+const emailTextMobile = document.getElementById("emailTextMobile");
+
 // Pega os links pelo href já que tem IDs duplicados
 const linksModal = document.querySelectorAll(".logadores a");
 let userButton = null;
@@ -83,6 +87,10 @@ onAuthStateChanged(auth, async (user) => {
     if (userButton) userButton.style.display = "flex";
     if (favoritosButton) favoritosButton.style.display = "flex";
     if (userEmail) userEmail.textContent = user.email;
+    
+    // MOSTRA EMAIL NO MENU MOBILE
+    if (userEmailMobile) userEmailMobile.style.display = "block";
+    if (emailTextMobile) emailTextMobile.textContent = user.email;
     
     // Mostra Usuario e Favoritos no menu mobile quando logado
     if (usuarioLinkMobile) usuarioLinkMobile.style.display = "flex";
@@ -188,6 +196,10 @@ onAuthStateChanged(auth, async (user) => {
     if (favoritosButton) favoritosButton.style.display = "none";
     if (welcomeMsg) welcomeMsg.textContent = "Bem-vindo(a), Usuário";
     if (userEmail) userEmail.textContent = "Email do usuário";
+    
+    // ESCONDE EMAIL NO MENU MOBILE
+    if (userEmailMobile) userEmailMobile.style.display = "none";
+    if (emailTextMobile) emailTextMobile.textContent = "";
     
     // Reseta fotos de perfil quando não logado
     const profilePhotoHeader = document.getElementById("profilePhotoHeader");

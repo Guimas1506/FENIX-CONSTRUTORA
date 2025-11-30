@@ -34,6 +34,10 @@ const btnLogoutModal = document.getElementById("btnLogoutModal");
 const btnLogoutMobile = document.getElementById("btnLogoutMobile");
 const adminButton = document.getElementById("adminButton");
 
+// NOVOS ELEMENTOS DO MENU MOBILE
+const userEmailMobile = document.getElementById("userEmailMobile");
+const emailTextMobile = document.getElementById("emailTextMobile");
+
 // Pega os links pelo href já que tem IDs duplicados
 const linksModal = document.querySelectorAll(".logadores a");
 let loginButton = null;
@@ -96,6 +100,10 @@ onAuthStateChanged(auth, async (user) => {
     if (loginLinkMobile) loginLinkMobile.style.display = "none";
     if (signinLinkMobile) signinLinkMobile.style.display = "none";
     if (userEmail) userEmail.textContent = user.email;
+    
+    // MOSTRA EMAIL NO MENU MOBILE
+    if (userEmailMobile) userEmailMobile.style.display = "block";
+    if (emailTextMobile) emailTextMobile.textContent = user.email;
 
     // Busca nome e status de admin do usuário
     let nome = user.displayName || "Usuário";
@@ -147,6 +155,10 @@ onAuthStateChanged(auth, async (user) => {
     if (signinLinkMobile) signinLinkMobile.style.display = "flex";
     if (welcomeMsg) welcomeMsg.textContent = "Bem-vindo(a), Usuário";
     if (userEmail) userEmail.textContent = "Email do usuário";
+    
+    // ESCONDE EMAIL NO MENU MOBILE
+    if (userEmailMobile) userEmailMobile.style.display = "none";
+    if (emailTextMobile) emailTextMobile.textContent = "";
     
     // Mostra mensagem de não logado
     mostrarNaoLogado();

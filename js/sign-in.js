@@ -37,6 +37,10 @@ const welcomeMsg = document.getElementById("welcomeMsg");
 const userEmail = document.getElementById("userEmail");
 const btnLogoutModal = document.getElementById("btnLogoutModal");
 const btnLogoutMobile = document.getElementById("btnLogoutMobile");
+
+// NOVOS ELEMENTOS DO MENU MOBILE
+const userEmailMobile = document.getElementById("userEmailMobile");
+const emailTextMobile = document.getElementById("emailTextMobile");
 const adminButton = document.getElementById("adminButton");
 
 const linksModal = document.querySelectorAll(".logadores a");
@@ -102,6 +106,10 @@ onAuthStateChanged(auth, async (user) => {
     if (userButton) userButton.style.display = "flex";
     if (favoritosButton) favoritosButton.style.display = "flex";
     if (userEmail) userEmail.textContent = user.email;
+    
+    // MOSTRA EMAIL NO MENU MOBILE
+    if (userEmailMobile) userEmailMobile.style.display = "block";
+    if (emailTextMobile) emailTextMobile.textContent = user.email;
 
     let nome = user.displayName || "Usuário";
     let isAdmin = false;
@@ -147,6 +155,10 @@ onAuthStateChanged(auth, async (user) => {
     if (favoritosButton) favoritosButton.style.display = "none";
     if (welcomeMsg) welcomeMsg.textContent = "Bem-vindo(a), Usuário";
     if (userEmail) userEmail.textContent = "Email do usuário";
+    
+    // ESCONDE EMAIL NO MENU MOBILE
+    if (userEmailMobile) userEmailMobile.style.display = "none";
+    if (emailTextMobile) emailTextMobile.textContent = "";
 
     if (usuarioLinkMobile) usuarioLinkMobile.style.display = 'none';
     if (favoritosLinkMobile) favoritosLinkMobile.style.display = 'none';
