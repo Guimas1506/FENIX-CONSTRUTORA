@@ -511,7 +511,13 @@ function limparTodosFiltros() {
   imoveisExibidos = 0;
   exibirMaisImoveis(IMOVEIS_INICIAIS);
 }
-
+// Mostra um popup quando o botão "Aplicar Filtros" for pressionado
+const btnAplicarFiltrosPopup = document.getElementById("btn-aplicar-filtros");
+if (btnAplicarFiltrosPopup) {
+  btnAplicarFiltrosPopup.addEventListener("click", () => {
+    alert("Filtros aplicados");
+  });
+}
 const btnAplicarFiltros = document.getElementById("btn-aplicar-filtros");
 if (btnAplicarFiltros) {
   btnAplicarFiltros.addEventListener("click", aplicarTodosFiltros);
