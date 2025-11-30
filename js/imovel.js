@@ -532,7 +532,13 @@ async function carregarTodosImoveis() {
     console.error("❌ Container 'lista-imoveis-pagina' não encontrado!");
     return;
   }
-  
+   const btnLimparFiltros = document.getElementById("btn-limpar-filtros");
+  if (btnLimparFiltros) {
+    btnLimparFiltros.addEventListener("click", () => {
+      alert("Filtros limpos");
+      limparTodosFiltros();
+    });
+  }
   // REMOVIDO: Não aplicar estilos inline aqui - deixar o CSS controlar
   
   try {
