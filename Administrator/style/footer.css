@@ -166,6 +166,15 @@
         align-items: center;
     }
     
+    .abins a{
+        color: white;
+        text-decoration: none;
+    }
+    
+    .abins a:visited{
+        color: white;
+    }
+    
     .abins p{
     
         font-weight: 500;
@@ -198,6 +207,15 @@
         flex-direction: column;
         color: white;
         align-items: center;
+    }
+    
+    .produts a{
+        color: white;
+        text-decoration: none;
+    }
+    
+    .produts a:visited{
+        color: white;
     }
     
     .produts p{

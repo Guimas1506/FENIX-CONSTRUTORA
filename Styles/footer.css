@@ -207,6 +207,15 @@ a{
     align-items: center;
 }
 
+.abins a{
+    color: var(--Branco);
+    text-decoration: none;
+}
+
+.abins a:visited{
+    color: var(--Branco);
+}
+
 .abins p{
 
     font-weight: 500;
@@ -239,6 +248,15 @@ a{
     flex-direction: column;
     color: var(--Branco);
     align-items: center;
+}
+
+.produts a{
+    color: var(--Branco);
+    text-decoration: none;
+}
+
+.produts a:visited{
+    color: var(--Branco);
 }
 
 .produts p{
