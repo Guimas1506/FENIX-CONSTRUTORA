@@ -80,24 +80,24 @@ onAuthStateChanged(auth, async (user) => {
   if (user) {
     console.log("✅ Usuário logado:", user.email);
     console.log("🆔 UID:", user.uid);
-    
+
     // Mostra/esconde elementos quando LOGADO
     if (btnLogoutModal) btnLogoutModal.style.display = "flex";
     if (btnLogoutMobile) btnLogoutMobile.style.display = "flex";
     if (userButton) userButton.style.display = "flex";
     if (favoritosButton) favoritosButton.style.display = "flex";
     if (userEmail) userEmail.textContent = user.email;
-    
+
     // MOSTRA EMAIL NO MENU MOBILE
     if (userEmailMobile) userEmailMobile.style.display = "block";
     if (emailTextMobile) emailTextMobile.textContent = user.email;
-    
+
     // Mostra Usuario e Favoritos no menu mobile quando logado
     if (usuarioLinkMobile) usuarioLinkMobile.style.display = "flex";
     if (favoritosLinkMobile) favoritosLinkMobile.style.display = "flex";
     if (loginLinkMobile) loginLinkMobile.style.display = "none";
     if (signinLinkMobile) signinLinkMobile.style.display = "none";
-    
+
     // Esconde login e registro quando logado
     linksModal.forEach(link => {
       if (link.href && link.href.includes("log-in.html")) {
@@ -123,7 +123,7 @@ onAuthStateChanged(auth, async (user) => {
       // Tenta primeiro na coleção "usuarios" (onde a foto é salva)
       let docRef = doc(db, "usuarios", user.uid);
       let docSnap = await getDoc(docRef);
-      
+
       if (docSnap.exists()) {
         const data = docSnap.data();
         nome = data.nome || nome;
@@ -163,16 +163,17 @@ onAuthStateChanged(auth, async (user) => {
     // Atualiza foto de perfil no header e no modal
     const profilePhotoHeader = document.getElementById("profilePhotoHeader");
     const profilePhotoModal = document.getElementById("profilePhotoModal");
-    
+
     if (profilePhotoHeader) {
       profilePhotoHeader.src = photoURL;
       // Se não for a foto padrão, aplica o estilo circular
       if (photoURL !== DEFAULT_PHOTO) {
         profilePhotoHeader.style.borderRadius = "50%";
         profilePhotoHeader.style.objectFit = "cover";
+
       }
     }
-    
+
     if (profilePhotoModal) {
       profilePhotoModal.src = photoURL;
       profilePhotoModal.style.borderRadius = "50%";
@@ -187,7 +188,7 @@ onAuthStateChanged(auth, async (user) => {
 
   } else {
     console.log("❌ Nenhum usuário logado");
-    
+
     // Mostra/esconde elementos quando NÃO LOGADO
     if (btnLogoutModal) btnLogoutModal.style.display = "none";
     if (btnLogoutMobile) btnLogoutMobile.style.display = "none";
@@ -196,35 +197,35 @@ onAuthStateChanged(auth, async (user) => {
     if (favoritosButton) favoritosButton.style.display = "none";
     if (welcomeMsg) welcomeMsg.textContent = "Bem-vindo(a), Usuário";
     if (userEmail) userEmail.textContent = "Email do usuário";
-    
+
     // ESCONDE EMAIL NO MENU MOBILE
     if (userEmailMobile) userEmailMobile.style.display = "none";
     if (emailTextMobile) emailTextMobile.textContent = "";
-    
+
     // Reseta fotos de perfil quando não logado
     const profilePhotoHeader = document.getElementById("profilePhotoHeader");
     const profilePhotoModal = document.getElementById("profilePhotoModal");
-    
+
     if (profilePhotoHeader) {
       profilePhotoHeader.src = 'img/icon-usuario.png';
       profilePhotoHeader.style.borderRadius = "0";
       profilePhotoHeader.style.objectFit = "contain";
-      profilePhotoHeader.style.width = "5rem";
-      profilePhotoHeader.style.height = "5rem";
+      profilePhotoHeader.style.width = "45px";
+      profilePhotoHeader.style.height = "45px";
     }
-    
+
     if (profilePhotoModal) {
       profilePhotoModal.src = 'img/icon-usuario.png';
       profilePhotoModal.style.borderRadius = "0";
       profilePhotoModal.style.objectFit = "contain";
     }
-    
+
     // Esconde Usuario e Favoritos no menu mobile quando não logado
     if (usuarioLinkMobile) usuarioLinkMobile.style.display = "none";
     if (favoritosLinkMobile) favoritosLinkMobile.style.display = "none";
     if (loginLinkMobile) loginLinkMobile.style.display = "flex";
     if (signinLinkMobile) signinLinkMobile.style.display = "flex";
-    
+
     // Mostra login e registro quando não logado
     linksModal.forEach(link => {
       if (link.href && link.href.includes("log-in.html")) {

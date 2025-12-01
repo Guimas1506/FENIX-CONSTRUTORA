@@ -217,8 +217,8 @@ onAuthStateChanged(auth, async (user) => {
       profilePhotoHeader.src = 'img/icon-usuario.png';
       profilePhotoHeader.style.borderRadius = "0";
       profilePhotoHeader.style.objectFit = "contain";
-      profilePhotoHeader.style.width = "5rem";
-      profilePhotoHeader.style.height = "5rem";
+      profilePhotoHeader.style.width = "45px";
+      profilePhotoHeader.style.height = "45px";
     }
     
     if (profilePhotoModal) {

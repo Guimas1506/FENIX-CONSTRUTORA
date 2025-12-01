@@ -128,18 +128,20 @@ header {
 }
 
 .icon-person {
-  width: 5vw;
+  width: 100%;
   height: 100%;
   align-items: center;
   justify-content: center;
   display: flex;
   transition: 0.2s ease;
+  
 }
 
 .icon-person:hover {
   transform: scale(0.9);
 
 }
+
 
 .icon-person img {
   width: 45px;
@@ -148,6 +150,7 @@ header {
   border-radius: 50%;
 
 }
+
 
 .title-fenix {
   width: 50%;
