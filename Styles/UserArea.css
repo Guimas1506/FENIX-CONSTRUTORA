@@ -34,6 +34,7 @@
 }
 
 
+
 .logo-fundo {
     width: 100px;
     height: auto;
@@ -66,12 +67,13 @@
 .modal-content {
     border-radius: 10px;
     background-color: var(--Branco);
-    width: 17vw;
+    width: 19vw;
     height: 75vh;
     display: flex;
     flex-direction: column;
     position: relative;
     margin: 0;
+    background-color: #252525;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     padding-left: 10px;
     justify-content: center;
@@ -121,7 +123,7 @@
     justify-content: center;
     margin-top: 10px;
     border-radius: 5px;
-    color: black;
+    color: rgb(255, 253, 253);
     font-size: 20px;
     transition: 0.5s;
     background-color: #FE4F3F;
@@ -177,9 +179,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 10px;
     border-radius: 5px;
-    color: black;
+    color: rgb(255, 255, 255);
     font-size: 18px;
     transition: 0.5s;
     font-weight: 200;
@@ -223,7 +224,7 @@
     justify-content: center;
     margin-top: 10px;
     border-radius: 5px;
-    color: black;
+    color: rgb(255, 255, 255);
     font-size: 20px;
     transition: 0.5s;
     text-align: center;
